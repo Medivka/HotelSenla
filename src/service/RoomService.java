@@ -38,10 +38,17 @@ public class RoomService implements IRoomService {
 
 
     @Override
-    public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price,Integer stars) {
-        Room room = new Room(IdGenerator.generateRoomId(), roomStatus, copacity, price,stars);
+    public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars) {
+        Room room = new Room(IdGenerator.generateRoomId(), roomStatus, copacity, price, stars);
         roomDao.save(room);
         return room;
+    }
+
+    @Override
+    public void changeRoomStars(Integer idRoom, Integer stars) {
+        Room room = roomDao.findById(idRoom);
+        room.setStars(stars);
+
     }
 
     @Override
@@ -72,6 +79,12 @@ public class RoomService implements IRoomService {
     public List sortedByCopacity() {
         ArrayList<Room> rooms = new ArrayList<>(roomDao.getRoomList());
         rooms.stream().sorted(((o1, o2) -> o1.getCopacity() - o2.getCopacity())).collect(Collectors.toList()).forEach(room -> System.out.println(room));
+        return rooms;
+    }
+    @Override
+    public List<Room> allFreeRoom(){
+        ArrayList<Room> rooms= roomDao.getRoomList();
+   //     rooms.stream().( room.getRoomStatus().equals(RoomStatus.FREE)).collect(Collectors.toList());
         return rooms;
     }
 

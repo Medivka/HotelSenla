@@ -33,7 +33,7 @@ public class MainProgramm {
         Guest guest = guestService.createGuest("Nikolai", 45);
         Guest guest2 = guestService.createGuest("NNNikolai", 45);
         Guest guest3 = guestService.createGuest("NNNNNikolai", 45);
-        Room room3 = roomService.createRoom(RoomStatus.REPAIRS, 8, 810,5);
+        Room room3 = roomService.createRoom(RoomStatus.FREE, 8, 810,5);
         Service service4 = serviceService.createService("enternet", 2450);
         Room room = roomService.createRoom(RoomStatus.BUSY, 3, 40,4);
 
@@ -46,8 +46,8 @@ public class MainProgramm {
         orderService.changeRoomInOrder(1, room);
         roomService.changeStatusRoom(3, RoomStatus.BUSY);
         System.out.println(order);
+        System.out.println(   roomService.allFreeRoom());
 
-        historyService.shawAllRoomGuest(1);
 
 
     }

@@ -15,6 +15,8 @@ public interface IRoomService {
 
       Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars);
 
+    void changeRoomStars(Integer idRoom, Integer stars);
+
     void changeStatusRoom(Integer idRoom, RoomStatus roomStatus);
 
     void changeRoomCopacity(Integer idRoom, Integer copacity);
@@ -24,6 +26,8 @@ public interface IRoomService {
     List sortedByPrice();
 
     List sortedByCopacity();
+
+    List<Room> allFreeRoom();
 //
 //
 //
