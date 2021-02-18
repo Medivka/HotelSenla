@@ -8,14 +8,9 @@ public interface IServiceService {
 
 
     Service findById(Integer id);
-
     void showAllService();
-
     Service createService(String name, Integer price);
-
     void changeServiceName(Integer idService, String name);
-
     void changeServicePrice(Integer idService, Integer price);
-
     List sortedByPrice();
 }

@@ -13,7 +13,7 @@ public interface IRoomService {
 
     void showAllRoom();
 
-      Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars);
+    Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars);
 
     void changeRoomStars(Integer idRoom, Integer stars);
 

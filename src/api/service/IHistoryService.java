@@ -1,7 +1,9 @@
 package api.service;
 
+import java.util.List;
+
 public interface IHistoryService {
-    void showAllHistory();
+   List getAllHistory();
 
     void shawAllRoomGuest(Integer idGuest);
 }

@@ -11,6 +11,7 @@ import model.Service;
 import service.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class MainProgramm {
 
     public static void main(String[] args) {
         LocalDate localDate = LocalDate.now();
+        LocalDateTime localDateTime=LocalDateTime.now();
         Guest guest = guestService.createGuest("Nikolai", 45);
         Guest guest2 = guestService.createGuest("NNNikolai", 45);
         Guest guest3 = guestService.createGuest("NNNNNikolai", 45);
@@ -45,8 +47,8 @@ public class MainProgramm {
         orderService.changeDaysOfStay(1, 10);
         orderService.changeRoomInOrder(1, room);
         roomService.changeStatusRoom(3, RoomStatus.BUSY);
-        System.out.println(order);
-        System.out.println(   roomService.allFreeRoom());
+
+        roomService.showAllRoom();
 
 
 

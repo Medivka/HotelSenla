@@ -19,13 +19,9 @@ public class HistoryService implements IHistoryService {
 
 
     @Override
-    public void showAllHistory() {
+    public List<Order> getAllHistory() {
         ArrayList<Order> history = historyDao.getHistoryList();
-        for (Order story : history
-        ) {
-            System.out.println(story);
-
-        }
+       return history;
     }
 
 

@@ -51,21 +51,7 @@ public class RoomDao implements IRoomDao {
         return room;
     }
 
-    @Override
-    public Room update(Integer id, RoomStatus roomStatus, Integer copacity, Integer price) {
-        for (int i = 0; i < roomList.size(); i++) {
-            Room room = roomList.get(i);
 
-            if (id.equals(room.getRoomNumber())) {
-                room.setRoomStatus(roomStatus);
-                room.setCopacity(copacity);
-                room.setPrice(price);
-                return room;
-            } else room = null;
-        }
-        return room;
-
-    }
 
 
 }

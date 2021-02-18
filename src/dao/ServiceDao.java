@@ -46,19 +46,7 @@ public class ServiceDao implements IServiceDao {
         return service;
     }
 
-    @Override
-    public Service update(Integer id, String name, Integer price) {
-        for (int i = 0; i < serviceList.size(); i++) {
-            Service service = serviceList.get(i);
 
-            if (id.equals(service.getId())) {
-                service.setName(name);
-                service.setPrice(price);
-                return service;
-            } else service = null;
-        }
-        return service;
-    }
 }
 
 
