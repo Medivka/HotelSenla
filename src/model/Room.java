@@ -9,8 +9,11 @@ public class Room {
     private RoomStatus roomStatus;
     private Integer copacity;
     private Integer price;
+    private Integer stars;
 
 
+    public Integer getStars() { return stars;}
+    public void setStars(Integer stars) {this.stars = stars;}
     public Integer getRoomNumber() {
         return roomNumber;
     }
@@ -40,16 +43,18 @@ public class Room {
     public Room() {
     }
 
-    public Room(RoomStatus roomStatus, Integer copacity, Integer price) {
+    public Room(RoomStatus roomStatus, Integer copacity, Integer price,Integer stars) {
         this.roomStatus = roomStatus;
+        this.stars=stars;
         this.copacity = copacity;
         this.price = price;
     }
 
-    public Room(Integer roomNumber, RoomStatus roomStatus, Integer copacity, Integer price) {
+    public Room(Integer roomNumber, RoomStatus roomStatus, Integer copacity, Integer price,Integer stars) {
         this.roomNumber = roomNumber;
         this.roomStatus = roomStatus;
         this.copacity = copacity;
+        this.stars=stars;
         this.price = price;
     }
 
@@ -58,7 +63,7 @@ public class Room {
         return "Room " + roomNumber +
 
                 ": roomStatus=" + roomStatus +
-                ", copacity=" + copacity +
+                ", copacity=" + copacity +", stars=" + stars +
                 ", price=" + price;
     }
 }

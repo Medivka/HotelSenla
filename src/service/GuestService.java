@@ -8,6 +8,7 @@ import model.Guest;
 import util.IdGenerator;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,6 +58,12 @@ public class GuestService implements IGuestService {
     public List sortedByAge() {
         ArrayList<Guest> guests = new ArrayList<>(guestDao.getGuestList());
         guests.stream().sorted(((o1, o2) -> o1.getAge() - o2.getAge())).collect(Collectors.toList()).forEach(guest -> System.out.println(guest));
+        return guests;
+    }
+    @Override
+    public List sortedByName(){
+        ArrayList<Guest> guests= guestDao.getGuestList();
+        guests.stream().sorted(Comparator.comparing(Guest::getName)).collect(Collectors.toList());
         return guests;
     }
 }

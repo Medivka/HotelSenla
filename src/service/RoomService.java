@@ -38,8 +38,8 @@ public class RoomService implements IRoomService {
 
 
     @Override
-    public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price) {
-        Room room = new Room(IdGenerator.generateRoomId(), roomStatus, copacity, price);
+    public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price,Integer stars) {
+        Room room = new Room(IdGenerator.generateRoomId(), roomStatus, copacity, price,stars);
         roomDao.save(room);
         return room;
     }
@@ -74,6 +74,7 @@ public class RoomService implements IRoomService {
         rooms.stream().sorted(((o1, o2) -> o1.getCopacity() - o2.getCopacity())).collect(Collectors.toList()).forEach(room -> System.out.println(room));
         return rooms;
     }
+
 }
 
 

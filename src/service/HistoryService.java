@@ -7,6 +7,7 @@ import model.Order;
 import model.Room;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryService implements IHistoryService {
 
@@ -26,6 +27,7 @@ public class HistoryService implements IHistoryService {
 
         }
     }
+
 
     @Override
     public void shawAllRoomGuest(Integer idGuest) {

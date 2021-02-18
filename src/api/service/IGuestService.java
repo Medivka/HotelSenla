@@ -16,4 +16,6 @@ public interface IGuestService {
     void changeGuestAge(Integer idGuest, Integer age);
 
     List sortedByAge();
+
+    List sortedByName();
 }
