@@ -25,6 +25,8 @@ public interface IRoomService {
 
     List sortedByPrice();
 
+    List sortedByStars();
+
     List sortedByCopacity();
 
     List<Room> allFreeRoom();

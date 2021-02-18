@@ -76,16 +76,32 @@ public class RoomService implements IRoomService {
     }
 
     @Override
+    public List sortedByStars() {
+        ArrayList<Room> rooms = new ArrayList<>(roomDao.getRoomList());
+        rooms.stream().sorted(((o1, o2) -> o1.getStars() - o2.getStars())).collect(Collectors.toList()).forEach(room -> System.out.println(room));
+        return rooms;
+    }
+
+    @Override
     public List sortedByCopacity() {
         ArrayList<Room> rooms = new ArrayList<>(roomDao.getRoomList());
         rooms.stream().sorted(((o1, o2) -> o1.getCopacity() - o2.getCopacity())).collect(Collectors.toList()).forEach(room -> System.out.println(room));
         return rooms;
     }
+
     @Override
-    public List<Room> allFreeRoom(){
-        ArrayList<Room> rooms= roomDao.getRoomList();
-   //     rooms.stream().( room.getRoomStatus().equals(RoomStatus.FREE)).collect(Collectors.toList());
-        return rooms;
+    public List<Room> allFreeRoom() {
+        ArrayList<Room> freeRoom = new ArrayList<>();
+        ArrayList<Room> rooms = roomDao.getRoomList();
+        for (Room roo : rooms
+        ) {
+            Room room = roo;
+            if (roo.getRoomStatus().equals(RoomStatus.FREE)) {
+                freeRoom.add(room);
+            }
+
+        }
+        return freeRoom;
     }
 
 }
