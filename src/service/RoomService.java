@@ -36,7 +36,6 @@ public class RoomService implements IRoomService {
         }
     }
 
-
     @Override
     public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars) {
         Room room = new Room(IdGenerator.generateRoomId(), roomStatus, copacity, price, stars);
@@ -93,13 +92,11 @@ public class RoomService implements IRoomService {
     public List<Room> allFreeRoom() {
         ArrayList<Room> freeRoom = new ArrayList<>();
         ArrayList<Room> rooms = roomDao.getRoomList();
-        for (Room roo : rooms
-        ) {
+        for (Room roo : rooms) {
             Room room = roo;
             if (roo.getRoomStatus().equals(RoomStatus.FREE)) {
                 freeRoom.add(room);
             }
-
         }
         return freeRoom;
     }
