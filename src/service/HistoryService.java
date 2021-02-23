@@ -3,15 +3,17 @@ package service;
 import api.service.IHistoryService;
 import dao.HistoryDao;
 import model.Guest;
-import model.Order;
+import model.History;
 import model.Room;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HistoryService implements IHistoryService {
 
     private final HistoryDao historyDao;
+
 
     public HistoryService(HistoryDao historyDao) {
         this.historyDao = historyDao;
@@ -19,33 +21,53 @@ public class HistoryService implements IHistoryService {
 
 
     @Override
-    public List<Order> getAllHistory() {
-        ArrayList<Order> history = historyDao.getHistoryList();
-       return history;
+    public List<History> getAllHistory() {
+        return new ArrayList<>(historyDao.getHistoryList());
     }
 
-
-
-
-
     @Override
-    public void shawAllRoomGuest(Integer idGuest) {
-        ArrayList<Order> historylist = new ArrayList<>(historyDao.getHistoryList());
-        for (int i = 0; i < historylist.size(); i++) {
-            Order order = historylist.get(i);
-            ArrayList<Guest> guests = (ArrayList<Guest>) order.getGuests();
-            for (int k = 0; k < guests.size(); k++) {
-                Guest guest = guests.get(k);
-                if (guest.getGuestNumber().equals(idGuest)) {
-                    System.out.println(order.getRooms());
-                    System.out.println("Settling: " + order.getLocalDate());
-                    System.out.println("Departure: " + order.getLocalDate().plusDays(order.getDaysOfStay()) + "\n");
+    public List<Guest> getThreeLastGuests(Integer roomID) {
 
+        List<Guest> threeLastGuest = new ArrayList<>();
+        List<History> historyList = new ArrayList<>(historyDao.getHistoryList());
+        for (int i = 0; i < historyList.size(); i++) {
+            History history = historyList.get(i);
+            List<Guest> guestList = history.getGuests();
+            List<Room> roomList = history.getRooms();
+
+            for (int k = 0; k < roomList.size(); k++) {
+                Room room = roomList.get(k);
+                if (room.getRoomNumber().equals(roomID)) {
+                    for (int j = 0; j < guestList.size(); j++) {
+                        threeLastGuest.add(guestList.get(j));
+                    }
                 }
             }
         }
-
+        return threeLastGuest.stream().limit(3).collect(Collectors.toList());
     }
 
-}
 
+    @Override
+    public List<Room> shawAllRoomGuest(Integer idGuest) {
+        List<Room> rooms = new ArrayList<>();
+        List<History> historyList = new ArrayList<>(historyDao.getHistoryList());
+        for (int i = 0; i < historyList.size(); i++) {
+            History history = historyList.get(i);
+            List<Guest> guest = history.getGuests();
+            List<Room> room = history.getRooms();
+            for (int k = 0; k < guest.size(); k++) {
+                Guest guest1 = guest.get(k);
+                if (guest1.getGuestNumber().equals(idGuest)) {
+                    for (int j = 0; j < room.size(); j++) {
+                        rooms.add(room.get(j));
+                    }
+                }
+            }
+        }
+        return rooms;
+    }
+
+
+
+}

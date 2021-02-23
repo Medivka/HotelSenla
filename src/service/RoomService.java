@@ -28,12 +28,9 @@ public class RoomService implements IRoomService {
     }
 
     @Override
-    public void showAllRoom() {
+    public List<Room> showAllRoom() {
         ArrayList<Room> rooms = new ArrayList<>(roomDao.getRoomList());
-        for (Room room : rooms
-        ) {
-            System.out.println(room);
-        }
+       return rooms;
     }
 
     @Override

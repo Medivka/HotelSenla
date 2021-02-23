@@ -11,7 +11,7 @@ public interface IRoomService {
 
     Room findById(Integer id);
 
-    void showAllRoom();
+   List showAllRoom();
 
     Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars);
 

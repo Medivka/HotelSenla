@@ -27,12 +27,9 @@ public class GuestService implements IGuestService {
     }
 
     @Override
-    public void showAllGuests() {
-        ArrayList<Guest> guests = new ArrayList<>(guestDao.getGuestList());
-        for (Guest guest : guests
-        ) {
-            System.out.println(guest);
-        }
+    public List<Guest> showAllGuests() {
+      return new ArrayList<>(guestDao.getGuestList());
+
     }
 
     @Override

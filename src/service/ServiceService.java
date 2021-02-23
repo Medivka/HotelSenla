@@ -27,12 +27,9 @@ public class ServiceService implements IServiceService {
 
 
     @Override
-    public void showAllService() {
+    public List<Service> showAllService() {
         ArrayList<Service> services = new ArrayList<>(serviceDao.getServiceList());
-        for (Service service : services
-        ) {
-            System.out.println(service);
-        }
+       return services;
     }
 
     @Override

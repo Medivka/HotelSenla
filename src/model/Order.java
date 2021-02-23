@@ -16,12 +16,12 @@ public class Order {
     private LocalDate localDate;
     private Integer daysOfStay;
 
+
+
     public Integer getId() {
         return id;
     }
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public void setId(Integer id) { this.id = id; }
     public List getGuests() {
         return guests;
     }
@@ -53,6 +53,10 @@ public class Order {
         this.daysOfStay = daysOfStay;
     }
 
+
+    public Order() {
+    }
+
     public Order(Integer id, List guests, List rooms, List services, LocalDate localDate, Integer daysOfStay) {
         this.id = id;
         this.guests = guests;
@@ -69,6 +73,6 @@ public class Order {
                 ", " + '\n' + rooms +
                 ", " + '\n' + services + '\n' +
                 "Day Of  Settling: " + localDate + '\n' +
-                "Day Of departure: " + localDate.plusDays(getDaysOfStay()) + "\n";
+                "Day Of departure: " + localDate.plusDays(daysOfStay) + "\n";
     }
 }

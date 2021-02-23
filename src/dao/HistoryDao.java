@@ -1,6 +1,7 @@
 package dao;
 
 import api.dao.IHistoryDao;
+import model.History;
 import model.Order;
 import util.IdGenerator;
 
@@ -8,35 +9,37 @@ import java.util.ArrayList;
 
 public class HistoryDao implements IHistoryDao {
     Order order;
-    private ArrayList<Order> historyList = new ArrayList<>();
+History history;
+    private ArrayList<History> historyList = new ArrayList<>();
 
-    public ArrayList<Order> getHistoryList() {
+    public ArrayList<History> getHistoryList() {
         return new ArrayList<>(historyList);
     }
 
 
     @Override
-    public void save(Order order) {
-        historyList.add(order);
+    public void save(History history) {
+
+         historyList.add(history);
     }
 
     @Override
-    public Order findById(Integer id) {
+    public History findById(Integer id) {
         for (int i = 0; i < historyList.size(); i++) {
-            Order order = historyList.get(i);
-            if (id.equals(order.getId())) {
-                return order;
-            } else order = null;
+            History history = historyList.get(i);
+            if (id.equals(history.getId())) {
+                return history;
+            } else history = null;
         }
-        return order;
+        return history;
     }
 
     @Override
     public void delete(Integer id) {
         if (id < historyList.size() + 1) {
             for (int i = 0; i < historyList.size(); i++) {
-                Order order = historyList.get(i);
-                if (id.equals(order.getId())) {
+                History history = historyList.get(i);
+                if (id.equals(history.getId())) {
                     historyList.remove(i);
                 }
             }

@@ -1,11 +1,12 @@
 package api.dao;
 
+import model.History;
 import model.Order;
 
 public interface IHistoryDao {
-    void save(Order order);
+    void save(History history);
 
-    Order findById(Integer id);
+    History findById(Integer id);
 
     void delete(Integer id);
 }

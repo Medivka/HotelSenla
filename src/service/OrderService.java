@@ -4,14 +4,12 @@ import api.enums.RoomStatus;
 import api.service.IOrderService;
 import dao.HistoryDao;
 import dao.OrderDao;
-import model.Guest;
-import model.Order;
-import model.Room;
-import model.Service;
+import model.*;
 import util.IdGenerator;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class OrderService implements IOrderService {
@@ -34,52 +32,60 @@ public class OrderService implements IOrderService {
         ArrayList<Service> services = new ArrayList<>();
         services.add(service);
         Order order = new Order(IdGenerator.generateOrderId(), guests, rooms, services, localDate, daysOfStay);
+        History history= new History(IdGenerator.generateHistoryId(),guests,rooms,services,localDate,daysOfStay);
         orderDao.save(order);
-        historyDao.save(order);
+        historyDao.save(history);
         return order;
     }
 
     @Override
     public void addGuestInRoom(Integer orderNumber, Guest guest) {
-        Order order1 = orderDao.findById(orderNumber);
-        order1.getGuests().add(guest);
-        historyDao.save(order1);
-    }
+        Order order = orderDao.findById(orderNumber);
+        order.getGuests().add(guest);
+        History history= historyDao.findById(orderNumber);
+        history.getGuests().add(guest);
+           }
 
     @Override
     public void addInRoomService(Integer orderNumber, Service service) {
         Order order = orderDao.findById(orderNumber);
         order.getServices().add(service);
-        historyDao.save(order);
-    }
+        History history= historyDao.findById(orderNumber);
+        history.getServices().add(service);
+           }
 
     @Override
     public void changeRoomInOrder(Integer orderNumber, Room room) {
         Order order = orderDao.findById(orderNumber);
-        order.getRooms().set(0, room);
-        historyDao.save(order);
+        order.getRooms().set(0,room);
+        History history= historyDao.findById(orderNumber);
+        history.getRooms().set(0,room);
+
     }
 
     @Override
     public void changeDaysOfStay(Integer orderNumber, Integer daysOfStay) {
         Order order = orderDao.findById(orderNumber);
         order.setDaysOfStay(daysOfStay);
-        historyDao.save(order);
-    }
+        History history= historyDao.findById(orderNumber);
+        history.setDaysOfStay(daysOfStay);
+          }
 
     @Override
     public long getAllAmount(Integer orderNumber) {
-        Order order = orderDao.findById(orderNumber);
 
-        Integer amount = 0;
-        for (int i = 0; i < order.getRooms().size(); i++) {
-            Room room = (Room) order.getRooms().get(i);
-            amount = amount + room.getPrice();
-        }
-        for (int i = 0; i < order.getServices().size(); i++) {
-            Service service = (Service) order.getServices().get(i);
-            amount = amount + service.getPrice();
-        }
-        return amount;
+            Order order = orderDao.findById(orderNumber);
+            List<Room> roomList = order.getRooms();
+            Integer amount = 0;
+            for (int i = 0; i < roomList.size(); i++) {
+                Room room = roomList.get(i);
+                amount = amount + room.getPrice();
+            }
+            for (int i = 0; i < order.getServices().size(); i++) {
+                Service service = (Service) order.getServices().get(i);
+                amount = amount + service.getPrice();
+            }
+            return amount;
+
     }
 }

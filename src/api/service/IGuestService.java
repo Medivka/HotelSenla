@@ -7,7 +7,7 @@ import java.util.List;
 public interface IGuestService {
     Guest findById(Integer id);
 
-    void showAllGuests();
+    List showAllGuests();
 
     Guest createGuest(String name, Integer age);
 

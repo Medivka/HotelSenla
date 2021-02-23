@@ -33,22 +33,24 @@ public class MainProgramm {
         LocalDate localDate = LocalDate.now();
         LocalDateTime localDateTime=LocalDateTime.now();
         Guest guest = guestService.createGuest("Nikolai", 45);
-        Guest guest2 = guestService.createGuest("NNNikolai", 45);
-        Guest guest3 = guestService.createGuest("NNNNNikolai", 45);
+        Guest guest2 = guestService.createGuest("Alexandr", 45);
+        Guest guest3 = guestService.createGuest("Kiril", 45);
+        Room room = roomService.createRoom(RoomStatus.BUSY, 3, 40,4);
         Room room3 = roomService.createRoom(RoomStatus.FREE, 8, 810,5);
         Service service4 = serviceService.createService("enternet", 2450);
-        Room room = roomService.createRoom(RoomStatus.BUSY, 3, 40,4);
+
 
         Order order = orderService.createNewOrder(guest, room3, service4, localDate, 3);
 
-        Order order1 = orderService.createNewOrder(guest, room, serviceDao.findById(1), localDate, 5);
-        orderService.changeRoomInOrder(1, roomService.createRoom(RoomStatus.REPAIRS, 2, 300,5));
-        orderService.addInRoomService(1, serviceService.createService("breakFast", 40));
-        orderService.changeDaysOfStay(1, 10);
-        orderService.changeRoomInOrder(1, room);
-        roomService.changeStatusRoom(3, RoomStatus.BUSY);
+        Order order1 = orderService.createNewOrder(guest2, room, serviceDao.findById(1), localDate, 5);
+        Order order2 = orderService.createNewOrder(guest3, room, serviceDao.findById(1), localDate, 5);
+        Order order5 = orderService.createNewOrder(guest3, room, serviceDao.findById(1), localDate, 5);
+        System.out.println(roomService.allFreeRoom());
+        System.out.println( historyService.getThreeLastGuests(1));
 
-        roomService.showAllRoom();
+
+
+
 
 
 
