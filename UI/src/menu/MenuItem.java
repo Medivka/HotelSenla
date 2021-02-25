@@ -14,6 +14,7 @@ public class MenuItem {
     public void doAction() {
 
 
+
     }
 
     public MenuItem(String title, Menu nextMenu) {
@@ -32,8 +33,8 @@ public class MenuItem {
     @Override
     public String toString() {
         return " " +
-                " " + title +
-                " nextMenu= " + nextMenu;
+                " " + title
+                ;
     }
 
 }
