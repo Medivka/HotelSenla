@@ -26,6 +26,9 @@ public class FasadOrder {
     public void AddInRoomService(Integer orderNumber, Service service) {
         orderService.addInRoomService(orderNumber, service);
     }
+    public Order showOrder(Integer orderNumber){
+        return orderService.showOrder(orderNumber);
+    }
 
     public void addGuestInRoom(Integer orderNumber, Guest guest) {
         orderService.addGuestInRoom(orderNumber, guest);

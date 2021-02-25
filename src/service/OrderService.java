@@ -45,6 +45,11 @@ public class OrderService implements IOrderService {
         historyDao.save(history);
         return order;
     }
+    @Override
+    public Order showOrder(Integer orderNumber){
+        Order order=orderDao.findById(orderNumber);
+        return order;
+    }
 
     @Override
     public void addGuestInRoom(Integer orderNumber, Guest guest) {

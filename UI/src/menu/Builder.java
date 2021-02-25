@@ -32,11 +32,11 @@ public class Builder {
 
     public void buildMenu() {
 
-        rootMenu.addMenuItem(new MenuItem("Room Menu", createRoomMenu()));
-        rootMenu.addMenuItem(new MenuItem("Service Menu", createServiceMenu()));
-        rootMenu.addMenuItem(new MenuItem("Order Menu", createOrderMenu()));
-        rootMenu.addMenuItem(new MenuItem("History Menu", historyMenu()));
-        rootMenu.addMenuItem(new MenuItem("Guest Menu", createGuestMenu()));
+        rootMenu.addMenuItem(new MenuItem("Room Menu",()->{}, createRoomMenu()));
+        rootMenu.addMenuItem(new MenuItem("Service Menu",()->{},createServiceMenu()));
+        rootMenu.addMenuItem(new MenuItem("Order Menu",()->{}, createOrderMenu()));
+        rootMenu.addMenuItem(new MenuItem("History Menu",()->{}, historyMenu()));
+        rootMenu.addMenuItem(new MenuItem("Guest Menu",()->{}, createGuestMenu()));
     }
 
 
@@ -78,6 +78,7 @@ public class Builder {
         orderMenu.addMenuItem(new MenuItem("Gett all Amount", new GetAllAmount(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Create new Order", new CreateNewOrder(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Change Room in Order", new ChangeRoomInOrder(), rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Show Order ", new ShowOrder(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Change days of stay in Order", new ChangeDaysOfStay(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Add Service in room ", new AddInRoomService(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Add guest in room", new AddGuestInRoom(), rootMenu));

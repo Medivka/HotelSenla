@@ -13,9 +13,7 @@ public class MenuItem {
 
 
     public void doAction() {
-
-
-
+        action.execute();
     }
 
     public MenuItem(String title, Menu nextMenu) {

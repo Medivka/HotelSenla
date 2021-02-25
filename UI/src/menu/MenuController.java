@@ -26,7 +26,7 @@ public class MenuController {
         navigator.setCurrentMenu(builder.getRootMenu());
         navigator.printMenu();
         Integer index = -1;
-        while (!index.equals(0)) {
+        while (!index.equals(5600000)) {
             index = scanner.nextInt();
             navigator.navigate(index);
             navigator.printMenu();
