@@ -7,4 +7,5 @@ public class SortedById extends AbstractFasad implements IAction {
     @Override
     public void execute() {
         fasadGuest.sortedById().forEach(System.out::println);
-    }}
+    }
+}

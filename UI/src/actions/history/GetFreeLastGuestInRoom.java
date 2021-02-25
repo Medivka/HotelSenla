@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class GetFreeLastGuestInRoom extends AbstractFasad implements IAction {
     @Override
     public void execute() {
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter room ID: ");
-        Integer id= scanner.nextInt();
+        Integer id = scanner.nextInt();
         fasadHistory.getLastThreeGuestInRoom(id).forEach(System.out::println);
     }
 }

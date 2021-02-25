@@ -14,11 +14,13 @@ import actions.service.ShowAllService;
 
 public class Builder {
     private static Builder instance;
-
-   private Menu rootMenu = new Menu();
-
+    private Menu rootMenu = new Menu();
 
     private Builder() {
+    }
+    public Menu getRootMenu() {
+
+        return rootMenu;
     }
 
     public static Builder getInstance() {
@@ -37,50 +39,48 @@ public class Builder {
         rootMenu.addMenuItem(new MenuItem("Guest Menu", createGuestMenu()));
     }
 
-    public Menu getRootMenu() {
 
-        return  rootMenu;
-    }
 
     private Menu createServiceMenu() {
         Menu serviceMenu = new Menu();
-        serviceMenu.addMenuItem(new MenuItem("Create new service",new CreateNewService(),rootMenu));
-        serviceMenu.addMenuItem(new MenuItem("Find by id",new actions.service.FindById(),rootMenu));
-        serviceMenu.addMenuItem(new MenuItem("Show all service",new ShowAllService(),rootMenu));
-        serviceMenu.addMenuItem(new MenuItem("Sorted by price",new actions.service.SortedByPrice(),rootMenu));
-        serviceMenu.addMenuItem(new MenuItem("Change service name",new ChangeServiceName(),rootMenu));
-        serviceMenu.addMenuItem(new MenuItem("Change service price",new ChangeServicePrice(),rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Create new service", new CreateNewService(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Find by id", new actions.service.FindById(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Show all service", new ShowAllService(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Sorted by price", new actions.service.SortedByPrice(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Change service name", new ChangeServiceName(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Change service price", new ChangeServicePrice(), rootMenu));
         return serviceMenu;
     }
-    private Menu historyMenu(){
-        Menu historyMenu= new Menu();
-        historyMenu.addMenuItem(new MenuItem("Get all History",new GetAllHistory(), rootMenu));
-        historyMenu.addMenuItem(new MenuItem("Get three last guest in room",new GetFreeLastGuestInRoom(), rootMenu));
-        historyMenu.addMenuItem(new MenuItem("Show All room guest",new ShowAllRoomGuest(), rootMenu));
+
+    private Menu historyMenu() {
+        Menu historyMenu = new Menu();
+        historyMenu.addMenuItem(new MenuItem("Get all History", new GetAllHistory(), rootMenu));
+        historyMenu.addMenuItem(new MenuItem("Get three last guest in room", new GetFreeLastGuestInRoom(), rootMenu));
+        historyMenu.addMenuItem(new MenuItem("Show All room guest", new ShowAllRoomGuest(), rootMenu));
         return historyMenu;
     }
 
-    private Menu createGuestMenu(){
+    private Menu createGuestMenu() {
         Menu guestMenu = new Menu();
-        guestMenu.addMenuItem(new MenuItem( "Create new guest",new CreateNewGuest(),rootMenu));
-        guestMenu.addMenuItem(new MenuItem( "Change guest name",new ChangeGuestName(),rootMenu));
-        guestMenu.addMenuItem(new MenuItem( "Change guest age",new ChangeGuestAge(),rootMenu));
-        guestMenu.addMenuItem(new MenuItem( "Find by id",new actions.guest.FindById(),rootMenu));
-        guestMenu.addMenuItem(new MenuItem( "Show all guests",new ShowAllGuest(),rootMenu));
-        guestMenu.addMenuItem(new MenuItem( "Sorted by age",new SortedByAge(),rootMenu));
-        guestMenu.addMenuItem(new MenuItem( "Sorted by id",new SortedById(),rootMenu));
-        guestMenu.addMenuItem(new MenuItem( "Sorted by name",new SortedByName(),rootMenu));
+        guestMenu.addMenuItem(new MenuItem("Create new guest", new CreateNewGuest(), rootMenu));
+        guestMenu.addMenuItem(new MenuItem("Change guest name", new ChangeGuestName(), rootMenu));
+        guestMenu.addMenuItem(new MenuItem("Change guest age", new ChangeGuestAge(), rootMenu));
+        guestMenu.addMenuItem(new MenuItem("Find by id", new actions.guest.FindById(), rootMenu));
+        guestMenu.addMenuItem(new MenuItem("Show all guests", new ShowAllGuest(), rootMenu));
+        guestMenu.addMenuItem(new MenuItem("Sorted by age", new SortedByAge(), rootMenu));
+        guestMenu.addMenuItem(new MenuItem("Sorted by id", new SortedById(), rootMenu));
+        guestMenu.addMenuItem(new MenuItem("Sorted by name", new SortedByName(), rootMenu));
         return guestMenu;
     }
 
     private Menu createOrderMenu() {
         Menu orderMenu = new Menu();
-        orderMenu.addMenuItem(new MenuItem("Gett all Amount", new GetAllAmount(),rootMenu));
-        orderMenu.addMenuItem(new MenuItem("Create new Order", new CreateNewOrder(),rootMenu));
-        orderMenu.addMenuItem(new MenuItem("Change Room in Order", new ChangeRoomInOrder(),rootMenu));
-        orderMenu.addMenuItem(new MenuItem("Change days of stay in Order", new ChangeDaysOfStay(),rootMenu));
-        orderMenu.addMenuItem(new MenuItem("Add Service in room ", new AddInRoomService(),rootMenu));
-        orderMenu.addMenuItem(new MenuItem("Add guest in room", new AddGuestInRoom(),rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Gett all Amount", new GetAllAmount(), rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Create new Order", new CreateNewOrder(), rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Change Room in Order", new ChangeRoomInOrder(), rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Change days of stay in Order", new ChangeDaysOfStay(), rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Add Service in room ", new AddInRoomService(), rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Add guest in room", new AddGuestInRoom(), rootMenu));
         return orderMenu;
     }
 

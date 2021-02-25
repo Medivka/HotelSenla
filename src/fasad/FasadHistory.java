@@ -9,8 +9,9 @@ import java.util.List;
 
 public class FasadHistory {
 
-    private static HistoryService historyService =HistoryService.getInstance();
+    private static HistoryService historyService = HistoryService.getInstance();
     private static FasadHistory instance;
+
     public static FasadHistory getInstance() {
         if (instance == null) {
             instance = new FasadHistory();
@@ -19,13 +20,15 @@ public class FasadHistory {
     }
 
 
-    public List<History> getAllHistory(){
+    public List<History> getAllHistory() {
         return historyService.getAllHistory();
     }
-    public List<Guest> getLastThreeGuestInRoom(Integer IdRoom){
+
+    public List<Guest> getLastThreeGuestInRoom(Integer IdRoom) {
         return historyService.getThreeLastGuests(IdRoom);
     }
-    public List<Room> showAllRoomGuest(Integer IdGuest){
+
+    public List<Room> showAllRoomGuest(Integer IdGuest) {
         return historyService.shawAllRoomGuest(IdGuest);
     }
 

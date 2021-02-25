@@ -8,6 +8,6 @@ public class ShowAllFreeRoom extends AbstractFasad implements IAction {
     @Override
     public void execute() {
 
-       fasadRoom.allFreeRoom().forEach(System.out::println);
+        fasadRoom.allFreeRoom().forEach(System.out::println);
     }
 }

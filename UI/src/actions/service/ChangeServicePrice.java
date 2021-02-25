@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class ChangeServicePrice extends AbstractFasad implements IAction {
     @Override
     public void execute() {
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter id service: ");
-        Integer id=scanner.nextInt();
+        Integer id = scanner.nextInt();
         System.out.println("Enter new price: ");
-        Integer price=scanner.nextInt();
-       fasadService.findByID(id).setPrice(price);
+        Integer price = scanner.nextInt();
+        fasadService.changeServicePrice(id, price);
 
     }
 }

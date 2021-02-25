@@ -9,9 +9,9 @@ import java.util.Scanner;
 public class FindById extends AbstractFasad implements IAction {
     @Override
     public void execute() {
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter id service: ");
-        Integer id=scanner.nextInt();
+        Integer id = scanner.nextInt();
         System.out.println(fasadService.findByID(id));
 
     }

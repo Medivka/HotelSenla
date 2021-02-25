@@ -21,9 +21,10 @@ public class FasadGuest {
         return guest;
     }
 
-    public void changeName(Integer idGuest,String Name){
+    public void changeName(Integer idGuest, String Name) {
         guestService.changeGuestName(idGuest, Name);
     }
+
     public List<Guest> showAllGuests() {
         return guestService.showAllGuests();
     }

@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class MenuController {
     private static MenuController instance;
-    private Builder builder= Builder.getInstance();
-    private Navigator navigator=Navigator.getInstance();
+    private Builder builder = Builder.getInstance();
+    private Navigator navigator = Navigator.getInstance();
 
 
     private MenuController() {
@@ -31,6 +31,6 @@ public class MenuController {
             navigator.navigate(index);
             navigator.printMenu();
 
-            }
+        }
     }
 }

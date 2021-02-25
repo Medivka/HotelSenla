@@ -14,7 +14,7 @@ public class ChangeRoomStatus extends AbstractFasad implements IAction {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter room ID: ");
-        Integer roomId=scanner.nextInt();
+        Integer roomId = scanner.nextInt();
 
         System.out.println("Choose roomstatus: 1.Busy  2.Free 3.Repair ");
         Integer statusId = scanner.nextInt();
@@ -26,6 +26,6 @@ public class ChangeRoomStatus extends AbstractFasad implements IAction {
             case (3):
                 roomStatus = RoomStatus.REPAIRS;
         }
-        fasadRoom.changeRoomStatus(roomId,roomStatus);
+        fasadRoom.changeRoomStatus(roomId, roomStatus);
     }
 }

@@ -37,7 +37,8 @@ public class FasadService {
     public void changeServicePrice(Integer idservice, Integer price) {
         serviceService.changeServicePrice(idservice, price);
     }
-    public List<Service> sortedByPrice(){
+
+    public List<Service> sortedByPrice() {
         return serviceService.sortedByPrice();
     }
 

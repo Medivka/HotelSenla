@@ -8,11 +8,11 @@ import java.util.Scanner;
 public class ChangeGuestName extends AbstractFasad implements IAction {
     @Override
     public void execute() {
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter guest id: ");
-        Integer id=scanner.nextInt();
+        Integer id = scanner.nextInt();
         System.out.println("Enter new Name Guest: ");
-        String name= scanner.nextLine();
-        fasadGuest.changeName(id,name);
+        String name = scanner.nextLine();
+        fasadGuest.changeName(id, name);
     }
 }
