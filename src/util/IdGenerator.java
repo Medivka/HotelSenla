@@ -8,6 +8,7 @@ public class IdGenerator {
     private static Integer historyID = 1;
 
 
+
     public static Integer generateHistoryId() { return historyID++;}
 
     public static Integer generateGuestId() {

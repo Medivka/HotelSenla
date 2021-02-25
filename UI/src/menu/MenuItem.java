@@ -3,6 +3,7 @@ package menu;
 import actions.IAction;
 
 public class MenuItem {
+    private  static Integer countMenuItem=0;
     private String title;
     private IAction action;
     private Menu nextMenu;
@@ -23,6 +24,7 @@ public class MenuItem {
     }
 
     public MenuItem(String title, IAction action, Menu nextMenu) {
+
         this.title = title;
         this.action = action;
         this.nextMenu = nextMenu;
@@ -32,7 +34,7 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        return " " +
+        return
                 " " + title
                 ;
     }

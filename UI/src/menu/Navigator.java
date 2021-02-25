@@ -23,10 +23,14 @@ public class Navigator {
 
     public void printMenu() {
         if (currentMenu != null) {
+
             for (int i = 0; i < currentMenu.getMenuItems().size(); i++) {
                 MenuItem menuItem = currentMenu.getMenuItems().get(i);
-                System.out.println(menuItem);
+                System.out.print(i+ " ");
+                System.out.println( menuItem);
+
             }
+            System.out.println("Enter Number: ");
         }
 
     }
