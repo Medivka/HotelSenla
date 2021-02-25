@@ -16,24 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainProgramm {
-    private static HistoryDao historyDao = new HistoryDao();
-    private static GuestDao guestDao = new GuestDao();
-    private static RoomDao roomDao = new RoomDao();
-    private static AdministratorDao administratorDao = new AdministratorDao();
-    private static ServiceDao serviceDao = new ServiceDao();
-    private static OrderDao orderDao = new OrderDao();
-    private static IRoomService roomService = new RoomService(roomDao);
-    private static GuestService guestService = new GuestService(guestDao);
-    private static ServiceService serviceService = new ServiceService(serviceDao);
-    private static OrderService orderService = new OrderService(orderDao, historyDao);
-    private static HistoryService historyService = new HistoryService(historyDao);
+    private static IRoomService roomService = RoomService.getInstance();
+    private static GuestService guestService =GuestService.getInstance();
+    private static ServiceService serviceService = ServiceService.getInstance();
+    private static OrderService orderService = OrderService.getInstance();
+    private static HistoryService historyService =HistoryService.getInstance();
 
 
     public static void main(String[] args) {
+
         LocalDate localDate = LocalDate.now();
-        LocalDateTime localDateTime=LocalDateTime.now();
+
         Guest guest = guestService.createGuest("Nikolai", 45);
-        Guest guest2 = guestService.createGuest("Alexandr", 45);
+        Guest guest2 = guestService.createGuest("Alexandr", 34);
         Guest guest3 = guestService.createGuest("Kiril", 45);
         Room room = roomService.createRoom(RoomStatus.BUSY, 3, 40,4);
         Room room3 = roomService.createRoom(RoomStatus.FREE, 8, 810,5);
@@ -42,11 +37,12 @@ public class MainProgramm {
 
         Order order = orderService.createNewOrder(guest, room3, service4, localDate, 3);
 
-        Order order1 = orderService.createNewOrder(guest2, room, serviceDao.findById(1), localDate, 5);
-        Order order2 = orderService.createNewOrder(guest3, room, serviceDao.findById(1), localDate, 5);
-        Order order5 = orderService.createNewOrder(guest3, room, serviceDao.findById(1), localDate, 5);
-        System.out.println(roomService.allFreeRoom());
+        Order order1 = orderService.createNewOrder(guest2, room, serviceService.findById(1), localDate, 5);
+        Order order2 = orderService.createNewOrder(guest3, room, serviceService.findById(1), localDate, 5);
+        Order order5 = orderService.createNewOrder(guest3, room, serviceService.findById(1), localDate, 5);
+        System.out.println(guestService.findById(1));
         System.out.println( historyService.getThreeLastGuests(1));
+        System.out.println( orderService.getAllAmount(2));
 
 
 

@@ -10,6 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GuestDao implements IGuestDao {
+private static GuestDao instance;
+private GuestDao(){}
+    public static GuestDao getInstance() {
+        if (instance == null) {
+            instance = new GuestDao();
+        }
+        return instance;
+    }
 
     Guest guest;
     private ArrayList<Guest> guestList = new ArrayList<>();

@@ -1,6 +1,7 @@
 package service;
 
 import api.service.IHistoryService;
+import dao.GuestDao;
 import dao.HistoryDao;
 import model.Guest;
 import model.History;
@@ -13,6 +14,15 @@ import java.util.stream.Collectors;
 public class HistoryService implements IHistoryService {
 
     private final HistoryDao historyDao;
+    private static HistoryService instance;
+
+    public static HistoryService getInstance() {
+        if (instance == null) {
+            instance = new HistoryService(HistoryDao.getInstance());
+        }
+        return instance;
+    }
+
 
 
     public HistoryService(HistoryDao historyDao) {

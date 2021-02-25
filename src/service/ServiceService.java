@@ -2,6 +2,7 @@ package service;
 
 
 import api.service.IServiceService;
+import dao.GuestDao;
 import dao.ServiceDao;
 import model.Service;
 import util.IdGenerator;
@@ -13,6 +14,13 @@ import java.util.stream.Collectors;
 public class ServiceService implements IServiceService {
 
     private final ServiceDao serviceDao;
+    private static ServiceService instance;
+    public static ServiceService getInstance() {
+        if (instance == null) {
+            instance = new ServiceService(ServiceDao.getInstance());
+        }
+        return instance;
+    }
 
     public ServiceService(ServiceDao serviceDao) {
         this.serviceDao = serviceDao;

@@ -17,5 +17,7 @@ public interface IGuestService {
 
     List sortedByAge();
 
+    List sortedById();
+
     List sortedByName();
 }

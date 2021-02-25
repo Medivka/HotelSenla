@@ -1,23 +1,31 @@
 package menu;
 
-import com.sun.source.tree.BreakTree;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class Navigator {
-    private Navigator instance;
-
-
-
+    private static Navigator instance;
     private Menu currentMenu;
 
 
     private Navigator(){}
-    public Navigator getInstance(){
+
+    public static Navigator getInstance(){
         if(instance==null){
             instance= new Navigator();
         }return instance;
     }
 
-    public void printMenu(){}
+    public void printMenu(){
+        if(currentMenu!=null){
+           for(int i=0;i< currentMenu.getMenuItems().size();i++){
+               MenuItem menuItem= currentMenu.getMenuItems().get(i);
+               System.out.println(menuItem);
+           }
+        }
+
+    }
 
     public void  navigate(Integer index){
         if(currentMenu!=null){

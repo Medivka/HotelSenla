@@ -12,6 +12,14 @@ public class ServiceDao implements IServiceDao {
 
     Service service;
     private List<Service> serviceList = new ArrayList<>();
+    private static ServiceDao instance;
+    private ServiceDao (){}
+    public static ServiceDao getInstance(){  if (instance == null) {
+        instance = new ServiceDao();
+    }
+        return instance;
+    }
+
 
     public List<Service> getServiceList() {
         return new ArrayList<>(serviceList);

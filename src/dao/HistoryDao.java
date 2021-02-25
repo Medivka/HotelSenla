@@ -8,8 +8,16 @@ import util.IdGenerator;
 import java.util.ArrayList;
 
 public class HistoryDao implements IHistoryDao {
+    private static HistoryDao instance;
+    private HistoryDao(){};
+    public static HistoryDao getInstance(){  if (instance == null) {
+        instance = new HistoryDao();
+    }
+        return instance;
+    }
+
     Order order;
-History history;
+    History history;
     private ArrayList<History> historyList = new ArrayList<>();
 
     public ArrayList<History> getHistoryList() {
@@ -20,7 +28,7 @@ History history;
     @Override
     public void save(History history) {
 
-         historyList.add(history);
+        historyList.add(history);
     }
 
     @Override

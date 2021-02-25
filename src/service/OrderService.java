@@ -2,6 +2,7 @@ package service;
 
 import api.enums.RoomStatus;
 import api.service.IOrderService;
+import dao.GuestDao;
 import dao.HistoryDao;
 import dao.OrderDao;
 import model.*;
@@ -16,8 +17,15 @@ public class OrderService implements IOrderService {
 
     private final OrderDao orderDao;
     private final HistoryDao historyDao;
+    private static OrderService instance;
+    public static OrderService getInstance() {
+        if (instance == null) {
+            instance = new OrderService(OrderDao.getInstance(),HistoryDao.getInstance());
+        }
+        return instance;
+    }
 
-    public OrderService(OrderDao orderDao, HistoryDao historyDao) {
+    private OrderService(OrderDao orderDao, HistoryDao historyDao) {
         this.orderDao = orderDao;
         this.historyDao = historyDao;
     }
@@ -85,7 +93,7 @@ public class OrderService implements IOrderService {
                 Service service = (Service) order.getServices().get(i);
                 amount = amount + service.getPrice();
             }
-            return amount;
+            return amount*order.getDaysOfStay();
 
     }
 }

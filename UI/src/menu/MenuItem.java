@@ -7,12 +7,19 @@ public class MenuItem {
     private IAction action;
     private Menu nextMenu;
 
+
     public void doAction(){
+
 
     }
 
-    public MenuItem(String title, IAction action, Menu nextMenu) {
+    public MenuItem(String title, Menu nextMenu) {
         this.title = title;
+        this.nextMenu = nextMenu;
+    }
+
+    public MenuItem(String title, IAction action, Menu nextMenu) {
+        this.title =  title;
         this.action = action;
         this.nextMenu = nextMenu;
     }
@@ -22,6 +29,11 @@ public class MenuItem {
     }
 
 
-
+    @Override
+    public String toString() {
+        return " " +
+                " " + title +
+               " nextMenu= " + nextMenu      ;
+    }
 
 }

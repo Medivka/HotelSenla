@@ -2,6 +2,7 @@ package service;
 
 import api.dao.IRoomDao;
 import api.service.IRoomService;
+import dao.GuestDao;
 import dao.RoomDao;
 import model.Order;
 import api.enums.RoomStatus;
@@ -15,8 +16,15 @@ import java.util.stream.Collectors;
 public class RoomService implements IRoomService {
 
     private final RoomDao roomDao;
+    private static RoomService instance;
+    public static RoomService getInstance() {
+        if (instance == null) {
+            instance = new RoomService(RoomDao.getInstance());
+        }
+        return instance;
+    }
 
-    public RoomService(RoomDao roomDao) {
+    private RoomService(RoomDao roomDao) {
         this.roomDao = roomDao;
     }
 

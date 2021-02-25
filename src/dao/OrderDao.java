@@ -13,6 +13,19 @@ import java.util.List;
 
 
 public class OrderDao implements IOrderDao {
+    private static OrderDao instance;
+
+    private OrderDao() {
+    }
+
+    ;
+
+    public static OrderDao getInstance() {
+        if (instance == null) {
+            instance = new OrderDao();
+        }
+        return instance;
+    }
 
     Order order;
     private List<Order> orderList = new ArrayList<>();

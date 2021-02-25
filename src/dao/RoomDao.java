@@ -12,8 +12,16 @@ import java.util.ArrayList;
 
 public class RoomDao implements IRoomDao {
     Room room;
-
     private ArrayList<Room> roomList = new ArrayList<>();
+
+    private static RoomDao instance;
+    private RoomDao(){}
+    public static RoomDao getInstance(){  if (instance == null) {
+        instance = new RoomDao();
+    }
+        return instance;
+    }
+
 
     public ArrayList<Room> getRoomList() {
         return new ArrayList<>(roomList);

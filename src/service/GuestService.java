@@ -13,9 +13,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GuestService implements IGuestService {
-    private final GuestDao guestDao;
 
-    public GuestService(GuestDao guestDao) {
+    private GuestDao guestDao;
+
+    private static GuestService instance;
+
+    public static GuestService getInstance() {
+        if (instance == null) {
+            instance = new GuestService(GuestDao.getInstance());
+        }
+        return instance;
+    }
+
+
+    private GuestService(GuestDao guestDao) {
         this.guestDao = guestDao;
     }
 
@@ -28,7 +39,7 @@ public class GuestService implements IGuestService {
 
     @Override
     public List<Guest> showAllGuests() {
-      return new ArrayList<>(guestDao.getGuestList());
+        return new ArrayList<>(guestDao.getGuestList());
 
     }
 
@@ -54,12 +65,20 @@ public class GuestService implements IGuestService {
     @Override
     public List sortedByAge() {
         ArrayList<Guest> guests = new ArrayList<>(guestDao.getGuestList());
-        guests.stream().sorted(((o1, o2) -> o1.getAge() - o2.getAge())).collect(Collectors.toList()).forEach(guest -> System.out.println(guest));
+        guests.stream().sorted(((o1, o2) -> o1.getAge() - o2.getAge())).collect(Collectors.toList());
         return guests;
     }
+
     @Override
-    public List sortedByName(){
-        ArrayList<Guest> guests= guestDao.getGuestList();
+    public List sortedById() {
+        ArrayList<Guest> guests = new ArrayList<>(guestDao.getGuestList());
+        guests.stream().sorted(((o1, o2) -> o1.getGuestNumber() - o2.getGuestNumber())).collect(Collectors.toList());
+        return guests;
+    }
+
+    @Override
+    public List sortedByName() {
+        ArrayList<Guest> guests = guestDao.getGuestList();
         guests.stream().sorted(Comparator.comparing(Guest::getName)).collect(Collectors.toList());
         return guests;
     }

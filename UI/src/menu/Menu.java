@@ -5,16 +5,18 @@ import java.util.List;
 
 public class Menu {
     private String name;
-    private List<MenuItem> menuItems;
+    private List<MenuItem> menuItems =new ArrayList<>();
 
     public List<MenuItem> getMenuItems() {
-        if(menuItems==null){
-            menuItems= new ArrayList<>();
-        }
+
         return menuItems;
     }
 
     public void addMenuItem(MenuItem item){
        menuItems.add(item);
     }
+
+
+
+
 }
