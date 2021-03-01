@@ -10,5 +10,5 @@ public interface IHistoryService {
 
     List<Guest> getThreeLastGuests(Integer roomID);
 
-   List shawAllRoomGuest(Integer idGuest);
+   List showAllRoomGuest(Integer idGuest);
 }

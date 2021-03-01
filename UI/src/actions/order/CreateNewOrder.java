@@ -12,19 +12,20 @@ public class CreateNewOrder extends AbstractFasad implements IAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Id guest: ");
+        System.out.print("Enter Id guest: ");
         Integer guestId = scanner.nextInt();
-        System.out.println("Enter Room Id: ");
+        System.out.print("Enter Room Id: ");
         Integer roomId = scanner.nextInt();
-        System.out.println("Enter Service Id: ");
+        System.out.print("Enter Service Id: ");
         Integer serviceId = scanner.nextInt();
-        System.out.println("Enter days of Stay: ");
+        System.out.print("Enter days of Stay: ");
         Integer daysOfStay = scanner.nextInt();
         System.out.println(fasadOrder.createNewOrder(fasadGuest.findById(guestId)
                 , fasadRoom.findById(roomId)
                 , fasadService.findByID(serviceId)
                 , localDate
                 , daysOfStay
-        ));
+        )+ "\n");
+
     }
 }

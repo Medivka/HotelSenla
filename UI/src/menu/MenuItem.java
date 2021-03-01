@@ -16,10 +16,6 @@ public class MenuItem {
         action.execute();
     }
 
-    public MenuItem(String title, Menu nextMenu) {
-        this.title = title;
-        this.nextMenu = nextMenu;
-    }
 
     public MenuItem(String title, IAction action, Menu nextMenu) {
 
@@ -33,8 +29,8 @@ public class MenuItem {
     @Override
     public String toString() {
         return
-                " " + title
-                ;
+                " " + title;
+
     }
 
 }

@@ -22,11 +22,12 @@ public class MenuController {
     public void run() {
         builder.buildMenu();
         Scanner scanner = new Scanner(System.in);
-
         navigator.setCurrentMenu(builder.getRootMenu());
         navigator.printMenu();
         Integer index = -1;
-        while (!index.equals(5600000)) {
+
+        while (!index.equals(0)) {
+
             index = scanner.nextInt();
             navigator.navigate(index);
             navigator.printMenu();

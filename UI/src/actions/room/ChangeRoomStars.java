@@ -9,10 +9,14 @@ public class ChangeRoomStars extends AbstractFasad implements IAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter room ID : ");
+        System.out.print("Enter room ID : ");
         Integer roomId = scanner.nextInt();
-        System.out.println("Enter new stars: ");
-        Integer stars = scanner.nextInt();
-        fasadRoom.changeRoomStars(roomId, stars);
+        if (fasadRoom.findById(roomId) == null) {
+            System.out.println("room not found \n");
+        } else {
+            System.out.print("Enter new stars: ");
+            Integer stars = scanner.nextInt();
+            fasadRoom.changeRoomStars(roomId, stars);
+        }
     }
 }

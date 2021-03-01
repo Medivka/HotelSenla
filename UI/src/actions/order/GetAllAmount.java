@@ -9,8 +9,13 @@ public class GetAllAmount extends AbstractFasad implements IAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter OrderNumber: ");
+        System.out.print("Enter OrderNumber: ");
         Integer orderNumber = scanner.nextInt();
-        System.out.println(fasadOrder.getAllAmount(orderNumber));
+        if (fasadOrder.findByID(orderNumber) == null) {
+            System.out.println("Order not found \n");
+        } else {
+            System.out.println(fasadOrder.findByID(orderNumber));
+            System.out.println("All amount: " +fasadOrder.getAllAmount(orderNumber));
+        }
     }
 }

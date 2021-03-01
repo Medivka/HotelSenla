@@ -10,11 +10,11 @@ public class CreateNewService extends AbstractFasad implements IAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter name service: ");
+        System.out.print("Enter name service: ");
         String name = scanner.nextLine();
-        System.out.println("Enter price service: ");
+        System.out.print("Enter price service: ");
         Integer price = scanner.nextInt();
-        System.out.println(fasadService.createNewService(name, price));
+        System.out.println(fasadService.createNewService(name, price)+ "\n");
 
     }
 }

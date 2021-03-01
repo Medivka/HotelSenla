@@ -14,22 +14,18 @@ public class CreateRoom extends AbstractFasad implements IAction {
         Integer copacity = 0;
         Integer stars = 0;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose roomstatus: 1.Busy  2.Free 3.Repair ");
+        System.out.print("Choose roomstatus: 1.Busy  2.Free 3.Repair ");
         Integer statusId = scanner.nextInt();
-        switch (statusId) {
-            case (1):
-                roomStatus = RoomStatus.BUSY;
-            case (2):
-                roomStatus = RoomStatus.FREE;
-            case (3):
-                roomStatus = RoomStatus.REPAIRS;
-        }
-        System.out.println("Enter Copacity :  ");
+        if(statusId.equals(1)){ roomStatus = RoomStatus.BUSY;}
+        if(statusId.equals(2)){ roomStatus = RoomStatus.FREE;}
+        if(statusId.equals(3)){ roomStatus = RoomStatus.REPAIRS;}
+
+        System.out.print("Enter Copacity :  ");
         copacity = scanner.nextInt();
-        System.out.println("Enter Price: ");
+        System.out.print("Enter Price: ");
         price = scanner.nextInt();
-        System.out.println("Enter Stars: ");
+        System.out.print("Enter Stars: ");
         stars = scanner.nextInt();
-        System.out.println(fasadRoom.createRoom(roomStatus, copacity, price, stars));
+        System.out.println(fasadRoom.createRoom(roomStatus, copacity, price, stars)+ "\n");
     }
 }

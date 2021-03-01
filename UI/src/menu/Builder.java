@@ -32,11 +32,11 @@ public class Builder {
 
     public void buildMenu() {
 
-        rootMenu.addMenuItem(new MenuItem("Room Menu",()->{}, createRoomMenu()));
-        rootMenu.addMenuItem(new MenuItem("Service Menu",()->{},createServiceMenu()));
-        rootMenu.addMenuItem(new MenuItem("Order Menu",()->{}, createOrderMenu()));
-        rootMenu.addMenuItem(new MenuItem("History Menu",()->{}, historyMenu()));
-        rootMenu.addMenuItem(new MenuItem("Guest Menu",()->{}, createGuestMenu()));
+        rootMenu.addMenuItem(new MenuItem("Room ",()->{}, createRoomMenu()));
+        rootMenu.addMenuItem(new MenuItem("Service ",()->{},createServiceMenu()));
+        rootMenu.addMenuItem(new MenuItem("Order ",()->{}, createOrderMenu()));
+        rootMenu.addMenuItem(new MenuItem("History ",()->{}, historyMenu()));
+        rootMenu.addMenuItem(new MenuItem("Guest ",()->{}, createGuestMenu()));
     }
 
 
@@ -75,20 +75,21 @@ public class Builder {
 
     private Menu createOrderMenu() {
         Menu orderMenu = new Menu();
-        orderMenu.addMenuItem(new MenuItem("Gett all Amount", new GetAllAmount(), rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Get all Amount", new GetAllAmount(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Create new Order", new CreateNewOrder(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Change Room in Order", new ChangeRoomInOrder(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Show Order ", new ShowOrder(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Change days of stay in Order", new ChangeDaysOfStay(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Add Service in room ", new AddInRoomService(), rootMenu));
         orderMenu.addMenuItem(new MenuItem("Add guest in room", new AddGuestInRoom(), rootMenu));
+        orderMenu.addMenuItem(new MenuItem("Find by ID", new actions.order.FindById(), rootMenu));
         return orderMenu;
     }
 
 
     private Menu createRoomMenu() {
         Menu roomMenu = new Menu();
-        roomMenu.addMenuItem(new MenuItem("Change Room Copacity", new ChangeRoomCopacity(), rootMenu));
+        roomMenu.addMenuItem(new MenuItem("Change Room Capacity", new ChangeRoomCapacity(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Change Room Price", new ChangeRoomPrice(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Change Room Stars", new ChangeRoomStars(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Change Room Status", new ChangeRoomStatus(), rootMenu));
@@ -96,7 +97,7 @@ public class Builder {
         roomMenu.addMenuItem(new MenuItem("Find by ID Room", new FindById(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Show All Free Rooms", new ShowAllFreeRoom(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Show All Room", new ShowAllRoom(), rootMenu));
-        roomMenu.addMenuItem(new MenuItem("Sorted by Copacity", new SortedByCopacity(), rootMenu));
+        roomMenu.addMenuItem(new MenuItem("Sorted by Capacity", new SortedByCapacity(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Sorted by Price", new SortedByPrice(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Sorted by Stars", new SortedByStars(), rootMenu));
         return roomMenu;

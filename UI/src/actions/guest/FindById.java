@@ -9,8 +9,12 @@ public class FindById extends AbstractFasad implements IAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter guest id: ");
+        System.out.print("Enter guest id: ");
         Integer id = scanner.nextInt();
-        fasadGuest.findById(id);
+        if (fasadGuest.findById(id) == null) {
+            System.out.println("Guest not found  \n");
+        } else {
+            System.out.println(fasadGuest.findById(id));
+        }
     }
 }

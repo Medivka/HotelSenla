@@ -40,7 +40,7 @@ public class FasadRoom {
     }
 
     public void changeRoomCopacity(Integer idroom, Integer copacity) {
-        roomService.changeRoomCopacity(idroom, copacity);
+        roomService.changeRoomCapacity(idroom, copacity);
     }
 
     public void changeRoomPrice(Integer idroom, Integer price) {
@@ -52,7 +52,7 @@ public class FasadRoom {
     }
 
     public List<Room> sortedByCopacity() {
-        return roomService.sortedByCopacity();
+        return roomService.sortedByCapacity();
     }
 
     public List<Room> sortedByPrice() {

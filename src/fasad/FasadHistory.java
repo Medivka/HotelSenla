@@ -29,7 +29,7 @@ public class FasadHistory {
     }
 
     public List<Room> showAllRoomGuest(Integer IdGuest) {
-        return historyService.shawAllRoomGuest(IdGuest);
+        return historyService.showAllRoomGuest(IdGuest);
     }
 
 

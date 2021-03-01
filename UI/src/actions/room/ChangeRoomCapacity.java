@@ -5,7 +5,7 @@ import actions.IAction;
 
 import java.util.Scanner;
 
-public class ChangeRoomPrice extends AbstractFasad implements IAction {
+public class ChangeRoomCapacity extends AbstractFasad implements IAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
@@ -14,9 +14,9 @@ public class ChangeRoomPrice extends AbstractFasad implements IAction {
         if (fasadRoom.findById(roomId) == null) {
             System.out.println("room not found \n");
         } else {
-            System.out.print("Enter new price: ");
-            Integer price = scanner.nextInt();
-            fasadRoom.changeRoomPrice(roomId, price);
+            System.out.print("Enter new capacity: ");
+            Integer copacity = scanner.nextInt();
+            fasadRoom.changeRoomCopacity(roomId, copacity);
         }
     }
 }

@@ -41,7 +41,7 @@ public class FasadOrder {
     public void changeDaysOfStay(Integer orderNumber, Integer daysOfStay) {
         orderService.changeDaysOfStay(orderNumber, daysOfStay);
     }
-
+public Order findByID(Integer orderId){return orderService.findById(orderId);}
     public Long getAllAmount(Integer orderNumber) {
         return orderService.getAllAmount(orderNumber);
     }

@@ -14,11 +14,9 @@ import java.util.List;
 
 public class OrderDao implements IOrderDao {
     private static OrderDao instance;
-
+    Order order;
     private OrderDao() {
     }
-
-    ;
 
     public static OrderDao getInstance() {
         if (instance == null) {
@@ -27,7 +25,7 @@ public class OrderDao implements IOrderDao {
         return instance;
     }
 
-    Order order;
+
     private List<Order> orderList = new ArrayList<>();
 
 

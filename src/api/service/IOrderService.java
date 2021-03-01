@@ -23,5 +23,7 @@ public interface IOrderService {
 
     void changeDaysOfStay(Integer orderNumber, Integer daysOfStay);
 
+    Order findById(Integer orderId);
+
     long getAllAmount(Integer orderNumber);
 }

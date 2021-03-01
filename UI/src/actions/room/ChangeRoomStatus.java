@@ -13,19 +13,23 @@ public class ChangeRoomStatus extends AbstractFasad implements IAction {
         RoomStatus roomStatus = RoomStatus.FREE;
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter room ID: ");
+        System.out.print("Enter room ID: ");
         Integer roomId = scanner.nextInt();
+        if (fasadRoom.findById(roomId) == null) {
+            System.out.println("room not found \n");
+        } else {
 
-        System.out.println("Choose roomstatus: 1.Busy  2.Free 3.Repair ");
-        Integer statusId = scanner.nextInt();
-        switch (statusId) {
-            case (1):
-                roomStatus = RoomStatus.BUSY;
-            case (2):
-                roomStatus = RoomStatus.FREE;
-            case (3):
-                roomStatus = RoomStatus.REPAIRS;
+            System.out.print("Choose roomstatus: 1.Busy  2.Free 3.Repair ");
+            Integer statusId = scanner.nextInt();
+            switch (statusId) {
+                case (1):
+                    roomStatus = RoomStatus.BUSY;
+                case (2):
+                    roomStatus = RoomStatus.FREE;
+                case (3):
+                    roomStatus = RoomStatus.REPAIRS;
+            }
+            fasadRoom.changeRoomStatus(roomId, roomStatus);
         }
-        fasadRoom.changeRoomStatus(roomId, roomStatus);
     }
 }

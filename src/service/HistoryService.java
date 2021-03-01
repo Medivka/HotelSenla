@@ -9,10 +9,12 @@ import model.Room;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class HistoryService implements IHistoryService {
-
+    private static final Logger LOGGER=Logger.getLogger(HistoryService.class.getName());
     private final HistoryDao historyDao;
     private static HistoryService instance;
 
@@ -37,7 +39,7 @@ public class HistoryService implements IHistoryService {
 
     @Override
     public List<Guest> getThreeLastGuests(Integer roomID) {
-
+        LOGGER.log(Level.INFO,String.format("getThreeLastGuest  room: %s", roomID));
         List<Guest> threeLastGuest = new ArrayList<>();
         List<History> historyList = new ArrayList<>(historyDao.getHistoryList());
         for (int i = 0; i < historyList.size(); i++) {
@@ -59,7 +61,8 @@ public class HistoryService implements IHistoryService {
 
 
     @Override
-    public List<Room> shawAllRoomGuest(Integer idGuest) {
+    public List<Room> showAllRoomGuest(Integer idGuest) {
+        LOGGER.log(Level.INFO,String.format("showAllRoomGuest: %s", idGuest));
         List<Room> rooms = new ArrayList<>();
         List<History> historyList = new ArrayList<>(historyDao.getHistoryList());
         for (int i = 0; i < historyList.size(); i++) {

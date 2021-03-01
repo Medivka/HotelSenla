@@ -9,10 +9,15 @@ public class ChangeDaysOfStay extends AbstractFasad implements IAction {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter OrderNumber: ");
+        System.out.print("Enter OrderNumber: ");
         Integer orderNumber = scanner.nextInt();
-        System.out.println("Enter new days of stay ");
-        Integer daysOfStay = scanner.nextInt();
-        fasadOrder.changeDaysOfStay(orderNumber, daysOfStay);
+        if (fasadOrder.findByID(orderNumber) == null) {
+            System.out.println("Order not found \n");
+        } else {
+            System.out.print("Enter new days of stay ");
+            Integer daysOfStay = scanner.nextInt();
+            fasadOrder.changeDaysOfStay(orderNumber, daysOfStay);
+            System.out.println(fasadOrder.findByID(orderNumber));
+        }
     }
 }

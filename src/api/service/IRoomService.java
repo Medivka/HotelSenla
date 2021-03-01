@@ -19,7 +19,7 @@ public interface IRoomService {
 
     void changeStatusRoom(Integer idRoom, RoomStatus roomStatus);
 
-    void changeRoomCopacity(Integer idRoom, Integer copacity);
+    void changeRoomCapacity(Integer idRoom, Integer capacity);
 
     void changeRoomPrice(Integer idRoom, Integer price);
 
@@ -27,7 +27,7 @@ public interface IRoomService {
 
     List sortedByStars();
 
-    List sortedByCopacity();
+    List sortedByCapacity();
 
     List<Room> allFreeRoom();
 //

@@ -1,16 +1,22 @@
 package dao;
 
 import api.dao.IGuestDao;
+import exceptions.DaoException;
 import model.Guest;
 import model.Room;
 import model.Service;
+import service.RoomService;
 import util.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GuestDao implements IGuestDao {
-private static GuestDao instance;
+
+
+    private static GuestDao instance;
 private GuestDao(){}
     public static GuestDao getInstance() {
         if (instance == null) {
@@ -36,7 +42,8 @@ private GuestDao(){}
                     guestList.remove(i);
                 }
             }
-        } else System.out.println("guest not found");
+        } else
+            System.out.println("guest not found");
     }
 
     @Override
@@ -51,10 +58,13 @@ private GuestDao(){}
             Guest guest = guestList.get(i);
             if (id.equals(guest.getGuestNumber())) {
                 return guest;
-            } else guest = null;
-        }
-        return guest;
-    }
+            }
+
+            throw new DaoException(String.format("find by id",id));
+        } return guest;}
+
+
+
 
     @Override
     public Guest update(Integer id, String name, Integer age) {
