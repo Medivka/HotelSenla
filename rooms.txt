@@ -1,0 +1,1 @@
+[Room 1: roomStatus=BUSY, copacity=3, stars=4, price=8000, Room 2: roomStatus=FREE, copacity=8, stars=5, price=810]
