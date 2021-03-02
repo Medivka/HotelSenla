@@ -2,7 +2,7 @@ package menu;
 
 import actions.guest.*;
 import actions.history.GetAllHistory;
-import actions.history.GetFreeLastGuestInRoom;
+import actions.history.GetThreeLastGuestInRoom;
 import actions.history.ShowAllRoomGuest;
 import actions.order.*;
 import actions.room.*;
@@ -55,7 +55,7 @@ public class Builder {
     private Menu historyMenu() {
         Menu historyMenu = new Menu();
         historyMenu.addMenuItem(new MenuItem("Get all History", new GetAllHistory(), rootMenu));
-        historyMenu.addMenuItem(new MenuItem("Get three last guest in room", new GetFreeLastGuestInRoom(), rootMenu));
+        historyMenu.addMenuItem(new MenuItem("Get three last guest in room", new GetThreeLastGuestInRoom(), rootMenu));
         historyMenu.addMenuItem(new MenuItem("Show All room guest", new ShowAllRoomGuest(), rootMenu));
         return historyMenu;
     }

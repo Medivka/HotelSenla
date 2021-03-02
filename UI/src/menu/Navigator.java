@@ -1,6 +1,8 @@
 package menu;
 
 
+import exceptions.ServiceExeption;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -23,7 +25,9 @@ public class Navigator {
     }
 
     public void printMenu() {
+
         Integer count = 1;
+
         if (currentMenu != null) {
 
             for (int i = 0; i < currentMenu.getMenuItems().size(); i++) {
@@ -36,10 +40,11 @@ public class Navigator {
             System.out.print("Enter Number: ");
         }
 
+
     }
 
     public void navigate(Integer index) {
-        if (index <= currentMenu.getMenuItems().size() && (index > -1)) {
+      try{  if (index <= currentMenu.getMenuItems().size() && (index > -1) ) {
             if (currentMenu != null) {
                 if(index<=0){
 
@@ -49,6 +54,8 @@ public class Navigator {
                 currentMenu = menuItem.getNextMenu();
             }}
         } else System.out.println("!!! Please enter correct Number !!! \n");
+    }catch (ServiceExeption e){
+          System.err.println("incorrect");}
     }
 
 

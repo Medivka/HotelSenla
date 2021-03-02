@@ -2,10 +2,19 @@ package actions.guest;
 
 import actions.AbstractFasad;
 import actions.IAction;
+import exceptions.ServiceExeption;
+
+import java.util.logging.Level;
 
 public class SortedByName extends AbstractFasad implements IAction {
     @Override
     public void execute() {
-        fasadGuest.sortedByName().forEach(System.out::println);
+        try {
+            LOGGER.log(Level.INFO, "SortedByName");
+            fasadGuest.sortedByName().forEach(System.out::println);
+        } catch (ServiceExeption e) {
+            LOGGER.log(Level.INFO, "SortedByName failed");
+            System.err.println("SortedByName failed");
+        }
     }
 }

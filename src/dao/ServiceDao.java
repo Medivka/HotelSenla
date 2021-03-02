@@ -1,6 +1,7 @@
 package dao;
 
 import api.dao.IServiceDao;
+import exceptions.DaoException;
 import model.Guest;
 import model.Service;
 import util.IdGenerator;
@@ -13,10 +14,14 @@ public class ServiceDao implements IServiceDao {
     Service service;
     private List<Service> serviceList = new ArrayList<>();
     private static ServiceDao instance;
-    private ServiceDao (){}
-    public static ServiceDao getInstance(){  if (instance == null) {
-        instance = new ServiceDao();
+
+    private ServiceDao() {
     }
+
+    public static ServiceDao getInstance() {
+        if (instance == null) {
+            instance = new ServiceDao();
+        }
         return instance;
     }
 
@@ -33,28 +38,34 @@ public class ServiceDao implements IServiceDao {
 
     @Override
     public void delete(Integer id) {
-        if (id < serviceList.size() + 1) {
-            for (int i = 0; i < serviceList.size(); i++) {
-                Service service = serviceList.get(i);
-                if (id.equals(service.getId())) {
-                    serviceList.remove(i);
+        try {
+            if (id < serviceList.size() + 1) {
+                for (int i = 0; i < serviceList.size(); i++) {
+                    Service service = serviceList.get(i);
+                    if (id.equals(service.getId())) {
+                        serviceList.remove(i);
+                    }
                 }
-            }
-        } else System.out.println("service not found");
+            } else System.out.println("service not found");
+        } catch (DaoException e) {
+            throw e;
+        }
     }
 
     @Override
     public Service findById(Integer id) {
-        for (int i = 0; i < serviceList.size(); i++) {
-            Service service = serviceList.get(i);
-            if (id.equals(service.getId())) {
-                return service;
-            } else service = null;
+        try {
+            for (int i = 0; i < serviceList.size(); i++) {
+                Service service = serviceList.get(i);
+                if (id.equals(service.getId())) {
+                    return service;
+                }
+            }
+            return service;
+        } catch (DaoException e) {
+            throw  e;
         }
-        return service;
     }
-
-
 }
 
 

@@ -17,7 +17,10 @@ public class GuestDao implements IGuestDao {
 
 
     private static GuestDao instance;
-private GuestDao(){}
+
+    private GuestDao() {
+    }
+
     public static GuestDao getInstance() {
         if (instance == null) {
             instance = new GuestDao();
@@ -35,15 +38,19 @@ private GuestDao(){}
 
     @Override
     public void delete(Integer id) {
-        if (id < guestList.size() + 1) {
-            for (int i = 0; i < guestList.size(); i++) {
-                Guest guest = guestList.get(i);
-                if (id.equals(guest.getGuestNumber())) {
-                    guestList.remove(i);
+        try {
+            if (id < guestList.size() + 1) {
+                for (int i = 0; i < guestList.size(); i++) {
+                    Guest guest = guestList.get(i);
+                    if (id.equals(guest.getGuestNumber())) {
+                        guestList.remove(i);
+                    }
                 }
-            }
-        } else
-            System.out.println("guest not found");
+            } else
+                System.out.println("guest not found");
+        } catch (DaoException e) {
+            throw e;
+        }
     }
 
     @Override
@@ -54,29 +61,35 @@ private GuestDao(){}
 
     @Override
     public Guest findById(Integer id) {
-        for (int i = 0; i < guestList.size(); i++) {
-            Guest guest = guestList.get(i);
-            if (id.equals(guest.getGuestNumber())) {
-                return guest;
+        try {
+            for (int i = 0; i < guestList.size(); i++) {
+                Guest guest = guestList.get(i);
+                if (id.equals(guest.getGuestNumber())) {
+                    return guest;
+                }
             }
-
-            throw new DaoException(String.format("find by id",id));
-        } return guest;}
-
-
+            return guest;
+        } catch (DaoException e) {
+            throw e;
+        }
+    }
 
 
     @Override
     public Guest update(Integer id, String name, Integer age) {
-        for (int i = 0; i < guestList.size(); i++) {
-            Guest guest = guestList.get(i);
+        try {
+            for (int i = 0; i < guestList.size(); i++) {
+                Guest guest = guestList.get(i);
 
-            if (id.equals(guest.getGuestNumber())) {
-                guest.setName(name);
-                guest.setAge(age);
-                return guest;
-            } else guest = null;
+                if (id.equals(guest.getGuestNumber())) {
+                    guest.setName(name);
+                    guest.setAge(age);
+                    return guest;
+                } else guest = null;
+            }
+            return guest;
+        } catch (DaoException e) {
+            throw e;
         }
-        return guest;
     }
 }

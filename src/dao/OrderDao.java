@@ -1,6 +1,7 @@
 package dao;
 
 import api.dao.IOrderDao;
+import exceptions.DaoException;
 import model.Guest;
 import model.Order;
 import model.Room;
@@ -41,28 +42,36 @@ public class OrderDao implements IOrderDao {
 
     @Override
     public void delete(Integer id) {
-        if (id < orderList.size() + 1) {
-            for (int i = 0; i < orderList.size(); i++) {
-                Order order = orderList.get(i);
-                if (id.equals(order.getId())) {
-                    orderList.remove(i);
-                }
-            }
-        } else System.out.println("order not found");
-
+     try {
+         if (id < orderList.size() + 1) {
+             for (int i = 0; i < orderList.size(); i++) {
+                 Order order = orderList.get(i);
+                 if (id.equals(order.getId())) {
+                     orderList.remove(i);
+                 }
+             }
+         }
+     }catch (DaoException e) {
+         throw e;
+     }
     }
 
     @Override
     public Order findById(Integer id) {
-        for (int i = 0; i < orderList.size(); i++) {
-            Order order = orderList.get(i);
-            if (id.equals(order.getId())) {
-                return order;
-            } else order = null;
+        try {
+            for (int i = 0; i < orderList.size(); i++) {
+                Order order = orderList.get(i);
+                if (id.equals(order.getId())) {
+                    return order;
+                }
+            }
+            return order;
+        } catch (DaoException e) {
+            throw e;
         }
-        return order;
     }
-
 }
+
+
 
 
