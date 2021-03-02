@@ -38,8 +38,8 @@ public class RoomService implements IRoomService {
     @Override
     public Room findById(Integer id) {
         try {
-            LOGGER.log(Level.INFO, String.format("Find by Id %s", id));
             Room room = roomDao.findById(id);
+            LOGGER.log(Level.INFO, String.format("Find by Id %s", id));
             if (room == null) {
             }
             return room;
