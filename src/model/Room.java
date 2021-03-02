@@ -7,7 +7,7 @@ public class Room {
 
     private Integer roomNumber;
     private RoomStatus roomStatus;
-    private Integer copacity;
+    private Integer capacity;
     private Integer price;
     private Integer stars;
 
@@ -20,8 +20,8 @@ public class Room {
     public RoomStatus getRoomStatus() {
         return roomStatus;
     }
-    public Integer getCopacity() {
-        return copacity;
+    public Integer getCapacity() {
+        return capacity;
     }
     public Integer getPrice() {
         return price;
@@ -33,7 +33,7 @@ public class Room {
         this.roomStatus = roomStatus;
     }
     public void setCopacity(Integer copacity) {
-        this.copacity = copacity;
+        this.capacity = copacity;
     }
     public void setPrice(Integer price) {
         this.price = price;
@@ -43,17 +43,17 @@ public class Room {
     public Room() {
     }
 
-    public Room(RoomStatus roomStatus, Integer copacity, Integer price,Integer stars) {
+    public Room(RoomStatus roomStatus, Integer capacity, Integer price,Integer stars) {
         this.roomStatus = roomStatus;
         this.stars=stars;
-        this.copacity = copacity;
+        this.capacity = capacity;
         this.price = price;
     }
 
-    public Room(Integer roomNumber, RoomStatus roomStatus, Integer copacity, Integer price,Integer stars) {
+    public Room(Integer roomNumber, RoomStatus roomStatus, Integer capacity, Integer price,Integer stars) {
         this.roomNumber = roomNumber;
         this.roomStatus = roomStatus;
-        this.copacity = copacity;
+        this.capacity = capacity;
         this.stars=stars;
         this.price = price;
     }
@@ -63,7 +63,7 @@ public class Room {
         return "Room " + roomNumber +
 
                 ": roomStatus=" + roomStatus +
-                ", copacity=" + copacity +", stars=" + stars +
+                ", capacity=" + capacity +", stars=" + stars +
                 ", price=" + price;
     }
 }

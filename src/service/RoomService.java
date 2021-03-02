@@ -149,7 +149,7 @@ public class RoomService implements IRoomService {
     public List sortedByCapacity() {
         LOGGER.log(Level.INFO, String.format("sortedByCapacity"));
         ArrayList<Room> rooms = new ArrayList<>(roomDao.getRoomList());
-        rooms.stream().sorted(((o1, o2) -> o1.getCopacity() - o2.getCopacity())).collect(Collectors.toList());
+        rooms.stream().sorted(((o1, o2) -> o1.getCapacity() - o2.getCapacity())).collect(Collectors.toList());
         return rooms;
     }
 

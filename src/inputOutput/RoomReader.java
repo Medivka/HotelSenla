@@ -16,12 +16,14 @@ import java.util.regex.Pattern;
 
 public class RoomReader {
 
-    RoomService roomService=RoomService.getInstance();
+    RoomService roomService = RoomService.getInstance();
     FileReader reader;
     String path = "rooms.txt";
 
-    public void reader()  {
-
+    public void reader() {
+        Integer capacity = 0;
+        Integer stars = 0;
+        Integer price = 0;
         try {
             reader = new FileReader("rooms.txt");
         } catch (FileNotFoundException e) {
@@ -33,24 +35,33 @@ public class RoomReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String str1= str.replaceAll("[^A-Za-zА-Яа-я0-9]", " ");
-        str1=str1.replaceAll("\\s+"," ");
+        String str1 = str.replaceAll("[^A-Za-zА-Яа-я0-9]", " ");
+        str1 = str1.replaceAll("\\s+", " ");
         String[] words = str1.split("\\s");
-        for(int i=0;i< words.length;i++){
-            if(words[i].equals("Room") ){
-                RoomStatus roomStatus = RoomStatus.FREE;
-                if(words[i+3].equals("BUSY")){
-                    roomStatus=RoomStatus.BUSY;
-                } if(words[i+3].equals("FREE")){
-                    roomStatus=RoomStatus.FREE;
-                } if(words[i+3].equals("REPAIRS")){
-                    roomStatus=RoomStatus.REPAIRS;
-                }
 
-                Integer capacity= Integer.parseInt(words[i+5]);
-                Integer stars= Integer.parseInt(words[i+7]);
-                Integer price= Integer.parseInt(words[i+9]);
-                Room room= roomService.createRoom(roomStatus,capacity,price,stars);
+        for (int i = 0; i < words.length; i++) {
+
+            if (words[i].equals("Room")) {
+                RoomStatus roomStatus = RoomStatus.FREE;
+                if (words[i + 3].equals("BUSY")) {
+                    roomStatus = RoomStatus.BUSY;
+                }
+                if (words[i + 3].equals("FREE")) {
+                    roomStatus = RoomStatus.FREE;
+                }
+                if (words[i + 3].equals("REPAIRS")) {
+                    roomStatus = RoomStatus.REPAIRS;
+                }
+                if (words[i + 4].equals("capacity")) {
+                    capacity = Integer.parseInt(words[i + 5]);
+                }
+                if (words[i + 6].equals("stars")) {
+                    stars = Integer.parseInt(words[i + 7]);
+                }
+                if (words[i + 8].equals("price")) {
+                    price = Integer.parseInt(words[i + 9]);
+                }
+                Room room = roomService.createRoom(roomStatus, capacity, price, stars);
             }
         }
 

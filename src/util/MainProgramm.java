@@ -46,7 +46,7 @@ public class MainProgramm {
 
         RoomReader roomReader= new RoomReader();
         RoomWriter roomWriter= new RoomWriter();
-
+roomWriter.writer();
         roomReader.reader();
         System.out.println( roomService.showAllRoom());
 
