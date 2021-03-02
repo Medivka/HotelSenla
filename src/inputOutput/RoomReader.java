@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RoomReader {
-    RoomDao roomDao = RoomDao.getInstance();
+
     RoomService roomService=RoomService.getInstance();
     FileReader reader;
     String path = "rooms.txt";
