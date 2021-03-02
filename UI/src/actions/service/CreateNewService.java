@@ -18,7 +18,7 @@ public class CreateNewService extends AbstractFasad implements IAction {
             System.out.print("Enter price service: ");
             Integer price = scanner.nextInt();
             System.out.println(fasadService.createNewService(name, price) + "\n");
-            LOGGER.log(Level.INFO, String.format("CreateNewService name:%s  price:%s"));
+            LOGGER.log(Level.INFO, String.format("CreateNewService name:%s  price:%s",name,price));
 
         } catch (ServiceExeption e) {
             LOGGER.log(Level.WARNING, "CreateNewService failed");

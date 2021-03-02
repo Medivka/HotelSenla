@@ -8,7 +8,6 @@ public class Menu {
     private List<MenuItem> menuItems = new ArrayList<>();
 
     public List<MenuItem> getMenuItems() {
-
         return menuItems;
     }
 

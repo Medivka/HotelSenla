@@ -23,18 +23,24 @@ public class MenuController {
     }
 
     public void run() {
-        try{  builder.buildMenu();
-       Scanner scanner = new Scanner(System.in);
-        navigator.setCurrentMenu(builder.getRootMenu());
-        navigator.printMenu();
-        Integer index = -1;
-
-        while (!index.equals(0)) {
-            index = scanner.nextInt();
+        try {
+            builder.buildMenu();
+            Scanner scanner = new Scanner(System.in);
+            navigator.setCurrentMenu(builder.getRootMenu());
+            navigator.printMenu();
+            Boolean menu = true;
+            Integer index = 0;
+            while (menu) {
+                index = scanner.nextInt();
+                if (index == 0) {
+                    menu = false;
+                }
                 navigator.navigate(index);
                 navigator.printMenu();
+            }
+        } catch (InputMismatchException e) {
+            System.err.println("Sorry, please enter correct");
+
         }
-    }catch (InputMismatchException e){
-         System.err.println("incorrect");}
     }
 }

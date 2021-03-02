@@ -19,7 +19,6 @@ public class Builder {
     private Builder() {
     }
     public Menu getRootMenu() {
-
         return rootMenu;
     }
 
@@ -31,7 +30,6 @@ public class Builder {
     }
 
     public void buildMenu() {
-
         rootMenu.addMenuItem(new MenuItem("Room ",()->{}, createRoomMenu()));
         rootMenu.addMenuItem(new MenuItem("Service ",()->{},createServiceMenu()));
         rootMenu.addMenuItem(new MenuItem("Order ",()->{}, createOrderMenu()));

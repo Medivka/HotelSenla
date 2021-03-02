@@ -1,5 +1,7 @@
 package loggerConfig;
 
+import com.sun.tools.javac.Main;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +14,7 @@ public class ConsoleFormatter {
     static {
         try (InputStream configReader = new FileInputStream("Hotel/resourses/logger.properties")) {
             LogManager.getLogManager().readConfiguration(configReader);
+            LOGGER = Logger.getLogger(Main.class.getName());
         }catch (IOException e){
             System.err.println("not setup logger configuration");
         }
