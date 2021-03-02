@@ -20,10 +20,19 @@ public class RoomReader {
     FileReader reader;
     String path = "rooms.txt";
 
-    public void reader() throws IOException {
+    public void reader()  {
 
-        reader = new FileReader("rooms.txt");
-        String str = Files.lines(Path.of(path)).reduce("", String::concat);
+        try {
+            reader = new FileReader("rooms.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String str = null;
+        try {
+            str = Files.lines(Path.of(path)).reduce("", String::concat);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String str1= str.replaceAll("[^A-Za-zА-Яа-я0-9]", " ");
         str1=str1.replaceAll("\\s+"," ");
         String[] words = str1.split("\\s");

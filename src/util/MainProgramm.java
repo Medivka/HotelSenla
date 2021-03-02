@@ -26,7 +26,7 @@ public class MainProgramm {
     private static HistoryService historyService = HistoryService.getInstance();
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
 
         LocalDate localDate = LocalDate.now();
 
