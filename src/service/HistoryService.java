@@ -84,9 +84,13 @@ public class HistoryService implements IHistoryService {
                 List<Room> room = history.getRooms();
                 for (int k = 0; k < guest.size(); k++) {
                     Guest guest1 = guest.get(k);
-                    if (guest1.getGuestNumber().equals(idGuest)) {
-                        for (int j = 0; j < room.size(); j++) {
-                            rooms.add(room.get(j));
+                    if (guest1 == null) {
+                        System.out.println("guest not found");
+                    } else {
+                        if (guest1.getGuestNumber().equals(idGuest)) {
+                            for (int j = 0; j < room.size(); j++) {
+                                rooms.add(room.get(j));
+                            }
                         }
                     }
                 }

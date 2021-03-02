@@ -12,9 +12,9 @@ public class ConsoleFormatter {
     private static Logger LOGGER;
 
     static {
-        try (InputStream configReader = new FileInputStream("Hotel/resourses/logger.properties")) {
+        try (InputStream configReader = new FileInputStream("F:\\Hotel\\resources\\logger.properties")) {
             LogManager.getLogManager().readConfiguration(configReader);
-            LOGGER = Logger.getLogger(Main.class.getName());
+
         }catch (IOException e){
             System.err.println("not setup logger configuration");
         }

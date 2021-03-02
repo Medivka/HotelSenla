@@ -4,12 +4,15 @@ import api.dao.*;
 import api.enums.RoomStatus;
 import api.service.IRoomService;
 import dao.*;
+import inputOutput.RoomReader;
+import inputOutput.RoomWriter;
 import model.Guest;
 import model.Order;
 import model.Room;
 import model.Service;
 import service.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -23,7 +26,7 @@ public class MainProgramm {
     private static HistoryService historyService = HistoryService.getInstance();
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         LocalDate localDate = LocalDate.now();
 
@@ -40,10 +43,12 @@ public class MainProgramm {
         Order order1 = orderService.createNewOrder(guest2, room, serviceService.findById(1), localDate, 5);
         Order order2 = orderService.createNewOrder(guest3, room, serviceService.findById(1), localDate, 5);
         Order order5 = orderService.createNewOrder(guest3, room, serviceService.findById(1), localDate, 5);
-        System.out.println(guestService.findById(1));
-        System.out.println(historyService.getThreeLastGuests(1));
-        System.out.println(orderService.getAllAmount(2));
 
+        RoomReader roomReader= new RoomReader();
+        RoomWriter roomWriter= new RoomWriter();
+
+        roomReader.reader();
+        System.out.println( roomService.showAllRoom());
 
     }
 }
