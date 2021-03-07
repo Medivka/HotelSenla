@@ -15,7 +15,6 @@ public class GrandHotelSenla extends  JFrame {
         setContentPane(panel1);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
     }
 
     public static void main(String[] args) {
