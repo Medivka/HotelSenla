@@ -30,6 +30,7 @@ public class MenuController {
             navigator.printMenu();
             Boolean menu = true;
             Integer index = 0;
+
             while (menu) {
                 index = scanner.nextInt();
                 if (index == 0) {
@@ -38,6 +39,8 @@ public class MenuController {
                 navigator.navigate(index);
                 navigator.printMenu();
             }
+
+
         } catch (InputMismatchException e) {
             System.err.println("Sorry, please enter correct");
 
