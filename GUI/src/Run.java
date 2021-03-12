@@ -13,13 +13,10 @@ public class Run extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage)  {
-        Parent root= null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("resourses/Main.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void start(Stage primaryStage) throws IOException {
+
+        Parent  root= FXMLLoader.load(getClass().getResource("resourses/Main.fxml"));
+
         primaryStage.setTitle("Grand Hotel Senla");
         primaryStage.setScene(new Scene(root,445,590));
         primaryStage.show();

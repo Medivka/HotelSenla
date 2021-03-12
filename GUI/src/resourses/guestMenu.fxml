@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="445.0" style="-fx-background-color: #E0FFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GuestMenuController">
     <children>
@@ -42,5 +44,30 @@
             </children>
         </AnchorPane>
         <Label layoutX="30.0" layoutY="549.0" prefHeight="17.0" prefWidth="385.0" text="Test project special for Senla. Create By Sacuta Vitalik. All right reserved." />
+        <Text layoutX="14.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest Menu" wrappingWidth="134.0">
+            <font>
+                <Font size="19.0" />
+            </font></Text>
+        <Button fx:id="backField" layoutX="30.0" layoutY="508.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Back" />
+        <Button fx:id="createGuest" layoutX="111.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="224.0" text="Create guest">
+            <font>
+                <Font name="System Bold Italic" size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="findGuest" layoutX="111.0" layoutY="303.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="224.0" text="Find Guest">
+            <font>
+                <Font name="System Bold Italic" size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="showAllGuest" layoutX="111.0" layoutY="356.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="224.0" text="Show All Guest">
+            <font>
+                <Font name="System Bold Italic" size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="changeGuest" layoutX="111.0" layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="224.0" text="Change Guest">
+            <font>
+                <Font name="System Bold Italic" size="16.0" />
+            </font>
+        </Button>
     </children>
 </AnchorPane>

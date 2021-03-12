@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MainController {
-
     @FXML
     private ResourceBundle resources;
 
@@ -35,18 +34,49 @@ public class MainController {
     @FXML
     private Button historyMenuField;
 
-    @FXML
-    private Button createNewOrderField;
+
 
     @FXML
     void initialize() {
-createNewOrderField.setOnAction(actionEvent -> openNewWindow(orderMenuPath) );
-historyMenuField.setOnAction(actionEvent -> openNewWindow(historyMenuPath) );
-serviceMenuField.setOnAction(actionEvent -> openNewWindow(serviceMenuPath));
-guestMenuField.setOnAction(actionEvent -> openNewWindow(guestMenuPath));
-orderMenuField.setOnAction(actionEvent -> openNewWindow(orderMenuPath));
-roomMenuField.setOnAction(actionEvent -> openNewWindow(roomMenuPath));
+
+
+        historyMenuField.setOnAction(actionEvent -> {
+            try {
+                openNewScene(historyMenuPath,historyMenuField);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        serviceMenuField.setOnAction(actionEvent -> {
+            try {
+                openNewScene(serviceMenuPath,serviceMenuField);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        guestMenuField.setOnAction(actionEvent -> {
+            try {
+                openNewScene(guestMenuPath,guestMenuField);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        orderMenuField.setOnAction(actionEvent -> {
+            try {
+                openNewScene(orderMenuPath,orderMenuField);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        roomMenuField.setOnAction(actionEvent -> {
+            try {
+                openNewScene(roomMenuPath,roomMenuField);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
+    private String createNewOrderPath="resourses/createNewOrder.fxml";
     private String guestMenuPath="/resourses/guestMenu.fxml";
     private String orderMenuPath="/resourses/orderMenu.fxml";
     private String roomMenuPath="/resourses/roomMenu.fxml";
@@ -66,5 +96,10 @@ roomMenuField.setOnAction(actionEvent -> openNewWindow(roomMenuPath));
         stage.setScene(new Scene(root));
         stage.show();
 
+    }
+    public void openNewScene(String path,Button button) throws IOException {
+        Parent root =FXMLLoader.load(getClass().getResource(path));
+        Stage window= (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root,445,590));
     }
 }
