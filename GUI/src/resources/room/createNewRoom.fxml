@@ -57,12 +57,12 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Text layoutX="33.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copacity">
+      <Text layoutX="33.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <TextField fx:id="copacityField" layoutX="198.0" layoutY="283.0" promptText="Copacity" />
+      <TextField fx:id="capacityField" layoutX="198.0" layoutY="283.0" promptText="Capacity" />
       <Text layoutX="33.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stars" wrappingWidth="95.71533203125">
          <font>
             <Font size="27.0" />
