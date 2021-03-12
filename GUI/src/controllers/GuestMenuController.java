@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import api.IController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class GuestMenuController {
+public class GuestMenuController implements IController {
 
     @FXML
     private ResourceBundle resources;
@@ -36,13 +37,6 @@ public class GuestMenuController {
 
     @FXML
     void initialize() {
-        backField.setOnAction(actionEvent -> {
-            try {
-                openNewScene(backFieldPath, backField);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
         createGuest.setOnAction(actionEvent -> {
             try {
                 openNewScene(createGuestPath, createGuest);
@@ -50,6 +44,14 @@ public class GuestMenuController {
                 e.printStackTrace();
             }
         });
+        backField.setOnAction(actionEvent -> {
+            try {
+                openNewScene(backFieldPath, backField);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         findGuest.setOnAction(actionEvent -> {
             try {
                 openNewScene(findGuestPath, findGuest);
@@ -73,13 +75,13 @@ public class GuestMenuController {
         });
     }
 
-    private String backFieldPath = "/resourses/Main.fxml";
-    private String createGuestPath = "/resourses/guest/createGuest.fxml";
-    private String findGuestPath = "/resourses/guest/findGuest.fxml";
-    private String showAllGuestPath = "/resourses/guest/showAllGuest.fxml";
-    private String changeGuestPath = "src\\resourses\\guest\\changeGuest.fxml";
+    private String backFieldPath = "/resources/Main.fxml";
+    private String createGuestPath = "/resources/guest/CreateGuest.fxml";
+    private String findGuestPath = "/resources/guest/findGuest.fxml";
+    private String showAllGuestPath = "/resources/guest/showAllGuest.fxml";
+    private String changeGuestPath = "/resources/guest/changeGuest.fxml";
 
-
+    @Override
     public void openNewScene(String path, Button button) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage window = (Stage) button.getScene().getWindow();
