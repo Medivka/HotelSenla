@@ -1,26 +1,20 @@
-package controllers.roomControllers;
-
-
-import api.IController;
-
-import fasad.FasadRoom;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-
-import javafx.stage.Stage;
-
+package controllers.guestControllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import api.IController;
+import fasad.FasadGuest;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class FindRoomController implements IController {
+public class CreateNewGuestController implements IController {
 
     @FXML
     private ResourceBundle resources;
@@ -32,13 +26,13 @@ public class FindRoomController implements IController {
     private Button backField;
 
     @FXML
-    private Button findRoom;
+    private TextField nameField;
 
     @FXML
-    private TextField enterRoomNumber;
+    private TextField ageField;
 
     @FXML
-    private Label label;
+    private Button createNewGuest;
 
     @FXML
     void initialize() {
@@ -51,17 +45,21 @@ public class FindRoomController implements IController {
             }
         });
 
-
-        findRoom.setOnAction(actionEvent -> {
-            Integer roomNumber = Integer.parseInt(enterRoomNumber.getText());
-            if(roomNumber<=fasadRoom.showAllRoom().size()&&roomNumber>0){
-            label.setText(fasadRoom.findById(roomNumber).toString());}else label.setText("room not found");
+        createNewGuest.setOnAction(actionEvent -> {
+            String name=nameField.getText();
+            Integer age= Integer.parseInt(ageField.getText());
+            System.out.println("create Guest: "+ fasadGuest.createNewGuest(name,age));
+            try {
+                openNewScene(backFieldPath,createNewGuest);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
+
+
     }
-
-    String backFieldPath = "/resources/roomMenu.fxml";
-    FasadRoom fasadRoom = FasadRoom.getInstance();
-
+    FasadGuest fasadGuest= FasadGuest.getInstance();
+    String backFieldPath = "/resources/guestMenu.fxml";
     @Override
     public void openNewScene(String path, Button button) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));

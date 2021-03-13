@@ -80,7 +80,7 @@ public class UpdateRoomController implements IController {
             Integer roomNumber = Integer.parseInt(enterRoomNumber.getText());
             if (roomNumber <=fasadRoom.showAllRoom().size() && roomNumber > 0) {
                 roomInfo.setText(fasadRoom.findById(roomNumber).toString());
-            } else roomInfo.setText("not found");
+            } else roomInfo.setText("room not found");
         });
         updateRoom.setOnAction(actionEvent -> {
             Integer price = Integer.parseInt(newPriceField.getText());

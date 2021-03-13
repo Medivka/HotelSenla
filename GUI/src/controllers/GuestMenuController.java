@@ -33,7 +33,7 @@ public class GuestMenuController implements IController {
     private Button showAllGuest;
 
     @FXML
-    private Button changeGuest;
+    private Button updateGuest;
 
     @FXML
     void initialize() {
@@ -66,9 +66,9 @@ public class GuestMenuController implements IController {
                 e.printStackTrace();
             }
         });
-        changeGuest.setOnAction(actionEvent -> {
+        updateGuest.setOnAction(actionEvent -> {
             try {
-                openNewScene(changeGuestPath, changeGuest);
+                openNewScene(changeGuestPath, updateGuest);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -76,10 +76,10 @@ public class GuestMenuController implements IController {
     }
 
     private String backFieldPath = "/resources/Main.fxml";
-    private String createGuestPath = "/resources/guest/CreateGuest.fxml";
+    private String createGuestPath = "/resources/guest/createGuest.fxml";
     private String findGuestPath = "/resources/guest/findGuest.fxml";
     private String showAllGuestPath = "/resources/guest/showAllGuest.fxml";
-    private String changeGuestPath = "/resources/guest/changeGuest.fxml";
+    private String changeGuestPath = "/resources/guest/updateGuest.fxml";
 
     @Override
     public void openNewScene(String path, Button button) throws IOException {
