@@ -34,6 +34,10 @@ public class MainMenuController implements IController {
     @FXML
     private Button historyMenuField;
 
+    @FXML
+    private Button createNewOrder;
+
+
 
     @FXML
     void initialize() {

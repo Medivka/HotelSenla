@@ -69,5 +69,6 @@
         </Button>
 
         <Label layoutX="30.0" layoutY="549.0" prefHeight="17.0" prefWidth="385.0" text="Test project special for Senla. Create By Sacuta Vitalik. All right reserved." />
+      <Button fx:id="createNewOrder" layoutX="42.0" layoutY="225.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Create New Order" />
     </children>
 </AnchorPane>

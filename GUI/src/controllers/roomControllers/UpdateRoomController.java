@@ -96,7 +96,7 @@ public class UpdateRoomController implements IController {
             if (REPAIRS.isSelected()) {
                 roomStatus = RoomStatus.REPAIRS;
             }
-            if (price != null) {
+            if (price!=null) {
 
                 fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setPrice(price);
             }
