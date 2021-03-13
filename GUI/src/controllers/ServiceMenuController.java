@@ -12,7 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class MainController implements IController {
+public class ServiceMenuController implements IController {
+
     @FXML
     private ResourceBundle resources;
 
@@ -20,68 +21,62 @@ public class MainController implements IController {
     private URL location;
 
     @FXML
-    private Button orderMenuField;
+    private Button backField;
 
     @FXML
-    private Button roomMenuField;
+    private Button createService;
 
     @FXML
-    private Button guestMenuField;
+    private Button findServiceById;
 
     @FXML
-    private Button serviceMenuField;
+    private Button showAllService;
 
     @FXML
-    private Button historyMenuField;
-
+    private Button updateService;
 
     @FXML
     void initialize() {
+        backField.setOnAction(actionEvent -> {
+            try {
+                openNewScene(backFieldPath, backField);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        findServiceById.setOnAction(actionEvent -> {
+            try {
+                openNewScene(findByIdServicePath, findServiceById);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }); createService.setOnAction(actionEvent -> {
+            try {
+                openNewScene(createNewServicePath, createService);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }); showAllService.setOnAction(actionEvent -> {
+            try {
+                openNewScene(showAllServicePath, showAllService);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }); updateService.setOnAction(actionEvent -> {
+            try {
+                openNewScene(updateServicePath, updateService);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
 
-        historyMenuField.setOnAction(actionEvent -> {
-            try {
-                openNewScene(historyMenuPath, historyMenuField);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        serviceMenuField.setOnAction(actionEvent -> {
-            try {
-                openNewScene(serviceMenuPath, serviceMenuField);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        guestMenuField.setOnAction(actionEvent -> {
-            try {
-                openNewScene(guestMenuPath, guestMenuField);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        orderMenuField.setOnAction(actionEvent -> {
-            try {
-                openNewScene(orderMenuPath, orderMenuField);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        roomMenuField.setOnAction(actionEvent -> {
-            try {
-                openNewScene(roomMenuPath, roomMenuField);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
-
-    private String guestMenuPath = "/resources/guestMenu.fxml";
-    private String orderMenuPath = "/resources/orderMenu.fxml";
-    private String roomMenuPath = "/resources/roomMenu.fxml";
-    private String historyMenuPath = "/resources/historyMenu.fxml";
-    private String serviceMenuPath = "/resources/serviceMenu.fxml";
-
+    private String backFieldPath = "/resources/Main.fxml";
+    private String findByIdServicePath = "/resources/service/findService.fxml";
+    private String showAllServicePath = "/resources/service/showAllService.fxml";
+    private String updateServicePath = "/resources/service/updateService.fxml";
+    private String createNewServicePath = "/resources/service/createService.fxml";
 
     @Override
     public void openNewScene(String path, Button button) throws IOException {
