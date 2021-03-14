@@ -43,7 +43,7 @@ public class Guest {
 
     @Override
     public String toString() {
-        return " Guest "+guestNumber+" :" +
+        return " Guest "+guestNumber+" : " +
                 name +
                 ", age=" + age
                 ;
