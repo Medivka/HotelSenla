@@ -40,14 +40,29 @@ public class OrderMenuController implements IController {
             e.printStackTrace();
         }
     });
+      createNewOrderButton.setOnAction(actionEvent -> {
+          try {
+              openNewSceneOrder(createNewOrderPath,createNewOrderButton);
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      });
+
+
 
 
     }
     private String backFieldPath = "/resources/Main.fxml";
+    private String createNewOrderPath = "/resources/order/createNewOrder.fxml";
     @Override
     public void openNewScene(String path, Button button) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 445, 590));
+    }
+    public void openNewSceneOrder(String path, Button button) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(path));
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root, 889, 690));
     }
 }

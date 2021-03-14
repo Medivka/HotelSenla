@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="889.0" style="-fx-background-color: #E0FFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.orderControllers.CreateNewOrderController">
+    <children>
+        <AnchorPane prefHeight="140.0" prefWidth="889.0" style="-fx-background-color: #00FFFF;">
+            <children>
+                <Label graphicTextGap="5.0" layoutX="14.0" layoutY="70.0" prefHeight="43.0" prefWidth="306.0" text="Grand Hotel Senla" textOverrun="LEADING_ELLIPSIS">
+                    <font>
+                        <Font name="System Italic" size="37.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </Label>
+                <ImageView fitHeight="72.0" fitWidth="134.0" layoutX="741.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/senlaLog.jpg" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Label layoutX="11.0" layoutY="659.0" prefHeight="17.0" prefWidth="385.0" text="Test project special for Senla. Create By Sacuta Vitalik. All right reserved." />
+        <Text layoutX="348.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Order" textAlignment="CENTER" wrappingWidth="134.0">
+            <font>
+                <Font size="19.0" />
+            </font></Text>
+        <Button fx:id="backField" layoutX="635.0" layoutY="634.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Back" />
+      <Text layoutX="19.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="18.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="guestIdField" layoutX="19.0" layoutY="201.0" prefHeight="25.0" prefWidth="73.0" promptText="id guest" />
+      <TextField fx:id="roomIdField" layoutX="19.0" layoutY="320.0" prefHeight="25.0" prefWidth="73.0" promptText="id room" />
+      <Button fx:id="createNewOrder" layoutX="744.0" layoutY="634.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Create" />
+      <Text layoutX="22.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="141.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Days">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </Text>
+      <TextField fx:id="daysOfStayField" layoutX="24.0" layoutY="537.0" prefHeight="25.0" prefWidth="87.0" promptText="days of stay" />
+      <Button fx:id="createNewGuest" layoutX="740.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="create New Guest" />
+      <Button fx:id="findRoom" layoutX="124.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="find" />
+      <Button fx:id="findGuest" layoutX="124.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="find" />
+      <Label fx:id="findGuestLabel" layoutX="22.0" layoutY="234.0" prefHeight="37.0" prefWidth="845.0" />
+      <TextField fx:id="nameGuest" layoutX="432.0" layoutY="201.0" prefHeight="25.0" prefWidth="111.0" promptText="nameGuest" />
+      <TextField fx:id="ageGuest" layoutX="615.0" layoutY="201.0" prefHeight="25.0" prefWidth="87.0" promptText="ageGuest" />
+      <Text layoutX="348.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="552.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" wrappingWidth="51.1767578125">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Label fx:id="findRoomLabel" layoutX="22.0" layoutY="356.0" prefHeight="37.0" prefWidth="845.0" />
+      <TextField fx:id="serviceIdField" layoutX="24.0" layoutY="453.0" prefHeight="25.0" prefWidth="73.0" promptText="id service" />
+      <Button fx:id="findService" layoutX="124.0" layoutY="453.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="find" />
+      <Label fx:id="findServiceLabel" layoutX="22.0" layoutY="490.0" prefHeight="37.0" prefWidth="845.0" />
+      <Text layoutX="348.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="552.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="63.984375">
+         <font>
+            <Font name="System Italic" size="26.0" />
+         </font>
+      </Text>
+      <TextField fx:id="nameService" layoutX="432.0" layoutY="453.0" prefHeight="25.0" prefWidth="111.0" promptText="nameService" />
+      <TextField fx:id="priceService" layoutX="625.0" layoutY="453.0" prefHeight="25.0" prefWidth="87.0" promptText="priceService" />
+      <Button fx:id="createNewService" layoutX="746.0" layoutY="453.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="create New Service" />
+      <Label fx:id="dataLabel" layoutX="589.0" layoutY="145.0" prefHeight="25.0" prefWidth="284.0" />
+      <TextField fx:id="priceField" layoutX="346.0" layoutY="320.0" prefHeight="25.0" prefWidth="75.0" promptText="price" />
+      <TextField fx:id="capacityField" layoutX="433.0" layoutY="320.0" prefHeight="25.0" prefWidth="64.0" promptText="capacity" />
+      <ComboBox fx:id="starsCombo" layoutX="521.0" layoutY="320.0" prefHeight="25.0" prefWidth="75.0" promptText="stars" />
+      <ComboBox fx:id="statusCombo" layoutX="615.0" layoutY="320.0" prefHeight="25.0" prefWidth="87.0" promptText="status" />
+      <Button fx:id="createNewRoom" layoutX="740.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="create New Room" />
+      <Text layoutX="348.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="price">
+         <font>
+            <Font name="System Italic" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="433.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="capacity">
+         <font>
+            <Font name="System Italic" size="14.0" />
+         </font>
+      </Text>
+      <Label fx:id="orderLabel" layoutX="334.0" layoutY="509.0" prefHeight="102.0" prefWidth="528.0" text="order Info" />
+    </children>
+</AnchorPane>
