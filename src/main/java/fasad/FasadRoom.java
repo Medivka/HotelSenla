@@ -27,13 +27,22 @@ public class FasadRoom {
         return roomService.findById(IdRoom);
     }
 
-    public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars) {   return roomService.createRoom(roomStatus, copacity, price, stars);    }
+    public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars) {
+        return roomService.createRoom(roomStatus, copacity, price, stars);
+    }
+
     public void changeRoomStars(Integer IdRoom, Integer stars) {
         roomService.changeRoomStars(IdRoom, stars);
     }
 
-    public void changeRoomStatus(Integer idroom, RoomStatus roomStatus) { roomService.changeStatusRoom(idroom, roomStatus); }
-    public void changeRoomCopacity(Integer idroom, Integer copacity) {  roomService.changeRoomCapacity(idroom, copacity);    }
+    public void changeRoomStatus(Integer idroom, RoomStatus roomStatus) {
+        roomService.changeStatusRoom(idroom, roomStatus);
+    }
+
+    public void changeRoomCopacity(Integer idroom, Integer copacity) {
+        roomService.changeRoomCapacity(idroom, copacity);
+    }
+
     public void changeRoomPrice(Integer idroom, Integer price) {
         roomService.changeRoomPrice(idroom, price);
     }
@@ -54,4 +63,15 @@ public class FasadRoom {
         return roomService.allFreeRoom();
     }
 
+    public void setRoomList(List list) {
+        roomService.setRoomList(list);
+    }
+
+    public void writeInFile() {
+        roomService.writeInFile();
+    }
+
+    public void readFromFile() {
+        roomService.readFromFile();
+    }
 }

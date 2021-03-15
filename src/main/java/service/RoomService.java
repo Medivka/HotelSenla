@@ -34,6 +34,19 @@ public class RoomService implements IRoomService {
         this.roomDao = roomDao;
     }
 
+@Override
+public void setRoomList(List list){
+        roomDao.setRoomList((ArrayList<Room>) list);
+}
+    @Override
+    public void writeInFile() {
+        roomDao.writeInFile();
+    }
+    @Override
+    public void readFromFile(){
+        roomDao.readFromFile();
+    }
+
 
     @Override
     public Room findById(Integer id) {

@@ -10,4 +10,8 @@ public interface IRoomDao {
     void delete(Integer id);
     void     save(Room room);
     Room findById(Integer id);
+
+    void writeInFile();
+
+    void readFromFile();
 }

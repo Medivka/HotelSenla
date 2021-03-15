@@ -9,6 +9,12 @@ import java.util.List;
 public interface IRoomService {
 
 
+    void setRoomList(List list);
+
+    void writeInFile();
+
+    void readFromFile();
+
     Room findById(Integer id);
 
    List showAllRoom();

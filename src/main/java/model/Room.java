@@ -3,7 +3,9 @@ package model;
 import api.enums.RoomStatus;
 import dao.RoomDao;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
 
     private Integer roomNumber;
     private RoomStatus roomStatus;

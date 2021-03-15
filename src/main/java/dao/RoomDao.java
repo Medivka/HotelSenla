@@ -2,17 +2,25 @@ package dao;
 
 import api.dao.IRoomDao;
 import exceptions.DaoException;
+import fasad.FasadRoom;
 import model.Room;
 import api.enums.RoomStatus;
 import model.Service;
 import util.IdGenerator;
 
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 
 public class RoomDao implements IRoomDao {
     Room room;
+
+
+
     private ArrayList<Room> roomList = new ArrayList<>();
 
     private static RoomDao instance;
@@ -30,7 +38,9 @@ public class RoomDao implements IRoomDao {
     public ArrayList<Room> getRoomList() {
         return new ArrayList<>(roomList);
     }
-
+    public void setRoomList(ArrayList<Room> roomList) {
+        this.roomList = roomList;
+    }
 
     @Override
     public void delete(Integer id) {
@@ -68,6 +78,34 @@ public class RoomDao implements IRoomDao {
             return room;
         } catch (DaoException e) {
             throw e;
+        }
+    }
+    @Override
+    public void writeInFile(){
+        String roomPathInFile="src/main/java/hdd/room.dat";
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(roomPathInFile)))
+        {
+            oos.writeObject(roomList);
+
+            oos.close();
+        }
+        catch(Exception ex){
+
+            System.out.println(ex.getMessage());
+        }
+
+    }
+    @Override
+    public void readFromFile(){
+        String roomPathInFile="src/main/java/hdd/room.dat";
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(roomPathInFile)))
+        {
+
+            FasadRoom.getInstance().setRoomList((ArrayList<Room>) ois.readObject());
+        }
+        catch(Exception ex){
+
+            System.out.println(ex.getMessage());
         }
     }
 

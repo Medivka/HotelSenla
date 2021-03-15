@@ -5,11 +5,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import api.IController;
+import fasad.FasadRoom;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MainMenuController implements IController {
@@ -37,8 +39,13 @@ public class MainMenuController implements IController {
     @FXML
     private Button createNewOrder;
 
+    @FXML
+    private Button saveDataBase;
 
-
+    @FXML
+    private Button loadDataBase;
+    @FXML
+    private Label saveReadLAbel;
     @FXML
     void initialize() {
 
@@ -85,7 +92,18 @@ public class MainMenuController implements IController {
               e.printStackTrace();
           }
       });
+
+      saveDataBase.setOnAction(actionEvent -> {
+          FasadRoom.getInstance().writeInFile();
+          saveReadLAbel.setText("Written!!!");
+      });
+      loadDataBase.setOnAction(actionEvent -> {
+          FasadRoom.getInstance().readFromFile();
+          saveReadLAbel.setText("Loaded!!!");
+      });
+
     }
+
 
     private String createNewOrderPath = "/resources/order/createNewOrder.fxml";
     private String guestMenuPath = "/resources/guestMenu.fxml";

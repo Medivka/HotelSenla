@@ -2,12 +2,13 @@ package model;
 
 import dao.GuestDao;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Order {
+public class Order implements Serializable {
 
     private Integer id;
     private List guests;

@@ -2,7 +2,9 @@ package model;
 
 import dao.GuestDao;
 
-public class Guest {
+import java.io.Serializable;
+
+public class Guest implements Serializable {
     private String name;
     private Integer guestNumber;
     private Integer age;
