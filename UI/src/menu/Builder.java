@@ -18,6 +18,7 @@ public class Builder {
 
     private Builder() {
     }
+
     public Menu getRootMenu() {
         return rootMenu;
     }
@@ -30,17 +31,23 @@ public class Builder {
     }
 
     public void buildMenu() {
-        rootMenu.addMenuItem(new MenuItem("Room ",()->{}, createRoomMenu()));
-        rootMenu.addMenuItem(new MenuItem("Service ",()->{},createServiceMenu()));
-        rootMenu.addMenuItem(new MenuItem("Order ",()->{}, createOrderMenu()));
-        rootMenu.addMenuItem(new MenuItem("History ",()->{}, historyMenu()));
-        rootMenu.addMenuItem(new MenuItem("Guest ",()->{}, createGuestMenu()));
-    }
+        rootMenu.addMenuItem(new MenuItem("Order ", () -> {
+        }, createOrderMenu()));
+        rootMenu.addMenuItem(new MenuItem("Guest ", () -> {
+        }, createGuestMenu()));
+        rootMenu.addMenuItem(new MenuItem("Room ", () -> {
+        }, createRoomMenu()));
+        rootMenu.addMenuItem(new MenuItem("Service ", () -> {
+        }, createServiceMenu()));
+        rootMenu.addMenuItem(new MenuItem("History ", () -> {
+        }, historyMenu()));
 
+    }
 
 
     private Menu createServiceMenu() {
         Menu serviceMenu = new Menu();
+
         serviceMenu.addMenuItem(new MenuItem("Create new service", new CreateNewService(), rootMenu));
         serviceMenu.addMenuItem(new MenuItem("Find by id", new actions.service.FindById(), rootMenu));
         serviceMenu.addMenuItem(new MenuItem("Show all service", new ShowAllService(), rootMenu));
@@ -87,11 +94,11 @@ public class Builder {
 
     private Menu createRoomMenu() {
         Menu roomMenu = new Menu();
+        roomMenu.addMenuItem(new MenuItem("Create Room", new CreateRoom(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Change Room Capacity", new ChangeRoomCapacity(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Change Room Price", new ChangeRoomPrice(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Change Room Stars", new ChangeRoomStars(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Change Room Status", new ChangeRoomStatus(), rootMenu));
-        roomMenu.addMenuItem(new MenuItem("Create Room", new CreateRoom(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Find by ID Room", new FindById(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Show All Free Rooms", new ShowAllFreeRoom(), rootMenu));
         roomMenu.addMenuItem(new MenuItem("Show All Room", new ShowAllRoom(), rootMenu));
