@@ -11,6 +11,8 @@ import java.util.List;
 public interface IOrderService {
 
 
+    List<Order> showAllOrder();
+
     Order createNewOrder(Guest guest, Room room, Service service, LocalDate localDate, Integer daysOfStay);
 
     Order showOrder(Integer orderNumber);

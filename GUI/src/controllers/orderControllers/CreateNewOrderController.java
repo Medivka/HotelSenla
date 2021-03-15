@@ -19,6 +19,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.Guest;
+import model.Room;
+import model.Service;
 
 public class CreateNewOrderController implements IController {
     @FXML
@@ -121,11 +124,14 @@ public class CreateNewOrderController implements IController {
             if (guestId <= fasadGuest.showAllGuests().size() && guestId > 0) {
                 findGuestLabel.setText(fasadGuest.findById(guestId).toString());
             } else findGuestLabel.setText("Guest not found");
+
         });
         createNewGuest.setOnAction(actionEvent -> {
             String name = nameGuest.getText();
             Integer age = Integer.parseInt(ageGuest.getText());
-            findGuestLabel.setText(fasadGuest.createNewGuest(name, age).toString() + "  created");
+            Guest guest=fasadGuest.createNewGuest(name,age);
+            guestIdField.setText(guest.getGuestNumber().toString());
+            findGuestLabel.setText(guest+ "  created");
 
         });
         findRoom.setOnAction(actionEvent -> {
@@ -140,8 +146,9 @@ public class CreateNewOrderController implements IController {
             Integer capacity = Integer.parseInt(capacityField.getText());
             Integer stars = starsCombo.getValue();
             RoomStatus roomStatus = statusCombo.getValue();
-
-            findRoomLabel.setText(fasadRoom.createRoom(roomStatus, capacity, price, stars).toString() + " created");
+            Room room=fasadRoom.createRoom(roomStatus, capacity, price, stars);
+            roomIdField.setText(room.getRoomNumber().toString());
+            findRoomLabel.setText(room + " created");
         });
         findService.setOnAction(actionEvent -> {
             Integer serviceId = Integer.parseInt(serviceIdField.getText());
@@ -152,7 +159,9 @@ public class CreateNewOrderController implements IController {
         createNewService.setOnAction(actionEvent -> {
             String name = nameService.getText();
             Integer price = Integer.parseInt(priceService.getText());
-            findServiceLabel.setText(fasadService.createNewService(name, price).toString() + " created");
+            Service service=fasadService.createNewService(name,price);
+            serviceIdField.setText(service.getId().toString());
+            findServiceLabel.setText(service + " created");
         });
         createNewOrder.setOnAction(actionEvent ->
                 orderLabel.setText(fasadOrder.createNewOrder(

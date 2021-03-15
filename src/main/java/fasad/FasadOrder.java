@@ -7,6 +7,7 @@ import model.Service;
 import service.OrderService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class FasadOrder {
     private static OrderService orderService = OrderService.getInstance();
@@ -19,6 +20,10 @@ public class FasadOrder {
         return instance;
     }
 
+    public List showAllOrder() {
+        return orderService.showAllOrder();
+    }
+
     public Order createNewOrder(Guest guest, Room room, Service service, LocalDate localDate, Integer daysOfStay) {
         return orderService.createNewOrder(guest, room, service, localDate, daysOfStay);
     }
@@ -26,7 +31,8 @@ public class FasadOrder {
     public void AddInRoomService(Integer orderNumber, Service service) {
         orderService.addInRoomService(orderNumber, service);
     }
-    public Order showOrder(Integer orderNumber){
+
+    public Order showOrder(Integer orderNumber) {
         return orderService.showOrder(orderNumber);
     }
 
@@ -41,7 +47,11 @@ public class FasadOrder {
     public void changeDaysOfStay(Integer orderNumber, Integer daysOfStay) {
         orderService.changeDaysOfStay(orderNumber, daysOfStay);
     }
-public Order findByID(Integer orderId){return orderService.findById(orderId);}
+
+    public Order findByID(Integer orderId) {
+        return orderService.findById(orderId);
+    }
+
     public Long getAllAmount(Integer orderNumber) {
         return orderService.getAllAmount(orderNumber);
     }

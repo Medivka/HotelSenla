@@ -111,6 +111,7 @@ public class UpdateRoomController implements IController {
                 fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setRoomStatus(roomStatus);
             }
 
+            roomInfo.setText(fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).toString());
             System.out.println(fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())));
         });
 

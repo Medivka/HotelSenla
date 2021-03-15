@@ -78,8 +78,16 @@ public class MainMenuController implements IController {
                 e.printStackTrace();
             }
         });
+      createNewOrder.setOnAction(actionEvent -> {
+          try {
+              openNewSceneOrder(createNewOrderPath,createNewOrder);
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      });
     }
 
+    private String createNewOrderPath = "/resources/order/createNewOrder.fxml";
     private String guestMenuPath = "/resources/guestMenu.fxml";
     private String orderMenuPath = "/resources/orderMenu.fxml";
     private String roomMenuPath = "/resources/roomMenu.fxml";
@@ -93,4 +101,9 @@ public class MainMenuController implements IController {
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 445, 590));
     }
+        public void openNewSceneOrder(String path, Button button) throws IOException {
+            Parent root = FXMLLoader.load(getClass().getResource(path));
+            Stage window = (Stage) button.getScene().getWindow();
+            window.setScene(new Scene(root, 889, 690));
+        }
 }

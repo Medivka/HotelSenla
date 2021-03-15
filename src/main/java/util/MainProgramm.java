@@ -4,6 +4,7 @@ import api.dao.*;
 import api.enums.RoomStatus;
 import api.service.IRoomService;
 import dao.*;
+import fasad.FasadOrder;
 import inputOutput.RoomReader;
 import inputOutput.RoomWriter;
 import model.Guest;
@@ -43,12 +44,15 @@ public class MainProgramm {
         Order order1 = orderService.createNewOrder(guest2, room, serviceService.findById(1), localDate, 5);
         Order order2 = orderService.createNewOrder(guest3, room, serviceService.findById(1), localDate, 5);
         Order order5 = orderService.createNewOrder(guest3, room, serviceService.findById(1), localDate, 5);
+//
+//        RoomReader roomReader= new RoomReader();
+//        RoomWriter roomWriter= new RoomWriter();
+//roomWriter.writer();
+//        roomReader.reader();
+//        System.out.println( roomService.showAllRoom());
 
-        RoomReader roomReader= new RoomReader();
-        RoomWriter roomWriter= new RoomWriter();
-roomWriter.writer();
-        roomReader.reader();
-        System.out.println( roomService.showAllRoom());
-
+        FasadOrder fasadOrder=FasadOrder.getInstance();
+        fasadOrder.AddInRoomService(2,serviceService.createService("TV",450));
+        System.out.println(fasadOrder.findByID(2));
     }
 }
