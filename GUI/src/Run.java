@@ -6,6 +6,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * install JavaFX
+ *
+ * Edit configuration -> VM option
+ *
+ * and write
+ *
+ * --module-path
+ * C:\javafx-sdk-11.0.2\lib    - path to libraries
+ * --add-modules
+ * javafx.controls,javafx.fxml
+ */
+
 public class Run extends Application {
 
     public static void main(String[] args) {
