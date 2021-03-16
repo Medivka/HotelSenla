@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -53,5 +54,7 @@
             <TableColumn fx:id="ageColumn" prefWidth="136.0" text="Age" />
         </columns>
       </TableView>
+      <Button fx:id="deleteButton" layoutX="363.0" layoutY="508.0" mnemonicParsing="false" text="delete" />
+      <TextField fx:id="idguestField" layoutX="274.0" layoutY="508.0" prefHeight="25.0" prefWidth="67.0" promptText="id guest" />
     </children>
 </AnchorPane>

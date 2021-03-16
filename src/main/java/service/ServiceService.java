@@ -105,6 +105,10 @@ public class ServiceService implements IServiceService {
         }
     }
 
+    @Override
+    public void deleteService(Integer id){
+        serviceDao.delete(id);
+    }
 
     @Override
     public List sortedByPrice() {

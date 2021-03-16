@@ -29,6 +29,8 @@ public interface IOrderService {
 
     long getAllAmount(Integer orderNumber);
 
+    void deleteOrder(Integer id);
+
     void setOrderList(List list);
 
     void writeInFile();

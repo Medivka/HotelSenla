@@ -49,6 +49,10 @@ public class FasadGuest {
         return guestService.sortedByName();
     }
 
+    public void deleteGuest(Integer id){
+         guestService.deleteGuest(id);
+    }
+
     public void setGuestList(List list) {
         guestService.setGuestLIst(list);
     }

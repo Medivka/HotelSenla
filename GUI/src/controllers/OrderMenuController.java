@@ -55,7 +55,7 @@ public class OrderMenuController implements IController {
         });
         showOrder.setOnAction(actionEvent -> {
             try {
-                openNewScene(showOrderPath, showOrder);
+                openNewSceneshow(showOrderPath, showOrder);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -95,5 +95,9 @@ public class OrderMenuController implements IController {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 889, 690));
+    } public void openNewSceneshow(String path, Button button) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(path));
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root, 1184, 801));
     }
 }

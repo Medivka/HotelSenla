@@ -112,6 +112,10 @@ public class GuestService implements IGuestService {
     }
 
     @Override
+    public void deleteGuest(Integer id){
+        guestDao.delete(id);
+    }
+    @Override
     public void setGuestLIst(List list) {
         guestDao.setGuestList((ArrayList<Guest>) list);
     }

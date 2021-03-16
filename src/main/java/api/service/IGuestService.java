@@ -21,6 +21,8 @@ public interface IGuestService {
 
     List sortedByName();
 
+    void deleteGuest(Integer id);
+
     void setGuestLIst(List list);
 
     void writeInFile();

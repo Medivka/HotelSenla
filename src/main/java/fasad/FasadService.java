@@ -54,5 +54,8 @@ public class FasadService {
     public void readFromFile() {
         serviceService.readFromFile();
     }
+    public void deleteService(Integer id){
+        serviceService.deleteService(id);
+    }
 
 }

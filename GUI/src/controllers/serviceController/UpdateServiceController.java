@@ -55,7 +55,9 @@ public class UpdateServiceController implements IController {
         findService.setOnAction(actionEvent -> {
             Integer serviceId = Integer.parseInt(idServiceField.getText());
             if(serviceId<=fasadService.showAllService().size()&&serviceId>0){
-                findServiceLabel.setText(fasadService.findByID(serviceId).toString());}
+                findServiceLabel.setText(fasadService.findByID(serviceId).toString());
+            newNameField.setText(fasadService.findByID(serviceId).getName());
+            newPriceField.setText(fasadService.findByID(serviceId).getPrice().toString());}
             else findServiceLabel.setText("Service not found");
         });
         updateButton.setOnAction(actionEvent -> {

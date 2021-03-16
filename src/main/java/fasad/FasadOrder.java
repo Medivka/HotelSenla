@@ -59,6 +59,9 @@ public class FasadOrder {
     public void setOrderList(List list) {
         orderService.setOrderList(list);
     }
+    public void deleteOrder(Integer id){
+        orderService.deleteOrder(id);
+    }
 
     public void writeInFile() {
         orderService.writeInFile();

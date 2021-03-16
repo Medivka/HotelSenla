@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import util.IdGenerator;
 
 public class MainMenuController implements IController {
     @FXML
@@ -101,6 +102,7 @@ public class MainMenuController implements IController {
           FasadService.getInstance().writeInFile();
           FasadOrder.getInstance().writeInFile();
           FasadGuest.getInstance().writeInFile();
+
           saveReadLAbel.setText("Written!!!");
       });
       loadDataBase.setOnAction(actionEvent -> {

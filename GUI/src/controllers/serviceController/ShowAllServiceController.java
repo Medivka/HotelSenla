@@ -1,6 +1,7 @@
 package controllers.serviceController;
 
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Room;
@@ -44,9 +46,33 @@ public class ShowAllServiceController  implements IController {
 
     @FXML
     private TableColumn<Service, Integer> priceColumn;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private TextField idServiceField;
+
 
     @FXML
     void initialize() {
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<Service, Integer>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Service, String>("name"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<Service, Integer>("price"));
+        ObservableList<Service> services = FXCollections.observableArrayList(fasadService.showAllService());
+        tableService.setItems(services);
+
+        deleteButton.setOnAction(actionEvent -> {
+
+            FasadService.getInstance().deleteService(Integer.parseInt(idServiceField.getText()));
+            try {
+                openNewScene(showAllServicePath,deleteButton);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+
+
         backField.setOnAction(actionEvent -> {
             try {
                 openNewScene(backFieldPath, backField);
@@ -55,19 +81,13 @@ public class ShowAllServiceController  implements IController {
             }
         });
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<Service, Integer>("id"));
 
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Service, String>("name"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<Service, Integer>("price"));
-
-
-        ObservableList<Service> services = FXCollections.observableArrayList(fasadService.showAllService());
-       tableService.setItems(services);
 
     }
 
     FasadService fasadService=FasadService.getInstance();
     String backFieldPath = "/resources/serviceMenu.fxml";
+    private String showAllServicePath = "/resources/service/showAllService.fxml";
 
     @Override
     public void openNewScene(String path, Button button) throws IOException {

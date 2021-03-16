@@ -71,13 +71,13 @@
 
         <Label layoutX="30.0" layoutY="549.0" prefHeight="17.0" prefWidth="385.0" text="Test project special for Senla. Create By Sacuta Vitalik. All right reserved." />
       <Button fx:id="createNewOrder" layoutX="42.0" layoutY="204.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Create New Order" />
-      <Button fx:id="saveDataBase" layoutX="286.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Save in Database" />
-      <Button fx:id="loadDataBase" layoutX="30.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Load dataBase" />
+      <Button fx:id="saveDataBase" layoutX="42.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Save in Database" />
+      <Button fx:id="loadDataBase" layoutX="302.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Load dataBase" />
       <Text layoutX="127.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu" textAlignment="CENTER" wrappingWidth="190.498046875">
          <font>
             <Font size="26.0" />
          </font>
       </Text>
-      <Label fx:id="saveReadLAbel" layoutX="138.0" layoutY="495.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
+      <Label fx:id="saveReadLAbel" alignment="CENTER" layoutX="138.0" layoutY="495.0" prefHeight="25.0" prefWidth="134.0" textAlignment="CENTER" />
     </children>
 </AnchorPane>

@@ -192,6 +192,10 @@ public class OrderService implements IOrderService {
             throw new ServiceExeption("getAllAmount failed", e);
         }
     }
+    @Override
+    public void deleteOrder(Integer id){
+        orderDao.delete(id);
+    }
 
     @Override
     public void setOrderList(List list) {
