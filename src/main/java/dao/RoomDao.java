@@ -20,7 +20,7 @@ public class RoomDao implements IRoomDao {
     Room room;
 
 
-
+    String roomPathInFile = "src/main/java/hdd/rooms.dat";
     private ArrayList<Room> roomList = new ArrayList<>();
 
     private static RoomDao instance;
@@ -38,6 +38,7 @@ public class RoomDao implements IRoomDao {
     public ArrayList<Room> getRoomList() {
         return new ArrayList<>(roomList);
     }
+
     public void setRoomList(ArrayList<Room> roomList) {
         this.roomList = roomList;
     }
@@ -80,30 +81,28 @@ public class RoomDao implements IRoomDao {
             throw e;
         }
     }
+
     @Override
-    public void writeInFile(){
-        String roomPathInFile="src/main/java/hdd/room.dat";
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(roomPathInFile)))
-        {
+    public void writeInFile() {
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(roomPathInFile))) {
             oos.writeObject(roomList);
 
             oos.close();
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
         }
 
     }
+
     @Override
-    public void readFromFile(){
-        String roomPathInFile="src/main/java/hdd/room.dat";
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(roomPathInFile)))
-        {
+    public void readFromFile() {
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(roomPathInFile))) {
 
             FasadRoom.getInstance().setRoomList((ArrayList<Room>) ois.readObject());
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
         }

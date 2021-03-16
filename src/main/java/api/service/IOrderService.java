@@ -28,4 +28,10 @@ public interface IOrderService {
     Order findById(Integer orderId);
 
     long getAllAmount(Integer orderNumber);
+
+    void setOrderList(List list);
+
+    void writeInFile();
+
+    void readFromFile();
 }

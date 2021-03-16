@@ -20,4 +20,10 @@ public interface IGuestService {
     List sortedById();
 
     List sortedByName();
+
+    void setGuestLIst(List list);
+
+    void writeInFile();
+
+    void readFromFile();
 }

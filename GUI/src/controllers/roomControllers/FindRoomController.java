@@ -55,7 +55,9 @@ public class FindRoomController implements IController {
         findRoom.setOnAction(actionEvent -> {
             Integer roomNumber = Integer.parseInt(enterRoomNumber.getText());
             if(roomNumber<=fasadRoom.showAllRoom().size()&&roomNumber>0){
-            label.setText(fasadRoom.findById(roomNumber).toString());}else label.setText("room not found");
+            label.setText(fasadRoom.findById(roomNumber).toString())
+
+            ;}else label.setText("room not found");
         });
     }
 

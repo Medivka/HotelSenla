@@ -35,10 +35,11 @@ public class OrderService implements IOrderService {
         this.orderDao = orderDao;
         this.historyDao = historyDao;
     }
-@Override
-public List<Order> showAllOrder(){
-       return new ArrayList<>(orderDao.getOrderList());
-}
+
+    @Override
+    public List<Order> showAllOrder() {
+        return new ArrayList<>(orderDao.getOrderList());
+    }
 
     @Override
     public Order createNewOrder(Guest guest, Room room, Service service, LocalDate localDate, Integer daysOfStay) {
@@ -78,7 +79,7 @@ public List<Order> showAllOrder(){
     @Override
     public void addGuestInRoom(Integer orderNumber, Guest guest) {
         try {
-            LOGGER.log(Level.INFO, String.format("addGuestInRoom order: %s, guest: %s",guest, orderNumber));
+            LOGGER.log(Level.INFO, String.format("addGuestInRoom order: %s, guest: %s", guest, orderNumber));
             History history = historyDao.findById(orderNumber);
             Order order = orderDao.findById(orderNumber);
             if (order == null) {
@@ -190,5 +191,20 @@ public List<Order> showAllOrder(){
             LOGGER.log(Level.WARNING, "getAllAmount failed %s ", orderNumber);
             throw new ServiceExeption("getAllAmount failed", e);
         }
+    }
+
+    @Override
+    public void setOrderList(List list) {
+        orderDao.setOrderList(list);
+    }
+
+    @Override
+    public void writeInFile() {
+        orderDao.writeInFile();
+    }
+
+    @Override
+    public void readFromFile() {
+        orderDao.readFromFile();
     }
 }

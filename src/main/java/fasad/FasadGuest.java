@@ -49,4 +49,16 @@ public class FasadGuest {
         return guestService.sortedByName();
     }
 
+    public void setGuestList(List list) {
+        guestService.setGuestLIst(list);
+    }
+
+    public void writeInFile() {
+        guestService.writeInFile();
+    }
+
+    public void readFromFile() {
+        guestService.readFromFile();
+    }
+
 }

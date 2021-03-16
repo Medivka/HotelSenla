@@ -47,7 +47,7 @@ public class HistoryDao implements IHistoryDao {
             }
             return history;
         } catch (DaoException e) {
-            throw  e;
+            throw e;
         }
     }
 

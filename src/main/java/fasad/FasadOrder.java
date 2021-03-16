@@ -56,5 +56,16 @@ public class FasadOrder {
         return orderService.getAllAmount(orderNumber);
     }
 
+    public void setOrderList(List list) {
+        orderService.setOrderList(list);
+    }
+
+    public void writeInFile() {
+        orderService.writeInFile();
+    }
+
+    public void readFromFile() {
+        orderService.readFromFile();
+    }
 
 }

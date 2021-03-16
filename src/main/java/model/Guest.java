@@ -12,18 +12,23 @@ public class Guest implements Serializable {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Integer getGuestNumber() {
         return guestNumber;
     }
+
     public void setGuestNumber(Integer guestNumber) {
         this.guestNumber = guestNumber;
     }
+
     public Integer getAge() {
         return age;
     }
+
     public void setAge(Integer age) {
         this.age = age;
     }
@@ -45,7 +50,7 @@ public class Guest implements Serializable {
 
     @Override
     public String toString() {
-        return " Guest "+guestNumber+" : " +
+        return " Guest " + guestNumber + " : " +
                 name +
                 ", age=" + age
                 ;

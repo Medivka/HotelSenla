@@ -9,5 +9,8 @@ public interface IServiceDao {
     void delete(Integer id);
     Service findById(Integer id);
 
+    void writeInFile();
+
+    void readFromFile();
 }
 

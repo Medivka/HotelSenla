@@ -18,38 +18,50 @@ public class Order implements Serializable {
     private Integer daysOfStay;
 
 
-
     public Integer getId() {
         return id;
     }
-    public void setId(Integer id) { this.id = id; }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public List getGuests() {
         return guests;
     }
+
     public void setGuests(List guests) {
         this.guests = guests;
     }
+
     public List getRooms() {
         return rooms;
     }
+
     public void setRooms(List rooms) {
         this.rooms = rooms;
     }
+
     public List getServices() {
         return services;
     }
+
     public void setServices(List services) {
         this.services = services;
     }
+
     public LocalDate getLocalDate() {
         return localDate;
     }
+
     public void setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
     }
+
     public Integer getDaysOfStay() {
         return daysOfStay;
     }
+
     public void setDaysOfStay(Integer daysOfStay) {
         this.daysOfStay = daysOfStay;
     }

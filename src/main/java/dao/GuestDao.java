@@ -2,12 +2,18 @@ package dao;
 
 import api.dao.IGuestDao;
 import exceptions.DaoException;
+import fasad.FasadGuest;
+import fasad.FasadOrder;
 import model.Guest;
 import model.Room;
 import model.Service;
 import service.RoomService;
 import util.IdGenerator;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,6 +23,7 @@ public class GuestDao implements IGuestDao {
 
 
     private static GuestDao instance;
+    String guestPathInFile = "src/main/java/hdd/guests.dat";
 
     private GuestDao() {
     }
@@ -29,6 +36,11 @@ public class GuestDao implements IGuestDao {
     }
 
     Guest guest;
+
+    public void setGuestList(ArrayList<Guest> guestList) {
+        this.guestList = guestList;
+    }
+
     private ArrayList<Guest> guestList = new ArrayList<>();
 
     public ArrayList<Guest> getGuestList() {
@@ -92,4 +104,31 @@ public class GuestDao implements IGuestDao {
             throw e;
         }
     }
+
+    @Override
+    public void writeInFile() {
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(guestPathInFile))) {
+            oos.writeObject(guestList);
+
+            oos.close();
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    @Override
+    public void readFromFile() {
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(guestPathInFile))) {
+
+            FasadGuest.getInstance().setGuestList((ArrayList<Guest>) ois.readObject());
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }

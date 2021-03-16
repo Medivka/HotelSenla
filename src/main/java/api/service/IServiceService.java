@@ -13,4 +13,6 @@ public interface IServiceService {
     void changeServiceName(Integer idService, String name);
     void changeServicePrice(Integer idService, Integer price);
     List sortedByPrice();
+
+    void setServiceList(List list);
 }

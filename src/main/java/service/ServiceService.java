@@ -118,4 +118,17 @@ public class ServiceService implements IServiceService {
             throw new ServiceExeption("sortedByPrice failed", e);
         }
     }
+
+    @Override
+    public void setServiceList(List list) {
+        serviceDao.setServiceList(list);
+    }
+
+    public void writeInFile() {
+        serviceDao.writeInFile();
+    }
+
+    public void readFromFile() {
+        serviceDao.readFromFile();
+    }
 }

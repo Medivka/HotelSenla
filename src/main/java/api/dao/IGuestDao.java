@@ -17,4 +17,8 @@ public interface IGuestDao {
 
 
     Guest update(Integer id, String name, Integer age);
+
+    void writeInFile();
+
+    void readFromFile();
 }

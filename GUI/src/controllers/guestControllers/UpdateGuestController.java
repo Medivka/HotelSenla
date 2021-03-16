@@ -54,18 +54,17 @@ public class UpdateGuestController implements IController {
         findGuest.setOnAction(actionEvent -> {
             Integer guestId = Integer.parseInt(idGuestField.getText());
             if(guestId<=fasadGuest.showAllGuests().size()&&guestId>0){
-                findGuestLabel.setText(fasadGuest.findById(guestId).toString());}else findGuestLabel.setText("Guest not found");
+                findGuestLabel.setText(fasadGuest.findById(guestId).toString());
+                newNameField.setText( FasadGuest.getInstance().findById(guestId).getName());
+                newAgeField.setText(FasadGuest.getInstance().findById(guestId).getAge().toString());
+            }else findGuestLabel.setText("Guest not found");
         });
         updateButton.setOnAction(actionEvent -> {
             Integer guestId = Integer.parseInt(idGuestField.getText());
             String newName= newNameField.getText();
             Integer newAge=  Integer.parseInt(newAgeField.getText());
-            if(newName!=null){
                 fasadGuest.findById(guestId).setName(newName);
-            }
-            if(newAge!=null){
                 fasadGuest.findById(guestId).setAge(newAge);
-            }
             System.out.println(fasadGuest.findById(guestId));
         });
 

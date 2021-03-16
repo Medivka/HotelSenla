@@ -78,8 +78,13 @@ public class UpdateRoomController implements IController {
         });
         findRoom.setOnAction(actionEvent -> {
             Integer roomNumber = Integer.parseInt(enterRoomNumber.getText());
-            if (roomNumber <=fasadRoom.showAllRoom().size() && roomNumber > 0) {
+            if (roomNumber <= fasadRoom.showAllRoom().size() && roomNumber > 0) {
                 roomInfo.setText(fasadRoom.findById(roomNumber).toString());
+                newPriceField.setText(fasadRoom.findById(roomNumber).getPrice().toString());
+                newCapacityField.setText(fasadRoom.findById(roomNumber).getCapacity().toString());
+               newChooseStars.getSelectionModel().select(3);
+              status.selectToggle(BUSY);
+
             } else roomInfo.setText("room not found");
         });
         updateRoom.setOnAction(actionEvent -> {
@@ -96,20 +101,10 @@ public class UpdateRoomController implements IController {
             if (REPAIRS.isSelected()) {
                 roomStatus = RoomStatus.REPAIRS;
             }
-            if (price!=null) {
-
-                fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setPrice(price);
-            }
-            if (capacity != null) {
-                fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setCopacity(capacity);
-            }
-            if (stars != null) {
-                fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setStars(stars);
-
-            }
-            if (roomStatus != null) {
-                fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setRoomStatus(roomStatus);
-            }
+            fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setPrice(price);
+            fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setCopacity(capacity);
+            fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setStars(stars);
+            fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).setRoomStatus(roomStatus);
 
             roomInfo.setText(fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())).toString());
             System.out.println(fasadRoom.findById(Integer.parseInt(enterRoomNumber.getText())));

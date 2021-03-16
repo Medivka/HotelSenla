@@ -2,15 +2,28 @@ package dao;
 
 import api.dao.IServiceDao;
 import exceptions.DaoException;
+import fasad.FasadRoom;
+import fasad.FasadService;
+import model.Room;
 import model.Service;
 
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceDao implements IServiceDao {
 
     Service service;
+    String servicePathInFile = "src/main/java/hdd/services.dat";
+
+    public void setServiceList(List<Service> serviceList) {
+        this.serviceList = serviceList;
+    }
+
     private List<Service> serviceList = new ArrayList<>();
     private static ServiceDao instance;
 
@@ -62,7 +75,33 @@ public class ServiceDao implements IServiceDao {
             }
             return service;
         } catch (DaoException e) {
-            throw  e;
+            throw e;
+        }
+    }
+
+    @Override
+    public void writeInFile() {
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(servicePathInFile))) {
+            oos.writeObject(serviceList);
+
+            oos.close();
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    @Override
+    public void readFromFile() {
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(servicePathInFile))) {
+
+            FasadService.getInstance().setServiceList((ArrayList<Service>) ois.readObject());
+        } catch (Exception ex) {
+
+            System.out.println(ex.getMessage());
         }
     }
 }

@@ -5,6 +5,7 @@ import model.Service;
 import service.RoomService;
 import service.ServiceService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FasadService {
@@ -40,6 +41,18 @@ public class FasadService {
 
     public List<Service> sortedByPrice() {
         return serviceService.sortedByPrice();
+    }
+
+    public void setServiceList(List list) {
+        serviceService.setServiceList(list);
+    }
+
+    public void writeInFile() {
+        serviceService.writeInFile();
+    }
+
+    public void readFromFile() {
+        serviceService.readFromFile();
     }
 
 }

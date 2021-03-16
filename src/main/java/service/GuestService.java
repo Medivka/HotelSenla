@@ -110,4 +110,19 @@ public class GuestService implements IGuestService {
         guests.stream().sorted(Comparator.comparing(Guest::getName)).collect(Collectors.toList());
         return guests;
     }
+
+    @Override
+    public void setGuestLIst(List list) {
+        guestDao.setGuestList((ArrayList<Guest>) list);
+    }
+
+    @Override
+    public void writeInFile() {
+        guestDao.writeInFile();
+    }
+
+    @Override
+    public void readFromFile() {
+        guestDao.readFromFile();
+    }
 }

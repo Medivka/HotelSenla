@@ -5,7 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import api.IController;
+import fasad.FasadGuest;
+import fasad.FasadOrder;
 import fasad.FasadRoom;
+import fasad.FasadService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -95,10 +98,16 @@ public class MainMenuController implements IController {
 
       saveDataBase.setOnAction(actionEvent -> {
           FasadRoom.getInstance().writeInFile();
+          FasadService.getInstance().writeInFile();
+          FasadOrder.getInstance().writeInFile();
+          FasadGuest.getInstance().writeInFile();
           saveReadLAbel.setText("Written!!!");
       });
       loadDataBase.setOnAction(actionEvent -> {
           FasadRoom.getInstance().readFromFile();
+          FasadService.getInstance().readFromFile();
+          FasadOrder.getInstance().readFromFile();
+          FasadGuest.getInstance().readFromFile();
           saveReadLAbel.setText("Loaded!!!");
       });
 

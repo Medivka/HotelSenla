@@ -14,4 +14,8 @@ public interface IOrderDao {
     void delete(Integer id);
 
     Order findById(Integer id);
+
+    void writeInFile();
+
+    void readFromFile();
 }
