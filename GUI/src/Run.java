@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * install JavaFX
  * <p>
- * Edit configuration -> VM option
+ * Edit configuration... -> VM option
  * <p>
  * and write
  * <p>
