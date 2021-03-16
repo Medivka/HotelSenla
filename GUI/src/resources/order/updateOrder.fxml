@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="889.0" style="-fx-background-color: #E0FFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.orderControllers.UpdateOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="1006.0" style="-fx-background-color: #E0FFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.orderControllers.UpdateOrderController">
     <children>
-        <AnchorPane prefHeight="140.0" prefWidth="889.0" style="-fx-background-color: #00FFFF;">
+        <AnchorPane prefHeight="140.0" prefWidth="1006.0" style="-fx-background-color: #00FFFF;">
             <children>
                 <Label graphicTextGap="5.0" layoutX="14.0" layoutY="70.0" prefHeight="43.0" prefWidth="306.0" text="Grand Hotel Senla" textOverrun="LEADING_ELLIPSIS">
                     <font>
@@ -37,81 +38,90 @@
                         </LinearGradient>
                     </textFill>
                 </Label>
-                <ImageView fitHeight="72.0" fitWidth="134.0" layoutX="741.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="72.0" fitWidth="134.0" layoutX="852.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/senlaLog.jpg" />
                     </image>
                 </ImageView>
             </children>
         </AnchorPane>
-        <Label layoutX="11.0" layoutY="659.0" prefHeight="17.0" prefWidth="385.0" text="Test project special for Senla. Create By Sacuta Vitalik. All right reserved." />
-        <Text layoutX="146.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Order" textAlignment="CENTER" wrappingWidth="134.0">
+        <Label layoutX="271.0" layoutY="749.0" prefHeight="17.0" prefWidth="385.0" text="Test project special for Senla. Create By Sacuta Vitalik. All right reserved." />
+        <Text layoutX="329.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Order" textAlignment="CENTER" wrappingWidth="134.0">
             <font>
                 <Font size="19.0" />
             </font></Text>
-        <Button fx:id="backField" layoutX="773.0" layoutY="634.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Back" />
+        <Button fx:id="backField" layoutX="919.0" layoutY="719.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Back" />
       <Text layoutX="19.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest">
          <font>
             <Font name="System Italic" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room">
+      <Text layoutX="18.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room">
          <font>
             <Font name="System Italic" size="30.0" />
          </font>
       </Text>
       <TextField fx:id="guestIdField" layoutX="19.0" layoutY="201.0" prefHeight="25.0" prefWidth="73.0" promptText="id guest" />
-      <Button fx:id="changeDaysOfStayButton" layoutX="298.0" layoutY="580.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Change" />
+      <Button fx:id="changeDaysOfStayButton" layoutX="288.0" layoutY="518.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text=" Change Days" />
       <Text layoutX="17.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service">
          <font>
             <Font name="System Italic" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="19.0" layoutY="603.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Days">
+      <Text layoutX="14.0" layoutY="543.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Days">
          <font>
             <Font name="System Italic" size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="daysOfStayField" layoutX="176.0" layoutY="580.0" prefHeight="25.0" prefWidth="104.0" promptText="new days of stay" />
-      <Button fx:id="createNewGuest" layoutX="740.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="create New Guest" />
+      <TextField fx:id="daysOfStayField" layoutX="170.0" layoutY="518.0" prefHeight="25.0" prefWidth="104.0" promptText="new days of stay" />
+      <Button fx:id="createNewGuest" layoutX="859.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="create New Guest" />
       <Button fx:id="findGuest" layoutX="124.0" layoutY="201.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="find" />
-      <Label fx:id="findGuestLabel" layoutX="22.0" layoutY="234.0" prefHeight="37.0" prefWidth="262.0" />
-      <TextField fx:id="nameGuest" layoutX="432.0" layoutY="201.0" prefHeight="25.0" prefWidth="111.0" promptText="nameGuest" />
-      <TextField fx:id="ageGuest" layoutX="615.0" layoutY="201.0" prefHeight="25.0" prefWidth="87.0" promptText="ageGuest" />
-      <Text layoutX="348.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+      <Label fx:id="findGuestLabel" layoutX="22.0" layoutY="240.0" prefHeight="25.0" prefWidth="262.0" style="-fx-background-color: #FFFAFA;">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="nameGuest" layoutX="510.0" layoutY="240.0" prefHeight="25.0" prefWidth="111.0" promptText="nameGuest" />
+      <TextField fx:id="ageGuest" layoutX="730.0" layoutY="239.0" prefHeight="25.0" prefWidth="87.0" promptText="ageGuest" />
+      <Text layoutX="409.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Text>
-      <Text layoutX="552.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" wrappingWidth="51.1767578125">
+      <Text layoutX="633.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" wrappingWidth="51.1767578125">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Text>
-      <Label fx:id="findRoomLabel" layoutX="27.0" layoutY="455.0" prefHeight="37.0" prefWidth="262.0" />
       <TextField fx:id="serviceIdField" layoutX="19.0" layoutY="326.0" prefHeight="25.0" prefWidth="73.0" promptText="id service" />
       <Button fx:id="findService" layoutX="124.0" layoutY="326.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="find" />
-      <Label fx:id="findServiceLabel" layoutX="22.0" layoutY="369.0" prefHeight="37.0" prefWidth="262.0" />
-      <Text layoutX="348.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+      <Label fx:id="findServiceLabel" layoutX="22.0" layoutY="373.0" prefHeight="25.0" prefWidth="262.0" style="-fx-background-color: #FFFAFA;">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Text layoutX="419.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Text>
-      <Text layoutX="546.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="63.984375">
+      <Text layoutX="633.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="63.984375">
          <font>
             <Font name="System Italic" size="26.0" />
          </font>
       </Text>
-      <TextField fx:id="nameService" layoutX="432.0" layoutY="324.0" prefHeight="25.0" prefWidth="111.0" promptText="nameService" />
-      <TextField fx:id="priceService" layoutX="615.0" layoutY="323.0" prefHeight="25.0" prefWidth="87.0" promptText="priceService" />
-      <Button fx:id="createNewService" layoutX="740.0" layoutY="326.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="create New Service" />
+      <TextField fx:id="nameService" layoutX="510.0" layoutY="374.0" prefHeight="25.0" prefWidth="111.0" promptText="nameService" />
+      <TextField fx:id="priceService" layoutX="730.0" layoutY="373.0" prefHeight="25.0" prefWidth="87.0" promptText="priceService" />
+      <Button fx:id="createNewService" layoutX="859.0" layoutY="373.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="create New Service" />
       <Label fx:id="dataLabel" layoutX="589.0" layoutY="145.0" prefHeight="25.0" prefWidth="284.0" />
-      <Label fx:id="orderLabel" alignment="TOP_LEFT" layoutX="429.0" layoutY="373.0" prefHeight="238.0" prefWidth="433.0" text="order Info" />
+      <Label fx:id="orderLabel" alignment="TOP_LEFT" layoutX="429.0" layoutY="410.0" prefHeight="294.0" prefWidth="562.0" text="order Info">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
       <Button fx:id="addGuestButton" layoutX="301.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Add" />
-      <Button fx:id="addServiceButton" layoutX="301.0" layoutY="375.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Add" />
-      <TextField fx:id="findOrderFiled" layoutX="308.0" layoutY="145.0" prefHeight="25.0" prefWidth="51.0" promptText="Order" />
-      <Button fx:id="findOrder" layoutX="376.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="find" />
-      <TextField fx:id="roomIdField" layoutX="25.0" layoutY="506.0" prefHeight="25.0" prefWidth="73.0" promptText="id room" />
-      <Button fx:id="changeRoomButton" layoutX="130.0" layoutY="506.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Change Room" />
+      <Button fx:id="addServiceButton" layoutX="301.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Add" />
+      <TextField fx:id="findOrderFiled" layoutX="510.0" layoutY="145.0" prefHeight="25.0" prefWidth="51.0" promptText="Order" />
+      <Button fx:id="findOrder" layoutX="588.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="find" />
+      <TextField fx:id="roomIdField" layoutX="170.0" layoutY="448.0" prefHeight="25.0" prefWidth="104.0" promptText="id room" />
+      <Button fx:id="changeRoomButton" layoutX="290.0" layoutY="448.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Change Room" />
+      <ScrollBar layoutX="429.0" layoutY="690.0" prefHeight="14.0" prefWidth="562.0" />
     </children>
 </AnchorPane>

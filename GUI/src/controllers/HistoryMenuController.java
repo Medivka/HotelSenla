@@ -42,7 +42,7 @@ public class HistoryMenuController implements IController {
         });
         showAllHistory.setOnAction(actionEvent -> {
             try {
-                openNewScene(showAllHistoryPath, showAllHistory);
+                openNewSceneshow(showAllHistoryPath, showAllHistory);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -59,7 +59,7 @@ public class HistoryMenuController implements IController {
     }
 
     private String backFieldPath = "/resources/Main.fxml";
-    private String showAllHistoryPath = "/resources/guestMenu.fxml";
+    private String showAllHistoryPath = "/resources/history/showAllHistory.fxml";
     private String showAllRoomGuestPath = "/resources/orderMenu.fxml";
 
     @Override
@@ -67,5 +67,10 @@ public class HistoryMenuController implements IController {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 445, 590));
+    }
+    public void openNewSceneshow(String path, Button button) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(path));
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root, 1184, 801));
     }
 }

@@ -55,7 +55,7 @@ public class OrderMenuController implements IController {
         });
         showOrder.setOnAction(actionEvent -> {
             try {
-                openNewSceneshow(showOrderPath, showOrder);
+                openNewSceneShow(showOrderPath, showOrder);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -63,7 +63,7 @@ public class OrderMenuController implements IController {
         });
         updateOrder.setOnAction(actionEvent -> {
             try {
-                openNewSceneOrder(updateOrderPath, updateOrder);
+                openNewSceneUpdate(updateOrderPath, updateOrder);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -95,9 +95,13 @@ public class OrderMenuController implements IController {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 889, 690));
-    } public void openNewSceneshow(String path, Button button) throws IOException {
+    } public void openNewSceneShow(String path, Button button) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 1184, 801));
+    }public void openNewSceneUpdate(String path, Button button) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(path));
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root, 1006, 771));
     }
 }

@@ -82,8 +82,8 @@ public class UpdateRoomController implements IController {
                 roomInfo.setText(fasadRoom.findById(roomNumber).toString());
                 newPriceField.setText(fasadRoom.findById(roomNumber).getPrice().toString());
                 newCapacityField.setText(fasadRoom.findById(roomNumber).getCapacity().toString());
-               newChooseStars.getSelectionModel().select(3);
-              status.selectToggle(BUSY);
+                newChooseStars.getSelectionModel().select(3);
+                status.selectToggle(BUSY);
 
             } else roomInfo.setText("room not found");
         });

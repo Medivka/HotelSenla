@@ -86,7 +86,7 @@ public class OrderService implements IOrderService {
                 System.out.println("Order not found  \n");
             } else {
                 order.getGuests().add(guest);
-//                history.getGuests().add(guest);
+//               history.getGuests().add(guest);
             }
         } catch (DaoException e) {
             LOGGER.log(Level.WARNING, "addGuestInRoom failed %s ", orderNumber);
@@ -104,7 +104,6 @@ public class OrderService implements IOrderService {
                 System.out.println("Order not found  \n");
             } else {
                 order.getServices().add(service);
-
 //                history.getServices().add(service);
             }
         } catch (DaoException e) {
@@ -123,7 +122,6 @@ public class OrderService implements IOrderService {
                 System.out.println("Order not found  \n");
             } else {
                 order.getRooms().set(0, room);
-
 //                history.getRooms().set(0, room);
             }
         } catch (DaoException e) {
@@ -142,7 +140,7 @@ public class OrderService implements IOrderService {
 
             } else {
                 order.setDaysOfStay(daysOfStay);
-//                history.setDaysOfStay(daysOfStay);
+//               history.setDaysOfStay(daysOfStay);
             }
         } catch (DaoException e) {
             LOGGER.log(Level.WARNING, "changeDaysOfStay %s ", orderNumber);
@@ -181,9 +179,9 @@ public class OrderService implements IOrderService {
                 for (int i = 0; i < order.getServices().size(); i++) {
                     Service service = (Service) order.getServices().get(i);
                     amount = amount + service.getPrice();
-                    amount = amount * order.getDaysOfStay();
-                }
 
+                }
+                amount = amount * order.getDaysOfStay();
 
             }
             return amount;

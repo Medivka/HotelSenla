@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Guest;
+import model.Room;
 import model.Service;
 
 public class UpdateOrderController implements IController {
@@ -108,8 +109,21 @@ public class UpdateOrderController implements IController {
         findOrder.setOnAction(actionEvent -> {
             Integer idOrder = Integer.parseInt(findOrderFiled.getText());
             if (idOrder <= fasadOrder.showAllOrder().size() && idOrder > 0) {
-
                 orderLabel.setText(fasadOrder.findByID(idOrder).toString());
+                /**
+                 * авто-заполнение полей
+                 * формы
+                 */
+
+                Guest guest = (Guest) fasadOrder.findByID(idOrder).getGuests().get(0);
+                guestIdField.setText(guest.getGuestNumber().toString());
+                findGuestLabel.setText(guest.toString());
+                Room room = (Room) fasadOrder.findByID(idOrder).getRooms().get(0);
+                roomIdField.setText(room.getRoomNumber().toString());
+                Service service = (Service) fasadOrder.findByID(idOrder).getServices().get(0);
+                serviceIdField.setText(service.getId().toString());
+                findServiceLabel.setText(service.toString());
+                daysOfStayField.setText(fasadOrder.findByID(idOrder).getDaysOfStay().toString());
             } else orderLabel.setText("Order not found");
         });
         findService.setOnAction(actionEvent -> {
@@ -148,7 +162,7 @@ public class UpdateOrderController implements IController {
             orderLabel.setText(fasadOrder.findByID(Integer.parseInt(findOrderFiled.getText())).toString());
         });
         changeRoomButton.setOnAction(actionEvent -> {
-            fasadOrder.changeRoomInOrder(Integer.parseInt(findOrderFiled.getText()),fasadRoom.findById(Integer.parseInt(roomIdField.getText())));
+            fasadOrder.changeRoomInOrder(Integer.parseInt(findOrderFiled.getText()), fasadRoom.findById(Integer.parseInt(roomIdField.getText())));
             orderLabel.setText(fasadOrder.findByID(Integer.parseInt(findOrderFiled.getText())).toString());
 
         });
