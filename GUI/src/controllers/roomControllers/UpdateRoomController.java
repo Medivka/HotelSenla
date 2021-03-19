@@ -114,7 +114,7 @@ public class UpdateRoomController implements IController {
     }
 
 
-    String backFieldPath = "/resources/roomMenu.fxml";
+    private String backFieldPath = "/resources/roomMenu.fxml";
     FasadRoom fasadRoom = FasadRoom.getInstance();
 
     @Override

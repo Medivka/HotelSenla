@@ -74,9 +74,9 @@ public class ShowOrderController implements IController {
             }
         });
         orderDeleteButton.setOnAction(actionEvent -> {
-           fasadOrder.deleteOrder(Integer.parseInt(orderFindField.getText()));
+            fasadOrder.deleteOrder(Integer.parseInt(orderFindField.getText()));
             try {
-                openNewSceneshow(showOrderPath,orderDeleteButton);
+                openNewSceneshow(showOrderPath, orderDeleteButton);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -96,6 +96,7 @@ public class ShowOrderController implements IController {
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 445, 590));
     }
+
     public void openNewSceneshow(String path, Button button) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage window = (Stage) button.getScene().getWindow();

@@ -46,11 +46,11 @@ public class CreateNewGuestController implements IController {
         });
 
         createNewGuest.setOnAction(actionEvent -> {
-            String name=nameField.getText();
-            Integer age= Integer.parseInt(ageField.getText());
-            System.out.println("create Guest: "+ fasadGuest.createNewGuest(name,age));
+            String name = nameField.getText();
+            Integer age = Integer.parseInt(ageField.getText());
+            System.out.println("create Guest: " + fasadGuest.createNewGuest(name, age));
             try {
-                openNewScene(backFieldPath,createNewGuest);
+                openNewScene(backFieldPath, createNewGuest);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -58,8 +58,10 @@ public class CreateNewGuestController implements IController {
 
 
     }
-    FasadGuest fasadGuest= FasadGuest.getInstance();
-    String backFieldPath = "/resources/guestMenu.fxml";
+
+    FasadGuest fasadGuest = FasadGuest.getInstance();
+    private String backFieldPath = "/resources/guestMenu.fxml";
+
     @Override
     public void openNewScene(String path, Button button) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));

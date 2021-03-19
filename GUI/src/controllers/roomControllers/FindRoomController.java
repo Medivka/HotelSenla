@@ -54,14 +54,15 @@ public class FindRoomController implements IController {
 
         findRoom.setOnAction(actionEvent -> {
             Integer roomNumber = Integer.parseInt(enterRoomNumber.getText());
-            if(roomNumber<=fasadRoom.showAllRoom().size()&&roomNumber>0){
-            label.setText(fasadRoom.findById(roomNumber).toString())
+            if (roomNumber <= fasadRoom.showAllRoom().size() && roomNumber > 0) {
+                label.setText(fasadRoom.findById(roomNumber).toString())
 
-            ;}else label.setText("room not found");
+                ;
+            } else label.setText("room not found");
         });
     }
 
-    String backFieldPath = "/resources/roomMenu.fxml";
+    private String backFieldPath = "/resources/roomMenu.fxml";
     FasadRoom fasadRoom = FasadRoom.getInstance();
 
     @Override

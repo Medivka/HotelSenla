@@ -106,7 +106,7 @@ public class CreateNewOrderController implements IController {
 
     @FXML
     void initialize() {
-        LocalDate localDate= LocalDate.now();
+        LocalDate localDate = LocalDate.now();
         dataLabel.setText(String.valueOf(localDate));
         starsCombo.getItems().addAll(1, 2, 3, 4, 5);
         statusCombo.getItems().addAll(RoomStatus.FREE, RoomStatus.BUSY, RoomStatus.REPAIRS);
@@ -129,9 +129,9 @@ public class CreateNewOrderController implements IController {
         createNewGuest.setOnAction(actionEvent -> {
             String name = nameGuest.getText();
             Integer age = Integer.parseInt(ageGuest.getText());
-            Guest guest=fasadGuest.createNewGuest(name,age);
+            Guest guest = fasadGuest.createNewGuest(name, age);
             guestIdField.setText(guest.getGuestNumber().toString());
-            findGuestLabel.setText(guest+ "  created");
+            findGuestLabel.setText(guest + "  created");
 
         });
         findRoom.setOnAction(actionEvent -> {
@@ -146,7 +146,7 @@ public class CreateNewOrderController implements IController {
             Integer capacity = Integer.parseInt(capacityField.getText());
             Integer stars = starsCombo.getValue();
             RoomStatus roomStatus = statusCombo.getValue();
-            Room room=fasadRoom.createRoom(roomStatus, capacity, price, stars);
+            Room room = fasadRoom.createRoom(roomStatus, capacity, price, stars);
             roomIdField.setText(room.getRoomNumber().toString());
             findRoomLabel.setText(room + " created");
         });
@@ -159,7 +159,7 @@ public class CreateNewOrderController implements IController {
         createNewService.setOnAction(actionEvent -> {
             String name = nameService.getText();
             Integer price = Integer.parseInt(priceService.getText());
-            Service service=fasadService.createNewService(name,price);
+            Service service = fasadService.createNewService(name, price);
             serviceIdField.setText(service.getId().toString());
             findServiceLabel.setText(service + " created");
         });
@@ -170,7 +170,9 @@ public class CreateNewOrderController implements IController {
                         fasadService.findByID(Integer.parseInt(serviceIdField.getText())),
                         localDate,
                         Integer.parseInt(daysOfStayField.getText())).toString()));
-        };
+    }
+
+    ;
 
     FasadService fasadService = FasadService.getInstance();
     FasadGuest fasadGuest = FasadGuest.getInstance();

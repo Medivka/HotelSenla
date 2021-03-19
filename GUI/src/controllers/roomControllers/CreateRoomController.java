@@ -93,7 +93,7 @@ public class CreateRoomController implements IController {
 
     }
 
-    String backFieldPath = "/resources/roomMenu.fxml";
+    private String backFieldPath = "/resources/roomMenu.fxml";
     FasadRoom fasadRoom = FasadRoom.getInstance();
 
     @Override

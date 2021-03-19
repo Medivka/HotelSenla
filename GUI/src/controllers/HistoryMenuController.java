@@ -68,6 +68,7 @@ public class HistoryMenuController implements IController {
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 445, 590));
     }
+
     public void openNewSceneshow(String path, Button button) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage window = (Stage) button.getScene().getWindow();

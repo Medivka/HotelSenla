@@ -39,7 +39,7 @@ public class ShowAllGuestController implements IController {
     private TableColumn<Guest, Integer> idColumn;
 
     @FXML
-    private TableColumn<Guest, String > nameColumn;
+    private TableColumn<Guest, String> nameColumn;
 
     @FXML
     private TableColumn<Guest, Integer> ageColumn;
@@ -53,10 +53,10 @@ public class ShowAllGuestController implements IController {
 
     @FXML
     void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<Guest,Integer>("guestNumber"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Guest,String>("name"));
-        ageColumn.setCellValueFactory(new PropertyValueFactory<Guest,Integer>("age"));
-        ObservableList<Guest> guests= FXCollections.observableArrayList(fasadGuest.showAllGuests());
+        idColumn.setCellValueFactory(new PropertyValueFactory<Guest, Integer>("guestNumber"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Guest, String>("name"));
+        ageColumn.setCellValueFactory(new PropertyValueFactory<Guest, Integer>("age"));
+        ObservableList<Guest> guests = FXCollections.observableArrayList(fasadGuest.showAllGuests());
         tableGuest.setItems(guests);
 
         backField.setOnAction(actionEvent -> {
@@ -69,16 +69,18 @@ public class ShowAllGuestController implements IController {
         deleteButton.setOnAction(actionEvent -> {
             FasadGuest.getInstance().deleteGuest(Integer.parseInt(idguestField.getText()));
             try {
-                openNewScene(showAllGuestPath,deleteButton);
+                openNewScene(showAllGuestPath, deleteButton);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
 
     }
-    FasadGuest fasadGuest= FasadGuest.getInstance();
+
+    FasadGuest fasadGuest = FasadGuest.getInstance();
     private String showAllGuestPath = "/resources/guest/showAllGuest.fxml";
     private String backFieldPath = "/resources/guestMenu.fxml";
+
     @Override
     public void openNewScene(String path, Button button) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));

@@ -12,7 +12,7 @@ public class ConsoleFormatter {
     private static Logger LOGGER;
 
     static {
-        try (InputStream configReader = new FileInputStream("F:\\Hotel\\resources\\logger.properties")) {
+        try (InputStream configReader = new FileInputStream("resources/logger.properties")) {
             LogManager.getLogManager().readConfiguration(configReader);
 
         }catch (IOException e){

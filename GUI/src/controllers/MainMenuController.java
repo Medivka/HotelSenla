@@ -50,6 +50,7 @@ public class MainMenuController implements IController {
     private Button loadDataBase;
     @FXML
     private Label saveReadLAbel;
+
     @FXML
     void initialize() {
 
@@ -89,29 +90,29 @@ public class MainMenuController implements IController {
                 e.printStackTrace();
             }
         });
-      createNewOrder.setOnAction(actionEvent -> {
-          try {
-              openNewSceneOrder(createNewOrderPath,createNewOrder);
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
-      });
+        createNewOrder.setOnAction(actionEvent -> {
+            try {
+                openNewSceneOrder(createNewOrderPath, createNewOrder);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
-      saveDataBase.setOnAction(actionEvent -> {
-          FasadRoom.getInstance().writeInFile();
-          FasadService.getInstance().writeInFile();
-          FasadOrder.getInstance().writeInFile();
-          FasadGuest.getInstance().writeInFile();
+        saveDataBase.setOnAction(actionEvent -> {
+            FasadRoom.getInstance().writeInFile();
+            FasadService.getInstance().writeInFile();
+            FasadOrder.getInstance().writeInFile();
+            FasadGuest.getInstance().writeInFile();
 
-          saveReadLAbel.setText("Written!!!");
-      });
-      loadDataBase.setOnAction(actionEvent -> {
-          FasadRoom.getInstance().readFromFile();
-          FasadService.getInstance().readFromFile();
-          FasadOrder.getInstance().readFromFile();
-          FasadGuest.getInstance().readFromFile();
-          saveReadLAbel.setText("Loaded!!!");
-      });
+            saveReadLAbel.setText("Written!!!");
+        });
+        loadDataBase.setOnAction(actionEvent -> {
+            FasadRoom.getInstance().readFromFile();
+            FasadService.getInstance().readFromFile();
+            FasadOrder.getInstance().readFromFile();
+            FasadGuest.getInstance().readFromFile();
+            saveReadLAbel.setText("Loaded!!!");
+        });
 
     }
 
@@ -130,10 +131,11 @@ public class MainMenuController implements IController {
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, 445, 590));
     }
-        public void openNewSceneOrder(String path, Button button) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource(path));
-            Stage window = (Stage) button.getScene().getWindow();
-            window.setScene(new Scene(root, 889, 690));
-        }
+
+    public void openNewSceneOrder(String path, Button button) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(path));
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root, 889, 690));
+    }
 
 }
