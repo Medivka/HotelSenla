@@ -1,7 +1,6 @@
 package actions;
 
-import fasad.*;
-import service.GuestService;
+import com.fasad.*;
 
 import java.util.logging.Logger;
 

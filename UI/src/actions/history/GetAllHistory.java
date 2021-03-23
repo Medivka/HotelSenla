@@ -2,11 +2,9 @@ package actions.history;
 
 import actions.AbstractFasad;
 import actions.IAction;
-import exceptions.ServiceExeption;
+import com.exceptions.ServiceExeption;
 
-import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GetAllHistory extends AbstractFasad implements IAction {
     @Override

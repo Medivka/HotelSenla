@@ -48,12 +48,12 @@ public class Builder {
     private Menu createServiceMenu() {
         Menu serviceMenu = new Menu();
 
-        serviceMenu.addMenuItem(new MenuItem("Create new service", new CreateNewService(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Create new com.service", new CreateNewService(), rootMenu));
         serviceMenu.addMenuItem(new MenuItem("Find by id", new actions.service.FindById(), rootMenu));
-        serviceMenu.addMenuItem(new MenuItem("Show all service", new ShowAllService(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Show all com.service", new ShowAllService(), rootMenu));
         serviceMenu.addMenuItem(new MenuItem("Sorted by price", new actions.service.SortedByPrice(), rootMenu));
-        serviceMenu.addMenuItem(new MenuItem("Change service name", new ChangeServiceName(), rootMenu));
-        serviceMenu.addMenuItem(new MenuItem("Change service price", new ChangeServicePrice(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Change com.service name", new ChangeServiceName(), rootMenu));
+        serviceMenu.addMenuItem(new MenuItem("Change com.service price", new ChangeServicePrice(), rootMenu));
         return serviceMenu;
     }
 

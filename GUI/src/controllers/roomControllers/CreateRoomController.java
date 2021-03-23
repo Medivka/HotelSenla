@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import api.IController;
-import api.enums.RoomStatus;
-import fasad.FasadRoom;
+import interfaceController.IController;
+import com.api.enums.RoomStatus;
+import com.fasad.FasadRoom;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.Room;
+import com.model.Room;
 
 public class CreateRoomController implements IController {
 

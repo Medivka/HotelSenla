@@ -2,10 +2,9 @@ package actions.room;
 
 import actions.AbstractFasad;
 import actions.IAction;
-import api.enums.RoomStatus;
-import exceptions.ServiceExeption;
+import com.api.enums.RoomStatus;
+import com.exceptions.ServiceExeption;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 import java.util.logging.Level;
 

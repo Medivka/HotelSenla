@@ -1,8 +1,8 @@
 package controllers.roomControllers;
 
-import api.IController;
-import api.enums.RoomStatus;
-import fasad.FasadRoom;
+import interfaceController.IController;
+import com.api.enums.RoomStatus;
+import com.fasad.FasadRoom;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -20,7 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.Room;
+import com.model.Room;
 
 public class ShowAllRoomController implements IController {
 

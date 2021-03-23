@@ -1,0 +1,36 @@
+package com.api.service;
+
+import com.model.Guest;
+import com.model.Order;
+import com.model.Room;
+import com.model.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public interface IOrderService {
+
+
+    List<Order> showAllOrder();
+
+    Order createNewOrder(Guest guest, Room room, Service service, LocalDate localDate, Integer daysOfStay);
+
+    Order showOrder(Integer orderNumber);
+
+    void addGuestInRoom(Integer orderNumber, Guest guest);
+
+    void addInRoomService(Integer orderNumber, Service service);
+
+    void changeRoomInOrder(Integer orderNumber, Room room);
+
+    void changeDaysOfStay(Integer orderNumber, Integer daysOfStay);
+
+    Order findById(Integer orderId);
+
+    long getAllAmount(Integer orderNumber);
+
+    void deleteOrder(Integer id);
+
+    void setOrderList(List list);
+
+}

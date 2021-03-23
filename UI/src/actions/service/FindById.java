@@ -2,9 +2,8 @@ package actions.service;
 
 import actions.AbstractFasad;
 import actions.IAction;
-import exceptions.ServiceExeption;
+import com.exceptions.ServiceExeption;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 import java.util.logging.Level;
 
@@ -13,7 +12,7 @@ public class FindById extends AbstractFasad implements IAction {
     public void execute() {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter id service: ");
+            System.out.print("Enter id com.service: ");
             Integer id = scanner.nextInt();
             if (fasadService.findByID(id) == null) {
                 System.out.println("Service not found \n");

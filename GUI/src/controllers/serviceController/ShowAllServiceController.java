@@ -1,14 +1,12 @@
 package controllers.serviceController;
 
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import api.IController;
-import api.enums.RoomStatus;
-import fasad.FasadService;
+import interfaceController.IController;
+import com.fasad.FasadService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,8 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.Room;
-import model.Service;
+import com.model.Service;
 
 public class ShowAllServiceController  implements IController {
 

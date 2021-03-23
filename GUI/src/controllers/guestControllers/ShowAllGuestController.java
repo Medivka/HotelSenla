@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import api.IController;
-import fasad.FasadGuest;
+import interfaceController.IController;
+import com.fasad.FasadGuest;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.Guest;
+import com.model.Guest;
 
 public class ShowAllGuestController implements IController {
 

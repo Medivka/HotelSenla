@@ -2,15 +2,12 @@ package controllers.orderControllers;
 
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
 
-import api.IController;
-import fasad.FasadGuest;
-import fasad.FasadOrder;
-import fasad.FasadRoom;
-import fasad.FasadService;
+import interfaceController.IController;
+import com.fasad.FasadGuest;
+import com.fasad.FasadOrder;
+import com.fasad.FasadRoom;
+import com.fasad.FasadService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,9 +16,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Guest;
-import model.Room;
-import model.Service;
+import com.model.Guest;
+import com.model.Room;
+import com.model.Service;
 
 public class UpdateOrderController implements IController {
 

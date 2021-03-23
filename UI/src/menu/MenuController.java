@@ -1,7 +1,5 @@
 package menu;
 
-import exceptions.ServiceExeption;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

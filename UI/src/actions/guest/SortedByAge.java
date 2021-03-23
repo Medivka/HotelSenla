@@ -2,9 +2,8 @@ package actions.guest;
 
 import actions.AbstractFasad;
 import actions.IAction;
-import exceptions.ServiceExeption;
+import com.exceptions.ServiceExeption;
 
-import java.util.Scanner;
 import java.util.logging.Level;
 
 public class SortedByAge extends AbstractFasad implements IAction {

@@ -1,9 +1,9 @@
 package controllers.roomControllers;
 
 
-import api.IController;
+import interfaceController.IController;
 
-import fasad.FasadRoom;
+import com.fasad.FasadRoom;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

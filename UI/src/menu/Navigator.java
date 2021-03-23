@@ -1,10 +1,7 @@
 package menu;
 
 
-import exceptions.ServiceExeption;
-
-import java.util.ArrayList;
-import java.util.Collection;
+import com.exceptions.ServiceExeption;
 
 public class Navigator {
     private static Navigator instance;

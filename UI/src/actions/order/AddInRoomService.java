@@ -2,7 +2,7 @@ package actions.order;
 
 import actions.AbstractFasad;
 import actions.IAction;
-import exceptions.ServiceExeption;
+import com.exceptions.ServiceExeption;
 
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -21,7 +21,7 @@ public class AddInRoomService extends AbstractFasad implements IAction {
                 Integer serviceNumber = scanner.nextInt();
                 fasadOrder.AddInRoomService(orderNumber, fasadService.findByID(serviceNumber));
                 System.out.println(fasadOrder.findByID(orderNumber));
-                LOGGER.log(Level.INFO, String.format("AddInRoomService order: %s service: %s", orderNumber, serviceNumber));
+                LOGGER.log(Level.INFO, String.format("AddInRoomService order: %s com.service: %s", orderNumber, serviceNumber));
             }
         } catch (ServiceExeption e) {
             LOGGER.log(Level.WARNING, "AddInRoomService failed");

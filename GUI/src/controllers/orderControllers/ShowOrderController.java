@@ -1,12 +1,10 @@
 package controllers.orderControllers;
 
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
 
-import api.IController;
-import fasad.FasadOrder;
+import interfaceController.IController;
+import com.fasad.FasadOrder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,12 +13,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Guest;
-import model.Order;
-import model.Room;
-import model.Service;
+import com.model.Guest;
+import com.model.Order;
+import com.model.Room;
+import com.model.Service;
 
 
 public class ShowOrderController implements IController {
