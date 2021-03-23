@@ -31,7 +31,6 @@ public class RoomInputOutput {
         }
     }
 
-
     public void readFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(roomPathInFile))) {
             RoomDao.getInstance().setRoomList((ArrayList<Room>) ois.readObject());

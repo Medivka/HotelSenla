@@ -30,7 +30,6 @@ public class ServiceInputOutput {
         }
     }
 
-
     public void readFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(servicePathInFile))) {
             ServiceDao.getInstance().setServiceList((ArrayList<Service>) ois.readObject());
