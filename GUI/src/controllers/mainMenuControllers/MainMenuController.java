@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.inputOutput.GuestInputOutput;
-import com.inputOutput.OrderInputOutput;
-import com.inputOutput.RoomInputOutput;
-import com.inputOutput.ServiceInputOutput;
+import com.inputOutput.*;
 import interfaceController.IController;
 import com.fasad.FasadGuest;
 import com.fasad.FasadOrder;
@@ -102,18 +99,20 @@ public class MainMenuController implements IController {
         });
 
         saveDataBase.setOnAction(actionEvent -> {
-            RoomInputOutput.getInstance().writeInFile();
-            ServiceInputOutput.getInstance().writeInFile();
-            OrderInputOutput.getInstance().writeInFile();
-            GuestInputOutput.getInstance().writeInFile();
+          Serializer.getInstance().writeInFile("rooms");
+          Serializer.getInstance().writeInFile("orders");
+          Serializer.getInstance().writeInFile("guests");
+          Serializer.getInstance().writeInFile("services");
+
+
 
             saveReadLAbel.setText("Save!!!");
         });
         loadDataBase.setOnAction(actionEvent -> {
-            RoomInputOutput.getInstance().readFromFile();
-            ServiceInputOutput.getInstance().readFromFile();
-            OrderInputOutput.getInstance().readFromFile();
-            GuestInputOutput.getInstance().readFromFile();
+            Serializer.getInstance().readFromFile("rooms");
+            Serializer.getInstance().readFromFile("guests");
+            Serializer.getInstance().readFromFile("orders");
+            Serializer.getInstance().readFromFile("services");
             saveReadLAbel.setText("Load !!!");
         });
 
