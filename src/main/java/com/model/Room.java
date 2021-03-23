@@ -12,6 +12,24 @@ public class Room implements Serializable {
     private Integer price;
     private Integer stars;
 
+    public Room() {
+    }
+
+    public Room(RoomStatus roomStatus, Integer capacity, Integer price, Integer stars) {
+        this.roomStatus = roomStatus;
+        this.stars = stars;
+        this.capacity = capacity;
+        this.price = price;
+    }
+
+    public Room(Integer roomNumber, RoomStatus roomStatus, Integer capacity, Integer price, Integer stars) {
+        this.roomNumber = roomNumber;
+        this.roomStatus = roomStatus;
+        this.capacity = capacity;
+        this.stars = stars;
+        this.price = price;
+    }
+
 
     public Integer getStars() {
         return stars;
@@ -54,23 +72,7 @@ public class Room implements Serializable {
     }
 
 
-    public Room() {
-    }
 
-    public Room(RoomStatus roomStatus, Integer capacity, Integer price, Integer stars) {
-        this.roomStatus = roomStatus;
-        this.stars = stars;
-        this.capacity = capacity;
-        this.price = price;
-    }
-
-    public Room(Integer roomNumber, RoomStatus roomStatus, Integer capacity, Integer price, Integer stars) {
-        this.roomNumber = roomNumber;
-        this.roomStatus = roomStatus;
-        this.capacity = capacity;
-        this.stars = stars;
-        this.price = price;
-    }
 
     @Override
     public String toString() {

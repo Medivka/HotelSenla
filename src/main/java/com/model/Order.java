@@ -14,6 +14,18 @@ public class Order implements Serializable {
     private LocalDate localDate;
     private Integer daysOfStay;
 
+    public Order() {
+    }
+
+    public Order(Integer id, List guests, List rooms, List services, LocalDate localDate, Integer daysOfStay) {
+        this.id = id;
+        this.guests = guests;
+        this.rooms = rooms;
+        this.services = services;
+        this.localDate = localDate;
+        this.daysOfStay = daysOfStay;
+    }
+
 
     public Integer getId() {
         return id;
@@ -64,17 +76,7 @@ public class Order implements Serializable {
     }
 
 
-    public Order() {
-    }
 
-    public Order(Integer id, List guests, List rooms, List services, LocalDate localDate, Integer daysOfStay) {
-        this.id = id;
-        this.guests = guests;
-        this.rooms = rooms;
-        this.services = services;
-        this.localDate = localDate;
-        this.daysOfStay = daysOfStay;
-    }
 
     @Override
     public String toString() {

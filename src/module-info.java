@@ -1,6 +1,6 @@
 module hotel
 {
     requires java.logging;
-    requires GUI;
-    requires UI;
+    requires hotel.GUI;
+    requires hotel.UI;
 }

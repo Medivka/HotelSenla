@@ -14,6 +14,19 @@ public class History {
     private Integer daysOfStay;
 
 
+    public History() {
+    }
+
+    public History(Integer id, List guests, List rooms, List services, LocalDate localDate, Integer daysOfStay) {
+        this.id = id;
+        this.guests = guests;
+        this.rooms = rooms;
+        this.services = services;
+        this.localDate = localDate;
+        this.daysOfStay = daysOfStay;
+    }
+
+
     public Integer getId() {
         return id;
     }
@@ -62,18 +75,6 @@ public class History {
         this.daysOfStay = daysOfStay;
     }
 
-
-    public History() {
-    }
-
-    public History(Integer id, List guests, List rooms, List services, LocalDate localDate, Integer daysOfStay) {
-        this.id = id;
-        this.guests = guests;
-        this.rooms = rooms;
-        this.services = services;
-        this.localDate = localDate;
-        this.daysOfStay = daysOfStay;
-    }
 
     @Override
     public String toString() {

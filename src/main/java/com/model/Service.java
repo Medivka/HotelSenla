@@ -8,6 +8,21 @@ public class Service implements Serializable {
     private String name;
     private Integer price;
 
+    public Service() {
+    }
+
+    public Service(Integer id, String name, Integer price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public Service(String name, Integer price) {
+        this.name = name;
+        this.price = price;
+    }
+
+
     public String getName() {
         return name;
     }
@@ -30,20 +45,6 @@ public class Service implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Service() {
-    }
-
-    public Service(Integer id, String name, Integer price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
-
-    public Service(String name, Integer price) {
-        this.name = name;
-        this.price = price;
     }
 
     @Override

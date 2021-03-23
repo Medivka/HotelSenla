@@ -7,6 +7,20 @@ public class Guest implements Serializable {
     private Integer guestNumber;
     private Integer age;
 
+    public Guest() {
+    }
+
+    public Guest(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public Guest(Integer guestNumber, String name, Integer age) {
+        this.name = name;
+        this.guestNumber = guestNumber;
+        this.age = age;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,19 +45,7 @@ public class Guest implements Serializable {
         this.age = age;
     }
 
-    public Guest() {
-    }
 
-    public Guest(String name, Integer age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public Guest(Integer guestNumber, String name, Integer age) {
-        this.name = name;
-        this.guestNumber = guestNumber;
-        this.age = age;
-    }
 
 
     @Override
