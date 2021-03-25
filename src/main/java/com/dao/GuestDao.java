@@ -10,12 +10,13 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GuestDao implements IGuestDao {
 
     Guest guest;
     private static GuestDao instance;
-    private String guestPathInFile = "src/main/java/com/hdd/guests.dat";
+    private List<Guest> guestList = new ArrayList<>();
 
     private GuestDao() {
     }
@@ -27,11 +28,11 @@ public class GuestDao implements IGuestDao {
         return instance;
     }
 
-    public void setGuestList(ArrayList<Guest> guestList) {
+    public void setGuestList(List<Guest> guestList) {
         this.guestList = guestList;
     }
-    private ArrayList<Guest> guestList = new ArrayList<>();
-    public ArrayList<Guest> getGuestList() {
+
+    public List<Guest> getGuestList() {
         return new ArrayList<>(guestList);
     }
 

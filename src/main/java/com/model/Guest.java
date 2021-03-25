@@ -16,8 +16,8 @@ public class Guest implements Serializable {
     }
 
     public Guest(Integer guestNumber, String name, Integer age) {
-        this.name = name;
         this.guestNumber = guestNumber;
+        this.name = name;
         this.age = age;
     }
 

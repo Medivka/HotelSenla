@@ -2,9 +2,16 @@ package controllers.mainMenuControllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.dao.GuestDao;
+import com.dao.OrderDao;
 import com.inputOutput.*;
+import com.model.Guest;
+import com.model.Order;
+import com.model.Room;
+import com.model.Service;
 import interfaceController.IController;
 import com.fasad.FasadGuest;
 import com.fasad.FasadOrder;
@@ -99,25 +106,27 @@ public class MainMenuController implements IController {
         });
 
         saveDataBase.setOnAction(actionEvent -> {
-          Serializer.getInstance().writeInFile("rooms");
-          Serializer.getInstance().writeInFile("orders");
-          Serializer.getInstance().writeInFile("guests");
-          Serializer.getInstance().writeInFile("services");
-
-
-
+            Serializer.getInstance().write(orderPathInFile, FasadOrder.getInstance().showAllOrder());
+            Serializer.getInstance().write(guestPathInFile, FasadGuest.getInstance().showAllGuests());
+            Serializer.getInstance().write(roomPathInFile, FasadRoom.getInstance().showAllRoom());
+            Serializer.getInstance().write(servicePathInFile, FasadService.getInstance().showAllService());
             saveReadLAbel.setText("Save!!!");
         });
         loadDataBase.setOnAction(actionEvent -> {
-            Serializer.getInstance().readFromFile("rooms");
-            Serializer.getInstance().readFromFile("guests");
-            Serializer.getInstance().readFromFile("orders");
-            Serializer.getInstance().readFromFile("services");
+            FasadOrder.getInstance().setOrderList(Serializer.getInstance().read(orderPathInFile, Order.class));
+            FasadRoom.getInstance().setRoomList(Serializer.getInstance().read(roomPathInFile, Room.class));
+            FasadService.getInstance().setServiceList(Serializer.getInstance().read(servicePathInFile, Service.class));
+            FasadGuest.getInstance().setGuestList(Serializer.getInstance().read(guestPathInFile,Guest.class));
+
             saveReadLAbel.setText("Load !!!");
         });
 
     }
 
+    private String guestPathInFile = "src/main/java/com/hdd/guests.dat";
+    private String orderPathInFile = "src/main/java/com/hdd/orders.dat";
+    private String roomPathInFile = "src/main/java/com/hdd/rooms.dat";
+    private String servicePathInFile = "src/main/java/com/hdd/services.dat";
 
     private String createNewOrderPath = "/resources/order/createNewOrder.fxml";
     private String guestMenuPath = "/resources/guestMenu.fxml";

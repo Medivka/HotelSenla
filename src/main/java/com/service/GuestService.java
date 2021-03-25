@@ -91,7 +91,7 @@ public class GuestService implements IGuestService {
     @Override
     public List sortedByAge() {
         LOGGER.log(Level.INFO, String.format("sortedByAge"));
-        ArrayList<Guest> guests = new ArrayList<>(guestDao.getGuestList());
+       List<Guest> guests = new ArrayList<>(guestDao.getGuestList());
         guests.stream().sorted(((o1, o2) -> o1.getAge() - o2.getAge())).collect(Collectors.toList());
         return guests;
     }
@@ -99,7 +99,7 @@ public class GuestService implements IGuestService {
     @Override
     public List sortedById() {
         LOGGER.log(Level.INFO, String.format("sortedById"));
-        ArrayList<Guest> guests = new ArrayList<>(guestDao.getGuestList());
+       List<Guest> guests = new ArrayList<>(guestDao.getGuestList());
         guests.stream().sorted(((o1, o2) -> o1.getGuestNumber() - o2.getGuestNumber())).collect(Collectors.toList());
         return guests;
     }
@@ -107,7 +107,7 @@ public class GuestService implements IGuestService {
     @Override
     public List sortedByName() {
         LOGGER.log(Level.INFO, String.format("sortedByName"));
-        ArrayList<Guest> guests = guestDao.getGuestList();
+       List<Guest> guests = guestDao.getGuestList();
         guests.stream().sorted(Comparator.comparing(Guest::getName)).collect(Collectors.toList());
         return guests;
     }
@@ -118,7 +118,7 @@ public class GuestService implements IGuestService {
     }
     @Override
     public void setGuestLIst(List list) {
-        guestDao.setGuestList((ArrayList<Guest>) list);
+        guestDao.setGuestList(list);
     }
 
 
