@@ -1,18 +1,7 @@
 package com.inputOutput;
 
-import com.dao.GuestDao;
-import com.dao.OrderDao;
-import com.dao.RoomDao;
-import com.dao.ServiceDao;
 import com.fasad.FasadGuest;
-import com.model.Guest;
-import com.model.Order;
-import com.model.Room;
-import com.model.Service;
-
-
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Serializer {
@@ -45,7 +34,5 @@ public class Serializer {
         }
         FasadGuest.getInstance().setGuestList(lists);
         return lists;
-
     }
-
 }
