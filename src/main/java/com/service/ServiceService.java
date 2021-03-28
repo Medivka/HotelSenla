@@ -39,7 +39,7 @@ public class ServiceService implements IServiceService {
             Service service = serviceDao.findById(id);
             LOGGER.log(Level.INFO, String.format("Find by Id %s", id));
             if (service == null) {
-                System.out.println("com.service is not found  \n");
+
             }
             return service;
         } catch (DaoException e) {
@@ -106,6 +106,7 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void deleteService(Integer id){
+        LOGGER.log(Level.INFO, String.format("delete service %s",id));
         serviceDao.delete(id);
     }
 
@@ -124,6 +125,7 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void setServiceList(List list) {
+        LOGGER.log(Level.INFO, String.format("setServiceList"));
         serviceDao.setServiceList(list);
     }
 

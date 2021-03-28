@@ -33,9 +33,9 @@ public class RoomService implements IRoomService {
 
     @Override
     public void setRoomList(List list) {
+        LOGGER.log(Level.INFO, String.format("setRoomList"));
         roomDao.setRoomList((ArrayList<Room>) list);
     }
-
 
 
     @Override
@@ -62,6 +62,11 @@ public class RoomService implements IRoomService {
             LOGGER.log(Level.WARNING, "showAllRoom");
             throw new ServiceExeption("showAllRoom", e);
         }
+    }
+
+    @Override
+    public void deleteRoom(Integer idRoom) {
+        roomDao.delete(idRoom);
     }
 
     @Override

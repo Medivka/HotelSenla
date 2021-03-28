@@ -1,6 +1,7 @@
 package com.service;
 
 
+import com.api.enums.GuestGender;
 import com.api.service.IGuestService;
 import com.dao.GuestDao;
 import com.exceptions.DaoException;
@@ -55,9 +56,9 @@ public class GuestService implements IGuestService {
     }
 
     @Override
-    public Guest createGuest(String name, Integer age) {
-        Guest guest = new Guest(IdGenerator.generateGuestId(), name, age);
-        LOGGER.log(Level.INFO, String.format("createNewGuest id: %s,name: %s, age: %s ", guest.getGuestNumber(), name, age));
+    public Guest createGuest(String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address) {
+        Guest guest = new Guest(IdGenerator.generateGuestId(), name,lastName, age,phone,guestGender,email,address);
+        LOGGER.log(Level.INFO, String.format("createNewGuest id: %s,name: %s, lastName: %s, age: %s, phone: %s, guestGender: %s, email: %s, address: %s. ", guest.getGuestNumber(), name,lastName, age,phone,guestGender,email,address));
         guestDao.save(guest);
         return guest;
     }
@@ -114,10 +115,12 @@ public class GuestService implements IGuestService {
 
     @Override
     public void deleteGuest(Integer id){
+        LOGGER.log(Level.INFO, String.format("delete guest %s",id));
         guestDao.delete(id);
     }
     @Override
     public void setGuestLIst(List list) {
+        LOGGER.log(Level.INFO, String.format("setGuestList"));
         guestDao.setGuestList(list);
     }
 

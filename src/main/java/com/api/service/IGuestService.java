@@ -1,5 +1,6 @@
 package com.api.service;
 
+import com.api.enums.GuestGender;
 import com.model.Guest;
 
 import java.util.List;
@@ -9,7 +10,9 @@ public interface IGuestService {
 
     List showAllGuests();
 
-    Guest createGuest(String name, Integer age);
+
+
+    Guest createGuest(String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address);
 
     void changeGuestName(Integer idGuest, String name);
 

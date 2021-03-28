@@ -16,8 +16,8 @@ public class FasadService {
         return instance;
     }
 
-    public Service findByID(Integer idservice) {
-        return serviceService.findById(idservice);
+    public Service findById(Integer idService) {
+        return serviceService.findById(idService);
     }
 
     public List<Service> showAllService() {
@@ -48,5 +48,7 @@ public class FasadService {
     public void deleteService(Integer id){
         serviceService.deleteService(id);
     }
+
+
 
 }

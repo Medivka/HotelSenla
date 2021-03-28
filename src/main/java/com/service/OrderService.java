@@ -36,6 +36,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public List<Order> showAllOrder() {
+        LOGGER.log(Level.INFO, String.format("show all Orders"));
         return new ArrayList<>(orderDao.getOrderList());
     }
 
@@ -190,11 +191,13 @@ public class OrderService implements IOrderService {
     }
     @Override
     public void deleteOrder(Integer id){
+        LOGGER.log(Level.INFO, String.format("delete Order %s", id));
         orderDao.delete(id);
     }
 
     @Override
     public void setOrderList(List list) {
+        LOGGER.log(Level.INFO, String.format("setOrderList"));
         orderDao.setOrderList(list);
     }
 

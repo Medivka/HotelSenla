@@ -1,11 +1,18 @@
 package com.model;
 
+import com.api.enums.GuestGender;
+
 import java.io.Serializable;
 
 public class Guest implements Serializable {
-    private String name;
     private Integer guestNumber;
+    private String name;
+    private String lastName;
     private Integer age;
+    private String phone;
+    private GuestGender guestGender;
+    private String email;
+    private String address;
 
     public Guest() {
     }
@@ -19,6 +26,57 @@ public class Guest implements Serializable {
         this.guestNumber = guestNumber;
         this.name = name;
         this.age = age;
+    }
+
+    public Guest(Integer guestNumber, String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address) {
+        this.guestNumber = guestNumber;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.phone = phone;
+        this.guestGender = guestGender;
+        this.email = email;
+        this.address = address;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public GuestGender getGuestGender() {
+        return guestGender;
+    }
+
+    public void setGuestGender(GuestGender guestGender) {
+        this.guestGender = guestGender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getName() {
@@ -46,14 +104,18 @@ public class Guest implements Serializable {
     }
 
 
-
-
     @Override
     public String toString() {
-        return " Guest " + guestNumber + " : " +
-                name +
-                ", age=" + age
-                ;
+        return "Guest:" + guestNumber + "\n"+
+                 "name:" + name +"\n"+
+
+
+                "lastName: " + lastName +"\n"+
+                "age: " + age +"\n"+
+                "phone: " + phone +"\n"+
+                "guestGender: " + guestGender+"\n"+
+                "email: " + email  +"\n"+
+                "address: " + address  +"\n";
     }
 }
 

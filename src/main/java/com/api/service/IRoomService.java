@@ -14,6 +14,8 @@ public interface IRoomService {
 
    List showAllRoom();
 
+    void deleteRoom(Integer idRoom);
+
     Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars);
 
     void changeRoomStars(Integer idRoom, Integer stars);

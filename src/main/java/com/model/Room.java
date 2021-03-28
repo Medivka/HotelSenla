@@ -72,14 +72,12 @@ public class Room implements Serializable {
     }
 
 
-
-
     @Override
     public String toString() {
-        return "Room " + roomNumber +
-
-                ": roomStatus=" + roomStatus +
-                ", capacity=" + capacity + ", stars=" + stars +
-                ", price=" + price;
+        return "Room " + roomNumber + "\n" +
+                "roomStatus= " + roomStatus + "\n" +
+                "capacity= " + capacity + "\n" +
+                "stars= " + stars + "\n" +
+                "price= " + price+ "\n";
     }
 }

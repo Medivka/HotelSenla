@@ -1,9 +1,13 @@
 package com.fasad;
 
 
+import com.api.enums.GuestGender;
 import com.model.Guest;
+import com.model.Room;
+import com.model.Service;
 import com.service.GuestService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class FasadGuest {
@@ -30,8 +34,8 @@ public class FasadGuest {
         return guestService.showAllGuests();
     }
 
-    public Guest createNewGuest(String name, Integer age) {
-        return guestService.createGuest(name, age);
+    public Guest createNewGuest(String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address) {
+        return guestService.createGuest(name,lastName,age,phone,guestGender,email,address);
     }
 
     public void changeGuestAge(Integer idGuest, Integer Age) {
@@ -57,6 +61,7 @@ public class FasadGuest {
     public void setGuestList(List list) {
         guestService.setGuestLIst(list);
     }
+
 
 
 }
