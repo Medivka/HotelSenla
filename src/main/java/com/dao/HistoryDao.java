@@ -8,9 +8,12 @@ import com.model.Order;
 import java.util.ArrayList;
 
 public class HistoryDao implements IHistoryDao {
-    History history;
+   Order order;
     private static HistoryDao instance;
-    private ArrayList<History> historyList = new ArrayList<>();
+
+
+
+    private ArrayList<Order> historyList = new ArrayList<>();
 
     private HistoryDao() {
     }
@@ -23,26 +26,30 @@ public class HistoryDao implements IHistoryDao {
         return instance;
     }
 
-    public ArrayList<History> getHistoryList() {
-        return new ArrayList<>(historyList);
+    public ArrayList<Order> getHistoryList() {
+        return historyList;
+    }
+
+    public void setHistoryList(ArrayList<Order> historyList) {
+        this.historyList = historyList;
     }
 
 
     @Override
-    public void save(History history) {
-        historyList.add(history);
+    public void save(Order  order) {
+        historyList.add(order);
     }
 
     @Override
-    public History findById(Integer id) {
+    public Order findById(Integer id) {
         try {
             for (int i = 0; i < historyList.size(); i++) {
-                History history = historyList.get(i);
-                if (id.equals(history.getId())) {
-                    return history;
+                Order order = historyList.get(i);
+                if (id.equals(order.getId())) {
+                    return order;
                 }
             }
-            return history;
+            return order;
         } catch (DaoException e) {
             throw e;
         }
@@ -53,8 +60,8 @@ public class HistoryDao implements IHistoryDao {
         try {
             if (id < historyList.size() + 1) {
                 for (int i = 0; i < historyList.size(); i++) {
-                    History history = historyList.get(i);
-                    if (id.equals(history.getId())) {
+                    Order order = historyList.get(i);
+                    if (id.equals(order.getId())) {
                         historyList.remove(i);
                     }
                 }

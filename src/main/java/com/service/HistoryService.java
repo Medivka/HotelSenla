@@ -6,6 +6,7 @@ import com.exceptions.DaoException;
 import com.exceptions.ServiceExeption;
 import com.model.Guest;
 import com.model.History;
+import com.model.Order;
 import com.model.Room;
 
 import java.util.ArrayList;
@@ -32,8 +33,12 @@ public class HistoryService implements IHistoryService {
     }
 
 
+    public void setHistoryList(List list){
+        historyDao.setHistoryList((ArrayList<Order>) list);
+    }
+
     @Override
-    public List<History> getAllHistory() {
+    public List<Order> getAllHistory() {
 
         try {
             return new ArrayList<>(historyDao.getHistoryList());
@@ -48,11 +53,11 @@ public class HistoryService implements IHistoryService {
         try {
             LOGGER.log(Level.INFO, String.format("getThreeLastGuest  room: %s", roomID));
             List<Guest> threeLastGuest = new ArrayList<>();
-            List<History> historyList = new ArrayList<>(historyDao.getHistoryList());
+            List<Order> historyList = new ArrayList<>(historyDao.getHistoryList());
             for (int i = 0; i < historyList.size(); i++) {
-                History history = historyList.get(i);
-                List<Guest> guestList = history.getGuests();
-                List<Room> roomList = history.getRooms();
+                Order order = historyList.get(i);
+                List<Guest> guestList = order.getGuests();
+                List<Room> roomList = order.getRooms();
 
                 for (int k = 0; k < roomList.size(); k++) {
                     Room room = roomList.get(k);
@@ -76,11 +81,11 @@ public class HistoryService implements IHistoryService {
         try {
             LOGGER.log(Level.INFO, String.format("showAllRoomGuest: %s", idGuest));
             List<Room> rooms = new ArrayList<>();
-            List<History> historyList = new ArrayList<>(historyDao.getHistoryList());
+            List<Order> historyList = new ArrayList<>(historyDao.getHistoryList());
             for (int i = 0; i < historyList.size(); i++) {
-                History history = historyList.get(i);
-                List<Guest> guest = history.getGuests();
-                List<Room> room = history.getRooms();
+                Order order = historyList.get(i);
+                List<Guest> guest = order.getGuests();
+                List<Room> room = order.getRooms();
                 for (int k = 0; k < guest.size(); k++) {
                     Guest guest1 = guest.get(k);
                     if (guest1 == null) {

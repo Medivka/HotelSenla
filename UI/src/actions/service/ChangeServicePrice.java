@@ -14,13 +14,13 @@ public class ChangeServicePrice extends AbstractFasad implements IAction {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter id com.service: ");
             Integer id = scanner.nextInt();
-            if (fasadService.findByID(id) == null) {
+            if (fasadService.findById(id) == null) {
                 System.out.println("Service not found \n");
             } else {
                 System.out.print("Enter new price: ");
                 Integer price = scanner.nextInt();
                 fasadService.changeServicePrice(id, price);
-                System.out.println(fasadService.findByID(id));
+                System.out.println(fasadService.findById(id));
                 LOGGER.log(Level.INFO, String.format("ChangeServicePrice id: %s  new price: %s", id, price));
             }
         } catch (ServiceExeption e) {

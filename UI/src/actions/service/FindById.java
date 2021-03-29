@@ -14,10 +14,10 @@ public class FindById extends AbstractFasad implements IAction {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter id com.service: ");
             Integer id = scanner.nextInt();
-            if (fasadService.findByID(id) == null) {
+            if (fasadService.findById(id) == null) {
                 System.out.println("Service not found \n");
             } else {
-                System.out.println(fasadService.findByID(id));
+                System.out.println(fasadService.findById(id));
                 LOGGER.log(Level.INFO, String.format("FindById : %s", id));
             }
         } catch (ServiceExeption e) {

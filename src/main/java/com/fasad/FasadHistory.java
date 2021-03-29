@@ -2,6 +2,7 @@ package com.fasad;
 
 import com.model.Guest;
 import com.model.History;
+import com.model.Order;
 import com.model.Room;
 import com.service.HistoryService;
 
@@ -20,7 +21,10 @@ public class FasadHistory {
     }
 
 
-    public List<History> getAllHistory() {
+    public void setHistoryList(List list){
+        historyService.setHistoryList(list);
+    }
+    public List<Order> getAllHistory() {
         return historyService.getAllHistory();
     }
 

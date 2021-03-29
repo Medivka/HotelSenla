@@ -50,10 +50,10 @@ public class OrderService implements IOrderService {
         ArrayList<Service> services = new ArrayList<>();
         services.add(service);
         Order order = new Order(IdGenerator.generateOrderId(), guests, rooms, services, localDate, daysOfStay);
-        History history = new History(IdGenerator.generateHistoryId(), guests, rooms, services, localDate, daysOfStay);
+
         LOGGER.log(Level.INFO, String.format("createNewOrder id: %s, guest: %s, room: %s, com.service: %s, Date: %s, DayOfStay: %s ", order.getId(), guest, room, service, localDate, daysOfStay));
         orderDao.save(order);
-        historyDao.save(history);
+        historyDao.save(order);
         return order;
     }
 
@@ -79,13 +79,13 @@ public class OrderService implements IOrderService {
     public void addGuestInRoom(Integer orderNumber, Guest guest) {
         try {
             LOGGER.log(Level.INFO, String.format("addGuestInRoom order: %s, guest: %s", guest, orderNumber));
-            History history = historyDao.findById(orderNumber);
+
             Order order = orderDao.findById(orderNumber);
             if (order == null) {
                 System.out.println("Order not found  \n");
             } else {
                 order.getGuests().add(guest);
-//               history.getGuests().add(guest);
+                historyDao.findById(orderNumber).getGuests().add(guest);
             }
         } catch (DaoException e) {
             LOGGER.log(Level.WARNING, "addGuestInRoom failed %s ", orderNumber);
@@ -97,13 +97,14 @@ public class OrderService implements IOrderService {
     public void addInRoomService(Integer orderNumber, Service service) {
         try {
             LOGGER.log(Level.INFO, String.format("addInRoomService order: %s, com.service: %s", orderNumber, service));
-            History history = historyDao.findById(orderNumber);
+
             Order order = orderDao.findById(orderNumber);
             if (order == null) {
                 System.out.println("Order not found  \n");
             } else {
                 order.getServices().add(service);
-//                history.getServices().add(com.service);
+                historyDao.findById(orderNumber).getServices().add(service);
+
             }
         } catch (DaoException e) {
             LOGGER.log(Level.WARNING, "addInRoomService failed %s ", orderNumber);
@@ -116,12 +117,13 @@ public class OrderService implements IOrderService {
         try {
             LOGGER.log(Level.INFO, String.format("changeRoomInOrder order: %s, room: %s", orderNumber, room));
             Order order = orderDao.findById(orderNumber);
-            History history = historyDao.findById(orderNumber);
+
             if (order == null) {
                 System.out.println("Order not found  \n");
             } else {
                 order.getRooms().set(0, room);
-//                history.getRooms().set(0, room);
+                historyDao.findById(orderNumber).getRooms().set(0,room);
+
             }
         } catch (DaoException e) {
             LOGGER.log(Level.WARNING, "changeRoomInOrder %s ", orderNumber);
@@ -133,13 +135,14 @@ public class OrderService implements IOrderService {
     public void changeDaysOfStay(Integer orderNumber, Integer daysOfStay) {
         try {
             LOGGER.log(Level.INFO, String.format("changeDaysOfStay order: %s, daysOfStay: %s", orderNumber, daysOfStay));
-            History history = historyDao.findById(orderNumber);
+
             Order order = orderDao.findById(orderNumber);
             if (order == null) {
 
             } else {
                 order.setDaysOfStay(daysOfStay);
-//               history.setDaysOfStay(daysOfStay);
+                historyDao.findById(orderNumber).setDaysOfStay(daysOfStay);
+
             }
         } catch (DaoException e) {
             LOGGER.log(Level.WARNING, "changeDaysOfStay %s ", orderNumber);

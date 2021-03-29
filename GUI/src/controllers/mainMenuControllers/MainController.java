@@ -3,10 +3,7 @@ package controllers.mainMenuControllers;
 
 import com.api.enums.GuestGender;
 import com.api.enums.RoomStatus;
-import com.fasad.FasadGuest;
-import com.fasad.FasadOrder;
-import com.fasad.FasadRoom;
-import com.fasad.FasadService;
+import com.fasad.*;
 import com.inputOutput.Serializer;
 import com.model.Guest;
 import com.model.Order;
@@ -302,6 +299,24 @@ public class MainController implements IController {
     private Tab ServiceMenuTab;
     @FXML
     private Tab historyMenuTab;
+    @FXML
+    private Label historyInfoLabel;
+
+    @FXML
+    private Button getAllHistoryButton;
+
+    @FXML
+    private TextField enterRoomHistoryTextField;
+
+    @FXML
+    private Button getLastFreeGuestInRoomButton;
+
+    @FXML
+    private TextField enterGuestIdHistoryTextField;
+
+    @FXML
+    private Button showAllRoomGuestButton;
+
 
     @FXML
     void initialize() {
@@ -315,6 +330,7 @@ public class MainController implements IController {
             Serializer.getInstance().write(guestPathInFile, FasadGuest.getInstance().showAllGuests());
             Serializer.getInstance().write(roomPathInFile, FasadRoom.getInstance().showAllRoom());
             Serializer.getInstance().write(servicePathInFile, FasadService.getInstance().showAllService());
+            Serializer.getInstance().write(historyPathInFile, FasadHistory.getInstance().getAllHistory());
             refreshTableService();
             refreshOrderTable();
             refreshGuestTable();
@@ -325,7 +341,9 @@ public class MainController implements IController {
             FasadOrder.getInstance().setOrderList(Serializer.getInstance().read(orderPathInFile, Order.class));
             FasadRoom.getInstance().setRoomList(Serializer.getInstance().read(roomPathInFile, Room.class));
             FasadService.getInstance().setServiceList(Serializer.getInstance().read(servicePathInFile, Service.class));
+            FasadHistory.getInstance().setHistoryList(Serializer.getInstance().read(historyPathInFile, Order.class));
             FasadGuest.getInstance().setGuestList(Serializer.getInstance().read(guestPathInFile, Guest.class));
+
             loadSaveLabel.setText("Load!!!");
             refreshTableService();
             refreshOrderTable();
@@ -335,7 +353,7 @@ public class MainController implements IController {
 
         });
         findOrderButton.setOnAction(actionEvent -> {
-            if (Integer.parseInt(enterOrderIDTextField.getText()) <= fasadOrder.showAllOrder().size() + 1 && Integer.parseInt(enterOrderIDTextField.getText()) > 0) {
+            if (Integer.parseInt(enterOrderIDTextField.getText()) <= fasadOrder.showAllOrder().size()  && Integer.parseInt(enterOrderIDTextField.getText()) > 0) {
                 Order order = FasadOrder.getInstance().findByID(Integer.parseInt(enterOrderIDTextField.getText()));
                 orderInfoLabel.setText(order.toString());
                 guestInfoOrderLabel.setText(order.getGuests().toString());
@@ -376,14 +394,20 @@ public class MainController implements IController {
         });
 
         findGuestOrderButton.setOnAction(actionEvent -> {
+            if(Integer.parseInt(enterGuestIdOrderTextField.getText())<=fasadGuest.showAllGuests().size()&&Integer.parseInt(enterGuestIdOrderTextField.getText()  )>0)
             guestInfoOrderLabel.setText(fasadGuest.findById(Integer.parseInt(enterGuestIdOrderTextField.getText())).toString());
+            else guestInfoOrderLabel.setText("guest not found");
 
         });
         findRoomOrderButton.setOnAction(actionEvent -> {
+            if(Integer.parseInt(enterRoomIdOrderTextField.getText())<=fasadRoom.showAllRoom().size()&& Integer.parseInt(enterRoomIdOrderTextField.getText())>0)
             roomInfoOrderLabel.setText(fasadRoom.findById(Integer.parseInt(enterRoomIdOrderTextField.getText())).toString());
+            else roomInfoOrderLabel.setText("room not found");
         });
         findServiceOrderButton.setOnAction(actionEvent -> {
+            if(Integer.parseInt(enterServiceIDOrderTextFiled.getText())<=fasadService.showAllService().size()&&Integer.parseInt(enterServiceIDOrderTextFiled.getText())>0)
             serviceInfoOrderLabel.setText(fasadService.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())).toString());
+            else serviceInfoOrderLabel.setText("service not found");
         });
         addServiceOrderButton.setOnAction(actionEvent -> {
             fasadOrder.AddInRoomService(Integer.parseInt(enterOrderIDTextField.getText()), fasadService.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())));
@@ -563,7 +587,18 @@ public class MainController implements IController {
         exitButton.setOnAction(actionEvent -> {
             System.exit(0);
         });
-
+        /**
+         * history page
+         */
+        getAllHistoryButton.setOnAction(actionEvent -> {
+            historyInfoLabel.setText(fasadHistory.getAllHistory().toString());
+        });
+        getLastFreeGuestInRoomButton.setOnAction(actionEvent -> {
+            historyInfoLabel.setText(fasadHistory.getLastThreeGuestInRoom(Integer.parseInt(enterRoomHistoryTextField.getText())).toString());
+        });
+        showAllRoomGuestButton.setOnAction(actionEvent -> {
+            historyInfoLabel.setText(fasadHistory.showAllRoomGuest(Integer.parseInt(enterGuestIdHistoryTextField.getText())).toString());
+        });
 
     }
 
@@ -572,6 +607,7 @@ public class MainController implements IController {
     FasadGuest fasadGuest = FasadGuest.getInstance();
     FasadRoom fasadRoom = FasadRoom.getInstance();
     FasadOrder fasadOrder = FasadOrder.getInstance();
+    FasadHistory fasadHistory = FasadHistory.getInstance();
     LocalDate localDate = LocalDate.now();
 
     private String mainPath = "/resources/Main.fxml";
@@ -580,6 +616,8 @@ public class MainController implements IController {
     private String orderPathInFile = "src/main/java/com/hdd/orders.dat";
     private String roomPathInFile = "src/main/java/com/hdd/rooms.dat";
     private String servicePathInFile = "src/main/java/com/hdd/services.dat";
+    private String historyPathInFile = "src/main/java/com/hdd/history.dat";
+
 
     public void refreshGuestTable() {
         idGuestColumn.setCellValueFactory(new PropertyValueFactory<Guest, Integer>("guestNumber"));

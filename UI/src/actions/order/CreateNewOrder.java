@@ -25,7 +25,7 @@ public class CreateNewOrder extends AbstractFasad implements IAction {
             Integer daysOfStay = scanner.nextInt();
             System.out.println(fasadOrder.createNewOrder(fasadGuest.findById(guestId)
                     , fasadRoom.findById(roomId)
-                    , fasadService.findByID(serviceId)
+                    , fasadService.findById(serviceId)
                     , localDate
                     , daysOfStay
             ) + "\n");

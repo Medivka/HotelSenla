@@ -14,13 +14,13 @@ public class ChangeServiceName extends AbstractFasad implements IAction {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter id com.service: ");
             Integer id = scanner.nextInt();
-            if (fasadService.findByID(id) == null) {
+            if (fasadService.findById(id) == null) {
                 System.out.println("Service not found \n");
             } else {
                 System.out.print("Enter new name: ");
                 String name = scanner.next();
                 fasadService.changeServiceName(id, name);
-                System.out.println(fasadService.findByID(id));
+                System.out.println(fasadService.findById(id));
                 LOGGER.log(Level.INFO, String.format("ChangeServiceName  id:%s  name: %s", id, name));
             }
         } catch (ServiceExeption e) {

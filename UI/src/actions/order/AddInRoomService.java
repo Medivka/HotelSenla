@@ -19,7 +19,7 @@ public class AddInRoomService extends AbstractFasad implements IAction {
             } else {
                 System.out.print("Enter Service ID: ");
                 Integer serviceNumber = scanner.nextInt();
-                fasadOrder.AddInRoomService(orderNumber, fasadService.findByID(serviceNumber));
+                fasadOrder.AddInRoomService(orderNumber, fasadService.findById(serviceNumber));
                 System.out.println(fasadOrder.findByID(orderNumber));
                 LOGGER.log(Level.INFO, String.format("AddInRoomService order: %s com.service: %s", orderNumber, serviceNumber));
             }
