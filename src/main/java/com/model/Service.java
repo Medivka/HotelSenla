@@ -51,7 +51,7 @@ public class Service implements Serializable {
     public String toString() {
         return "Service " + id + " :" +
                 name +
-                "price= " + price+"\n"
+                "   price= " + price+"\n"
                 ;
     }
 

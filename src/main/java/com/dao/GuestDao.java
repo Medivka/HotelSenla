@@ -40,7 +40,7 @@ public class GuestDao implements IGuestDao {
     }
 
     public List<Guest> getGuestList() {
-        String sql = "select * from senlahotel.guests";
+        String sql = "select * from "+Constants.GUEST_TABLE;
         try {
             ArrayList<Guest> guests = new ArrayList<>();
             ResultSet rs = DatabaseHandler.getInstance().getDbConnection().createStatement().executeQuery(sql);
@@ -72,7 +72,7 @@ public class GuestDao implements IGuestDao {
 
     @Override
     public void delete(Integer id) {
-        String sql = "delete from senlahotel.guests where guestNumber=? ";
+        String sql = "delete from "+Constants.GUEST_TABLE+" where guestNumber=? ";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);
@@ -122,7 +122,7 @@ public class GuestDao implements IGuestDao {
     @Override
     public Guest findById(Integer id) {
         Guest guest = new Guest();
-        String sql = "Select * from senlahotel.guests where guestNumber=?";
+        String sql = "Select * from "+Constants.GUEST_TABLE+" where guestNumber=?";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);

@@ -4,7 +4,7 @@ public class Constants {
     public static final String ORDER_TABLE="orders";
     public static final String GUEST_TABLE="senlahotel.guests";
     public static final String ROOM_TABLE="rooms";
-    public static final String SERVICE_TABLE="services";
+    public static final String SERVICE_TABLE="senlahotel.service";
     public static final String HISTORY_TABLE="history";
 
 
@@ -17,6 +17,9 @@ public class Constants {
     public static final String GUEST_EMAIL="email";
     public static final String GUEST_ADDRESS="address";
 
+    public static final String SERVICE_ID="id";
+    public static final String SERVICE_NAME="name";
+    public static final String SERVICE_PRICE="price";
 
 
 }
