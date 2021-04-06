@@ -61,7 +61,7 @@ public class FasadGuest {
     public void setGuestList(List list) {
         guestService.setGuestLIst(list);
     }
-
+public void updateGuest(Guest guest){guestService.updateGuest(guest);}
 
 
 }

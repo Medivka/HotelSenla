@@ -64,6 +64,11 @@ public class GuestService implements IGuestService {
     }
 
     @Override
+    public void updateGuest(Guest guest){
+        GuestDao.getInstance().update(guest);
+    }
+
+    @Override
     public void changeGuestName(Integer idGuest, String name) {
         try {
             Guest guest = guestDao.findById(idGuest);

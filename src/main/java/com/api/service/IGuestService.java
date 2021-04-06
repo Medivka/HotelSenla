@@ -14,6 +14,8 @@ public interface IGuestService {
 
     Guest createGuest(String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address);
 
+    void updateGuest(Guest guest);
+
     void changeGuestName(Integer idGuest, String name);
 
     void changeGuestAge(Integer idGuest, Integer age);

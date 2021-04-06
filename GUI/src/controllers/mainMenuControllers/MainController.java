@@ -3,6 +3,7 @@ package controllers.mainMenuControllers;
 
 import com.api.enums.GuestGender;
 import com.api.enums.RoomStatus;
+import com.databaseControllers.DatabaseHandler;
 import com.fasad.*;
 import com.inputOutput.Serializer;
 import com.model.Guest;
@@ -353,7 +354,7 @@ public class MainController implements IController {
 
         });
         findOrderButton.setOnAction(actionEvent -> {
-            if (Integer.parseInt(enterOrderIDTextField.getText()) <= fasadOrder.showAllOrder().size()  && Integer.parseInt(enterOrderIDTextField.getText()) > 0) {
+            if (Integer.parseInt(enterOrderIDTextField.getText()) <= fasadOrder.showAllOrder().size() && Integer.parseInt(enterOrderIDTextField.getText()) > 0) {
                 Order order = FasadOrder.getInstance().findByID(Integer.parseInt(enterOrderIDTextField.getText()));
                 orderInfoLabel.setText(order.toString());
                 guestInfoOrderLabel.setText(order.getGuests().toString());
@@ -394,19 +395,19 @@ public class MainController implements IController {
         });
 
         findGuestOrderButton.setOnAction(actionEvent -> {
-            if(Integer.parseInt(enterGuestIdOrderTextField.getText())<=fasadGuest.showAllGuests().size()&&Integer.parseInt(enterGuestIdOrderTextField.getText()  )>0)
-            guestInfoOrderLabel.setText(fasadGuest.findById(Integer.parseInt(enterGuestIdOrderTextField.getText())).toString());
+            if (Integer.parseInt(enterGuestIdOrderTextField.getText()) <= fasadGuest.showAllGuests().size() && Integer.parseInt(enterGuestIdOrderTextField.getText()) > 0)
+                guestInfoOrderLabel.setText(fasadGuest.findById(Integer.parseInt(enterGuestIdOrderTextField.getText())).toString());
             else guestInfoOrderLabel.setText("guest not found");
 
         });
         findRoomOrderButton.setOnAction(actionEvent -> {
-            if(Integer.parseInt(enterRoomIdOrderTextField.getText())<=fasadRoom.showAllRoom().size()&& Integer.parseInt(enterRoomIdOrderTextField.getText())>0)
-            roomInfoOrderLabel.setText(fasadRoom.findById(Integer.parseInt(enterRoomIdOrderTextField.getText())).toString());
+            if (Integer.parseInt(enterRoomIdOrderTextField.getText()) <= fasadRoom.showAllRoom().size() && Integer.parseInt(enterRoomIdOrderTextField.getText()) > 0)
+                roomInfoOrderLabel.setText(fasadRoom.findById(Integer.parseInt(enterRoomIdOrderTextField.getText())).toString());
             else roomInfoOrderLabel.setText("room not found");
         });
         findServiceOrderButton.setOnAction(actionEvent -> {
-            if(Integer.parseInt(enterServiceIDOrderTextFiled.getText())<=fasadService.showAllService().size()&&Integer.parseInt(enterServiceIDOrderTextFiled.getText())>0)
-            serviceInfoOrderLabel.setText(fasadService.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())).toString());
+            if (Integer.parseInt(enterServiceIDOrderTextFiled.getText()) <= fasadService.showAllService().size() && Integer.parseInt(enterServiceIDOrderTextFiled.getText()) > 0)
+                serviceInfoOrderLabel.setText(fasadService.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())).toString());
             else serviceInfoOrderLabel.setText("service not found");
         });
         addServiceOrderButton.setOnAction(actionEvent -> {
@@ -428,8 +429,7 @@ public class MainController implements IController {
 
 
         findGuestButton.setOnAction(actionEvent -> {
-            Integer guestId = Integer.parseInt(guestIdTextField.getText());
-            if (guestId <= fasadGuest.showAllGuests().size() && guestId > 0) {
+                 Integer guestId = Integer.parseInt(guestIdTextField.getText());
                 Guest guest = fasadGuest.findById(Integer.parseInt(guestIdTextField.getText()));
                 guestInfoLabel.setText(guest.toString());
             /*
@@ -442,8 +442,7 @@ public class MainController implements IController {
                 emailTextField.setText(guest.getEmail());
                 addressTextField.setText(guest.getAddress());
                 refreshGuestTable();
-            } else
-                guestInfoLabel.setText("guest not found");
+
 
 
         });
@@ -485,6 +484,7 @@ public class MainController implements IController {
             guest.setPhone(phoneTextField.getText());
             guest.setEmail(emailTextField.getText());
             guest.setAddress(addressTextField.getText());
+            fasadGuest.updateGuest(fasadGuest.findById(Integer.parseInt(guestIdTextField.getText())));
             refreshGuestTable();
 
         });
