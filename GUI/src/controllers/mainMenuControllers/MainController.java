@@ -429,12 +429,13 @@ public class MainController implements IController {
 
 
         findGuestButton.setOnAction(actionEvent -> {
-            Integer guestId = Integer.parseInt(guestIdTextField.getText());
+
             Guest guest = fasadGuest.findById(Integer.parseInt(guestIdTextField.getText()));
             guestInfoLabel.setText(guest.toString());
             /*
             auto-fill
              */
+
             guestNameTextField.setText(guest.getName());
             LastNameTextField.setText(guest.getLastName());
             AgeTextField.setText(guest.getAge().toString());
@@ -483,7 +484,7 @@ public class MainController implements IController {
             guest.setPhone(phoneTextField.getText());
             guest.setEmail(emailTextField.getText());
             guest.setAddress(addressTextField.getText());
-            fasadGuest.updateGuest(fasadGuest.findById(Integer.parseInt(guestIdTextField.getText())));
+            fasadGuest.updateGuest(guest);
             refreshGuestTable();
 
         });

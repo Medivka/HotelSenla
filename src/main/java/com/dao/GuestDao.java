@@ -40,7 +40,7 @@ public class GuestDao implements IGuestDao {
     }
 
     public List<Guest> getGuestList() {
-        String sql = "select * from "+Constants.GUEST_TABLE;
+        String sql = "select * from " + Constants.GUEST_TABLE;
         try {
             ArrayList<Guest> guests = new ArrayList<>();
             ResultSet rs = DatabaseHandler.getInstance().getDbConnection().createStatement().executeQuery(sql);
@@ -72,7 +72,7 @@ public class GuestDao implements IGuestDao {
 
     @Override
     public void delete(Integer id) {
-        String sql = "delete from "+Constants.GUEST_TABLE+" where guestNumber=? ";
+        String sql = "delete from " + Constants.GUEST_TABLE + " where guestNumber=? ";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);
@@ -122,7 +122,7 @@ public class GuestDao implements IGuestDao {
     @Override
     public Guest findById(Integer id) {
         Guest guest = new Guest();
-        String sql = "Select * from "+Constants.GUEST_TABLE+" where guestNumber=?";
+        String sql = "Select * from " + Constants.GUEST_TABLE + " where guestNumber=?";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);
@@ -155,22 +155,26 @@ public class GuestDao implements IGuestDao {
     @Override
     public void update(Guest guest) {
 
-        String sql = "update senlahotel.guests set name=?,lastName=?,age=?,phone=?,guestGender=?,email=?,address=?  where guestNumber=?";
+        String sql = "UPDATE " + Constants.GUEST_TABLE + " set name=?,lastName=?,age=?,phone=?,guestGender=?,email=?,address=?  where guestNumber=?;";//+ guest.getGuestNumber() ;
         PreparedStatement preparedStatement = null;
 
         try {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);
-            preparedStatement.setInt(1, guest.getGuestNumber());
-            preparedStatement.setString(2, guest.getName());
-            preparedStatement.setString(3, guest.getLastName());
-            preparedStatement.setInt(4, guest.getAge());
-            preparedStatement.setString(5, guest.getPhone());
-            preparedStatement.setString(6, String.valueOf(guest.getGuestGender()));
-            preparedStatement.setString(7, guest.getEmail());
-            preparedStatement.setString(8, guest.getAddress());
+
+            preparedStatement.setString(1, guest.getName());
+            preparedStatement.setString(2, guest.getLastName());
+            preparedStatement.setInt(3, guest.getAge());
+            preparedStatement.setString(4, guest.getPhone());
+            preparedStatement.setString(5, String.valueOf(guest.getGuestGender()));
+            preparedStatement.setString(6, guest.getEmail());
+            preparedStatement.setString(7, guest.getAddress());
+        preparedStatement.setInt(8, guest.getGuestNumber());
             preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
+            System.out.println("error");
             System.err.println(e);
         }
+
     }
 }
