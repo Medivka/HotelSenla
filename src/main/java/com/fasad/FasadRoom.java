@@ -68,4 +68,9 @@ public void deleteRoom(Integer idRoom){
         roomService.setRoomList(list);
     }
 
+
+     public void updateRoom(Room room){
+        roomService.updateRoom(room);
+     }
+
 }

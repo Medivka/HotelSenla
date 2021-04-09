@@ -48,6 +48,7 @@ public class FasadService {
     public void deleteService(Integer id){
         serviceService.deleteService(id);
     }
+    public void updateService(Service service){serviceService.updateService(service);}
 
 
 

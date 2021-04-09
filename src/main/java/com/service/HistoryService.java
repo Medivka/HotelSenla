@@ -58,7 +58,6 @@ public class HistoryService implements IHistoryService {
                 Order order = historyList.get(i);
                 List<Guest> guestList = order.getGuests();
                 List<Room> roomList = order.getRooms();
-
                 for (int k = 0; k < roomList.size(); k++) {
                     Room room = roomList.get(k);
                     if (room.getRoomNumber().equals(roomID)) {

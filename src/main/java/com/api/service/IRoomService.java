@@ -10,6 +10,8 @@ public interface IRoomService {
 
     void setRoomList(List list);
 
+    void updateRoom(Room room);
+
     Room findById(Integer id);
 
    List showAllRoom();

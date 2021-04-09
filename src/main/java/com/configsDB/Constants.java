@@ -21,5 +21,11 @@ public class Constants {
     public static final String SERVICE_NAME="name";
     public static final String SERVICE_PRICE="price";
 
+    public static final String ROOM_NUMBER="roomNumber";
+    public static final String ROOM_STATUS="roomStatus";
+    public static final String ROOM_CAPACITY="capacity";
+    public static final String ROOM_STARS="stars";
+    public static final String ROOM_PRICE="price";
+
 
 }

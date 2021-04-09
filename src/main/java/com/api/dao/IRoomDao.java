@@ -1,5 +1,6 @@
 package com.api.dao;
 
+import com.model.Guest;
 import com.model.Room;
 
 public interface IRoomDao {
@@ -9,4 +10,5 @@ public interface IRoomDao {
     Room findById(Integer id);
 
 
+    void update(Room room);
 }

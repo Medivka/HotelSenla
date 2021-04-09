@@ -8,5 +8,6 @@ public interface IServiceDao {
     void delete(Integer id);
     Service findById(Integer id);
 
+    void updateService(Service service);
 }
 

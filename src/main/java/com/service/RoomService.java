@@ -37,6 +37,10 @@ public class RoomService implements IRoomService {
         roomDao.setRoomList((ArrayList<Room>) list);
     }
 
+    @Override
+    public void updateRoom(Room room){
+        roomDao.update(room);
+    }
 
     @Override
     public Room findById(Integer id) {

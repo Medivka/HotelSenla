@@ -7,6 +7,8 @@ import java.util.List;
 public interface IServiceService {
 
 
+    void updateService(Service service);
+
     Service findById(Integer id);
    List showAllService();
     Service createService(String name, Integer price);

@@ -34,6 +34,11 @@ public class ServiceService implements IServiceService {
 
 
     @Override
+    public void updateService(Service service){
+        serviceDao.updateService(service);
+    }
+
+    @Override
     public Service findById(Integer id) {
         try {
             Service service = serviceDao.findById(id);

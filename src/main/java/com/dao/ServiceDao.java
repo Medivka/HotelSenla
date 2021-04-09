@@ -108,20 +108,31 @@ public class ServiceDao implements IServiceDao {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-
-                Integer idservice = (rs.getInt("id"));
+                Integer idService = (rs.getInt("id"));
                 String name = (rs.getString("name"));
                Integer price = (rs.getInt("price"));
-            service=new Service(idservice,name,price);
+            service=new Service(idService,name,price);
             }
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e);
         }
         return service;
     }
-
+    @Override
+    public  void updateService(Service service){
+        String sql = "UPDATE " + Constants.SERVICE_TABLE + " set name=?,price=?  where id=?;";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);
+            preparedStatement.setInt(3, service.getId());
+            preparedStatement.setString(1, service.getName());
+            preparedStatement.setInt(2, service.getPrice());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
 }
 
 

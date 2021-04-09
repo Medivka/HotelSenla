@@ -160,7 +160,6 @@ public class GuestDao implements IGuestDao {
 
         try {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);
-
             preparedStatement.setString(1, guest.getName());
             preparedStatement.setString(2, guest.getLastName());
             preparedStatement.setInt(3, guest.getAge());
@@ -168,7 +167,7 @@ public class GuestDao implements IGuestDao {
             preparedStatement.setString(5, String.valueOf(guest.getGuestGender()));
             preparedStatement.setString(6, guest.getEmail());
             preparedStatement.setString(7, guest.getAddress());
-        preparedStatement.setInt(8, guest.getGuestNumber());
+            preparedStatement.setInt(8, guest.getGuestNumber());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {

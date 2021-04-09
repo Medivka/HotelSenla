@@ -511,6 +511,7 @@ public class MainController implements IController {
             } else roomInfoLabel.setText("room not found");
             refreshRoomTable();
         });
+
         deleteRoomButton.setOnAction(actionEvent -> {
             Integer roomNumber = Integer.parseInt(enterRoomIdTextField.getText());
             if (roomNumber <= fasadRoom.showAllRoom().size() && roomNumber > 0) {
@@ -519,8 +520,9 @@ public class MainController implements IController {
             } else roomInfoLabel.setText("room not found");
             refreshRoomTable();
         });
+
         createRoomButton.setOnAction(actionEvent -> {
-            RoomStatus roomStatus = RoomStatus.FREE;
+            RoomStatus roomStatus;
             roomStatus = roomStatusComboBox.getValue();
             Room room = fasadRoom.createRoom(roomStatus
                     , Integer.parseInt(capacityRoomTextField.getText())
@@ -529,21 +531,18 @@ public class MainController implements IController {
             roomInfoLabel.setText(room.toString());
             enterRoomIdTextField.setText(room.getRoomNumber().toString());
             refreshRoomTable();
+
         });
+
         updateRoomButton.setOnAction(actionEvent -> {
             Integer roomNumber = Integer.parseInt(enterRoomIdTextField.getText());
-            if (roomNumber <= fasadRoom.showAllRoom().size() && roomNumber > 0) {
                 Room room = fasadRoom.findById(roomNumber);
                 room.setRoomStatus(roomStatusComboBox.getValue());
                 room.setPrice(Integer.parseInt(priceRoomTextField.getText()));
                 room.setCopacity(Integer.parseInt(capacityRoomTextField.getText()));
                 room.setStars(roomStarsComboBox.getValue());
-            } else roomInfoLabel.setText("room not found for Update");
-            try {
-                openNewScene(mainPath, updateRoomButton);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                fasadRoom.updateRoom(room);
+           refreshRoomTable();
         });
 
 
@@ -574,6 +573,7 @@ public class MainController implements IController {
             Service service = fasadService.findById(Integer.parseInt(enterServiceIDTextField.getText()));
             service.setName(serviceNameTextField.getText());
             service.setPrice(Integer.parseInt(servicePriceTextField.getText()));
+            fasadService.updateService(service);
             refreshTableService();
         });
         deleteServiceButton.setOnAction(actionEvent -> {
