@@ -90,11 +90,11 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         return id + " Order " +
-                '\n' + guest +
-                ", " + '\n' + room +
-                ", " + '\n' + services + '\n' +
+                '\n' + guest.getName() +" "+guest.getLastName()+ '\n'+
+                "room:  " + room.getRoomNumber()+ '\n'
+                + services + '\n' +
                 "Day Of  Settling: " + localDate + '\n' +
                 "Day Of departure: " + localDate.plusDays(daysOfStay) + "\n" +
-                allAmount;
+                "AllAmount:  "+  allAmount;
     }
 }

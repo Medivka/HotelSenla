@@ -50,8 +50,7 @@ public class Service implements Serializable {
     @Override
     public String toString() {
         return "Service " + id + " :" +
-                name +
-                "   price= " + price+"\n"
+                name + "  price= " + price+"\n"
                 ;
     }
 
