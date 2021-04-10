@@ -32,9 +32,7 @@ public class FasadOrder {
         orderService.addInRoomService(orderNumber, service);
     }
 
-    public Order showOrder(Integer orderNumber) {
-        return orderService.showOrder(orderNumber);
-    }
+
 
     public void addGuestInRoom(Integer orderNumber, Guest guest) {
         orderService.addGuestInRoom(orderNumber, guest);
@@ -52,7 +50,7 @@ public class FasadOrder {
         return orderService.findById(orderId);
     }
 
-    public Long getAllAmount(Integer orderNumber) {
+    public Integer getAllAmount(Integer orderNumber) {
         return orderService.getAllAmount(orderNumber);
     }
 

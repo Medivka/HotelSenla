@@ -15,8 +15,6 @@ public interface IOrderService {
 
     Order createNewOrder(Guest guest, Room room, Service service, LocalDate localDate, Integer daysOfStay);
 
-    Order showOrder(Integer orderNumber);
-
     void addGuestInRoom(Integer orderNumber, Guest guest);
 
     void addInRoomService(Integer orderNumber, Service service);
@@ -27,7 +25,7 @@ public interface IOrderService {
 
     Order findById(Integer orderId);
 
-    long getAllAmount(Integer orderNumber);
+    Integer getAllAmount(Integer orderNumber);
 
     void deleteOrder(Integer id);
 

@@ -3,7 +3,6 @@ package controllers.mainMenuControllers;
 
 import com.api.enums.GuestGender;
 import com.api.enums.RoomStatus;
-import com.databaseControllers.DatabaseHandler;
 import com.fasad.*;
 import com.inputOutput.Serializer;
 import com.model.Guest;
@@ -64,7 +63,7 @@ public class MainController implements IController {
     private TableColumn<Order, LocalDate> dayOfSettlingOrderColumn;
 
     @FXML
-    private TableColumn<?, ?> AllAmountOrderColumn;
+    private TableColumn<Order, Integer> AllAmountOrderColumn;
 
     @FXML
     private Button saveButton;
@@ -357,8 +356,8 @@ public class MainController implements IController {
             if (Integer.parseInt(enterOrderIDTextField.getText()) <= fasadOrder.showAllOrder().size() && Integer.parseInt(enterOrderIDTextField.getText()) > 0) {
                 Order order = FasadOrder.getInstance().findByID(Integer.parseInt(enterOrderIDTextField.getText()));
                 orderInfoLabel.setText(order.toString());
-                guestInfoOrderLabel.setText(order.getGuests().toString());
-                roomInfoOrderLabel.setText(order.getRooms().toString());
+                guestInfoOrderLabel.setText(order.getGuest().toString());
+                roomInfoOrderLabel.setText(order.getRoom().toString());
                 serviceInfoOrderLabel.setText(order.getServices().toString());
                 enterDaysOfStayOrderTextField.setText(order.getDaysOfStay().toString());
 
@@ -380,8 +379,8 @@ public class MainController implements IController {
         });
         updateOrderButton.setOnAction(actionEvent -> {
             Order order = fasadOrder.findByID(Integer.parseInt(enterOrderIDTextField.getText()));
-            order.getGuests().set(0, fasadGuest.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())));
-            order.getRooms().set(0, fasadRoom.findById(Integer.parseInt(enterRoomIdOrderTextField.getText())));
+            order.setGuest(fasadGuest.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())));
+            order.setRoom(fasadRoom.findById(Integer.parseInt(enterRoomIdOrderTextField.getText())));
             order.setDaysOfStay(Integer.parseInt(enterDaysOfStayOrderTextField.getText()));
             refreshOrderTable();
             orderInfoLabel.setText("update order: \n" + order);
@@ -640,7 +639,6 @@ public class MainController implements IController {
         priceRoomColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("price"));
         capacityRoomColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("capacity"));
         starsRoomColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("stars"));
-
         ObservableList<Room> rooms = FXCollections.observableArrayList(fasadRoom.showAllRoom());
         roomTable.setItems(rooms);
     }
@@ -648,11 +646,12 @@ public class MainController implements IController {
     public void refreshOrderTable() {
 
         idOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("id"));
-        guestsOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Guest>("guests"));
-        roomOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Room>("rooms"));
+        guestsOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Guest>("guest"));
+        roomOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Room>("room"));
         serviceOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Service>("services"));
         dayOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("daysOfStay"));
         dayOfSettlingOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, LocalDate>("localDate"));
+//        AllAmountOrderColumn.setCellValueFactory(new PropertyValueFactory<Order,Integer>("allAmount"));
 
         ObservableList<Order> orders = FXCollections.observableArrayList(FasadOrder.getInstance().showAllOrder());
         orderTable.setItems(orders);

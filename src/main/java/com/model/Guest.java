@@ -107,13 +107,8 @@ public class Guest implements Serializable {
     @Override
     public String toString() {
         return "Guest:" + guestNumber + "\n"+
-                 "name:" + name +"\n"+
-
-
-                "lastName: " + lastName +"\n"+
-                "age: " + age +"\n"+
-                "phone: " + phone +"\n"+
-                "guestGender: " + guestGender+"\n"+
+                 name +" " + lastName +", age: " + age +"\n"+
+                "phone: " + phone + "  guestGender: " + guestGender+"\n"+
                 "email: " + email  +"\n"+
                 "address: " + address  +"\n";
     }

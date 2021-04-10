@@ -85,6 +85,7 @@ public class RoomDao implements IRoomDao {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -112,6 +113,7 @@ public class RoomDao implements IRoomDao {
             preparedStatement.setInt(4, room.getStars());
             preparedStatement.setInt(5, room.getPrice());
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -143,8 +145,10 @@ public class RoomDao implements IRoomDao {
                 Integer price = (rs.getInt("price"));
                 room = new Room(roomNumber, roomStatus, capacity, price, stars);
             }
+            rs.close();
 
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -164,7 +168,7 @@ public class RoomDao implements IRoomDao {
             preparedStatement.setInt(3, room.getStars());
             preparedStatement.setInt(4, room.getPrice());
             preparedStatement.executeUpdate();
-            preparedStatement.executeUpdate();
+            preparedStatement.close();
 
         } catch (SQLException e) {
 

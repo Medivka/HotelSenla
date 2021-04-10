@@ -5,14 +5,14 @@ import com.dao.HistoryDao;
 import com.exceptions.DaoException;
 import com.exceptions.ServiceExeption;
 import com.model.Guest;
-import com.model.History;
+
 import com.model.Order;
 import com.model.Room;
-
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import java.util.stream.Collectors;
 
 public class HistoryService implements IHistoryService {
@@ -33,7 +33,7 @@ public class HistoryService implements IHistoryService {
     }
 
 
-    public void setHistoryList(List list){
+    public void setHistoryList(List list) {
         historyDao.setHistoryList((ArrayList<Order>) list);
     }
 
@@ -43,7 +43,7 @@ public class HistoryService implements IHistoryService {
         try {
             return new ArrayList<>(historyDao.getHistoryList());
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "getThreeLastGuest failed", e);
+            LOGGER.log(Level.WARN, "getThreeLastGuest failed", e);
             throw new ServiceExeption("getAllHistory failed", e);
         }
     }
@@ -56,20 +56,14 @@ public class HistoryService implements IHistoryService {
             List<Order> historyList = new ArrayList<>(historyDao.getHistoryList());
             for (int i = 0; i < historyList.size(); i++) {
                 Order order = historyList.get(i);
-                List<Guest> guestList = order.getGuests();
-                List<Room> roomList = order.getRooms();
-                for (int k = 0; k < roomList.size(); k++) {
-                    Room room = roomList.get(k);
-                    if (room.getRoomNumber().equals(roomID)) {
-                        for (int j = 0; j < guestList.size(); j++) {
-                            threeLastGuest.add(guestList.get(j));
-                        }
-                    }
+                Room room = order.getRoom();
+                if (roomID.equals(room.getRoomNumber())) {
+                    threeLastGuest.add(order.getGuest());
                 }
             }
             return threeLastGuest.stream().limit(3).collect(Collectors.toList());
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "getThreeLastGuest failed", e);
+            LOGGER.log(Level.WARN, "getThreeLastGuest failed", e);
             throw new ServiceExeption("getThreeLastGuest failed", e);
         }
     }
@@ -83,24 +77,13 @@ public class HistoryService implements IHistoryService {
             List<Order> historyList = new ArrayList<>(historyDao.getHistoryList());
             for (int i = 0; i < historyList.size(); i++) {
                 Order order = historyList.get(i);
-                List<Guest> guest = order.getGuests();
-                List<Room> room = order.getRooms();
-                for (int k = 0; k < guest.size(); k++) {
-                    Guest guest1 = guest.get(k);
-                    if (guest1 == null) {
-                        System.out.println("guest not found");
-                    } else {
-                        if (guest1.getGuestNumber().equals(idGuest)) {
-                            for (int j = 0; j < room.size(); j++) {
-                                rooms.add(room.get(j));
-                            }
-                        }
-                    }
+                if (order.getGuest().getGuestNumber().equals(idGuest)) {
+                    rooms.add(order.getRoom());
                 }
             }
             return rooms;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "showAllRoomGuest failed", e);
+            LOGGER.log(Level.WARN, "showAllRoomGuest failed", e);
             throw new ServiceExeption("showAllRoomGuest failed", e);
 
         }

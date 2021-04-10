@@ -10,8 +10,10 @@ import com.util.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
 import java.util.stream.Collectors;
 
 public class ServiceService implements IServiceService {
@@ -34,7 +36,7 @@ public class ServiceService implements IServiceService {
 
 
     @Override
-    public void updateService(Service service){
+    public void updateService(Service service) {
         serviceDao.updateService(service);
     }
 
@@ -48,7 +50,7 @@ public class ServiceService implements IServiceService {
             }
             return service;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "findById %s failed", id);
+            LOGGER.log(Level.WARN, "findById failed", e);
             throw new ServiceExeption("findById failed", e);
         }
     }
@@ -61,7 +63,7 @@ public class ServiceService implements IServiceService {
             ArrayList<Service> services = new ArrayList<>(serviceDao.getServiceList());
             return services;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "showAllService failed");
+            LOGGER.log(Level.WARN, "showAllService failed", e);
             throw new ServiceExeption("showAllService failed", e);
         }
     }
@@ -74,7 +76,7 @@ public class ServiceService implements IServiceService {
             serviceDao.save(service);
             return service;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "createService failed");
+            LOGGER.log(Level.WARN, "createService failed", e);
             throw new ServiceExeption("createService failed", e);
         }
     }
@@ -89,7 +91,7 @@ public class ServiceService implements IServiceService {
             } else
                 service.setName(name);
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "changeServiceName %s  failed", idService);
+            LOGGER.log(Level.WARN, "changeServiceName  failed", e);
             throw new ServiceExeption("changeServiceName failed", e);
         }
     }
@@ -104,14 +106,14 @@ public class ServiceService implements IServiceService {
             } else
                 service.setPrice(price);
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "changeServicePrice %s  failed", idService);
+            LOGGER.log(Level.WARN, "changeServicePrice   failed", e);
             throw new ServiceExeption("changeServicePrice failed", e);
         }
     }
 
     @Override
-    public void deleteService(Integer id){
-        LOGGER.log(Level.INFO, String.format("delete service %s",id));
+    public void deleteService(Integer id) {
+        LOGGER.log(Level.INFO, String.format("delete service %s", id));
         serviceDao.delete(id);
     }
 
@@ -123,7 +125,7 @@ public class ServiceService implements IServiceService {
             services.stream().sorted(((o1, o2) -> o1.getPrice() - o2.getPrice())).collect(Collectors.toList()).forEach(service -> System.out.println(service));
             return services;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "sortedByPrice failed");
+            LOGGER.log(Level.WARN, "sortedByPrice failed", e);
             throw new ServiceExeption("sortedByPrice failed", e);
         }
     }
@@ -133,6 +135,5 @@ public class ServiceService implements IServiceService {
         LOGGER.log(Level.INFO, String.format("setServiceList"));
         serviceDao.setServiceList(list);
     }
-
 
 }

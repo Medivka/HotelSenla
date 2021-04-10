@@ -6,21 +6,24 @@ import com.api.service.IGuestService;
 import com.dao.GuestDao;
 import com.exceptions.DaoException;
 import com.exceptions.ServiceExeption;
-
 import com.model.Guest;
-
 import com.util.IdGenerator;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import java.util.stream.Collectors;
+
 
 public class GuestService implements IGuestService {
 
     private GuestDao guestDao;
+
+
     private static final Logger LOGGER = Logger.getLogger(GuestService.class.getName());
     private static GuestService instance;
 
@@ -43,7 +46,7 @@ public class GuestService implements IGuestService {
             Guest guest = guestDao.findById(id);
             return guest;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "findById %s", id);
+            LOGGER.log(Level.WARN, e);
             throw new ServiceExeption("findByID failed", e);
         }
 
@@ -77,7 +80,7 @@ public class GuestService implements IGuestService {
             } else
                 guest.setName(name);
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "changeGuestName failed");
+            LOGGER.log(Level.WARN, "changeGuestName failed");
             throw new ServiceExeption("changeGuestName failed");
         }
     }
@@ -89,7 +92,7 @@ public class GuestService implements IGuestService {
             Guest guest = guestDao.findById(idGuest);
             guest.setAge(age);
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "changeGuestAge failed");
+            LOGGER.log(Level.WARN, "changeGuestAge failed");
             throw new ServiceExeption("changeGuestAge failed", e);
         }
     }

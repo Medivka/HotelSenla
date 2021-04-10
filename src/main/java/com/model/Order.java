@@ -8,22 +8,24 @@ import java.util.List;
 public class Order implements Serializable {
 
     private Integer id;
-    private List guests;
-    private List rooms;
+    private Guest guest;
+    private Room room;
     private List services;
     private LocalDate localDate;
     private Integer daysOfStay;
+    private Integer allAmount;
 
     public Order() {
     }
 
-    public Order(Integer id, List guests, List rooms, List services, LocalDate localDate, Integer daysOfStay) {
+    public Order(Integer id, Guest guest, Room room, List services, LocalDate localDate, Integer daysOfStay) {
         this.id = id;
-        this.guests = guests;
-        this.rooms = rooms;
+        this.guest = guest;
+        this.room = room;
         this.services = services;
         this.localDate = localDate;
         this.daysOfStay = daysOfStay;
+
     }
 
 
@@ -35,20 +37,20 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public List getGuests() {
-        return guests;
+    public Guest getGuest() {
+        return guest;
     }
 
-    public void setGuests(List guests) {
-        this.guests = guests;
+    public void setGuest(Guest guest) {
+        this.guest = guest;
     }
 
-    public List getRooms() {
-        return rooms;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setRooms(List rooms) {
-        this.rooms = rooms;
+    public void setRoom(Room rooms) {
+        this.room = rooms;
     }
 
     public List getServices() {
@@ -81,8 +83,8 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         return id + " Order " +
-                '\n' + guests +
-                ", " + '\n' + rooms +
+                '\n' + guest +
+                ", " + '\n' + room +
                 ", " + '\n' + services + '\n' +
                 "Day Of  Settling: " + localDate + '\n' +
                 "Day Of departure: " + localDate.plusDays(daysOfStay) + "\n";

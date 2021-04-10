@@ -10,8 +10,8 @@ import com.util.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import java.util.stream.Collectors;
 
 public class RoomService implements IRoomService {
@@ -51,7 +51,7 @@ public class RoomService implements IRoomService {
             }
             return room;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "findById failed %s", id);
+            LOGGER.log(Level.WARN, "findById failed", e);
             throw new ServiceExeption("findById failed", e);
         }
     }
@@ -63,7 +63,7 @@ public class RoomService implements IRoomService {
             ArrayList<Room> rooms = new ArrayList<>(roomDao.getRoomList());
             return rooms;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "showAllRoom");
+            LOGGER.log(Level.WARN, "showAllRoom",e);
             throw new ServiceExeption("showAllRoom", e);
         }
     }
@@ -81,7 +81,7 @@ public class RoomService implements IRoomService {
             roomDao.save(room);
             return room;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "createRoom failed");
+            LOGGER.log(Level.WARN, "createRoom failed",e);
             throw new ServiceExeption("createRoom failed", e);
         }
     }
@@ -96,7 +96,7 @@ public class RoomService implements IRoomService {
             } else
                 room.setStars(stars);
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "changeRoomStars failed %s", idRoom);
+            LOGGER.log(Level.WARN, "changeRoomStars failed ", e);
             throw new ServiceExeption("changeRoomStars failed", e);
         }
     }
@@ -111,7 +111,7 @@ public class RoomService implements IRoomService {
             } else
                 room.setRoomStatus(roomStatus);
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "changeStatusRoom failed %s", idRoom);
+            LOGGER.log(Level.WARN, "changeStatusRoom failed ", e);
             throw new ServiceExeption("changeStatusRoom failed", e);
         }
     }
@@ -136,7 +136,7 @@ public class RoomService implements IRoomService {
             } else
                 room.setPrice(price);
         } catch (DaoException e) {
-            LOGGER.log(Level.WARNING, "changeRoomPrice failed %s", idRoom);
+            LOGGER.log(Level.WARN, "changeRoomPrice failed ",e);
             throw new ServiceExeption("changeRoomPrice failed", e);
         }
     }
