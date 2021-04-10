@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class HistoryService implements IHistoryService {
+
     private static final Logger LOGGER = Logger.getLogger(HistoryService.class.getName());
     private final HistoryDao historyDao;
     private static HistoryService instance;
@@ -27,12 +28,9 @@ public class HistoryService implements IHistoryService {
         return instance;
     }
 
-
     public HistoryService(HistoryDao historyDao) {
         this.historyDao = historyDao;
     }
-
-
     public void setHistoryList(List list) {
         historyDao.setHistoryList((ArrayList<Order>) list);
     }
@@ -68,7 +66,6 @@ public class HistoryService implements IHistoryService {
         }
     }
 
-
     @Override
     public List<Room> showAllRoomGuest(Integer idGuest) {
         try {
@@ -85,9 +82,6 @@ public class HistoryService implements IHistoryService {
         } catch (DaoException e) {
             LOGGER.log(Level.WARN, "showAllRoomGuest failed", e);
             throw new ServiceExeption("showAllRoomGuest failed", e);
-
         }
     }
-
-
 }

@@ -360,7 +360,7 @@ public class MainController implements IController {
                 roomInfoOrderLabel.setText(order.getRoom().toString());
                 serviceInfoOrderLabel.setText(order.getServices().toString());
                 enterDaysOfStayOrderTextField.setText(order.getDaysOfStay().toString());
-
+                refreshOrderTable();
             } else
                 orderInfoLabel.setText("order not found");
 
@@ -382,6 +382,7 @@ public class MainController implements IController {
             order.setGuest(fasadGuest.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())));
             order.setRoom(fasadRoom.findById(Integer.parseInt(enterRoomIdOrderTextField.getText())));
             order.setDaysOfStay(Integer.parseInt(enterDaysOfStayOrderTextField.getText()));
+            order.setAllAmount(fasadOrder.getAllAmount(order.getId()));
             refreshOrderTable();
             orderInfoLabel.setText("update order: \n" + order);
 
@@ -651,7 +652,7 @@ public class MainController implements IController {
         serviceOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Service>("services"));
         dayOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("daysOfStay"));
         dayOfSettlingOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, LocalDate>("localDate"));
-//        AllAmountOrderColumn.setCellValueFactory(new PropertyValueFactory<Order,Integer>("allAmount"));
+        AllAmountOrderColumn.setCellValueFactory(new PropertyValueFactory<Order,Integer>("allAmount"));
 
         ObservableList<Order> orders = FXCollections.observableArrayList(FasadOrder.getInstance().showAllOrder());
         orderTable.setItems(orders);

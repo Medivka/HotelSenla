@@ -8,22 +8,17 @@ import com.exceptions.DaoException;
 import com.exceptions.ServiceExeption;
 import com.model.Guest;
 import com.util.IdGenerator;
-
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
 import java.util.stream.Collectors;
 
 
 public class GuestService implements IGuestService {
 
     private GuestDao guestDao;
-
-
     private static final Logger LOGGER = Logger.getLogger(GuestService.class.getName());
     private static GuestService instance;
 
@@ -38,7 +33,6 @@ public class GuestService implements IGuestService {
         this.guestDao = guestDao;
     }
 
-
     @Override
     public Guest findById(Integer id) {
         try {
@@ -49,7 +43,6 @@ public class GuestService implements IGuestService {
             LOGGER.log(Level.WARN, e);
             throw new ServiceExeption("findByID failed", e);
         }
-
     }
 
     @Override
@@ -131,6 +124,4 @@ public class GuestService implements IGuestService {
         LOGGER.log(Level.INFO, String.format("setGuestList"));
         guestDao.setGuestList(list);
     }
-
-
 }

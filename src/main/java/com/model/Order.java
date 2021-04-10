@@ -15,20 +15,29 @@ public class Order implements Serializable {
     private Integer daysOfStay;
     private Integer allAmount;
 
+
+
+
     public Order() {
     }
 
-    public Order(Integer id, Guest guest, Room room, List services, LocalDate localDate, Integer daysOfStay) {
+    public Order(Integer id, Guest guest, Room room, List services, LocalDate localDate, Integer daysOfStay, Integer allAmount) {
         this.id = id;
         this.guest = guest;
         this.room = room;
         this.services = services;
         this.localDate = localDate;
         this.daysOfStay = daysOfStay;
-
+        this.allAmount = allAmount;
     }
 
+    public Integer getAllAmount() {
+        return allAmount;
+    }
 
+    public void setAllAmount(Integer allAmount) {
+        this.allAmount = allAmount;
+    }
     public Integer getId() {
         return id;
     }
@@ -78,8 +87,6 @@ public class Order implements Serializable {
     }
 
 
-
-
     @Override
     public String toString() {
         return id + " Order " +
@@ -87,6 +94,7 @@ public class Order implements Serializable {
                 ", " + '\n' + room +
                 ", " + '\n' + services + '\n' +
                 "Day Of  Settling: " + localDate + '\n' +
-                "Day Of departure: " + localDate.plusDays(daysOfStay) + "\n";
+                "Day Of departure: " + localDate.plusDays(daysOfStay) + "\n" +
+                allAmount;
     }
 }

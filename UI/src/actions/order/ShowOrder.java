@@ -17,7 +17,7 @@ public class ShowOrder extends AbstractFasad implements IAction {
             if (fasadOrder.findByID(orderNumber) == null) {
                 System.out.println("Order not found \n");
             } else {
-                System.out.println(fasadOrder.showOrder(orderNumber));
+                System.out.println(fasadOrder.findByID(orderNumber));
                 LOGGER.log(Level.INFO, String.format("ShowOrder id: %s", orderNumber));
             }
         } catch (ServiceExeption e) {

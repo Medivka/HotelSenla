@@ -11,6 +11,7 @@ import com.util.IdGenerator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -40,14 +41,26 @@ public class OrderService implements IOrderService {
         return new ArrayList<>(orderDao.getOrderList());
     }
 
+    public void orderUpdateAllAmount(Integer orderNumber) {
+        Order order = orderDao.findById(orderNumber);
+        order.setAllAmount(getAllAmount(orderNumber));
+
+    }
+
     @Override
     public Order createNewOrder(Guest guest, Room room, Service service, LocalDate localDate, Integer daysOfStay) {
-
+        Integer priceService = 0;
         ArrayList<Service> services = new ArrayList<>();
         services.add(service);
-        Integer id=IdGenerator.generateOrderId();
-        Order order = new Order(id, guest, room,  services, localDate, daysOfStay);
-        LOGGER.log(Level.INFO, String.format("createNewOrder id: %s, guest: %s, room: %s, com.service: %s, Date: %s, DayOfStay: %s ", order.getId(), guest, room, service, localDate, daysOfStay));
+        Integer id = IdGenerator.generateOrderId();
+        for (int i = 0; i < services.size(); i++) {
+            Service service1 = services.get(i);
+            priceService = priceService + service1.getPrice();
+        }
+        Integer priceRoom = room.getPrice();
+        Integer allAmount = (priceRoom + priceService) * daysOfStay;
+        Order order = new Order(id, guest, room, services, localDate, daysOfStay, allAmount);
+        LOGGER.log(Level.INFO, String.format("createNewOrder id: %s, guest: %s, room: %s, com.service: %s, Date: %s, DayOfStay: %s ,AllAmount: %s ", order.getId(), guest, room, service, localDate, daysOfStay, order.getAllAmount()));
         orderDao.save(order);
         historyDao.save(order);
         return order;
@@ -57,7 +70,7 @@ public class OrderService implements IOrderService {
     @Override
     public void addGuestInRoom(Integer orderNumber, Guest guest) {
 
-            LOGGER.log(Level.INFO, String.format("addGuestInRoom order: %s, guest: %s", guest, orderNumber));
+        LOGGER.log(Level.INFO, String.format("addGuestInRoom order: %s, guest: %s", guest, orderNumber));
 
     }
 
@@ -70,7 +83,8 @@ public class OrderService implements IOrderService {
                 System.out.println("Order not found  \n");
             } else {
                 order.getServices().add(service);
-                historyDao.findById(orderNumber).getServices().add(service);
+       //         historyDao.findById(orderNumber).getServices().add(service);
+                orderUpdateAllAmount(orderNumber);
             }
         } catch (DaoException e) {
             LOGGER.log(Level.WARN, "addInRoomService failed ", e);
@@ -86,11 +100,10 @@ public class OrderService implements IOrderService {
             if (order == null) {
                 System.out.println("Order not found  \n");
             } else {
-
                 historyDao.findById(orderNumber).setRoom(room);
             }
         } catch (DaoException e) {
-            LOGGER.log(Level.WARN, "changeRoomInOrder failed",e);
+            LOGGER.log(Level.WARN, "changeRoomInOrder failed", e);
             throw new ServiceExeption("changeRoomInOrder failed", e);
         }
     }
@@ -107,7 +120,7 @@ public class OrderService implements IOrderService {
                 historyDao.findById(orderNumber).setDaysOfStay(daysOfStay);
             }
         } catch (DaoException e) {
-            LOGGER.log(Level.WARN, "changeDaysOfStay ",e);
+            LOGGER.log(Level.WARN, "changeDaysOfStay ", e);
             throw new ServiceExeption("changeDaysOfStay failed", e);
         }
     }
@@ -120,7 +133,7 @@ public class OrderService implements IOrderService {
             Order order = orderDao.findById(orderId);
             return order;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARN, "findById failed  ",e);
+            LOGGER.log(Level.WARN, "findById failed  ", e);
             throw new ServiceExeption("findById failed", e);
         }
     }
@@ -134,13 +147,13 @@ public class OrderService implements IOrderService {
             if (order == null) {
 
             } else {
-                    amount = amount +  order.getRoom().getPrice();
-                }
-                for (int i = 0; i < order.getServices().size(); i++) {
-                    Service service = (Service) order.getServices().get(i);
-                    amount = amount + service.getPrice();
-                }
-                amount = amount * order.getDaysOfStay();
+                amount = amount + order.getRoom().getPrice();
+            }
+            for (int i = 0; i < order.getServices().size(); i++) {
+                Service service = (Service) order.getServices().get(i);
+                amount = amount + service.getPrice();
+            }
+            amount = amount * order.getDaysOfStay();
 
             return amount;
         } catch (DaoException e) {
@@ -148,8 +161,9 @@ public class OrderService implements IOrderService {
             throw new ServiceExeption("getAllAmount failed", e);
         }
     }
+
     @Override
-    public void deleteOrder(Integer id){
+    public void deleteOrder(Integer id) {
         LOGGER.log(Level.INFO, String.format("delete Order %s", id));
         orderDao.delete(id);
     }
