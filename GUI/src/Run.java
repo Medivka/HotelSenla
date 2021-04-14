@@ -28,7 +28,7 @@ public class Run extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("resources/Main.fxml"));
         primaryStage.setTitle("Grand Hotel Senla");
-        primaryStage.setScene(new Scene(root, 1249, 882));
+        primaryStage.setScene(new Scene(root, 1362, 924));
         primaryStage.show();
     }
 }

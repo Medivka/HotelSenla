@@ -40,7 +40,7 @@ public class GuestDao implements IGuestDao {
     }
 
     public List<Guest> getGuestList() {
-        String sql = "select * from " + Constants.GUEST_TABLE;
+        String sql = "select * from " + Constants.GUEST_TABLE+";";
         try {
             ArrayList<Guest> guests = new ArrayList<>();
             ResultSet rs = DatabaseHandler.getInstance().getDbConnection().createStatement().executeQuery(sql);
@@ -56,7 +56,6 @@ public class GuestDao implements IGuestDao {
                 } else guestGender = GuestGender.FEMALE;
                 String email = (rs.getString("email"));
                 String address = (rs.getString("address"));
-
                 Guest guest = new Guest(id, name, lastName, age, phone, guestGender, email, address);
                 guests.add(guest);
                 IdGenerator.setGuestID(id + 1);
@@ -122,7 +121,7 @@ public class GuestDao implements IGuestDao {
     @Override
     public Guest findById(Integer id) {
         Guest guest = new Guest();
-        String sql = "Select * from " + Constants.GUEST_TABLE + " where guestNumber=?";
+        String sql = "Select * from " + Constants.GUEST_TABLE + " where guestNumber=?;";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);
@@ -143,8 +142,8 @@ public class GuestDao implements IGuestDao {
 
                 guest = new Guest(guestNumber, name, lastName, age, phone, guestGender, email, address);
             }
+            rs.close();
 
-            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e);
         }

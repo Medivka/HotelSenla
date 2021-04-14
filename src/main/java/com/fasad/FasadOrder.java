@@ -28,8 +28,8 @@ public class FasadOrder {
         return orderService.createNewOrder(guest, room, service, localDate, daysOfStay);
     }
 
-    public void AddInRoomService(Integer orderNumber, Service service) {
-        orderService.addInRoomService(orderNumber, service);
+    public void addServiceInOrder(Order order, Service service) {
+        orderService.addServiceInOrder(order, service);
     }
 
 
@@ -61,5 +61,7 @@ public class FasadOrder {
         orderService.deleteOrder(id);
     }
 
-
+ public void updateOrder(Order order){
+        orderService.updateOrder(order);
+ }
 }

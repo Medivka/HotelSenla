@@ -7,11 +7,9 @@ import com.exceptions.DaoException;
 import com.exceptions.ServiceExeption;
 import com.model.*;
 import com.util.IdGenerator;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
@@ -69,28 +67,22 @@ public class OrderService implements IOrderService {
 
     @Override
     public void addGuestInRoom(Integer orderNumber, Guest guest) {
-
         LOGGER.log(Level.INFO, String.format("addGuestInRoom order: %s, guest: %s", guest, orderNumber));
 
     }
 
     @Override
-    public void addInRoomService(Integer orderNumber, Service service) {
+    public void addServiceInOrder(Order order, Service service){
         try {
-            LOGGER.log(Level.INFO, String.format("addInRoomService order: %s, com.service: %s", orderNumber, service));
-            Order order = orderDao.findById(orderNumber);
-            if (order == null) {
-                System.out.println("Order not found  \n");
-            } else {
-                order.getServices().add(service);
-       //         historyDao.findById(orderNumber).getServices().add(service);
-                orderUpdateAllAmount(orderNumber);
-            }
-        } catch (DaoException e) {
-            LOGGER.log(Level.WARN, "addInRoomService failed ", e);
-            throw new ServiceExeption("addInRoomService failed", e);
-        }
-    }
+        LOGGER.log(Level.INFO, String.format("addServiceInOrder order: %s, service: %s", order.getId(), service.getId()));
+        orderDao.addServiceInOrder(order,service);
+        orderUpdateAllAmount(order.getId());
+    }  catch (DaoException e) {
+        LOGGER.log(Level.WARN, "addServiceInOrder failed ", e);
+        throw new ServiceExeption("addServiceInOrder failed", e);
+    }}
+
+
 
     @Override
     public void changeRoomInOrder(Integer orderNumber, Room room) {
@@ -172,6 +164,12 @@ public class OrderService implements IOrderService {
     public void setOrderList(List list) {
         LOGGER.log(Level.INFO, String.format("setOrderList"));
         orderDao.setOrderList(list);
+    }
+    @Override
+    public void updateOrder(Order order){
+        LOGGER.log(Level.INFO,String.format("update order"));
+        orderUpdateAllAmount(order.getId());
+        orderDao.updateOrder(order);
     }
 
 }

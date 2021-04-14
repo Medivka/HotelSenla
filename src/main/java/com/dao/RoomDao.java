@@ -146,8 +146,6 @@ public class RoomDao implements IRoomDao {
                 room = new Room(roomNumber, roomStatus, capacity, price, stars);
             }
             rs.close();
-
-            preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
             System.err.println(e);

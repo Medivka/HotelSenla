@@ -37,18 +37,20 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void updateService(Service service) {
+      try{  LOGGER.log(Level.INFO,String.format("update Service"));
         serviceDao.updateService(service);
+    }catch (DaoException e){
+          LOGGER.log(Level.WARN,String.format("update Service failed"));
+          throw new ServiceExeption("update Service failed", e);
+      }
     }
 
     @Override
     public Service findById(Integer id) {
         try {
-            Service service = serviceDao.findById(id);
-            LOGGER.log(Level.INFO, String.format("Find by Id %s", id));
-            if (service == null) {
-
-            }
-            return service;
+           Service service = serviceDao.findById(id);
+           LOGGER.log(Level.INFO, String.format("Find by Id %s", id));
+           return service;
         } catch (DaoException e) {
             LOGGER.log(Level.WARN, "findById failed", e);
             throw new ServiceExeption("findById failed", e);
@@ -113,8 +115,13 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void deleteService(Integer id) {
+    try{
         LOGGER.log(Level.INFO, String.format("delete service %s", id));
         serviceDao.delete(id);
+    }catch (DaoException e){
+        LOGGER.log(Level.WARN, "delete Service  failed", e);
+        throw new ServiceExeption("delete Service failed", e);
+    }
     }
 
     @Override
@@ -132,8 +139,12 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void setServiceList(List list) {
-        LOGGER.log(Level.INFO, String.format("setServiceList"));
+      try{  LOGGER.log(Level.INFO, String.format("setServiceList"));
         serviceDao.setServiceList(list);
+    }catch (DaoException e){
+          LOGGER.log(Level.WARN, "set serviceList  failed", e);
+          throw new ServiceExeption("set serviceList failed", e);
+      }
     }
 
 }

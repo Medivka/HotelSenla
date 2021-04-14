@@ -49,7 +49,7 @@ public class Service implements Serializable {
 
     @Override
     public String toString() {
-        return "Service " + id + " :" +
+        return
                 name + "  price= " + price+"\n"
                 ;
     }

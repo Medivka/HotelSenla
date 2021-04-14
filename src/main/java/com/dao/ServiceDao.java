@@ -56,6 +56,7 @@ public class ServiceDao implements IServiceDao {
                 IdGenerator.setServiceID(id + 1);
             }
             setServiceList(services);
+            rs.close();
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -78,8 +79,8 @@ public class ServiceDao implements IServiceDao {
             preparedStatement.setInt(1, service.getId());
             preparedStatement.setString(2, service.getName());
             preparedStatement.setString(3, String.valueOf(service.getPrice()));
-
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -113,15 +114,14 @@ public class ServiceDao implements IServiceDao {
                Integer price = (rs.getInt("price"));
             service=new Service(idService,name,price);
             }
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
+            } catch (SQLException e) {
             System.err.println(e);
         }
         return service;
     }
     @Override
     public  void updateService(Service service){
-        String sql = "UPDATE " + Constants.SERVICE_TABLE + " set name=?,price=?  where id=?;";
+        String sql = "UPDATE " + Constants.SERVICE_TABLE + " set name=? ,price=?  where id=?;";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(sql);

@@ -27,6 +27,7 @@ public class HistoryDao implements IHistoryDao {
     }
 
     public ArrayList<Order> getHistoryList() {
+        setHistoryList((ArrayList<Order>) OrderDao.getInstance().getOrderList());
         return historyList;
     }
 

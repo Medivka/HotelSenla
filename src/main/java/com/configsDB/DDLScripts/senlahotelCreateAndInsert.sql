@@ -1,30 +1,51 @@
 CREATE DATABASE senlahotel;
 
 CREATE TABLE `senlahotel`.`guests` (
-  `guestNumber` INT NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `lastName` VARCHAR(45) NOT NULL,
-  `age` VARCHAR(45) NOT NULL,
-  `phone` VARCHAR(45) NOT NULL,
-  `guestGender` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `address` VARCHAR(45) NOT NULL,
+  guestNumber INT NOT NULL,
+  name VARCHAR(45) NOT NULL,
+  lastName VARCHAR(45) NOT NULL,
+  age VARCHAR(45) NOT NULL,
+  phone VARCHAR(45) NOT NULL,
+  guestGender VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  address VARCHAR(45) NOT NULL,
   PRIMARY KEY (`guestNumber`));
 
 
 CREATE TABLE `senlahotel`.`services` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  `price` VARCHAR(45) NOT NULL,
+  id INT NOT NULL,
+  name VARCHAR(45) NOT NULL,
+  price VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `senlahotel`.`rooms` (
-  `roomNumber` INT NOT NULL,
-  `roomStatus` VARCHAR(45) NOT NULL,
-  `capacity` INT NOT NULL,
-  `stars` INT NOT NULL,
-  `price` INT NOT NULL,
+  roomNumber INT NOT NULL,
+  roomStatus VARCHAR(45) NOT NULL,
+  capacity INT NOT NULL,
+  stars INT NOT NULL,
+  price INT NOT NULL,
   PRIMARY KEY (`roomNumber`));
+
+
+  CREATE TABLE `senlahotel`.`orders` (
+    id INT NOT NULL,
+    guests INT NULL,
+    rooms INT NULL,
+    localDate DATE NULL,
+    daysOfStay INT NULL,
+    allAmount int null,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (guests) REFERENCES senlahotel.guests(guestNumber),
+    FOREIGN KEY (rooms) REFERENCES senlahotel.rooms(roomNumber)
+    );
+    create table `senlahotel`.`orders_services`(
+    id int	auto_increment,
+    id_order int not null,
+    id_service int not null,
+    primary key(id),
+    foreign key (id_order) references senlahotel.orders(id) ON DELETE CASCADE,
+    foreign key(id_service) references senlahotel.services(id) ON DELETE CASCADE
+    );
 
 INSERT INTO `senlahotel`.`services` (`id`, `name`, `price`) VALUES ('1', 'TV', '600');
 INSERT INTO `senlahotel`.`services` (`id`, `name`, `price`) VALUES ('2', 'Dinner', '100');
@@ -52,3 +73,17 @@ INSERT INTO `senlahotel`.`rooms` (`roomNumber`, `roomStatus`, `capacity`, `stars
 INSERT INTO `senlahotel`.`rooms` (`roomNumber`, `roomStatus`, `capacity`, `stars`, `price`) VALUES ('8', 'FREE', '5', '5', '1350');
 INSERT INTO `senlahotel`.`rooms` (`roomNumber`, `roomStatus`, `capacity`, `stars`, `price`) VALUES ('9', 'BUSY', '2', '3', '1400');
 INSERT INTO `senlahotel`.`rooms` (`roomNumber`, `roomStatus`, `capacity`, `stars`, `price`) VALUES ('10', 'FREE', '3', '5', '1100');
+INSERT INTO `senlahotel`.`orders` (`id`, `guests`, `rooms`, `localDate`, `daysOfStay`, `allAmount`) VALUES ('1', '2', '3', '2020-05-15', '3', '1500');
+INSERT INTO `senlahotel`.`orders` (`id`, `guests`, `rooms`, `localDate`, `daysOfStay`, `allAmount`) VALUES ('2', '3', '2', '2021-02-16', '5', '16000');
+INSERT INTO `senlahotel`.`orders` (`id`, `guests`, `rooms`, `localDate`, `daysOfStay`, `allAmount`) VALUES ('3', '1', '5', '2020-01-01', '4', '17000');
+INSERT INTO `senlahotel`.`orders` (`id`, `guests`, `rooms`, `localDate`, `daysOfStay`, `allAmount`) VALUES ('4', '7', '1', '2020-06-19', '7', '13400');
+INSERT INTO `senlahotel`.`orders` (`id`, `guests`, `rooms`, `localDate`, `daysOfStay`, `allAmount`) VALUES ('5', '9', '8', '2020-08-20', '15', '5000');
+INSERT INTO `senlahotel`.`orders` (`id`, `guests`, `rooms`, `localDate`, `daysOfStay`, `allAmount`) VALUES ('6', '10', '4', '2021-03-15', '16', '12222');
+INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('1', '2');
+INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('1', '4');
+INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('1', '3');
+INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('2', '5');
+INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('3', '2');
+INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('3', '1');
+INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('4', '4');
+INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('4', '1');

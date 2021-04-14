@@ -320,7 +320,10 @@ public class MainController implements IController {
 
     @FXML
     void initialize() {
-
+            refreshOrderTable();
+            refreshRoomTable();
+            refreshGuestTable();
+            refreshTableService();
 
         /**
          * order page
@@ -359,15 +362,21 @@ public class MainController implements IController {
                 guestInfoOrderLabel.setText(order.getGuest().toString());
                 roomInfoOrderLabel.setText(order.getRoom().toString());
                 serviceInfoOrderLabel.setText(order.getServices().toString());
-                enterDaysOfStayOrderTextField.setText(order.getDaysOfStay().toString());
                 refreshOrderTable();
+                /**
+                 * auto-fill
+                 */
+                enterDaysOfStayOrderTextField.setText(order.getDaysOfStay().toString());
+                enterGuestIdOrderTextField.setText(String.valueOf(order.getGuest().getGuestNumber()));
+                enterRoomIdOrderTextField.setText(String.valueOf(order.getRoom().getRoomNumber()));
+                enterServiceIDOrderTextFiled.setText("1");
             } else
                 orderInfoLabel.setText("order not found");
 
         });
         createOrderButton.setOnAction(actionEvent -> {
             Order order = fasadOrder.createNewOrder(
-                    fasadGuest.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())),
+                    fasadGuest.findById(Integer.parseInt(enterGuestIdOrderTextField.getText())),
                     fasadRoom.findById(Integer.parseInt(enterRoomIdOrderTextField.getText())),
                     fasadService.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())),
                     localDate,
@@ -379,10 +388,11 @@ public class MainController implements IController {
         });
         updateOrderButton.setOnAction(actionEvent -> {
             Order order = fasadOrder.findByID(Integer.parseInt(enterOrderIDTextField.getText()));
-            order.setGuest(fasadGuest.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())));
+            order.setGuest(fasadGuest.findById(Integer.parseInt(enterGuestIdOrderTextField.getText())));
             order.setRoom(fasadRoom.findById(Integer.parseInt(enterRoomIdOrderTextField.getText())));
             order.setDaysOfStay(Integer.parseInt(enterDaysOfStayOrderTextField.getText()));
             order.setAllAmount(fasadOrder.getAllAmount(order.getId()));
+            fasadOrder.updateOrder(order);
             refreshOrderTable();
             orderInfoLabel.setText("update order: \n" + order);
 
@@ -411,17 +421,11 @@ public class MainController implements IController {
             else serviceInfoOrderLabel.setText("service not found");
         });
         addServiceOrderButton.setOnAction(actionEvent -> {
-            fasadOrder.AddInRoomService(Integer.parseInt(enterOrderIDTextField.getText()), fasadService.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())));
+            fasadOrder.addServiceInOrder(fasadOrder.findByID(Integer.parseInt(enterOrderIDTextField.getText())), fasadService.findById(Integer.parseInt(enterServiceIDOrderTextFiled.getText())));
             orderInfoLabel.setText(fasadOrder.findByID(Integer.parseInt(enterOrderIDTextField.getText())).toString());
             refreshOrderTable();
         });
-        addGuestOrderButton.setOnAction(actionEvent -> {
-            Guest guest = fasadGuest.findById(Integer.parseInt(enterGuestIdOrderTextField.getText()));
 
-            fasadOrder.addGuestInRoom(Integer.parseInt(enterOrderIDTextField.getText()), guest);
-            orderInfoLabel.setText(fasadOrder.findByID(Integer.parseInt(enterOrderIDTextField.getText())).toString());
-            refreshOrderTable();
-        });
 
         /**
          * guest page
@@ -584,9 +588,7 @@ public class MainController implements IController {
         });
 
 
-        exitButton.setOnAction(actionEvent -> {
-            System.exit(0);
-        });
+
         /**
          * history page
          */
@@ -598,6 +600,11 @@ public class MainController implements IController {
         });
         showAllRoomGuestButton.setOnAction(actionEvent -> {
             historyInfoLabel.setText(fasadHistory.showAllRoomGuest(Integer.parseInt(enterGuestIdHistoryTextField.getText())).toString());
+        });
+
+
+        exitButton.setOnAction(actionEvent -> {
+            System.exit(0);
         });
 
     }

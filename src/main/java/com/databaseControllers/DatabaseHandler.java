@@ -1,15 +1,8 @@
 package com.databaseControllers;
 
 import com.configsDB.ConfigDB;
-import com.configsDB.Constants;
-import com.dao.GuestDao;
-import com.model.Guest;
-import com.model.Order;
-import com.service.GuestService;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DatabaseHandler extends ConfigDB {
@@ -30,8 +23,8 @@ public class DatabaseHandler extends ConfigDB {
 
         try {
             dbConnection= DriverManager.getConnection(connectionString,dbUser,dbPassword);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            System.err.println(e);
         }
         return dbConnection;
     }

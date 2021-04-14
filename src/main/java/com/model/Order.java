@@ -95,6 +95,6 @@ public class Order implements Serializable {
                 + services + '\n' +
                 "Day Of  Settling: " + localDate + '\n' +
                 "Day Of departure: " + localDate.plusDays(daysOfStay) + "\n" +
-                "AllAmount:  "+  allAmount;
+                "AllAmount:  "+  allAmount+ "\n";
     }
 }

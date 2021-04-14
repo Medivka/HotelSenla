@@ -17,7 +17,9 @@ public interface IOrderService {
 
     void addGuestInRoom(Integer orderNumber, Guest guest);
 
-    void addInRoomService(Integer orderNumber, Service service);
+    void addServiceInOrder(Order order, Service service);
+
+
 
     void changeRoomInOrder(Integer orderNumber, Room room);
 
@@ -31,4 +33,5 @@ public interface IOrderService {
 
     void setOrderList(List list);
 
+    void updateOrder(Order order);
 }

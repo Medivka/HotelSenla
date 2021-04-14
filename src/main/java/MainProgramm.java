@@ -2,6 +2,8 @@ import com.api.enums.GuestGender;
 import com.api.enums.RoomStatus;
 import com.api.service.IRoomService;
 import com.dao.GuestDao;
+import com.dao.OrderDao;
+import com.dao.ServiceDao;
 import com.fasad.FasadOrder;
 
 import com.fasad.FasadService;
@@ -22,5 +24,6 @@ public class MainProgramm {
 
 
     public static void main(String[] args) {
-    }
-}
+        System.out.println(OrderDao.getInstance().findById(5).getServices());
+
+}}

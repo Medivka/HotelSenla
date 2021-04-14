@@ -13,4 +13,7 @@ public interface IOrderDao {
     Order findById(Integer id);
 
 
+    void updateOrder(Order order);
+
+    void addServiceInOrder(Order order, Service service);
 }
