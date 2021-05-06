@@ -74,7 +74,11 @@ public class OrderDao implements IOrderDao {
 
     @Override
     public Order findById(Integer id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Order.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        Order order=session.get(Order.class,id);
+        session.close();
+        return order;
 
     }
 

@@ -78,7 +78,11 @@ public class RoomDao implements IRoomDao {
 
     @Override
     public Room findById(Integer id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Room.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        Room room=session.get(Room.class,id);
+        session.close();
+        return room;
     }
 
     @Override

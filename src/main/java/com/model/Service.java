@@ -20,7 +20,7 @@ public class Service  implements Serializable {
     private String name;
     @Column(name = "price")
     private Integer price;
-    @ManyToMany(fetch = FetchType.LAZY )
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE )
     @JoinTable(name = "orders_services",
             joinColumns = @JoinColumn(name = "id_service"),
             inverseJoinColumns = @JoinColumn(name = "id_order"))

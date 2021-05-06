@@ -57,7 +57,12 @@ public class GuestDao implements IGuestDao {
 
     @Override
     public Guest findById(Integer id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Guest.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx1 = session.beginTransaction();
+        Guest guest=session.get(Guest.class,id);
+        session.close();
+        return guest;
+
     }
 
     @Override

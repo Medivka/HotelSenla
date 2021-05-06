@@ -60,7 +60,11 @@ public class ServiceDao implements IServiceDao {
 
     @Override
     public Service findById(Integer id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Service.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tr = session.beginTransaction();
+        Service service= session.get(Service.class,id);
+        session.close();
+        return service;
     }
 
 
