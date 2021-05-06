@@ -1,21 +1,10 @@
-import com.api.enums.GuestGender;
-import com.api.enums.RoomStatus;
-import com.api.service.IRoomService;
-import com.dao.GuestDao;
-import com.dao.OrderDao;
-import com.dao.ServiceDao;
-import com.fasad.FasadOrder;
 
-import com.fasad.FasadService;
-import com.hibernate.EntityManagerUtil;
-import com.model.Guest;
-import com.model.Order;
-import com.model.Room;
+import com.api.service.IRoomService;
+import com.dao.ServiceDao;
 import com.model.Service;
 import com.service.*;
 
-import javax.persistence.EntityManager;
-import java.time.LocalDate;
+
 
 public class MainProgramm {
     private static IRoomService roomService = RoomService.getInstance();
