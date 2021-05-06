@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,7 +28,8 @@ public class Room implements Serializable {
     private Integer stars;
 
     @OneToMany(mappedBy = "room", orphanRemoval = true,fetch = FetchType.LAZY)
-    private List<Order> orderList;
+
+    private List<Order> orderListRooms=new ArrayList<>() ;
 
 
     public Room() {

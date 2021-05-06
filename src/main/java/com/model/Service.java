@@ -24,7 +24,7 @@ public class Service  implements Serializable {
     @JoinTable(name = "orders_services",
             joinColumns = @JoinColumn(name = "id_service"),
             inverseJoinColumns = @JoinColumn(name = "id_order"))
-    private List<Order> orders;
+    private List<Order> ordersListServices =new ArrayList<>();
 
 
     public Service() {

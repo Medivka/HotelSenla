@@ -1,23 +1,13 @@
 package com.dao;
 
 import com.api.dao.IGuestDao;
-import com.api.enums.GuestGender;
-import com.configsDB.Constants;
-import com.databaseControllers.DatabaseHandler;
 import com.hibernate.HibernateSessionFactoryUtil;
 import com.model.Guest;
-import com.model.Service;
-import com.util.IdGenerator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 public class GuestDao implements IGuestDao {
@@ -51,7 +41,7 @@ public class GuestDao implements IGuestDao {
     public void delete(Guest guest) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.delete(guest);
+        session.remove(guest);
         tx1.commit();
         session.close();
     }
@@ -74,15 +64,15 @@ public class GuestDao implements IGuestDao {
     public void update(Guest guest) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(guest);
+        session.merge(guest);
         tx1.commit();
         session.close();
     }
 }
+
 /**
- *  for jdbc
- *   down
- *
+ * for jdbc
+ * down
  */
 
 //    @Override

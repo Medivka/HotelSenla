@@ -2,6 +2,7 @@ package com.dao;
 
 import com.api.dao.IServiceDao;
 import com.hibernate.HibernateSessionFactoryUtil;
+import com.model.Guest;
 import com.model.Service;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import java.util.List;
 
 
 public class ServiceDao implements IServiceDao {
+
 
     private List<Service> serviceList = new ArrayList<>();
 
@@ -66,12 +68,11 @@ public class ServiceDao implements IServiceDao {
     public void updateService(Service service) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tr = session.beginTransaction();
-        session.update(service);
+        session.merge(service);
         tr.commit();
         session.close();
     }
 }
-
 /**
  * for jdbc
  * down

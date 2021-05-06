@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -33,7 +34,7 @@ public class Guest implements Serializable {
     private String address;
 
     @OneToMany(mappedBy = "guest", orphanRemoval = true,fetch = FetchType.LAZY)
-    private List<Order> orderList;
+    private List<Order> orderListGuest=new ArrayList<>();
 
 
     public Guest() {

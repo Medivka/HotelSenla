@@ -27,7 +27,6 @@ import java.util.List;
 
 public class OrderDao implements IOrderDao {
 
-
     private static OrderDao instance;
     private List<Order> orderList = new ArrayList<>();
 
@@ -83,7 +82,7 @@ public class OrderDao implements IOrderDao {
     public void updateOrder(Order order) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(order);
+        session.merge(order);
         tx1.commit();
         session.close();
     }
@@ -94,7 +93,6 @@ public class OrderDao implements IOrderDao {
 
     }
 }
-
 
 /**
  * for jdbc

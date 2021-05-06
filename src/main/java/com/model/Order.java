@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,11 +32,11 @@ public class Order implements Serializable {
     @JoinColumn(name ="rooms")
     private Room room;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "orders_services",
             joinColumns = @JoinColumn(name = "id_order"),
             inverseJoinColumns = @JoinColumn(name = "id_service"))
-    private List<Service> services;
+    private List<Service> services=new ArrayList<>();
 
     @Column(name = "localDate")
     private LocalDate localDate;

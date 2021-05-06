@@ -31,6 +31,7 @@ import java.util.List;
 
 public class RoomDao implements IRoomDao {
 
+
     private ArrayList<Room> roomList = new ArrayList<>();
     private static RoomDao instance;
 
@@ -84,7 +85,7 @@ public class RoomDao implements IRoomDao {
     public void update(Room room) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(room);
+        session.merge(room);
         tx1.commit();
         session.close();
     }
