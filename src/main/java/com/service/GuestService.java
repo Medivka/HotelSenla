@@ -1,6 +1,7 @@
 package com.service;
 
 
+import com.api.dao.IGuestDao;
 import com.api.enums.GuestGender;
 import com.api.service.IGuestService;
 import com.dao.GuestDao;
@@ -8,6 +9,7 @@ import com.exceptions.DaoException;
 import com.exceptions.ServiceExeption;
 import com.model.Guest;
 import com.util.IdGenerator;
+import lombok.extern.log4j.Log4j;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.stream.Collectors;
 
 public class GuestService implements IGuestService {
 
-    private GuestDao guestDao;
+    private IGuestDao guestDao;
     private static final Logger LOGGER = Logger.getLogger(GuestService.class.getName());
     private static GuestService instance;
 
@@ -53,7 +55,7 @@ public class GuestService implements IGuestService {
 
     @Override
     public Guest createGuest(String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address) {
-        Guest guest = new Guest(IdGenerator.generateGuestId(), name,lastName, age,phone,guestGender,email,address);
+        Guest guest = new Guest(name,lastName, age,phone,guestGender,email,address);
         LOGGER.log(Level.INFO, String.format("createNewGuest id: %s,name: %s, lastName: %s, age: %s, phone: %s, guestGender: %s, email: %s, address: %s. ", guest.getGuestNumber(), name,lastName, age,phone,guestGender,email,address));
         guestDao.save(guest);
         return guest;
@@ -115,9 +117,9 @@ public class GuestService implements IGuestService {
     }
 
     @Override
-    public void deleteGuest(Integer id){
-        LOGGER.log(Level.INFO, String.format("delete guest %s",id));
-        guestDao.delete(id);
+    public void deleteGuest(Guest guest){
+        LOGGER.log(Level.INFO, String.format("delete guest %s",guest.getGuestNumber()));
+        guestDao.delete(guest);
     }
     @Override
     public void setGuestLIst(List list) {

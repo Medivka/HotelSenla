@@ -2,6 +2,7 @@ package com.fasad;
 
 
 import com.api.enums.GuestGender;
+
 import com.model.Guest;
 import com.model.Room;
 import com.model.Service;
@@ -54,8 +55,8 @@ public class FasadGuest {
         return guestService.sortedByName();
     }
 
-    public void deleteGuest(Integer id){
-         guestService.deleteGuest(id);
+    public void deleteGuest(Guest guest){
+         guestService.deleteGuest(guest);
     }
 
     public void setGuestList(List list) {

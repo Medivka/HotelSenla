@@ -55,7 +55,7 @@ public class HistoryService implements IHistoryService {
             for (int i = 0; i < historyList.size(); i++) {
                 Order order = historyList.get(i);
                 Room room = order.getRoom();
-                if (roomID.equals(room.getRoomNumber())) {
+                if (roomID.equals(room.getId())) {
                     threeLastGuest.add(order.getGuest());
                 }
             }

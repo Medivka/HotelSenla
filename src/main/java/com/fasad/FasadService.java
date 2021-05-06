@@ -36,8 +36,8 @@ public class FasadService {
     public void setServiceList(List list) {
         serviceService.setServiceList(list);
     }
-    public void deleteService(Integer id){
-        serviceService.deleteService(id);
+    public void deleteService(Service service){
+        serviceService.deleteService(service);
     }
     public void updateService(Service service){serviceService.updateService(service);}
 

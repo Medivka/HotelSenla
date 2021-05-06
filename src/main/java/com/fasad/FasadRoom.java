@@ -17,8 +17,8 @@ public class FasadRoom {
         }
         return instance;
     }
-public void deleteRoom(Integer idRoom){
-        roomService.deleteRoom(idRoom);
+public void deleteRoom(Room room){
+        roomService.deleteRoom(room);
 }
     public List<Room> showAllRoom() {
         return roomService.showAllRoom();

@@ -1,21 +1,35 @@
 package com.model;
 
+import lombok.Data;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Service implements Serializable {
 
+@Data
+@Entity
+@Table(name = "services")
+public class Service  implements Serializable {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "price")
     private Integer price;
+    @ManyToMany(fetch = FetchType.LAZY )
+    @JoinTable(name = "orders_services",
+            joinColumns = @JoinColumn(name = "id_service"),
+            inverseJoinColumns = @JoinColumn(name = "id_order"))
+    private List<Order> orders;
+
 
     public Service() {
     }
 
-    public Service(Integer id, String name, Integer price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
 
     public Service(String name, Integer price) {
         this.name = name;
@@ -50,7 +64,7 @@ public class Service implements Serializable {
     @Override
     public String toString() {
         return
-                name + "  price= " + price+"\n"
+                name + "  price= " + price + "\n"
                 ;
     }
 

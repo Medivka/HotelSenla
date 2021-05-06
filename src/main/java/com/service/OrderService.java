@@ -50,14 +50,14 @@ public class OrderService implements IOrderService {
         Integer priceService = 0;
         ArrayList<Service> services = new ArrayList<>();
         services.add(service);
-        Integer id = IdGenerator.generateOrderId();
+
         for (int i = 0; i < services.size(); i++) {
             Service service1 = services.get(i);
             priceService = priceService + service1.getPrice();
         }
         Integer priceRoom = room.getPrice();
         Integer allAmount = (priceRoom + priceService) * daysOfStay;
-        Order order = new Order(id, guest, room, services, localDate, daysOfStay, allAmount);
+        Order order = new Order(guest, room, services, localDate, daysOfStay, allAmount);
         LOGGER.log(Level.INFO, String.format("createNewOrder id: %s, guest: %s, room: %s, com.service: %s, Date: %s, DayOfStay: %s ,AllAmount: %s ", order.getId(), guest, room, service, localDate, daysOfStay, order.getAllAmount()));
         orderDao.save(order);
         historyDao.save(order);
@@ -155,9 +155,9 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public void deleteOrder(Integer id) {
-        LOGGER.log(Level.INFO, String.format("delete Order %s", id));
-        orderDao.delete(id);
+    public void deleteOrder(Order order) {
+        LOGGER.log(Level.INFO, String.format("delete Order %s",order.getId()));
+        orderDao.delete(order);
     }
 
     @Override

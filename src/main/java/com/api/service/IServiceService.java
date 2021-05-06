@@ -15,7 +15,7 @@ public interface IServiceService {
     void changeServiceName(Integer idService, String name);
     void changeServicePrice(Integer idService, Integer price);
 
-    void deleteService(Integer id);
+    void deleteService(Service service);
 
     List sortedByPrice();
 

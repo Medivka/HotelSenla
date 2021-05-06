@@ -1,7 +1,7 @@
 CREATE DATABASE senlahotel;
 
 CREATE TABLE `senlahotel`.`guests` (
-  guestNumber INT NOT NULL,
+  guestNumber INT NOT NULL auto_increment,
   name VARCHAR(45) NOT NULL,
   lastName VARCHAR(45) NOT NULL,
   age VARCHAR(45) NOT NULL,
@@ -13,13 +13,13 @@ CREATE TABLE `senlahotel`.`guests` (
 
 
 CREATE TABLE `senlahotel`.`services` (
-  id INT NOT NULL,
+  id INT NOT NULL auto_increment,
   name VARCHAR(45) NOT NULL,
   price VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `senlahotel`.`rooms` (
-  roomNumber INT NOT NULL,
+  roomNumber INT NOT NULL auto_increment,
   roomStatus VARCHAR(45) NOT NULL,
   capacity INT NOT NULL,
   stars INT NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `senlahotel`.`rooms` (
 
 
   CREATE TABLE `senlahotel`.`orders` (
-    id INT NOT NULL,
+    id INT NOT NULL auto_increment,
     guests INT NULL,
     rooms INT NULL,
     localDate DATE NULL,
@@ -43,8 +43,8 @@ CREATE TABLE `senlahotel`.`rooms` (
     id_order int not null,
     id_service int not null,
     primary key(id),
-    foreign key (id_order) references senlahotel.orders(id) ON DELETE CASCADE,
-    foreign key(id_service) references senlahotel.services(id) ON DELETE CASCADE
+    foreign key (id_order) references senlahotel.orders(id) ,
+    foreign key(id_service) references senlahotel.services(id)
     );
 
 INSERT INTO `senlahotel`.`services` (`id`, `name`, `price`) VALUES ('1', 'TV', '600');

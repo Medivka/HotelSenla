@@ -18,14 +18,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="924.0" prefWidth="1362.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.mainMenuControllers.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="924.0" prefWidth="1362.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainMenuControllers.MainController">
     <top>
         <AnchorPane prefHeight="83.0" prefWidth="1249.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="logInButton" layoutX="1128.0" layoutY="25.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #00BFFF;" text="Log in" textFill="WHITE" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
                 <ImageView fx:id="senlaHome" accessibleRole="BUTTON" fitHeight="38.0" fitWidth="150.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
                     <image>
-                        <Image url="@../images/senlaLog.jpg" />
+                        <Image url="@../../../images/senlaLog.jpg" />
                     </image>
                 </ImageView>
                 <Label alignment="CENTER" layoutX="367.0" layoutY="1.0" prefHeight="82.0" prefWidth="547.0" text="GRAND Hotel Senla" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="367.0" AnchorPane.rightAnchor="335.0" AnchorPane.topAnchor="1.0">
@@ -390,7 +390,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="780.0" prefWidth="1052.0">
                                        <children>
-                                          <Label fx:id="historyInfoLabel" alignment="TOP_LEFT" layoutX="-2.0" prefHeight="776.0" prefWidth="1053.0" text="historyInfoLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <Label fx:id="historyInfoLabel" alignment="TOP_LEFT" layoutX="-2.0" prefHeight="10000.0" prefWidth="992.0" text="historyInfoLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <font>
                                                 <Font name="Comic Sans MS Bold Italic" size="12.0" />
                                              </font>

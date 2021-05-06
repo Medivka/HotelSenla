@@ -1,18 +1,40 @@
 package com.model;
 
 import com.api.enums.GuestGender;
+import lombok.Data;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
+
+@Data
+@Entity
+@Table(name = "guests")
 public class Guest implements Serializable {
+    @Id
+    @Column(name = "guestNumber")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer guestNumber;
+    @Column(name = "name")
     private String name;
+    @Column(name = "lastName")
     private String lastName;
+    @Column(name = "age")
     private Integer age;
+    @Column(name = "phone")
     private String phone;
+    @Column(name = "guestGender")
+    @Enumerated(EnumType.STRING)
     private GuestGender guestGender;
+    @Column(name = "email")
     private String email;
+    @Column(name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "guest", orphanRemoval = true,fetch = FetchType.LAZY)
+    private List<Order> orderList;
+
 
     public Guest() {
     }
@@ -28,8 +50,8 @@ public class Guest implements Serializable {
         this.age = age;
     }
 
-    public Guest(Integer guestNumber, String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address) {
-        this.guestNumber = guestNumber;
+    public Guest(String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address) {
+
         this.name = name;
         this.lastName = lastName;
         this.age = age;
@@ -106,11 +128,11 @@ public class Guest implements Serializable {
 
     @Override
     public String toString() {
-        return "Guest:" + guestNumber + "\n"+
-                 name +" " + lastName +", age: " + age +"\n"+
-                "phone: " + phone + "  guestGender: " + guestGender+"\n"+
-                "email: " + email  +"\n"+
-                "address: " + address  +"\n";
+        return "Guest:" + guestNumber + "\n" +
+                name + " " + lastName + ", age: " + age + "\n" +
+                "phone: " + phone + "  guestGender: " + guestGender + "\n" +
+                "email: " + email + "\n" +
+                "address: " + address + "\n";
     }
 }
 

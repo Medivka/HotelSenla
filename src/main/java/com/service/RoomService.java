@@ -69,15 +69,15 @@ public class RoomService implements IRoomService {
     }
 
     @Override
-    public void deleteRoom(Integer idRoom) {
-        roomDao.delete(idRoom);
+    public void deleteRoom(Room room) {
+        roomDao.delete(room);
     }
 
     @Override
     public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars) {
         try {
-            Room room = new Room(IdGenerator.generateRoomId(), roomStatus, copacity, price, stars);
-            LOGGER.log(Level.INFO, String.format("createNewRoom id: %s,  roomstatus: %s, copacity: %s,  price: %s,  stars: %s. ", room.getRoomNumber(), roomStatus, copacity, price, stars));
+            Room room = new Room( roomStatus, copacity, price, stars);
+            LOGGER.log(Level.INFO, String.format("createNewRoom   roomstatus: %s, copacity: %s,  price: %s,  stars: %s. ",  roomStatus, copacity, price, stars));
             roomDao.save(room);
             return room;
         } catch (DaoException e) {
@@ -168,8 +168,8 @@ public class RoomService implements IRoomService {
     @Override
     public List<Room> allFreeRoom() {
         LOGGER.log(Level.INFO, String.format("AllFreeRoom"));
-        ArrayList<Room> freeRoom = new ArrayList<>();
-        ArrayList<Room> rooms = roomDao.getRoomList();
+        List<Room> freeRoom = new ArrayList<>();
+       List<Room> rooms = roomDao.getRoomList();
         for (Room roo : rooms) {
             Room room = roo;
             if (roo.getRoomStatus().equals(RoomStatus.FREE)) {

@@ -1,28 +1,55 @@
 package com.model;
 
+import lombok.Data;
+
+
+
+import javax.persistence.*;
+
 import java.io.Serializable;
 import java.time.LocalDate;
+
 import java.util.List;
 
 
+@Data
+@Entity
+@Table(name = "orders")
 public class Order implements Serializable {
-
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+   // @Column(name = "guests")
+
+    @ManyToOne(fetch =  FetchType.LAZY)
+    @JoinColumn(name = "guests")
     private Guest guest;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="rooms")
     private Room room;
-    private List services;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "orders_services",
+            joinColumns = @JoinColumn(name = "id_order"),
+            inverseJoinColumns = @JoinColumn(name = "id_service"))
+    private List<Service> services;
+
+    @Column(name = "localDate")
     private LocalDate localDate;
+    @Column(name = "daysOfStay")
     private Integer daysOfStay;
+    @Column(name = "allAmount")
     private Integer allAmount;
-
-
 
 
     public Order() {
     }
 
-    public Order(Integer id, Guest guest, Room room, List services, LocalDate localDate, Integer daysOfStay, Integer allAmount) {
-        this.id = id;
+    public Order(Guest guest, Room room, List services, LocalDate localDate, Integer daysOfStay, Integer allAmount) {
+
         this.guest = guest;
         this.room = room;
         this.services = services;
@@ -38,6 +65,7 @@ public class Order implements Serializable {
     public void setAllAmount(Integer allAmount) {
         this.allAmount = allAmount;
     }
+
     public Integer getId() {
         return id;
     }
@@ -90,11 +118,11 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         return id + " Order " +
-                '\n' + guest.getName() +" "+guest.getLastName()+ '\n'+
-                "room:  " + room.getRoomNumber()+ '\n'
+                '\n' + guest.getName() + " " + guest.getLastName() + '\n' +
+                "room:  " + room.getId() + '\n'
                 + services + '\n' +
                 "Day Of  Settling: " + localDate + '\n' +
                 "Day Of departure: " + localDate.plusDays(daysOfStay) + "\n" +
-                "AllAmount:  "+  allAmount+ "\n";
+                "AllAmount:  " + allAmount + "\n";
     }
 }

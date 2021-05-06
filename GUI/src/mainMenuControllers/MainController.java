@@ -1,9 +1,9 @@
-package controllers.mainMenuControllers;
-
+package mainMenuControllers;
 
 import com.api.enums.GuestGender;
 import com.api.enums.RoomStatus;
 import com.fasad.*;
+
 import com.inputOutput.Serializer;
 import com.model.Guest;
 import com.model.Order;
@@ -190,6 +190,7 @@ public class MainController implements IController {
 
     @FXML
     private Label guestInfoLabel;
+
     @FXML
     private ComboBox<GuestGender> genderGuestComboBox;
 
@@ -368,7 +369,7 @@ public class MainController implements IController {
                  */
                 enterDaysOfStayOrderTextField.setText(order.getDaysOfStay().toString());
                 enterGuestIdOrderTextField.setText(String.valueOf(order.getGuest().getGuestNumber()));
-                enterRoomIdOrderTextField.setText(String.valueOf(order.getRoom().getRoomNumber()));
+                enterRoomIdOrderTextField.setText(String.valueOf(order.getRoom().getId()));
                 enterServiceIDOrderTextFiled.setText("1");
             } else
                 orderInfoLabel.setText("order not found");
@@ -398,7 +399,7 @@ public class MainController implements IController {
 
         });
         deleteOrderButton.setOnAction(actionEvent -> {
-            fasadOrder.deleteOrder(Integer.parseInt(enterOrderIDTextField.getText()));
+            fasadOrder.deleteOrder(fasadOrder.findByID(Integer.parseInt(enterOrderIDTextField.getText())));
             orderInfoLabel.setText("order delete" + Integer.parseInt(enterOrderIDTextField.getText()));
             refreshOrderTable();
 
@@ -451,7 +452,7 @@ public class MainController implements IController {
 
         });
         deleteGuestButton.setOnAction(actionEvent -> {
-            fasadGuest.deleteGuest(Integer.parseInt(guestIdTextField.getText()));
+            fasadGuest.deleteGuest(fasadGuest.findById(Integer.parseInt(guestIdTextField.getText())));
             guestInfoLabel.setText("delete");
             refreshGuestTable();
         });
@@ -519,7 +520,7 @@ public class MainController implements IController {
         deleteRoomButton.setOnAction(actionEvent -> {
             Integer roomNumber = Integer.parseInt(enterRoomIdTextField.getText());
             if (roomNumber <= fasadRoom.showAllRoom().size() && roomNumber > 0) {
-                fasadRoom.deleteRoom(roomNumber);
+                fasadRoom.deleteRoom(fasadRoom.findById(roomNumber));
                 roomInfoLabel.setText("delete room");
             } else roomInfoLabel.setText("room not found");
             refreshRoomTable();
@@ -533,7 +534,7 @@ public class MainController implements IController {
                     , Integer.parseInt(priceRoomTextField.getText())
                     , roomStarsComboBox.getValue());
             roomInfoLabel.setText(room.toString());
-            enterRoomIdTextField.setText(room.getRoomNumber().toString());
+            enterRoomIdTextField.setText(room.getId().toString());
             refreshRoomTable();
 
         });
@@ -582,7 +583,7 @@ public class MainController implements IController {
         });
         deleteServiceButton.setOnAction(actionEvent -> {
             Integer serviceId = Integer.parseInt(enterServiceIDTextField.getText());
-            fasadService.deleteService(serviceId);
+            fasadService.deleteService(fasadService.findById(serviceId));
             serviceInfoLabel.setText("delete service ");
             refreshTableService();
         });
@@ -618,7 +619,6 @@ public class MainController implements IController {
     LocalDate localDate = LocalDate.now();
 
     private String mainPath = "/resources/Main.fxml";
-
     private String guestPathInFile = "src/main/java/com/hdd/guests.dat";
     private String orderPathInFile = "src/main/java/com/hdd/orders.dat";
     private String roomPathInFile = "src/main/java/com/hdd/rooms.dat";
@@ -642,7 +642,7 @@ public class MainController implements IController {
     }
 
     public void refreshRoomTable() {
-        idRoomColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("roomNumber"));
+        idRoomColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("id"));
         roomStatusColumn.setCellValueFactory(new PropertyValueFactory<Room, RoomStatus>("roomStatus"));
         priceRoomColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("price"));
         capacityRoomColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("capacity"));

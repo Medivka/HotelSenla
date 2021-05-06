@@ -73,8 +73,8 @@ public class ServiceService implements IServiceService {
     @Override
     public Service createService(String name, Integer price) {
         try {
-            Service service = new Service(IdGenerator.generateServiceId(), name, price);
-            LOGGER.log(Level.INFO, String.format("createService id: %s, name: %s, price: %s", service.getId(), name, price));
+            Service service = new Service(name, price);
+            LOGGER.log(Level.INFO, String.format("createService  name: %s, price: %s", name, price));
             serviceDao.save(service);
             return service;
         } catch (DaoException e) {
@@ -114,10 +114,10 @@ public class ServiceService implements IServiceService {
     }
 
     @Override
-    public void deleteService(Integer id) {
+    public void deleteService(Service service) {
     try{
-        LOGGER.log(Level.INFO, String.format("delete service %s", id));
-        serviceDao.delete(id);
+        LOGGER.log(Level.INFO, String.format("delete service %s", service.getId()));
+        serviceDao.delete(service);
     }catch (DaoException e){
         LOGGER.log(Level.WARN, "delete Service  failed", e);
         throw new ServiceExeption("delete Service failed", e);

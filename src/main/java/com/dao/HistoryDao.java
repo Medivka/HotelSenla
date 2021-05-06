@@ -2,15 +2,16 @@ package com.dao;
 
 import com.api.dao.IHistoryDao;
 import com.exceptions.DaoException;
+
 import com.model.History;
 import com.model.Order;
 
 import java.util.ArrayList;
 
-public class HistoryDao implements IHistoryDao {
-   Order order;
-    private static HistoryDao instance;
 
+public class HistoryDao implements IHistoryDao {
+    Order order;
+    private static HistoryDao instance;
 
 
     private ArrayList<Order> historyList = new ArrayList<>();
@@ -26,18 +27,20 @@ public class HistoryDao implements IHistoryDao {
         return instance;
     }
 
+    @Override
     public ArrayList<Order> getHistoryList() {
         setHistoryList((ArrayList<Order>) OrderDao.getInstance().getOrderList());
         return historyList;
     }
 
+    @Override
     public void setHistoryList(ArrayList<Order> historyList) {
         this.historyList = historyList;
     }
 
 
     @Override
-    public void save(Order  order) {
+    public void save(Order order) {
         historyList.add(order);
     }
 

@@ -7,12 +7,14 @@ import com.dao.ServiceDao;
 import com.fasad.FasadOrder;
 
 import com.fasad.FasadService;
+import com.hibernate.EntityManagerUtil;
 import com.model.Guest;
 import com.model.Order;
 import com.model.Room;
 import com.model.Service;
 import com.service.*;
 
+import javax.persistence.EntityManager;
 import java.time.LocalDate;
 
 public class MainProgramm {
@@ -24,6 +26,12 @@ public class MainProgramm {
 
 
     public static void main(String[] args) {
-        System.out.println(OrderDao.getInstance().findById(5).getServices());
 
+ServiceDao serviceDao= ServiceDao.getInstance();
+        System.out.println("nenf");
+        System.out.println(serviceDao.findById(1));
+        System.out.println("sdasdas");
+        Service service=new Service("voda",400);
+        System.out.println(service);
+        serviceDao.save(service);
 }}

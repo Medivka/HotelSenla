@@ -57,8 +57,8 @@ public class FasadOrder {
     public void setOrderList(List list) {
         orderService.setOrderList(list);
     }
-    public void deleteOrder(Integer id){
-        orderService.deleteOrder(id);
+    public void deleteOrder(Order order){
+        orderService.deleteOrder(order);
     }
 
  public void updateOrder(Order order){

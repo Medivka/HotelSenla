@@ -3,9 +3,16 @@ package com.api.dao;
 import com.model.Guest;
 import com.model.Room;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface IRoomDao {
 
-    void delete(Integer id);
+    void setRoomList(ArrayList<Room> roomList);
+
+   List<Room> getRoomList();
+
+    void delete(Room room);
     void     save(Room room);
     Room findById(Integer id);
 
