@@ -93,10 +93,26 @@ public class OrderDao implements IOrderDao {
 
     @Override
     public void addServiceInOrder(Order order, Service service) {
+        String insert = "insert into "
+                + Constants.ORDER_SERVICE_TABLE
+                + "(" + Constants.ORDER_SERVICE_ID_ORDER
+                + ","
+                + Constants.ORDER_SERVICE_ID_SERVICE
+                + ")" + "values(?,?)";
+        try {
+            PreparedStatement preparedStatement = DatabaseHandler.getInstance().getDbConnection().prepareStatement(insert);
+            preparedStatement.setInt(1, order.getId());
+            preparedStatement.setInt(2, service.getId());
+            preparedStatement.executeUpdate();
 
+        } catch (SQLException e) {
+            System.err.println(e + " error");
+        }
 
     }
-}
+
+    }
+
 
 /**
  * for jdbc

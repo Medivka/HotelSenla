@@ -24,15 +24,15 @@ public class Order implements Serializable {
 
    // @Column(name = "guests")
 
-    @ManyToOne(fetch =  FetchType.LAZY)
+    @ManyToOne(fetch =  FetchType.EAGER)
     @JoinColumn(name = "guests")
     private Guest guest;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="rooms")
     private Room room;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "orders_services",
             joinColumns = @JoinColumn(name = "id_order"),
             inverseJoinColumns = @JoinColumn(name = "id_service"))
@@ -126,4 +126,6 @@ public class Order implements Serializable {
                 "Day Of departure: " + localDate.plusDays(daysOfStay) + "\n" +
                 "AllAmount:  " + allAmount + "\n";
     }
+
+
 }

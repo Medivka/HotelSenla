@@ -321,10 +321,10 @@ public class MainController implements IController {
 
     @FXML
     void initialize() {
-            refreshOrderTable();
-            refreshRoomTable();
-            refreshGuestTable();
-            refreshTableService();
+        refreshOrderTable();
+        refreshRoomTable();
+        refreshGuestTable();
+        refreshTableService();
 
         /**
          * order page
@@ -434,21 +434,21 @@ public class MainController implements IController {
 
 
         findGuestButton.setOnAction(actionEvent -> {
-
-            Guest guest = fasadGuest.findById(Integer.parseInt(guestIdTextField.getText()));
-            guestInfoLabel.setText(guest.toString());
-            /*
-            auto-fill
-             */
-
-            guestNameTextField.setText(guest.getName());
-            LastNameTextField.setText(guest.getLastName());
-            AgeTextField.setText(guest.getAge().toString());
-            phoneTextField.setText(guest.getPhone());
-            emailTextField.setText(guest.getEmail());
-            addressTextField.setText(guest.getAddress());
-            refreshGuestTable();
-
+            Integer guestId = Integer.parseInt(guestIdTextField.getText());
+            if (guestId <= fasadGuest.showAllGuests().size() && guestId > 0)
+            {
+                Guest guest = fasadGuest.findById(Integer.parseInt(guestIdTextField.getText()));
+                guestInfoLabel.setText(guest.toString());
+                guestNameTextField.setText(guest.getName());
+                LastNameTextField.setText(guest.getLastName());
+                AgeTextField.setText(guest.getAge().toString());
+                phoneTextField.setText(guest.getPhone());
+                emailTextField.setText(guest.getEmail());
+                addressTextField.setText(guest.getAddress());
+            } else {
+                guestInfoLabel.setText("guest not found");
+                refreshGuestTable();
+            }
 
         });
         deleteGuestButton.setOnAction(actionEvent -> {
@@ -541,13 +541,13 @@ public class MainController implements IController {
 
         updateRoomButton.setOnAction(actionEvent -> {
             Integer roomNumber = Integer.parseInt(enterRoomIdTextField.getText());
-                Room room = fasadRoom.findById(roomNumber);
-                room.setRoomStatus(roomStatusComboBox.getValue());
-                room.setPrice(Integer.parseInt(priceRoomTextField.getText()));
-                room.setCopacity(Integer.parseInt(capacityRoomTextField.getText()));
-                room.setStars(roomStarsComboBox.getValue());
-                fasadRoom.updateRoom(room);
-           refreshRoomTable();
+            Room room = fasadRoom.findById(roomNumber);
+            room.setRoomStatus(roomStatusComboBox.getValue());
+            room.setPrice(Integer.parseInt(priceRoomTextField.getText()));
+            room.setCopacity(Integer.parseInt(capacityRoomTextField.getText()));
+            room.setStars(roomStarsComboBox.getValue());
+            fasadRoom.updateRoom(room);
+            refreshRoomTable();
         });
 
 
@@ -587,7 +587,6 @@ public class MainController implements IController {
             serviceInfoLabel.setText("delete service ");
             refreshTableService();
         });
-
 
 
         /**
@@ -659,7 +658,7 @@ public class MainController implements IController {
         serviceOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Service>("services"));
         dayOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("daysOfStay"));
         dayOfSettlingOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, LocalDate>("localDate"));
-        AllAmountOrderColumn.setCellValueFactory(new PropertyValueFactory<Order,Integer>("allAmount"));
+        AllAmountOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("allAmount"));
 
         ObservableList<Order> orders = FXCollections.observableArrayList(FasadOrder.getInstance().showAllOrder());
         orderTable.setItems(orders);
