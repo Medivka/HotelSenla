@@ -330,11 +330,11 @@ public class MainController implements IController {
          * order page
          */
         saveButton.setOnAction(actionEvent -> {
-            Serializer.getInstance().write(orderPathInFile, FasadOrder.getInstance().showAllOrder());
-            Serializer.getInstance().write(guestPathInFile, FasadGuest.getInstance().showAllGuests());
-            Serializer.getInstance().write(roomPathInFile, FasadRoom.getInstance().showAllRoom());
-            Serializer.getInstance().write(servicePathInFile, FasadService.getInstance().showAllService());
-            Serializer.getInstance().write(historyPathInFile, FasadHistory.getInstance().getAllHistory());
+            Serializer.getInstance().write(orderPathInFile, fasadOrder.showAllOrder());
+            Serializer.getInstance().write(guestPathInFile, fasadGuest.showAllGuests());
+            Serializer.getInstance().write(roomPathInFile, fasadRoom.showAllRoom());
+            Serializer.getInstance().write(servicePathInFile, fasadService.showAllService());
+            Serializer.getInstance().write(historyPathInFile, fasadHistory.getAllHistory());
             refreshTableService();
             refreshOrderTable();
             refreshGuestTable();
@@ -342,11 +342,11 @@ public class MainController implements IController {
 
         });
         loadButton.setOnAction(actionEvent -> {
-            FasadOrder.getInstance().setOrderList(Serializer.getInstance().read(orderPathInFile, Order.class));
-            FasadRoom.getInstance().setRoomList(Serializer.getInstance().read(roomPathInFile, Room.class));
-            FasadService.getInstance().setServiceList(Serializer.getInstance().read(servicePathInFile, Service.class));
-            FasadHistory.getInstance().setHistoryList(Serializer.getInstance().read(historyPathInFile, Order.class));
-            FasadGuest.getInstance().setGuestList(Serializer.getInstance().read(guestPathInFile, Guest.class));
+            fasadOrder.setOrderList(Serializer.getInstance().read(orderPathInFile, Order.class));
+            fasadRoom.setRoomList(Serializer.getInstance().read(roomPathInFile, Room.class));
+            fasadService.setServiceList(Serializer.getInstance().read(servicePathInFile, Service.class));
+            fasadHistory.setHistoryList(Serializer.getInstance().read(historyPathInFile, Order.class));
+            fasadGuest.setGuestList(Serializer.getInstance().read(guestPathInFile, Guest.class));
 
             loadSaveLabel.setText("Load!!!");
             refreshTableService();
@@ -610,6 +610,7 @@ public class MainController implements IController {
     }
 
 
+
     FasadService fasadService = FasadService.getInstance();
     FasadGuest fasadGuest = FasadGuest.getInstance();
     FasadRoom fasadRoom = FasadRoom.getInstance();
@@ -660,7 +661,7 @@ public class MainController implements IController {
         dayOfSettlingOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, LocalDate>("localDate"));
         AllAmountOrderColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("allAmount"));
 
-        ObservableList<Order> orders = FXCollections.observableArrayList(FasadOrder.getInstance().showAllOrder());
+        ObservableList<Order> orders = FXCollections.observableArrayList(fasadOrder.showAllOrder());
         orderTable.setItems(orders);
 
     }

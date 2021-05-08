@@ -1,35 +1,32 @@
 package com.dao;
 
 import com.api.dao.IHistoryDao;
+import com.api.dao.IOrderDao;
 import com.exceptions.DaoException;
 
 import com.model.History;
 import com.model.Order;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-
+@Component
 public class HistoryDao implements IHistoryDao {
-    Order order;
-    private static HistoryDao instance;
 
+    Order order;
+
+    @Autowired
+    IOrderDao orderDao;
 
     private ArrayList<Order> historyList = new ArrayList<>();
 
     private HistoryDao() {
     }
 
-
-    public static HistoryDao getInstance() {
-        if (instance == null) {
-            instance = new HistoryDao();
-        }
-        return instance;
-    }
-
     @Override
     public ArrayList<Order> getHistoryList() {
-        setHistoryList((ArrayList<Order>) OrderDao.getInstance().getOrderList());
+        setHistoryList((ArrayList<Order>) orderDao.getOrderList());
         return historyList;
     }
 

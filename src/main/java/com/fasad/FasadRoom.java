@@ -4,20 +4,17 @@ import com.api.enums.RoomStatus;
 import com.api.fasad.IFasadRoom;
 import com.api.service.IRoomService;
 import com.model.Room;
-import com.service.RoomService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class FasadRoom implements IFasadRoom {
-    private static IRoomService roomService = RoomService.getInstance();
-    private static FasadRoom instance;
 
-    public static FasadRoom getInstance() {
-        if (instance == null) {
-            instance = new FasadRoom();
-        }
-        return instance;
-    }
+    @Autowired
+    IRoomService roomService;
+
 
     @Override
     public void deleteRoom(Room room) {

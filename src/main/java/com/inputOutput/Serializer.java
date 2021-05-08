@@ -32,7 +32,7 @@ public class Serializer {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        FasadGuest.getInstance().setGuestList(lists);
+ //       FasadGuest.getInstance().setGuestList(lists);
         return lists;
     }
 }

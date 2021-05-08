@@ -16,6 +16,7 @@ import com.service.RoomService;
 import com.util.IdGenerator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 
 import java.io.FileInputStream;
@@ -28,22 +29,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class RoomDao implements IRoomDao {
 
 
     private ArrayList<Room> roomList = new ArrayList<>();
-    private static RoomDao instance;
 
     private RoomDao() {
     }
 
-    public static RoomDao getInstance() {
-        if (instance == null) {
-            instance = new RoomDao();
-        }
-        return instance;
-    }
 
     @Override
     public void setRoomList(ArrayList<Room> roomList) {

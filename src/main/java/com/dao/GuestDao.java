@@ -5,11 +5,14 @@ import com.hibernate.HibernateSessionFactoryUtil;
 import com.model.Guest;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class GuestDao implements IGuestDao {
 
     private List<Guest> guestList = new ArrayList<>();
@@ -17,14 +20,10 @@ public class GuestDao implements IGuestDao {
     private GuestDao() {
     }
 
-    private static GuestDao instance;
 
-    public static GuestDao getInstance() {
-        if (instance == null) {
-            instance = new GuestDao();
-        }
-        return instance;
-    }
+
+
+
 
     @Override
     public void setGuestList(List<Guest> guestList) {

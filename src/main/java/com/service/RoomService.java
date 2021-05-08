@@ -1,5 +1,6 @@
 package com.service;
 
+import com.api.dao.IRoomDao;
 import com.api.service.IRoomService;
 import com.dao.RoomDao;
 import com.exceptions.DaoException;
@@ -12,21 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
+@Component
 public class RoomService implements IRoomService {
 
     private static final Logger LOGGER = Logger.getLogger(RoomService.class.getName());
-    private final RoomDao roomDao;
-    private static RoomService instance;
+     @Autowired
+    IRoomDao roomDao;
 
-    public static RoomService getInstance() {
-        if (instance == null) {
-            instance = new RoomService(RoomDao.getInstance());
-        }
-        return instance;
-    }
 
+     @Autowired
     private RoomService(RoomDao roomDao) {
         this.roomDao = roomDao;
     }

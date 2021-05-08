@@ -1,5 +1,6 @@
 package com.service;
 
+import com.api.dao.IHistoryDao;
 import com.api.service.IHistoryService;
 import com.dao.HistoryDao;
 import com.exceptions.DaoException;
@@ -10,24 +11,22 @@ import com.model.Order;
 import com.model.Room;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import java.util.stream.Collectors;
 
+@Component
 public class HistoryService implements IHistoryService {
 
     private static final Logger LOGGER = Logger.getLogger(HistoryService.class.getName());
-    private final HistoryDao historyDao;
-    private static HistoryService instance;
 
-    public static HistoryService getInstance() {
-        if (instance == null) {
-            instance = new HistoryService(HistoryDao.getInstance());
-        }
-        return instance;
-    }
+    IHistoryDao historyDao;
 
+    @Autowired
     public HistoryService(HistoryDao historyDao) {
         this.historyDao = historyDao;
     }

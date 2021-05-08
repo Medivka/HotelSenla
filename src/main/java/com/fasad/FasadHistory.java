@@ -1,29 +1,25 @@
 package com.fasad;
 
 import com.api.fasad.IFasadHistory;
+import com.api.service.IHistoryService;
 import com.model.Guest;
 import com.model.History;
 import com.model.Order;
 import com.model.Room;
 import com.service.HistoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public class FasadHistory implements IFasadHistory {
+    @Autowired
+    IHistoryService historyService ;
 
-    private static HistoryService historyService = HistoryService.getInstance();
-    private static FasadHistory instance;
-
-    public static FasadHistory getInstance() {
-        if (instance == null) {
-            instance = new FasadHistory();
-        }
-        return instance;
-    }
 
     @Override
     public void setHistoryList(List list) {
-        historyService.setHistoryList(list);
+
     }
 
     @Override

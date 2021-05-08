@@ -1,6 +1,7 @@
 package com.service;
 
 
+import com.api.dao.IServiceDao;
 import com.api.service.IServiceService;
 import com.dao.ServiceDao;
 import com.exceptions.DaoException;
@@ -13,23 +14,22 @@ import java.util.List;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
+@Component
 public class ServiceService implements IServiceService {
 
-    private final ServiceDao serviceDao;
-    private static ServiceService instance;
+
+    @Autowired
+    IServiceDao serviceDao;
+
 
     private static final Logger LOGGER = Logger.getLogger(ServiceService.class.getName());
 
-    public static ServiceService getInstance() {
-        if (instance == null) {
-            instance = new ServiceService(ServiceDao.getInstance());
-        }
-        return instance;
-    }
-
+    @Autowired
     public ServiceService(ServiceDao serviceDao) {
         this.serviceDao = serviceDao;
     }
@@ -37,20 +37,21 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void updateService(Service service) {
-      try{  LOGGER.log(Level.INFO,String.format("update Service"));
-        serviceDao.updateService(service);
-    }catch (DaoException e){
-          LOGGER.log(Level.WARN,String.format("update Service failed"));
-          throw new ServiceExeption("update Service failed", e);
-      }
+        try {
+            LOGGER.log(Level.INFO, String.format("update Service"));
+            serviceDao.updateService(service);
+        } catch (DaoException e) {
+            LOGGER.log(Level.WARN, String.format("update Service failed"));
+            throw new ServiceExeption("update Service failed", e);
+        }
     }
 
     @Override
     public Service findById(Integer id) {
         try {
-           Service service = serviceDao.findById(id);
-           LOGGER.log(Level.INFO, String.format("Find by Id %s", id));
-           return service;
+            Service service = serviceDao.findById(id);
+            LOGGER.log(Level.INFO, String.format("Find by Id %s", id));
+            return service;
         } catch (DaoException e) {
             LOGGER.log(Level.WARN, "findById failed", e);
             throw new ServiceExeption("findById failed", e);
@@ -115,13 +116,13 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void deleteService(Service service) {
-    try{
-        LOGGER.log(Level.INFO, String.format("delete service %s", service.getId()));
-        serviceDao.delete(service);
-    }catch (DaoException e){
-        LOGGER.log(Level.WARN, "delete Service  failed", e);
-        throw new ServiceExeption("delete Service failed", e);
-    }
+        try {
+            LOGGER.log(Level.INFO, String.format("delete service %s", service.getId()));
+            serviceDao.delete(service);
+        } catch (DaoException e) {
+            LOGGER.log(Level.WARN, "delete Service  failed", e);
+            throw new ServiceExeption("delete Service failed", e);
+        }
     }
 
     @Override
@@ -139,12 +140,13 @@ public class ServiceService implements IServiceService {
 
     @Override
     public void setServiceList(List list) {
-      try{  LOGGER.log(Level.INFO, String.format("setServiceList"));
-        serviceDao.setServiceList(list);
-    }catch (DaoException e){
-          LOGGER.log(Level.WARN, "set serviceList  failed", e);
-          throw new ServiceExeption("set serviceList failed", e);
-      }
+        try {
+            LOGGER.log(Level.INFO, String.format("setServiceList"));
+            serviceDao.setServiceList(list);
+        } catch (DaoException e) {
+            LOGGER.log(Level.WARN, "set serviceList  failed", e);
+            throw new ServiceExeption("set serviceList failed", e);
+        }
     }
 
 }

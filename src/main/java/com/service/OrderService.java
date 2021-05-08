@@ -1,5 +1,7 @@
 package com.service;
 
+import com.api.dao.IHistoryDao;
+import com.api.dao.IOrderDao;
 import com.api.service.IOrderService;
 import com.dao.HistoryDao;
 import com.dao.OrderDao;
@@ -14,22 +16,20 @@ import java.util.List;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class OrderService implements IOrderService {
 
-    private final OrderDao orderDao;
-    private final HistoryDao historyDao;
-    private static OrderService instance;
+    @Autowired
+    IOrderDao orderDao;
+    @Autowired
+    IHistoryDao historyDao;
+
     private static final Logger LOGGER = Logger.getLogger(OrderService.class.getName());
 
-    public static OrderService getInstance() {
-        if (instance == null) {
-            instance = new OrderService(OrderDao.getInstance(), HistoryDao.getInstance());
-        }
-        return instance;
-    }
-
+    @Autowired
     private OrderService(OrderDao orderDao, HistoryDao historyDao) {
         this.orderDao = orderDao;
         this.historyDao = historyDao;

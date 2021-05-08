@@ -1,21 +1,20 @@
 package com.fasad;
 
 import com.api.fasad.IFasadService;
+import com.api.service.IServiceService;
 import com.model.Service;
 import com.service.ServiceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class FasadService implements IFasadService {
-    private static ServiceService serviceService = ServiceService.getInstance();
-    private static FasadService instance;
 
-    public static FasadService getInstance() {
-        if (instance == null) {
-            instance = new FasadService();
-        }
-        return instance;
-    }
+    @Autowired
+    IServiceService serviceService;
+
 
     @Override
     public Service findById(Integer idService) {

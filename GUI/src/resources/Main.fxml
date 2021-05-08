@@ -41,7 +41,7 @@
             <children>
                 <TabPane prefHeight="760.0" prefWidth="1249.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <tabs>
-                        <Tab text="Main menu">
+                        <Tab text="Main main.menu">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
@@ -54,7 +54,7 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab fx:id="orderMenuTab" text="Order menu">
+                        <Tab fx:id="orderMenuTab" text="Order main.menu">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
@@ -151,7 +151,7 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab fx:id="GuestMenuTab" text="Guest menu">
+                        <Tab fx:id="GuestMenuTab" text="Guest main.menu">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
@@ -245,7 +245,7 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab fx:id="roomMenuTab" text="Room menu">
+                        <Tab fx:id="roomMenuTab" text="Room main.menu">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
@@ -312,7 +312,7 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab fx:id="ServiceMenuTab" text="Service menu">
+                        <Tab fx:id="ServiceMenuTab" text="Service main.menu">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
@@ -365,7 +365,7 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
-                        <Tab fx:id="historyMenuTab" text="History menu">
+                        <Tab fx:id="historyMenuTab" text="History main.menu">
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

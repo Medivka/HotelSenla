@@ -1,26 +1,23 @@
+import com.api.dao.IGuestDao;
+import com.api.fasad.IFasadOrder;
+import com.api.fasad.IFasadService;
+import com.api.service.IHistoryService;
 
-import com.api.service.IRoomService;
-import com.dao.ServiceDao;
-import com.model.Service;
+import com.dao.GuestDao;
+import com.fasad.FasadOrder;
+import com.fasad.FasadService;
 import com.service.*;
-
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 public class MainProgramm {
-    private static IRoomService roomService = RoomService.getInstance();
-    private static GuestService guestService = GuestService.getInstance();
-    private static ServiceService serviceService = ServiceService.getInstance();
-    private static OrderService orderService = OrderService.getInstance();
-    private static HistoryService historyService = HistoryService.getInstance();
-
 
     public static void main(String[] args) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        IGuestDao guestDao=context.getBean("guestDao", GuestDao.class);
+        IHistoryService historyService=context.getBean("historyService",HistoryService.class);
+        IFasadService fasadService=context.getBean("fasadService", FasadService.class);
+        IFasadOrder fasadOrder=context.getBean("fasadOrder", FasadOrder.class);
 
-ServiceDao serviceDao= ServiceDao.getInstance();
-        System.out.println("nenf");
-        System.out.println(serviceDao.findById(1));
-        System.out.println("sdasdas");
-        Service service=new Service("voda",400);
-        System.out.println(service);
-        serviceDao.save(service);
+        System.out.println(fasadOrder.findByID(1));
 }}

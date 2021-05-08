@@ -1,25 +1,23 @@
 package com.fasad;
 
 import com.api.fasad.IFasadOrder;
+import com.api.service.IOrderService;
 import com.model.Guest;
 import com.model.Order;
 import com.model.Room;
 import com.model.Service;
 import com.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Component
 public class FasadOrder implements IFasadOrder {
-    private static OrderService orderService = OrderService.getInstance();
-    private static FasadOrder instance;
 
-    public static FasadOrder getInstance() {
-        if (instance == null) {
-            instance = new FasadOrder();
-        }
-        return instance;
-    }
+    @Autowired
+    IOrderService orderService;
+
 
     @Override
     public List showAllOrder() {

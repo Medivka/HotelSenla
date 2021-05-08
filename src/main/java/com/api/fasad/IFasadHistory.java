@@ -7,6 +7,7 @@ import com.model.Room;
 import java.util.List;
 
 public interface IFasadHistory {
+
     void setHistoryList(List list);
 
     List<Order> getAllHistory();

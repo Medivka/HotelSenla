@@ -15,6 +15,7 @@ import com.util.IdGenerator;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -24,21 +25,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class OrderDao implements IOrderDao {
 
-    private static OrderDao instance;
+
     private List<Order> orderList = new ArrayList<>();
 
     private OrderDao() {
     }
 
-    public static OrderDao getInstance() {
-        if (instance == null) {
-            instance = new OrderDao();
-        }
-        return instance;
-    }
 
 
     @Override

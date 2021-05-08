@@ -6,27 +6,20 @@ import com.model.Guest;
 import com.model.Service;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Component
 public class ServiceDao implements IServiceDao {
 
 
     private List<Service> serviceList = new ArrayList<>();
 
-    private static ServiceDao instance;
-
-    private ServiceDao() {
+      private ServiceDao() {
     }
 
-    public static ServiceDao getInstance() {
-        if (instance == null) {
-            instance = new ServiceDao();
-        }
-        return instance;
-    }
 
     @Override
     public void setServiceList(List<Service> serviceList) {
