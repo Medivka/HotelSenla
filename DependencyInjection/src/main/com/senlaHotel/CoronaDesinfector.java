@@ -1,13 +1,15 @@
 package main.com.senlaHotel;
 
 
-
+@Singleton
 public class CoronaDesinfector {
 
     @InjectByType
     private Announcer announcer;
     @InjectByType
     private Policeman policeman;
+    @InjectByType
+    private People people;
 
 
 
@@ -15,6 +17,7 @@ public class CoronaDesinfector {
         announcer.announce("Начинаем дезинфекцию, всё вон!");
         policeman.makePeopleLeaveRoom();
         desinfect(room);
+        people.launch();
         announcer.announce("Рискните зайти обратно");
     }
 
