@@ -1,21 +1,21 @@
 package main.actions;
 
+import com.springConfig.SpringBeans;
 import com.api.fasad.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.logging.Logger;
 
 public abstract class AbstractFasad {
     protected Logger LOGGER= Logger.getLogger(AbstractFasad.class.getName());
 
-  @Autowired
-    protected IFasadRoom fasadRoom ;
-@Autowired
-    protected IFasadGuest fasadGuest;
-@Autowired
-    protected IFasadService fasadService;
-@Autowired
-    protected IFasadOrder fasadOrder;
-@Autowired
-    protected IFasadHistory fasadHistory;
+
+    protected IFasadRoom fasadRoom = SpringBeans.fasadRoom;
+
+    protected IFasadGuest fasadGuest=SpringBeans.fasadGuest;
+
+    protected IFasadService fasadService=SpringBeans.fasadService;
+
+    protected IFasadOrder fasadOrder=SpringBeans.fasadOrder;
+
+    protected IFasadHistory fasadHistory=SpringBeans.fasadHistory;
 }

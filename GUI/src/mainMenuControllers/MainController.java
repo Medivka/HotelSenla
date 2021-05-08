@@ -1,5 +1,6 @@
 package mainMenuControllers;
 
+import com.springConfig.SpringBeans;
 import com.api.enums.GuestGender;
 import com.api.enums.RoomStatus;
 import com.fasad.*;
@@ -358,7 +359,7 @@ public class MainController implements IController {
         });
         findOrderButton.setOnAction(actionEvent -> {
             if (Integer.parseInt(enterOrderIDTextField.getText()) <= fasadOrder.showAllOrder().size() && Integer.parseInt(enterOrderIDTextField.getText()) > 0) {
-                Order order = FasadOrder.getInstance().findByID(Integer.parseInt(enterOrderIDTextField.getText()));
+                Order order = fasadOrder.findByID(Integer.parseInt(enterOrderIDTextField.getText()));
                 orderInfoLabel.setText(order.toString());
                 guestInfoOrderLabel.setText(order.getGuest().toString());
                 roomInfoOrderLabel.setText(order.getRoom().toString());
@@ -611,11 +612,11 @@ public class MainController implements IController {
 
 
 
-    FasadService fasadService = FasadService.getInstance();
-    FasadGuest fasadGuest = FasadGuest.getInstance();
-    FasadRoom fasadRoom = FasadRoom.getInstance();
-    FasadOrder fasadOrder = FasadOrder.getInstance();
-    FasadHistory fasadHistory = FasadHistory.getInstance();
+    FasadService fasadService = (FasadService) SpringBeans.fasadService;
+    FasadGuest fasadGuest = (FasadGuest) SpringBeans.fasadGuest;
+    FasadRoom fasadRoom = (FasadRoom) SpringBeans.fasadRoom;
+    FasadOrder fasadOrder = (FasadOrder) SpringBeans.fasadOrder;
+    FasadHistory fasadHistory = (FasadHistory) SpringBeans.fasadHistory;
     LocalDate localDate = LocalDate.now();
 
     private String mainPath = "/resources/Main.fxml";
