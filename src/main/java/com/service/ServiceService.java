@@ -7,7 +7,7 @@ import com.dao.ServiceDao;
 import com.exceptions.DaoException;
 import com.exceptions.ServiceExeption;
 import com.model.Service;
-import com.util.IdGenerator;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +15,11 @@ import java.util.List;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 
 import java.util.stream.Collectors;
 
-@Component
+@org.springframework.stereotype.Service
 public class ServiceService implements IServiceService {
 
 

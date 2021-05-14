@@ -22,7 +22,7 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-   // @Column(name = "guests")
+
 
     @ManyToOne(fetch =  FetchType.EAGER)
     @JoinColumn(name = "guests")

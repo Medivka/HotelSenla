@@ -17,6 +17,7 @@ import com.util.IdGenerator;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 
 import java.io.FileInputStream;
@@ -29,7 +30,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class RoomDao implements IRoomDao {
 
 

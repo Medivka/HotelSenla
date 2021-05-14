@@ -8,10 +8,11 @@ import com.model.History;
 import com.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
-@Component
+@Repository
 public class HistoryDao implements IHistoryDao {
 
     Order order;

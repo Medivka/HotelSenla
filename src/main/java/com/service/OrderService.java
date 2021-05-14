@@ -8,18 +8,15 @@ import com.dao.OrderDao;
 import com.exceptions.DaoException;
 import com.exceptions.ServiceExeption;
 import com.model.*;
-import com.util.IdGenerator;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
+
+@org.springframework.stereotype.Service
 public class OrderService implements IOrderService {
 
     @Autowired

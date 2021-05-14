@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class GuestDao implements IGuestDao {
 
     private List<Guest> guestList = new ArrayList<>();
