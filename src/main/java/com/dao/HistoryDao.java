@@ -3,18 +3,14 @@ package com.dao;
 import com.api.dao.IHistoryDao;
 import com.api.dao.IOrderDao;
 import com.exceptions.DaoException;
-
-import com.model.History;
 import com.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
 @Repository
 public class HistoryDao implements IHistoryDao {
-
     Order order;
 
     @Autowired
