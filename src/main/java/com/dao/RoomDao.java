@@ -1,38 +1,21 @@
 package com.dao;
 
 import com.api.dao.IRoomDao;
-import com.api.enums.GuestGender;
-import com.api.enums.RoomStatus;
-import com.configsDB.Constants;
-import com.databaseControllers.DatabaseHandler;
-import com.exceptions.DaoException;
-import com.fasad.FasadRoom;
-
 import com.hibernate.HibernateSessionFactoryUtil;
-import com.model.Guest;
 import com.model.Room;
-import com.model.Service;
-import com.service.RoomService;
-import com.util.IdGenerator;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class RoomDao implements IRoomDao {
 
+    @PersistenceContext(type = PersistenceContextType.TRANSACTION)
+    private EntityManager entityManager;
 
     private ArrayList<Room> roomList = new ArrayList<>();
 
@@ -53,40 +36,24 @@ public class RoomDao implements IRoomDao {
 
     @Override
     public void delete(Room room) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.delete(room);
-        tx1.commit();
-        session.close();
+        entityManager.remove(room);
 
     }
 
     @Override
     public void save(Room room) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.save(room);
-        tx1.commit();
-        session.close();
+        entityManager.persist(room);
     }
 
 
     @Override
     public Room findById(Integer id) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        Room room=session.get(Room.class,id);
-        session.close();
-        return room;
+        return entityManager.find(Room.class, id);
     }
 
     @Override
     public void update(Room room) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.merge(room);
-        tx1.commit();
-        session.close();
+        entityManager.merge(room);
     }
 }
 /**

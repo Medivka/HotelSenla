@@ -3,74 +3,61 @@ package com.dao;
 import com.api.dao.IGuestDao;
 import com.hibernate.HibernateSessionFactoryUtil;
 import com.model.Guest;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class GuestDao implements IGuestDao {
 
+    @PersistenceContext(type = PersistenceContextType.TRANSACTION)
+    private EntityManager entityManager;
+
     private List<Guest> guestList = new ArrayList<>();
 
     private GuestDao() {
     }
 
-
-
-
-
-
     @Override
     public void setGuestList(List<Guest> guestList) {
-        this.guestList=guestList;
+        this.guestList = guestList;
     }
 
     @Override
     public List<Guest> getGuestList() {
-        List<Guest> guests = (List<Guest>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Guest").list();
+
+        List<Guest> guests = (List<Guest>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Guest").list();
         return guests;
     }
 
     @Override
     public void delete(Guest guest) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.remove(guest);
-        tx1.commit();
-        session.close();
+        entityManager.remove(guest);
     }
 
     @Override
     public void save(Guest guest) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.save(guest);
-        tx1.commit();
-        session.close();
+        entityManager.persist(guest);
     }
 
     @Override
     public Guest findById(Integer id) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        Guest guest=session.get(Guest.class,id);
-        session.close();
-        return guest;
+        return entityManager.find(Guest.class, id);
 
     }
 
     @Override
     public void update(Guest guest) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.merge(guest);
-        tx1.commit();
-        session.close();
+        entityManager.merge(guest);
+//        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+//        Transaction tx1 = session.beginTransaction();
+//        session.merge(guest);
+//        tx1.commit();
+//        session.close();
     }
 }
 

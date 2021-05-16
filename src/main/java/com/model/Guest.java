@@ -2,6 +2,7 @@ package com.model;
 
 import com.api.enums.GuestGender;
 import lombok.Data;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;

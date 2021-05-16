@@ -14,7 +14,6 @@ public class SpringBeans {
 
     static public void init() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-
         fasadService = context.getBean("fasadService", FasadService.class);
         fasadOrder = context.getBean("fasadOrder", FasadOrder.class);
         fasadHistory=context.getBean("fasadHistory", FasadHistory.class);

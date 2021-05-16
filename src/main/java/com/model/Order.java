@@ -5,10 +5,8 @@ import lombok.Data;
 
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,15 +22,15 @@ public class Order implements Serializable {
 
 
 
-    @ManyToOne(fetch =  FetchType.EAGER)
+    @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "guests")
     private Guest guest;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="rooms")
     private Room room;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "orders_services",
             joinColumns = @JoinColumn(name = "id_order"),
             inverseJoinColumns = @JoinColumn(name = "id_service"))

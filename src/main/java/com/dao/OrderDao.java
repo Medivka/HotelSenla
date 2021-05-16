@@ -18,6 +18,9 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,12 +32,14 @@ import java.util.List;
 @Repository
 public class OrderDao implements IOrderDao {
 
+    @PersistenceContext(type = PersistenceContextType.TRANSACTION)
+    private EntityManager entityManager;
+
 
     private List<Order> orderList = new ArrayList<>();
 
     private OrderDao() {
     }
-
 
 
     @Override
@@ -50,49 +55,33 @@ public class OrderDao implements IOrderDao {
 
     @Override
     public void save(Order order) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.save(order);
-        tx1.commit();
-        session.close();
+        entityManager.persist(order);
     }
 
 
     @Override
     public void delete(Order order) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.delete(order);
-        tx1.commit();
-        session.close();
+        entityManager.remove(order);
 
     }
 
     @Override
     public Order findById(Integer id) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        Order order=session.get(Order.class,id);
-        session.close();
-        return order;
+        return entityManager.find(Order.class, id);
 
     }
 
     @Override
     public void updateOrder(Order order) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.merge(order);
-        tx1.commit();
-        session.close();
+        entityManager.merge(order);
     }
 
     @Override
     public void addServiceInOrder(Order order, Service service) {
         order.getServices().add(service);
-        updateOrder(order);
+        entityManager.merge(order);
     }
-    }
+}
 
 
 /**

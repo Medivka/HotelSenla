@@ -2,19 +2,19 @@ package com.dao;
 
 import com.api.dao.IServiceDao;
 import com.hibernate.HibernateSessionFactoryUtil;
-import com.model.Guest;
 import com.model.Service;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class ServiceDao implements IServiceDao {
 
+    @PersistenceContext(type = PersistenceContextType.TRANSACTION)
+    private EntityManager entityManager;
 
     private List<Service> serviceList = new ArrayList<>();
 
@@ -35,40 +35,24 @@ public class ServiceDao implements IServiceDao {
 
     @Override
     public void save(Service service) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(service);
-        transaction.commit();
-        session.close();
+        entityManager.persist(service);
     }
 
     @Override
     public void delete(Service service) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tr = session.beginTransaction();
-        session.delete(service);
-        tr.commit();
-        session.close();
+       entityManager.remove(service);
     }
 
 
     @Override
     public Service findById(Integer id) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tr = session.beginTransaction();
-        Service service= session.get(Service.class,id);
-        session.close();
-        return service;
+       return entityManager.find(Service.class,id);
     }
 
 
     @Override
     public void updateService(Service service) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tr = session.beginTransaction();
-        session.merge(service);
-        tr.commit();
-        session.close();
+       entityManager.merge(service);
     }
 }
 /**
