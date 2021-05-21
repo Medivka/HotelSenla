@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +32,12 @@ public class GuestDao implements IGuestDao {
 
     @Override
     public List<Guest> getGuestList() {
-
-        List<Guest> guests = (List<Guest>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Guest").list();
-        return guests;
+        CriteriaBuilder criteriaBuilder= entityManager.getCriteriaBuilder();
+        CriteriaQuery<Guest> query=criteriaBuilder.createQuery(Guest.class);
+        Root<Guest> guestRoot = query.from(Guest.class);
+        query.select(guestRoot);
+       //        List<Guest> guests = (List<Guest>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Guest").list();
+        return entityManager.createQuery(query).getResultList();
     }
 
     @Override

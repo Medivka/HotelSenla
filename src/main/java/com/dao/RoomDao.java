@@ -2,12 +2,16 @@ package com.dao;
 
 import com.api.dao.IRoomDao;
 import com.hibernate.HibernateSessionFactoryUtil;
+import com.model.Guest;
 import com.model.Room;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +34,11 @@ public class RoomDao implements IRoomDao {
 
     @Override
     public List<Room> getRoomList() {
-        List<Room> rooms = (List<Room>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Room").list();
-        return rooms;
+        CriteriaBuilder criteriaBuilder= entityManager.getCriteriaBuilder();
+        CriteriaQuery<Room> query=criteriaBuilder.createQuery(Room.class);
+        Root<Room> roomRoot = query.from(Room.class);
+        query.select(roomRoot);
+        return entityManager.createQuery(query).getResultList();
     }
 
     @Override

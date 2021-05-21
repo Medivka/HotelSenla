@@ -1,12 +1,15 @@
 package com.dao;
 
 import com.api.dao.IServiceDao;
-import com.hibernate.HibernateSessionFactoryUtil;
+
 import com.model.Service;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +32,11 @@ public class ServiceDao implements IServiceDao {
 
     @Override
     public List<Service> getServiceList() {
-        List<Service> services = (List<Service>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Service").list();
-        return services;
-    }
+        CriteriaBuilder criteriaBuilder= entityManager.getCriteriaBuilder();
+        CriteriaQuery<Service> query=criteriaBuilder.createQuery(Service.class);
+        Root<Service> serviceRoot = query.from(Service.class);
+        query.select(serviceRoot);
+        return entityManager.createQuery(query).getResultList();    }
 
     @Override
     public void save(Service service) {

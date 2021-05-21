@@ -2,6 +2,8 @@ package com.springConfig;
 
 import com.api.fasad.*;
 import com.fasad.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringBeans {
@@ -12,8 +14,10 @@ public class SpringBeans {
     public static IFasadGuest fasadGuest;
     public static IFasadRoom fasadRoom;
 
+
     static public void init() {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext context= new AnnotationConfigApplicationContext(JavaConfig.class);
+//        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/applicationContext.xml");
         fasadService = context.getBean("fasadService", FasadService.class);
         fasadOrder = context.getBean("fasadOrder", FasadOrder.class);
         fasadHistory=context.getBean("fasadHistory", FasadHistory.class);

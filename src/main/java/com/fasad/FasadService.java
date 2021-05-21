@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@org.springframework.stereotype.Service
 public class FasadService implements IFasadService {
 
     @Autowired

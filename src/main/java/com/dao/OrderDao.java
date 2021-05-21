@@ -21,6 +21,9 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,8 +52,11 @@ public class OrderDao implements IOrderDao {
 
     @Override
     public List<Order> getOrderList() {
-        List<Order> orders = (List<Order>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Order").list();
-        return orders;
+        CriteriaBuilder criteriaBuilder= entityManager.getCriteriaBuilder();
+        CriteriaQuery<Order> query=criteriaBuilder.createQuery(Order.class);
+        Root<Order> orderRoot = query.from(Order.class);
+        query.select(orderRoot);
+        return entityManager.createQuery(query).getResultList();
     }
 
     @Override
