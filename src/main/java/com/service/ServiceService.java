@@ -51,8 +51,9 @@ public class ServiceService implements IServiceService {
     @Override
     public Service findById(Integer id) {
         try {
-            Service service = serviceDao.findById(id);
             LOGGER.log(Level.INFO, String.format("Find by Id %s", id));
+            Service service = serviceDao.findById(id);
+
             return service;
         } catch (DaoException e) {
             LOGGER.log(Level.WARN, "findById failed", e);

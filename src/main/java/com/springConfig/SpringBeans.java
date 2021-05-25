@@ -2,6 +2,7 @@ package com.springConfig;
 
 import com.api.fasad.*;
 import com.fasad.*;
+import com.mappingDTO.MappingDTO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,6 +14,7 @@ public class SpringBeans {
     public static IFasadHistory fasadHistory;
     public static IFasadGuest fasadGuest;
     public static IFasadRoom fasadRoom;
+    public  static MappingDTO mappingDTO;
 
 
     static public void init() {
@@ -23,5 +25,7 @@ public class SpringBeans {
         fasadHistory=context.getBean("fasadHistory", FasadHistory.class);
         fasadGuest=context.getBean("fasadGuest", FasadGuest.class);
         fasadRoom=context.getBean("fasadRoom", FasadRoom.class);
+        mappingDTO=context.getBean("mappingDTO",MappingDTO.class);
+
     }
 }
