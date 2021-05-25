@@ -1,4 +1,5 @@
 import com.dto.GuestDTO;
+import com.dto.OrderDTO;
 import com.mappingDTO.MappingDTO;
 import com.springConfig.SpringBeans;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,9 @@ public class MainProgramm {
 
 
         SpringBeans.init();
+        OrderDTO orderDTO=SpringBeans.mappingDTO.mapOrderToOrderDTO(SpringBeans.fasadOrder.findByID(2));
         GuestDTO guestDTO = SpringBeans.mappingDTO.mapGuestToGuestDTO(SpringBeans.fasadGuest.findById(2));
-        System.out.println(guestDTO);
+        System.out.println(orderDTO);
         System.out.println(SpringBeans.mappingDTO.mapGuestDtoTOGuest(guestDTO));
 
     }}
