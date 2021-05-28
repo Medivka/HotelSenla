@@ -1,4 +1,4 @@
-package com.dto;
+package com.dto.modelDTO;
 
 import com.api.enums.GuestGender;
 import lombok.Data;

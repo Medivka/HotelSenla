@@ -1,9 +1,9 @@
-package com.mappingDTO;
+package com.dto.mappingDTO;
 
-import com.dto.GuestDTO;
-import com.dto.OrderDTO;
-import com.dto.RoomDTO;
-import com.dto.ServiceDTO;
+import com.dto.modelDTO.GuestDTO;
+import com.dto.modelDTO.OrderDTO;
+import com.dto.modelDTO.RoomDTO;
+import com.dto.modelDTO.ServiceDTO;
 import com.model.Guest;
 import com.model.Order;
 import com.model.Room;
