@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.sql.DriverManager;
 import java.util.Properties;
 
 @Configuration
@@ -42,7 +43,12 @@ public class JpaConfiguration {
 
     @Bean
     public DataSource dataSource() {
-        return new DriverManagerDataSource(databaseUrl, username, password);
+        DriverManagerDataSource dataSourse = new DriverManagerDataSource();
+        dataSourse.setDriverClassName(driverClassName);
+        dataSourse.setUrl(databaseUrl);
+        dataSourse.setUsername(username);
+        dataSourse.setPassword(password);
+        return dataSourse;
     }
 
     @Bean
