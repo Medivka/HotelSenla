@@ -1,7 +1,9 @@
 package main;
 
-import com.springConfig.SpringBeans;
+
+
 import main.menu.MenuController;
+import main.springConfig.SpringBeans;
 
 
 public class Starter {

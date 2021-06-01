@@ -1,8 +1,9 @@
 package main.actions.history;
 
+import com.senla.exceptions.ServiceExeption;
 import main.actions.AbstractFasad;
 import main.actions.IAction;
-import com.exceptions.ServiceExeption;
+
 
 import java.util.Scanner;
 import java.util.logging.Level;

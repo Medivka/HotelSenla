@@ -1,9 +1,10 @@
 package main.actions.guest;
 
+import com.senla.api.enums.GuestGender;
+import com.senla.exceptions.ServiceExeption;
 import main.actions.AbstractFasad;
 import main.actions.IAction;
-import com.api.enums.GuestGender;
-import com.exceptions.ServiceExeption;
+
 
 import java.util.Scanner;
 import java.util.logging.Level;

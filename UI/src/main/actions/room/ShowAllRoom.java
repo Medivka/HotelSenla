@@ -2,7 +2,7 @@ package main.actions.room;
 
 import main.actions.AbstractFasad;
 import main.actions.IAction;
-import com.exceptions.ServiceExeption;
+import com.senla.exceptions.ServiceExeption;
 
 import java.util.logging.Level;
 

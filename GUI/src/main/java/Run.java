@@ -1,9 +1,11 @@
-import com.springConfig.SpringBeans;
+
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import springConfig.SpringBeans;
 
 import java.io.IOException;
 

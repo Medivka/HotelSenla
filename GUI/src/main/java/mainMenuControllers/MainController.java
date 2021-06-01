@@ -1,15 +1,15 @@
 package mainMenuControllers;
 
-import com.springConfig.SpringBeans;
-import com.api.enums.GuestGender;
-import com.api.enums.RoomStatus;
-import com.fasad.*;
 
-import com.inputOutput.Serializer;
-import com.model.Guest;
-import com.model.Order;
-import com.model.Room;
-import com.model.Service;
+import com.senla.api.enums.GuestGender;
+import com.senla.api.enums.RoomStatus;
+import com.senla.fasad.*;
+
+import com.senla.inputOutput.Serializer;
+import com.senla.model.Guest;
+import com.senla.model.Order;
+import com.senla.model.Room;
+import com.senla.model.Service;
 import interfaceController.IController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +21,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import springConfig.SpringBeans;
 
 import java.io.IOException;
 import java.net.URL;

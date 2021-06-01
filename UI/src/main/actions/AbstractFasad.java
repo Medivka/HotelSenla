@@ -1,7 +1,8 @@
 package main.actions;
 
-import com.springConfig.SpringBeans;
-import com.api.fasad.*;
+
+import com.senla.api.fasad.*;
+import main.springConfig.SpringBeans;
 
 import java.util.logging.Logger;
 

@@ -2,7 +2,7 @@ package main.actions.order;
 
 import main.actions.AbstractFasad;
 import main.actions.IAction;
-import com.exceptions.ServiceExeption;
+import com.senla.exceptions.ServiceExeption;
 
 import java.util.Scanner;
 import java.util.logging.Level;

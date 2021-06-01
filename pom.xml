@@ -8,7 +8,6 @@
     <artifactId>Hotel</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
     <packaging>war</packaging>
 
     <properties>
@@ -19,6 +18,7 @@
     </properties>
 
     <dependencies>
+
         <!--all Logger dependencies -->
         <dependency>
             <groupId>log4j</groupId>
@@ -216,15 +216,15 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-        </plugins>
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <source>8</source>-->
+<!--                    <target>8</target>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
     </build>
 </project>

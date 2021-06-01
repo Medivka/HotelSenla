@@ -1,6 +1,7 @@
 package com.springWeb;
 
-import com.springConfig.RootConfig;
+
+
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
@@ -9,7 +10,7 @@ public class MySpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotation
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{RootConfig.class};
+        return null;
     }
 
     @Override

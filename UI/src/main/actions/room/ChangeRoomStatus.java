@@ -2,8 +2,8 @@ package main.actions.room;
 
 import main.actions.AbstractFasad;
 import main.actions.IAction;
-import com.api.enums.RoomStatus;
-import com.exceptions.ServiceExeption;
+import com.senla.api.enums.RoomStatus;
+import com.senla.exceptions.ServiceExeption;
 
 import java.util.Scanner;
 import java.util.logging.Level;

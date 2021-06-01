@@ -1,7 +1,7 @@
 package main.menu;
 
 
-import com.exceptions.ServiceExeption;
+import com.senla.exceptions.ServiceExeption;
 
 public class Navigator {
     private static Navigator instance;
