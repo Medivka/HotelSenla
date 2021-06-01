@@ -29,4 +29,6 @@ public interface IFasadGuest {
     void setGuestList(List list);
 
     void updateGuest(Guest guest);
+
+    void saveGuest(Guest guest);
 }

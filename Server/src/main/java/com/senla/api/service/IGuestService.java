@@ -32,4 +32,5 @@ public interface IGuestService {
 
     void setGuestLIst(List list);
 
+    void saveGuest(Guest guest);
 }

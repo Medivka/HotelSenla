@@ -124,4 +124,10 @@ public class GuestService implements IGuestService {
         LOGGER.log(Level.INFO, String.format("setGuestList"));
         guestDao.setGuestList(list);
     }
+
+    @Override
+    public void saveGuest(Guest guest) {
+        LOGGER.log(Level.INFO, String.format("save guest"));
+        guestDao.save(guest);
+    }
 }

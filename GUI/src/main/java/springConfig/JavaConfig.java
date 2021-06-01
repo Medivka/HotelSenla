@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @Component
-@ComponentScan({"com.senla"})
+@ComponentScan({"com"})
 @EnableTransactionManagement
 public class JavaConfig {
 

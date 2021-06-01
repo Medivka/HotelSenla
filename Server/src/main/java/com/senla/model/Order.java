@@ -1,5 +1,9 @@
 package com.senla.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -34,6 +38,8 @@ public class Order implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_service"))
     private List<Service> services=new ArrayList<>();
 
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "localDate")
     private LocalDate localDate;
     @Column(name = "daysOfStay")
