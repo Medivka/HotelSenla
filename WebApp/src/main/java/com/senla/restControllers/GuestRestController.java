@@ -1,10 +1,13 @@
 package com.senla.restControllers;
 
 import com.senla.api.fasad.IFasadGuest;
-import com.senla.dto.mappingDTO.MappingDTO;
+import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.dto.modelDTO.GuestDTO;
 import com.senla.fasad.FasadGuest;
+import com.senla.model.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,43 +19,72 @@ import java.util.stream.Collectors;
 public class GuestRestController {
 
     private IFasadGuest fasadGuest;
-    private MappingDTO mappingDTO;
+    private MappingDTOImpl mappingDTOImpl;
 
     @Autowired
-    public GuestRestController(FasadGuest fasadGuest, MappingDTO mappingDTO) {
+    public GuestRestController(FasadGuest fasadGuest, MappingDTOImpl mappingDTOImpl) {
         this.fasadGuest = fasadGuest;
-        this.mappingDTO = mappingDTO;
+        this.mappingDTOImpl = mappingDTOImpl;
     }
 
-    @GetMapping(value = "/{id}", produces = "application/json")
-    public GuestDTO getGuest(@PathVariable int id) {
-        return mappingDTO.mapGuestToGuestDTO(fasadGuest.findById(id));
+
+    @GetMapping(value = "/get/{id}")
+    public ResponseEntity<GuestDTO> read(@PathVariable(name = "id") int id) {
+        final GuestDTO GuestDTO = mappingDTOImpl.mapGuestToGuestDTO(fasadGuest.findById(id));
+        ;
+
+        return GuestDTO != null
+                ? new ResponseEntity<>(GuestDTO, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 
     @DeleteMapping(value = "/delete/{id}")
-    public String  delete(@PathVariable int id) {
-        fasadGuest.deleteGuest(fasadGuest.findById(id));
-        return "delete";
-
-
+    public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
+        boolean delete = false;
+        final List<GuestDTO> guestDTOList = fasadGuest.showAllGuests().stream().map(mappingDTOImpl::mapGuestToGuestDTO).collect(Collectors.toList());
+        for (GuestDTO guest : guestDTOList) {
+            if (guest.getGuestNumber().equals(id)) {
+                delete = true;
+                fasadGuest.deleteGuest(fasadGuest.findById(id));
+            }
+        }
+        return delete
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
-    @GetMapping(value = "/all")
-    public List<GuestDTO> readAll() {
-        return fasadGuest.showAllGuests().stream().map(mappingDTO::mapGuestToGuestDTO).collect(Collectors.toList());
 
+    @GetMapping(value = "/get/all")
+    public ResponseEntity<List<GuestDTO>> read() {
+        final List<GuestDTO> clients = fasadGuest.showAllGuests().stream().map(mappingDTOImpl::mapGuestToGuestDTO).collect(Collectors.toList());
+
+        return clients != null && !clients.isEmpty()
+                ? new ResponseEntity<>(clients, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+
 
     @PostMapping(value = "/save")
-    public void save(@RequestBody GuestDTO guestDTO) {
-        fasadGuest.saveGuest(mappingDTO.mapGuestDtoTOGuest(guestDTO));
+    public ResponseEntity<?> create(@RequestBody GuestDTO guestDTO) {
+       fasadGuest.saveGuest(mappingDTOImpl.mapGuestDtoTOGuest(guestDTO));
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update/{id}")
-    public GuestDTO update(@RequestBody GuestDTO guestDTO) {
-        fasadGuest.updateGuest(mappingDTO.mapGuestDtoTOGuest(guestDTO));
-        return guestDTO;
+    public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody GuestDTO guestDTO) {
+        boolean update = false;
+        final List<GuestDTO> guestDTOList = fasadGuest.showAllGuests().stream().map(mappingDTOImpl::mapGuestToGuestDTO).collect(Collectors.toList());
+        for (GuestDTO guest : guestDTOList) {
+            if (guest.getGuestNumber().equals(id)) {
+                update = true;
+                fasadGuest.updateGuest(mappingDTOImpl.mapGuestDtoTOGuest(guestDTO));
+            }
+        }
+        return update
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
 }

@@ -1,8 +1,7 @@
 package com.senla.springConfig;
 
-import com.senla.Starter;
 import com.senla.api.fasad.*;
-import com.senla.dto.mappingDTO.MappingDTO;
+import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.fasad.*;
 import com.senla.menu.MenuController;
 import org.springframework.context.ApplicationContext;
@@ -15,7 +14,7 @@ public class SpringBeans {
     public static IFasadHistory fasadHistory;
     public static IFasadGuest fasadGuest;
     public static IFasadRoom fasadRoom;
-    public  static MappingDTO mappingDTO;
+    public  static MappingDTOImpl mappingDTOImpl;
 
    public static MenuController menuController;
 
@@ -27,7 +26,7 @@ public class SpringBeans {
         fasadHistory=context.getBean("fasadHistory", FasadHistory.class);
         fasadGuest=context.getBean("fasadGuest", FasadGuest.class);
         fasadRoom=context.getBean("fasadRoom", FasadRoom.class);
-        mappingDTO=context.getBean("mappingDTO",MappingDTO.class);
+        mappingDTOImpl =context.getBean("mappingDTO", MappingDTOImpl.class);
 
         menuController=context.getBean("menuController",MenuController.class);;
 

@@ -1,7 +1,7 @@
 package springConfig;
 
 import com.senla.api.fasad.*;
-import com.senla.dto.mappingDTO.MappingDTO;
+import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.fasad.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -13,7 +13,7 @@ public class SpringBeans {
     public static IFasadHistory fasadHistory;
     public static IFasadGuest fasadGuest;
     public static IFasadRoom fasadRoom;
-    public  static MappingDTO mappingDTO;
+    public  static MappingDTOImpl mappingDTOImpl;
 
 
     static public void init() {
@@ -24,7 +24,7 @@ public class SpringBeans {
         fasadHistory=context.getBean("fasadHistory", FasadHistory.class);
         fasadGuest=context.getBean("fasadGuest", FasadGuest.class);
         fasadRoom=context.getBean("fasadRoom", FasadRoom.class);
-        mappingDTO=context.getBean("mappingDTO",MappingDTO.class);
+        mappingDTOImpl =context.getBean("mappingDTO", MappingDTOImpl.class);
 
     }
 }

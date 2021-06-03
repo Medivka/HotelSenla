@@ -2,7 +2,7 @@ package com.senla.restControllers;
 
 
 import com.senla.api.fasad.IFasadOrder;
-import com.senla.dto.mappingDTO.MappingDTO;
+import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.dto.modelDTO.OrderDTO;
 import com.senla.fasad.FasadOrder;
 import com.senla.model.Order;
@@ -18,17 +18,17 @@ import java.util.List;
 @RequestMapping("order")
 public class OrderRestController {
    private   IFasadOrder fasadOrder;
-   private   MappingDTO mappingDTO;
+   private MappingDTOImpl mappingDTOImpl;
 
     @Autowired
-    public OrderRestController(FasadOrder fasadOrder, MappingDTO mappingDTO) {
+    public OrderRestController(FasadOrder fasadOrder, MappingDTOImpl mappingDTOImpl) {
         this.fasadOrder = fasadOrder;
-        this.mappingDTO = mappingDTO;
+        this.mappingDTOImpl = mappingDTOImpl;
     }
 
     @GetMapping(value = "/{id}",  produces = "application/json")
     public OrderDTO getOrder(@PathVariable int id) {
-        return mappingDTO.mapOrderToOrderDTO(fasadOrder.findByID(id));
+        return mappingDTOImpl.mapOrderToOrderDTO(fasadOrder.findByID(id));
     }
 
     @GetMapping(value = "/all")

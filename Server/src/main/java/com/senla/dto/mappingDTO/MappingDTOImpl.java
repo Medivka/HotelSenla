@@ -1,5 +1,6 @@
 package com.senla.dto.mappingDTO;
 
+import com.senla.dto.dtoApi.MappingDTO;
 import com.senla.dto.modelDTO.GuestDTO;
 import com.senla.dto.modelDTO.OrderDTO;
 import com.senla.dto.modelDTO.RoomDTO;
@@ -11,9 +12,9 @@ import com.senla.model.Service;
 
 
 @org.springframework.stereotype.Service
-public class MappingDTO {
+public class MappingDTOImpl implements MappingDTO {
 
-
+    @Override
     public GuestDTO mapGuestToGuestDTO(Guest guest) {
         GuestDTO guestDTO = new GuestDTO();
         guestDTO.setGuestNumber(guest.getGuestNumber());
@@ -27,6 +28,7 @@ public class MappingDTO {
         return guestDTO;
     }
 
+    @Override
     public Guest mapGuestDtoTOGuest(GuestDTO guestDTO) {
         Guest guest = new Guest();
         guest.setGuestNumber(guestDTO.getGuestNumber());
@@ -40,6 +42,7 @@ public class MappingDTO {
         return guest;
     }
 
+    @Override
     public RoomDTO mapRoomToRoomDTO(Room room) {
         RoomDTO roomDTO = new RoomDTO();
         roomDTO.setId(room.getId());
@@ -51,6 +54,7 @@ public class MappingDTO {
         return roomDTO;
     }
 
+    @Override
     public Room mapRoomDtoToRoom(RoomDTO roomDTO) {
         Room room = new Room();
         room.setId(roomDTO.getId());
@@ -60,6 +64,7 @@ public class MappingDTO {
         return room;
     }
 
+    @Override
     public ServiceDTO mapServiceToServiceDTO(Service service) {
         ServiceDTO serviceDTO = new ServiceDTO();
         serviceDTO.setId(service.getId());
@@ -68,8 +73,9 @@ public class MappingDTO {
         return serviceDTO;
     }
 
+    @Override
     public Service mapServiceDtoToService(ServiceDTO serviceDTO) {
-       Service service = new Service();
+        Service service = new Service();
         service.setId(serviceDTO.getId());
         service.setPrice(serviceDTO.getPrice());
         service.setName(serviceDTO.getName());
@@ -77,8 +83,9 @@ public class MappingDTO {
         return service;
     }
 
-    public OrderDTO mapOrderToOrderDTO(Order order){
-        OrderDTO orderDTO=new OrderDTO();
+    @Override
+    public OrderDTO mapOrderToOrderDTO(Order order) {
+        OrderDTO orderDTO = new OrderDTO();
         orderDTO.setGuest(order.getGuest());
         orderDTO.setId(order.getId());
         orderDTO.setRoom(order.getRoom());
@@ -88,8 +95,10 @@ public class MappingDTO {
         orderDTO.setDaysOfStay(order.getDaysOfStay());
         return orderDTO;
     }
-    public Order mapOrderDtoToOrder(OrderDTO orderDTO){
-        Order order= new Order();
+
+    @Override
+    public Order mapOrderDtoToOrder(OrderDTO orderDTO) {
+        Order order = new Order();
         order.setGuest(orderDTO.getGuest());
         order.setId(orderDTO.getId());
         order.setRoom(orderDTO.getRoom());
