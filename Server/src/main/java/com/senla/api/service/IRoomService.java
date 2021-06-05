@@ -38,4 +38,5 @@ public interface IRoomService {
 
     List<Room> allFreeRoom();
 
+    void save(Room room);
 }

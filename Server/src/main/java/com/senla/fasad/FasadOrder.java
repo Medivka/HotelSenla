@@ -74,4 +74,10 @@ public class FasadOrder implements IFasadOrder {
     public void updateOrder(Order order) {
         orderService.updateOrder(order);
     }
+
+    @Override
+    public void save(Order order) {
+        orderService.save(order);
+
+    }
 }

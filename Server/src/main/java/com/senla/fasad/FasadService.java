@@ -13,7 +13,10 @@ public class FasadService implements IFasadService {
     @Autowired
     IServiceService serviceService;
 
-
+@Override
+public void save(Service service){
+    serviceService.save(service);
+}
     @Override
     public Service findById(Integer idService) {
         return serviceService.findById(idService);

@@ -22,4 +22,6 @@ public interface IServiceService {
     List sortedByPrice();
 
     void setServiceList(List list);
+
+    void save(Service service);
 }

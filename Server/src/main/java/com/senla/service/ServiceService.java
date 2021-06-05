@@ -148,4 +148,10 @@ public class ServiceService implements IServiceService {
         }
     }
 
+    @Override
+    public void save(Service service) {
+        serviceDao.save(service);
+        LOGGER.log(Level.INFO, String.format("save service"));
+    }
+
 }

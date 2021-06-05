@@ -179,6 +179,11 @@ public class RoomService implements IRoomService {
         return freeRoom;
     }
 
+    @Override
+    public void save(Room room) {
+        roomDao.save(room);
+    }
+
 }
 
 

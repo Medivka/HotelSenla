@@ -1,6 +1,7 @@
 package com.senla.dto.mappingDTO;
 
-import com.senla.dto.dtoApi.MappingDTO;
+
+import com.senla.dto.apiDTO.MappingDTO;
 import com.senla.dto.modelDTO.GuestDTO;
 import com.senla.dto.modelDTO.OrderDTO;
 import com.senla.dto.modelDTO.RoomDTO;
@@ -9,6 +10,11 @@ import com.senla.model.Guest;
 import com.senla.model.Order;
 import com.senla.model.Room;
 import com.senla.model.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 @org.springframework.stereotype.Service
@@ -86,11 +92,17 @@ public class MappingDTOImpl implements MappingDTO {
     @Override
     public OrderDTO mapOrderToOrderDTO(Order order) {
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setGuest(order.getGuest());
+        orderDTO.setGuestDTO(mapGuestToGuestDTO(order.getGuest()));
         orderDTO.setId(order.getId());
-        orderDTO.setRoom(order.getRoom());
+        orderDTO.setRoomDTO(mapRoomToRoomDTO(order.getRoom()));
         orderDTO.setAllAmount(order.getAllAmount());
-        orderDTO.setServices(order.getServices());
+        List<Service> services = order.getServices();
+        List<ServiceDTO> serviceDTOList = new LinkedList<>();
+        for (Service se : services) {
+            ServiceDTO serviceDTO = mapServiceToServiceDTO(se);
+            serviceDTOList.add(serviceDTO);
+        }
+        orderDTO.setServicesDTO(serviceDTOList);
         orderDTO.setLocalDate(order.getLocalDate());
         orderDTO.setDaysOfStay(order.getDaysOfStay());
         return orderDTO;
@@ -99,14 +111,23 @@ public class MappingDTOImpl implements MappingDTO {
     @Override
     public Order mapOrderDtoToOrder(OrderDTO orderDTO) {
         Order order = new Order();
-        order.setGuest(orderDTO.getGuest());
+        order.setGuest(mapGuestDtoTOGuest(orderDTO.getGuestDTO()));
         order.setId(orderDTO.getId());
-        order.setRoom(orderDTO.getRoom());
+        order.setRoom(mapRoomDtoToRoom(orderDTO.getRoomDTO()));
         order.setAllAmount(orderDTO.getAllAmount());
-        order.setServices(orderDTO.getServices());
+        List<ServiceDTO> serviceDTOList = orderDTO.getServicesDTO();
+        List<Service> services = new LinkedList<>();
+        for (ServiceDTO se : serviceDTOList) {
+            Service service = mapServiceDtoToService(se);
+            services.add(service);
+        }
+        order.setServices(services);
         order.setLocalDate(orderDTO.getLocalDate());
         order.setDaysOfStay(orderDTO.getDaysOfStay());
         return order;
     }
 
 }
+
+
+

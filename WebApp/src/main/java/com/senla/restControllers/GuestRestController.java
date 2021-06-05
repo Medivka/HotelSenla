@@ -1,6 +1,7 @@
 package com.senla.restControllers;
 
 import com.senla.api.fasad.IFasadGuest;
+import com.senla.dto.apiDTO.MappingDTO;
 import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.dto.modelDTO.GuestDTO;
 import com.senla.fasad.FasadGuest;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 public class GuestRestController {
 
     private IFasadGuest fasadGuest;
-    private MappingDTOImpl mappingDTOImpl;
+    private MappingDTO mappingDTOImpl;
 
     @Autowired
     public GuestRestController(FasadGuest fasadGuest, MappingDTOImpl mappingDTOImpl) {

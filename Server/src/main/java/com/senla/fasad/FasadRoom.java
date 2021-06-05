@@ -12,9 +12,18 @@ import java.util.List;
 @Component
 public class FasadRoom implements IFasadRoom {
 
-    @Autowired
+    final
     IRoomService roomService;
 
+    @Autowired
+    public FasadRoom(IRoomService roomService) {
+        this.roomService = roomService;
+    }
+
+    @Override
+    public void save(Room room) {
+        roomService.save(room);
+    }
 
     @Override
     public void deleteRoom(Room room) {

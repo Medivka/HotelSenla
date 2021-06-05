@@ -24,7 +24,7 @@ public class SpringBeans {
         fasadHistory=context.getBean("fasadHistory", FasadHistory.class);
         fasadGuest=context.getBean("fasadGuest", FasadGuest.class);
         fasadRoom=context.getBean("fasadRoom", FasadRoom.class);
-        mappingDTOImpl =context.getBean("mappingDTO", MappingDTOImpl.class);
+        mappingDTOImpl =context.getBean("mappingDTOImpl", MappingDTOImpl.class);
 
     }
 }

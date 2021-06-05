@@ -1,5 +1,6 @@
 package com.senla.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -22,6 +23,7 @@ public class Service  implements Serializable {
     @Column(name = "price")
     private Integer price;
     @JsonIgnore
+    @JsonBackReference
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE )
     @JoinTable(name = "orders_services",
             joinColumns = @JoinColumn(name = "id_service"),

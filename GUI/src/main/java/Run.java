@@ -1,5 +1,6 @@
 
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,12 +29,14 @@ public class Run extends Application {
 
         SpringBeans.init();
         launch(args);
+
+
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("resources/Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         primaryStage.setTitle("Grand Hotel Senla");
         primaryStage.setScene(new Scene(root, 1362, 924));
         primaryStage.show();

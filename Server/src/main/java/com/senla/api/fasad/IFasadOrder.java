@@ -32,4 +32,6 @@ public interface IFasadOrder {
     void deleteOrder(Order order);
 
     void updateOrder(Order order);
+
+    void save(Order mapOrderDtoToOrder);
 }

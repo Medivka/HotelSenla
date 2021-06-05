@@ -4,7 +4,6 @@ package mainMenuControllers;
 import com.senla.api.enums.GuestGender;
 import com.senla.api.enums.RoomStatus;
 import com.senla.fasad.*;
-
 import com.senla.inputOutput.Serializer;
 import com.senla.model.Guest;
 import com.senla.model.Order;
@@ -620,7 +619,7 @@ public class MainController implements IController {
     FasadHistory fasadHistory = (FasadHistory) SpringBeans.fasadHistory;
     LocalDate localDate = LocalDate.now();
 
-    private String mainPath = "/resources/Main.fxml";
+    private String mainPath = "/page/Main.fxml";
     private String guestPathInFile = "src/main/java/com/hdd/guests.dat";
     private String orderPathInFile = "src/main/java/com/hdd/orders.dat";
     private String roomPathInFile = "src/main/java/com/hdd/rooms.dat";

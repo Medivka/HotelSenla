@@ -182,4 +182,10 @@ public class OrderService implements IOrderService {
         orderDao.updateOrder(order);
     }
 
+    @Override
+    public void save(Order order) {
+        LOGGER.log(Level.INFO, String.format("save order"));
+        orderDao.save(order);
+    }
+
 }

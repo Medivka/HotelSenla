@@ -2,38 +2,102 @@ package com.senla.restControllers;
 
 
 import com.senla.api.fasad.IFasadOrder;
+
+import com.senla.dto.apiDTO.MappingDTO;
 import com.senla.dto.mappingDTO.MappingDTOImpl;
+import com.senla.dto.modelDTO.GuestDTO;
 import com.senla.dto.modelDTO.OrderDTO;
+import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.fasad.FasadOrder;
 import com.senla.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("order")
+@RequestMapping("/order")
 public class OrderRestController {
-   private   IFasadOrder fasadOrder;
-   private MappingDTOImpl mappingDTOImpl;
+
+    private MappingDTO mappingDTOImpl;
+    private IFasadOrder fasadOrder;
+
 
     @Autowired
-    public OrderRestController(FasadOrder fasadOrder, MappingDTOImpl mappingDTOImpl) {
-        this.fasadOrder = fasadOrder;
+    public OrderRestController(MappingDTOImpl mappingDTOImpl, IFasadOrder fasadOrder) {
         this.mappingDTOImpl = mappingDTOImpl;
+        this.fasadOrder = fasadOrder;
     }
 
-    @GetMapping(value = "/{id}",  produces = "application/json")
-    public OrderDTO getOrder(@PathVariable int id) {
-        return mappingDTOImpl.mapOrderToOrderDTO(fasadOrder.findByID(id));
+    @GetMapping(value = "/get/{id}")
+    public ResponseEntity<OrderDTO> read(@PathVariable(name = "id") int id) {
+        final OrderDTO orderDTO = mappingDTOImpl.mapOrderToOrderDTO(fasadOrder.findByID(id));
+        return orderDTO != null
+                ? new ResponseEntity<>(orderDTO, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/all")
-    public List<Order> getAll() {
-        final List<Order> orders = fasadOrder.showAllOrder();
-        return orders ;
+    @PostMapping(value = "/save")
+    public ResponseEntity<?> create(@RequestBody OrderDTO orderDTO) {
+        fasadOrder.save(mappingDTOImpl.mapOrderDtoToOrder(orderDTO));
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/get/all")
+    public ResponseEntity<List<OrderDTO>> read() {
+        List<Order> orders = fasadOrder.showAllOrder();
+        List<OrderDTO> orderDTOList = new LinkedList<>();
+        for (Order order : orders) {
+            orderDTOList.add(mappingDTOImpl.mapOrderToOrderDTO(order));
+        }
+
+        return orderDTOList != null && !orderDTOList.isEmpty()
+                ? new ResponseEntity<>(orderDTOList, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody OrderDTO orderDTO) {
+        boolean update = false;
+        List<Order> orders = fasadOrder.showAllOrder();
+        List<OrderDTO> orderDTOList = new LinkedList<>();
+        for (Order order : orders) {
+            orderDTOList.add(mappingDTOImpl.mapOrderToOrderDTO(order));
+        }
+
+        for (OrderDTO order : orderDTOList) {
+            if (order.getId().equals(id)) {
+                update = true;
+                fasadOrder.updateOrder(mappingDTOImpl.mapOrderDtoToOrder(orderDTO));
+            }
+        }
+        return update
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
+        boolean delete = false;
+        List<Order> orders = fasadOrder.showAllOrder();
+        List<OrderDTO> orderDTOList = new LinkedList<>();
+        for (Order order : orders) {
+            orderDTOList.add(mappingDTOImpl.mapOrderToOrderDTO(order));
+        }
+        for (OrderDTO orderDTO : orderDTOList) {
+            if (orderDTO.getId().equals(id)) {
+                delete = true;
+                fasadOrder.deleteOrder(fasadOrder.findByID(id));
+            }
+        }
+        return delete
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    }
+
+
 }

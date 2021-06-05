@@ -6,6 +6,8 @@ import com.senla.model.Room;
 import java.util.List;
 
 public interface IFasadRoom {
+    void save(Room room);
+
     void deleteRoom(Room room);
 
     List<Room> showAllRoom();

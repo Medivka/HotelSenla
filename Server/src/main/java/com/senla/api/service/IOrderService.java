@@ -36,4 +36,6 @@ public interface IOrderService {
     void setOrderList(List list);
 
     void updateOrder(Order order);
+
+    void save(Order order);
 }

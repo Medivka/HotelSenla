@@ -7,6 +7,8 @@ import com.senla.model.Service;
 import java.util.List;
 
 public interface IFasadService {
+    void save(Service service);
+
     Service findById(Integer idService);
 
     List<Service> showAllService();
