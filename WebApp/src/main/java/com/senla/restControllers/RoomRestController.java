@@ -3,6 +3,7 @@ package com.senla.restControllers;
 
 import com.senla.api.fasad.IFasadRoom;
 import com.senla.dto.apiDTO.MappingDTO;
+import com.senla.dto.apiDTO.RoomDtoService;
 import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.fasad.FasadRoom;
@@ -17,19 +18,15 @@ import java.util.stream.Collectors;
 @RequestMapping("/room")
 public class RoomRestController {
 
-    private IFasadRoom fasadRoom;
-    private MappingDTO mappingDTOImpl;
+    private RoomDtoService roomDtoServiceImpl;
 
-    public RoomRestController(FasadRoom fasadRoom, MappingDTOImpl mappingDTOImpl) {
-        this.fasadRoom = fasadRoom;
-        this.mappingDTOImpl = mappingDTOImpl;
+    public RoomRestController(RoomDtoService roomDtoServiceImpl) {
+        this.roomDtoServiceImpl = roomDtoServiceImpl;
     }
 
     @GetMapping(value = "/get/{id}")
     public ResponseEntity<RoomDTO> read(@PathVariable(name = "id") int id) {
-        final RoomDTO roomDTO = mappingDTOImpl.mapRoomToRoomDTO(fasadRoom.findById(id));
-
-
+        final RoomDTO roomDTO = roomDtoServiceImpl.getById(id);
         return roomDTO != null
                 ? new ResponseEntity<>(roomDTO, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -39,11 +36,11 @@ public class RoomRestController {
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
         boolean delete = false;
-        final List<RoomDTO> roomDTOList = fasadRoom.showAllRoom().stream().map(mappingDTOImpl::mapRoomToRoomDTO).collect(Collectors.toList());
+        final List<RoomDTO> roomDTOList = roomDtoServiceImpl.getAll();
         for (RoomDTO roomDTO : roomDTOList) {
             if (roomDTO.getId().equals(id)) {
                 delete = true;
-                fasadRoom.deleteRoom(fasadRoom.findById(id));
+                roomDtoServiceImpl.delete(id);
             }
         }
         return delete
@@ -54,8 +51,7 @@ public class RoomRestController {
 
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<RoomDTO>> read() {
-        final List<RoomDTO> rooms = fasadRoom.showAllRoom().stream().map(mappingDTOImpl::mapRoomToRoomDTO).collect(Collectors.toList());
-
+        final List<RoomDTO> rooms = roomDtoServiceImpl.getAll();
         return rooms != null && !rooms.isEmpty()
                 ? new ResponseEntity<>(rooms, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -63,19 +59,19 @@ public class RoomRestController {
 
 
     @PostMapping(value = "/save")
-    public ResponseEntity<?> create(@RequestBody RoomDTO roomDTO) {
-        fasadRoom.save(mappingDTOImpl.mapRoomDtoToRoom(roomDTO));
+    public ResponseEntity<?> save(@RequestBody RoomDTO roomDTO) {
+        roomDtoServiceImpl.save(roomDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody RoomDTO roomDTO) {
         boolean update = false;
-        final List<RoomDTO> roomDTOList = fasadRoom.showAllRoom().stream().map(mappingDTOImpl::mapRoomToRoomDTO).collect(Collectors.toList());
+        final List<RoomDTO> roomDTOList = roomDtoServiceImpl.getAll();
         for (RoomDTO room : roomDTOList) {
             if (room.getId().equals(id)) {
                 update = true;
-                fasadRoom.updateRoom(mappingDTOImpl.mapRoomDtoToRoom(roomDTO));
+                roomDtoServiceImpl.update(roomDTO);
             }
         }
         return update

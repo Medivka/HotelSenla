@@ -1,6 +1,7 @@
 package com.senla.restControllers;
 
 import com.senla.api.fasad.IFasadGuest;
+import com.senla.dto.apiDTO.GuestDtoService;
 import com.senla.dto.apiDTO.MappingDTO;
 import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.dto.modelDTO.GuestDTO;
@@ -19,19 +20,18 @@ import java.util.stream.Collectors;
 @RequestMapping("guest")
 public class GuestRestController {
 
-    private IFasadGuest fasadGuest;
-    private MappingDTO mappingDTOImpl;
-
-    @Autowired
-    public GuestRestController(FasadGuest fasadGuest, MappingDTOImpl mappingDTOImpl) {
-        this.fasadGuest = fasadGuest;
-        this.mappingDTOImpl = mappingDTOImpl;
+  private  GuestDtoService guestDtoServiceIml;
+    public GuestRestController(GuestDtoService guestDtoServiceIml) {
+        this.guestDtoServiceIml = guestDtoServiceIml;
     }
+
+
+
 
 
     @GetMapping(value = "/get/{id}")
     public ResponseEntity<GuestDTO> read(@PathVariable(name = "id") int id) {
-        final GuestDTO GuestDTO = mappingDTOImpl.mapGuestToGuestDTO(fasadGuest.findById(id));
+        final GuestDTO GuestDTO = guestDtoServiceIml.getById(id);
         ;
 
         return GuestDTO != null
@@ -43,11 +43,11 @@ public class GuestRestController {
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
         boolean delete = false;
-        final List<GuestDTO> guestDTOList = fasadGuest.showAllGuests().stream().map(mappingDTOImpl::mapGuestToGuestDTO).collect(Collectors.toList());
+        final List<GuestDTO> guestDTOList =guestDtoServiceIml.getAll();
         for (GuestDTO guest : guestDTOList) {
             if (guest.getGuestNumber().equals(id)) {
                 delete = true;
-                fasadGuest.deleteGuest(fasadGuest.findById(id));
+                guestDtoServiceIml.delete(id);
             }
         }
         return delete
@@ -58,7 +58,7 @@ public class GuestRestController {
 
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<GuestDTO>> read() {
-        final List<GuestDTO> clients = fasadGuest.showAllGuests().stream().map(mappingDTOImpl::mapGuestToGuestDTO).collect(Collectors.toList());
+        final List<GuestDTO> clients = guestDtoServiceIml.getAll();
 
         return clients != null && !clients.isEmpty()
                 ? new ResponseEntity<>(clients, HttpStatus.OK)
@@ -69,18 +69,18 @@ public class GuestRestController {
 
     @PostMapping(value = "/save")
     public ResponseEntity<?> create(@RequestBody GuestDTO guestDTO) {
-       fasadGuest.saveGuest(mappingDTOImpl.mapGuestDtoTOGuest(guestDTO));
+      guestDtoServiceIml.save(guestDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody GuestDTO guestDTO) {
         boolean update = false;
-        final List<GuestDTO> guestDTOList = fasadGuest.showAllGuests().stream().map(mappingDTOImpl::mapGuestToGuestDTO).collect(Collectors.toList());
+        final List<GuestDTO> guestDTOList = guestDtoServiceIml.getAll();
         for (GuestDTO guest : guestDTOList) {
             if (guest.getGuestNumber().equals(id)) {
                 update = true;
-                fasadGuest.updateGuest(mappingDTOImpl.mapGuestDtoTOGuest(guestDTO));
+                guestDtoServiceIml.update(guestDTO);
             }
         }
         return update

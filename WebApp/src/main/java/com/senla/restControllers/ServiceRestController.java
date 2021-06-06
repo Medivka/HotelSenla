@@ -3,6 +3,8 @@ package com.senla.restControllers;
 import com.senla.api.fasad.IFasadService;
 
 import com.senla.dto.apiDTO.MappingDTO;
+import com.senla.dto.apiDTO.ServiceDtoService;
+import com.senla.dto.dtoService.ServiceDtoServiceImpl;
 import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.dto.modelDTO.ServiceDTO;
@@ -20,18 +22,15 @@ import java.util.stream.Collectors;
 @RequestMapping("/services")
 public class ServiceRestController {
 
-    private IFasadService fasadService;
-    private MappingDTO mappingDTOImpl;
 
-    @Autowired
-    public ServiceRestController(FasadService fasadService, MappingDTOImpl mappingDTOImpl) {
-        this.fasadService = fasadService;
-        this.mappingDTOImpl = mappingDTOImpl;
+    private ServiceDtoService serviceDtoServiceImpl;
+
+    public ServiceRestController(ServiceDtoService serviceDtoServiceImpl) {
+        this.serviceDtoServiceImpl = serviceDtoServiceImpl;
     }
-
     @GetMapping(value = "/get/{id}")
     public ResponseEntity<ServiceDTO> read(@PathVariable(name = "id") int id) {
-        final ServiceDTO serviceDTO = mappingDTOImpl.mapServiceToServiceDTO(fasadService.findById(id));
+        final ServiceDTO serviceDTO = serviceDtoServiceImpl.getById(id);
 
 
         return serviceDTO != null
@@ -43,11 +42,11 @@ public class ServiceRestController {
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
         boolean delete = false;
-        final List<ServiceDTO> serviceDTOList = fasadService.showAllService().stream().map(mappingDTOImpl::mapServiceToServiceDTO).collect(Collectors.toList());
+        final List<ServiceDTO> serviceDTOList = serviceDtoServiceImpl.getAll();
         for (ServiceDTO serviceDTO : serviceDTOList) {
             if (serviceDTO.getId().equals(id)) {
                 delete = true;
-                fasadService.deleteService(fasadService.findById(id));
+                serviceDtoServiceImpl.delete(id);
             }
         }
         return delete
@@ -58,7 +57,7 @@ public class ServiceRestController {
 
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<ServiceDTO>> read() {
-        final List<ServiceDTO> serviceDTOList = fasadService.showAllService().stream().map(mappingDTOImpl::mapServiceToServiceDTO).collect(Collectors.toList());
+        final List<ServiceDTO> serviceDTOList = serviceDtoServiceImpl.getAll();
 
         return serviceDTOList != null && !serviceDTOList.isEmpty()
                 ? new ResponseEntity<>(serviceDTOList, HttpStatus.OK)
@@ -68,18 +67,18 @@ public class ServiceRestController {
 
     @PostMapping(value = "/save")
     public ResponseEntity<?> create(@RequestBody ServiceDTO serviceDTO) {
-        fasadService.save(mappingDTOImpl.mapServiceDtoToService(serviceDTO));
+        serviceDtoServiceImpl.save(serviceDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody ServiceDTO serviceDTO) {
         boolean update = false;
-        final List<ServiceDTO> serviceDTOList = fasadService.showAllService().stream().map(mappingDTOImpl::mapServiceToServiceDTO).collect(Collectors.toList());
+        final List<ServiceDTO> serviceDTOList =serviceDtoServiceImpl.getAll();
         for (ServiceDTO service : serviceDTOList) {
             if (service.getId().equals(id)) {
                 update = true;
-                fasadService.updateService(fasadService.findById(id));
+                serviceDtoServiceImpl.update(serviceDTO);
             }
         }
         return update
