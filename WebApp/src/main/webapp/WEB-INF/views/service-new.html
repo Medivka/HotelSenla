@@ -1,7 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en,ru">
 <head>
+    <meta charset="UTF-8">
     <title>Services</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -22,37 +23,24 @@
     <nav class="my-2 my-md-40 mr-md-6">
 
         <a class="p-2 text-dark" href="/web/orders">orders</a>
-        <a class="p-2 text-dark" href="/web/guest/guest-all">guests</a>
+        <a class="p-2 text-dark" href="/web/guest-all">guests</a>
         <a class="p-2 text-dark" href="/web/service/services">rooms</a>
 
 
     </nav>
 </div>
-<table>
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>name</th>
-        <th>price</th>
-        <th>UPDATE</th>
-
-    </tr>
-    </thead>
-    <tbody>
-    <form action="#" th:action="@{/web/service/service-update}" th:object="${serviceDTO}" method="post">
-        <td ><label for="id">ID</label>
-            <input readonly type="number" th:field="*{id}" id="id" placeholder="ID"></td>
-        <td> <br/>
-            <label for="name">name</label>
-            <input type="text" th:field="*{name}" id="name" placeholder="name"></td>
-        <td> <br/>
-            <label for="price">price</label>
-            <input type="text" th:field="*{price}" id="price" placeholder="price"></td>
-        <td> <br/>
-            <input type="submit" value="Update service"></td>
+<div>
+    <form th:method="POST" th:action="@{/web/service}" th:object="${serviceDTO}">
+        <label for="name">Enter name: </label>
+        <input type="text" th:field="*{name}" id="name"/>
+        <br/>
+        <label for="price">Enter price: </label>
+        <input type="number" th:field="*{price}" id="price"/>
+        <br/>
+        <input type="submit" value="Create!"/>
     </form>
-    </tbody>
-</table>
+</div>
+
 </body>
 </html>
 <style type="text/css">

@@ -6,14 +6,11 @@ import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.dto.modelDTO.ServiceDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @Controller
-@RequestMapping("web")
+@RequestMapping("web/service")
 public class ServiceController {
     private ServiceDtoService serviceDtoServiceImpl;
     public ServiceController(ServiceDtoService serviceDtoServiceImpl) {
@@ -35,13 +32,25 @@ public class ServiceController {
     @PostMapping("/service-update")
     public String updatePlayer(ServiceDTO serviceDTO){
           serviceDtoServiceImpl.update( serviceDTO);
-        return "redirect:/web/services";
+        return "redirect:/web/service/services";
     }
 
     @GetMapping("service-delete/{id}")
     public String deletePlayer(@PathVariable("id") Integer id){
           serviceDtoServiceImpl.delete(id);
-
-        return "redirect:/web/services";
+        return "redirect:/web/service/services";
     }
+
+    @GetMapping("/service-new")
+    public String createServiceForm(Model model){
+     model.addAttribute("serviceDTO", new ServiceDTO());
+        return "service-new";
+    }
+    @RequestMapping( method = { RequestMethod.GET, RequestMethod.POST })
+    @PostMapping("/service-create")
+    public String createService(@ModelAttribute("serviceDTO") ServiceDTO serviceDTO){
+       serviceDtoServiceImpl.save(serviceDTO);
+        return "redirect:/web/service/services";
+    }
+
 }
