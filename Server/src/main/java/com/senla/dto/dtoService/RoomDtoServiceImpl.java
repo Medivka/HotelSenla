@@ -37,7 +37,7 @@ public class RoomDtoServiceImpl implements RoomDtoService {
 
     @Override
     public void delete(Integer id) {
-        fasadRoom.deleteRoom(fasadRoom.findById(id));
+        fasadRoom.deleteRoom(id);
     }
 
     @Override

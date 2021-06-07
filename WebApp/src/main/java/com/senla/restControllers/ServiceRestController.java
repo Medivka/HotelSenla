@@ -1,22 +1,13 @@
 package com.senla.restControllers;
 
-import com.senla.api.fasad.IFasadService;
 
-import com.senla.dto.apiDTO.MappingDTO;
 import com.senla.dto.apiDTO.ServiceDtoService;
-import com.senla.dto.dtoService.ServiceDtoServiceImpl;
-import com.senla.dto.mappingDTO.MappingDTOImpl;
-import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.dto.modelDTO.ServiceDTO;
-import com.senla.fasad.FasadService;
-import com.senla.model.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/services")

@@ -164,9 +164,9 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public void deleteOrder(Order order) {
-        LOGGER.log(Level.INFO, String.format("delete Order %s", order.getId()));
-        orderDao.delete(order);
+    public void deleteOrder(Integer id) {
+        LOGGER.log(Level.INFO, String.format("delete Order %s", id));
+        orderDao.delete(orderDao.findById(id));
     }
 
     @Override

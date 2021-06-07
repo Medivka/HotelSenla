@@ -14,13 +14,23 @@ public class MainController {
     }
 
     @GetMapping("/hello")
-    public String AboutMe(){
+    public String AboutMe() {
         return "Hello";
     }
+
     @GetMapping("/index")
     public String returnIndex() {
         return "index";
     }
 
+    @GetMapping("/rest")
+    public String returnRest() {
+        return "rest";
+    }
+
+    @GetMapping("/me")
+    public String returnMe() {
+        return "me";
+    }
 
 }

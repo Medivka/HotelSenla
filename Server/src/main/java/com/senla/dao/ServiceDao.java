@@ -46,7 +46,7 @@ public class ServiceDao implements IServiceDao {
 
     @Override
     public void delete(Service service) {
-       entityManager.remove(service);
+          entityManager.remove(service);
     }
 
 
@@ -58,7 +58,8 @@ public class ServiceDao implements IServiceDao {
 
     @Override
     public void updateService(Service service) {
-       entityManager.merge(service);
+
+          entityManager.merge(service);
     }
 }
 /**

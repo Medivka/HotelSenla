@@ -66,8 +66,8 @@ public class FasadOrder implements IFasadOrder {
     }
 
     @Override
-    public void deleteOrder(Order order) {
-        orderService.deleteOrder(order);
+    public void deleteOrder(Integer id) {
+        orderService.deleteOrder(id);
     }
 
     @Override

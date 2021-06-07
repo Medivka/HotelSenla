@@ -59,8 +59,9 @@ public class FasadGuest implements IFasadGuest {
     }
 
     @Override
-    public void deleteGuest(Guest guest) {
-        guestService.deleteGuest(guest);
+    public void deleteGuest(Integer id) {
+
+        guestService.deleteGuest(id);
     }
 
     @Override

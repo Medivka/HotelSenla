@@ -28,7 +28,7 @@ public interface IGuestService {
 
     List sortedByName();
 
-    void deleteGuest(Guest guest);
+    void deleteGuest(Integer id);
 
     void setGuestLIst(List list);
 

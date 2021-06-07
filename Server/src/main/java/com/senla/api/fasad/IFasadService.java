@@ -23,7 +23,7 @@ public interface IFasadService {
 
     void setServiceList(List list);
 
-    void deleteService(Service service);
+    void deleteService(Integer id);
 
     void updateService(Service service);
 }

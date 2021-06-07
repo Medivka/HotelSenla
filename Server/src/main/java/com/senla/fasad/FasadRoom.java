@@ -26,8 +26,8 @@ public class FasadRoom implements IFasadRoom {
     }
 
     @Override
-    public void deleteRoom(Room room) {
-        roomService.deleteRoom(room);
+    public void deleteRoom(Integer id) {
+        roomService.deleteRoom(id);
     }
 
     @Override

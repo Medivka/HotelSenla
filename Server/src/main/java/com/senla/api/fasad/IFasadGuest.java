@@ -24,7 +24,7 @@ public interface IFasadGuest {
 
     List<Guest> sortedByName();
 
-    void deleteGuest(Guest guest);
+    void deleteGuest(Integer id);
 
     void setGuestList(List list);
 

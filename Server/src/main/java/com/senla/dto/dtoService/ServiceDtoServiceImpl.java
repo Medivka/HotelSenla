@@ -44,7 +44,7 @@ public class ServiceDtoServiceImpl implements ServiceDtoService {
 
     @Override
     public void delete(Integer id) {
-        fasadService.deleteService(fasadService.findById(id));
+        fasadService.deleteService(id);
 
     }
 }

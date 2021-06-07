@@ -32,8 +32,8 @@ public class Order implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="rooms")
     private Room room;
-    @JsonManagedReference
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
     @JoinTable(name = "orders_services",
             joinColumns = @JoinColumn(name = "id_order"),
             inverseJoinColumns = @JoinColumn(name = "id_service"))

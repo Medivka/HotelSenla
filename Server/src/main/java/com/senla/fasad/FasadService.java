@@ -10,13 +10,18 @@ import java.util.List;
 @org.springframework.stereotype.Service
 public class FasadService implements IFasadService {
 
-    @Autowired
     IServiceService serviceService;
 
-@Override
-public void save(Service service){
-    serviceService.save(service);
-}
+    @Autowired
+    public FasadService(IServiceService serviceService) {
+        this.serviceService = serviceService;
+    }
+
+    @Override
+    public void save(Service service) {
+        serviceService.save(service);
+    }
+
     @Override
     public Service findById(Integer idService) {
         return serviceService.findById(idService);
@@ -53,8 +58,8 @@ public void save(Service service){
     }
 
     @Override
-    public void deleteService(Service service) {
-        serviceService.deleteService(service);
+    public void deleteService(Integer id) {
+        serviceService.deleteService(id);
     }
 
     @Override

@@ -114,9 +114,9 @@ public class GuestService implements IGuestService {
     }
 
     @Override
-    public void deleteGuest(Guest guest) {
-        LOGGER.log(Level.INFO, String.format("delete guest %s", guest.getGuestNumber()));
-        guestDao.delete(guest);
+    public void deleteGuest(Integer id) {
+        LOGGER.log(Level.INFO, String.format("delete guest %s", id));
+        guestDao.delete(guestDao.findById(id));
     }
 
     @Override

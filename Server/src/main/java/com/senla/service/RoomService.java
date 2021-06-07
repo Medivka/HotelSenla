@@ -39,7 +39,8 @@ public class RoomService implements IRoomService {
 
     @Override
     public void updateRoom(Room room){
-        roomDao.update(room);
+
+         roomDao.update(room);
     }
 
     @Override
@@ -68,9 +69,17 @@ public class RoomService implements IRoomService {
         }
     }
 
+
+
     @Override
-    public void deleteRoom(Room room) {
-        roomDao.delete(room);
+    public void deleteRoom(Integer id) {
+        try {
+            LOGGER.log(Level.INFO, String.format("room delete",id));
+            roomDao.delete(roomDao.findById(id));
+        }catch (DaoException e) {
+            LOGGER.log(Level.WARN, "room delete",e);
+            throw new ServiceExeption("room delete", e);
+        }
     }
 
     @Override

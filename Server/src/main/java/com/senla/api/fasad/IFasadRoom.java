@@ -8,7 +8,7 @@ import java.util.List;
 public interface IFasadRoom {
     void save(Room room);
 
-    void deleteRoom(Room room);
+    void deleteRoom(Integer id);
 
     List<Room> showAllRoom();
 

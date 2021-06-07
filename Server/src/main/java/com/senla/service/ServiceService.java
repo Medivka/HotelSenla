@@ -114,10 +114,10 @@ public class ServiceService implements IServiceService {
     }
 
     @Override
-    public void deleteService(Service service) {
+    public void deleteService(Integer id) {
         try {
-            LOGGER.log(Level.INFO, String.format("delete service %s", service.getId()));
-            serviceDao.delete(service);
+            LOGGER.log(Level.INFO, String.format("delete service %s", id));
+            serviceDao.delete(serviceDao.findById(id));
         } catch (DaoException e) {
             LOGGER.log(Level.WARN, "delete Service  failed", e);
             throw new ServiceExeption("delete Service failed", e);

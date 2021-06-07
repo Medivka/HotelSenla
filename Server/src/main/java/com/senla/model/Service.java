@@ -23,13 +23,11 @@ public class Service  implements Serializable {
     @Column(name = "price")
     private Integer price;
     @JsonIgnore
-    @JsonBackReference
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE )
     @JoinTable(name = "orders_services",
             joinColumns = @JoinColumn(name = "id_service"),
             inverseJoinColumns = @JoinColumn(name = "id_order"))
     private List<Order> ordersListServices =new ArrayList<>();
-
 
     public Service() {
     }

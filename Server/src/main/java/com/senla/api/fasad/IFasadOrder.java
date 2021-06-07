@@ -29,7 +29,7 @@ public interface IFasadOrder {
 
     abstract void setOrderList(List list);
 
-    void deleteOrder(Order order);
+    void deleteOrder(Integer id);
 
     void updateOrder(Order order);
 

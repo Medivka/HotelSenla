@@ -31,7 +31,7 @@ public interface IOrderService {
 
     Integer getAllAmount(Integer orderNumber);
 
-    void deleteOrder(Order order);
+    void deleteOrder(Integer id);
 
     void setOrderList(List list);
 

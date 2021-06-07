@@ -11,4 +11,10 @@ public class ServiceDTO {
     private String name;
     private Integer price;
 
+    @Override
+    public String toString() {
+        return
+                name + "  price= " + price + "\n"
+                ;
+    }
 }

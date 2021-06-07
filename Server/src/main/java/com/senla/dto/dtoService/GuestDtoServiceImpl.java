@@ -28,12 +28,12 @@ public class GuestDtoServiceImpl implements GuestDtoService {
 
     @Override
     public GuestDTO getById(Integer id) {
-            return mappingDTOImpl.mapGuestToGuestDTO(fasadGuest.findById(id));
+              return mappingDTOImpl.mapGuestToGuestDTO(fasadGuest.findById(id));
     }
 
     @Override
     public void delete(Integer id) {
-        fasadGuest.deleteGuest(fasadGuest.findById(id));
+        fasadGuest.deleteGuest(id);
 
     }
 

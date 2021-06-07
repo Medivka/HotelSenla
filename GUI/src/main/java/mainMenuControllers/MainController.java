@@ -400,7 +400,7 @@ public class MainController implements IController {
 
         });
         deleteOrderButton.setOnAction(actionEvent -> {
-            fasadOrder.deleteOrder(fasadOrder.findByID(Integer.parseInt(enterOrderIDTextField.getText())));
+            fasadOrder.deleteOrder(Integer.parseInt(enterOrderIDTextField.getText()));
             orderInfoLabel.setText("order delete" + Integer.parseInt(enterOrderIDTextField.getText()));
             refreshOrderTable();
 
@@ -453,7 +453,7 @@ public class MainController implements IController {
 
         });
         deleteGuestButton.setOnAction(actionEvent -> {
-            fasadGuest.deleteGuest(fasadGuest.findById(Integer.parseInt(guestIdTextField.getText())));
+            fasadGuest.deleteGuest(Integer.parseInt(guestIdTextField.getText()));
             guestInfoLabel.setText("delete");
             refreshGuestTable();
         });
@@ -521,7 +521,8 @@ public class MainController implements IController {
         deleteRoomButton.setOnAction(actionEvent -> {
             Integer roomNumber = Integer.parseInt(enterRoomIdTextField.getText());
             if (roomNumber <= fasadRoom.showAllRoom().size() && roomNumber > 0) {
-                fasadRoom.deleteRoom(fasadRoom.findById(roomNumber));
+
+                fasadRoom.deleteRoom(roomNumber);
                 roomInfoLabel.setText("delete room");
             } else roomInfoLabel.setText("room not found");
             refreshRoomTable();
@@ -584,7 +585,7 @@ public class MainController implements IController {
         });
         deleteServiceButton.setOnAction(actionEvent -> {
             Integer serviceId = Integer.parseInt(enterServiceIDTextField.getText());
-            fasadService.deleteService(fasadService.findById(serviceId));
+            fasadService.deleteService(serviceId);
             serviceInfoLabel.setText("delete service ");
             refreshTableService();
         });

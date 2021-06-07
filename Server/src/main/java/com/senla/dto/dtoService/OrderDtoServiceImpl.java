@@ -40,7 +40,7 @@ public class OrderDtoServiceImpl implements OrderDtoService {
 
     @Override
     public void delete(Integer id) {
-        fasadOrder.deleteOrder(fasadOrder.findByID(id));
+        fasadOrder.deleteOrder(id);
     }
 
     @Override
