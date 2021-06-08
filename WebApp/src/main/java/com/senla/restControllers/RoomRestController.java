@@ -64,6 +64,7 @@ public class RoomRestController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody RoomDTO roomDTO) {
         boolean update = false;

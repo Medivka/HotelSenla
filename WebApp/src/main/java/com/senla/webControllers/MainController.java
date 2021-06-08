@@ -32,5 +32,9 @@ public class MainController {
     public String returnMe() {
         return "me";
     }
+    @GetMapping("/contact")
+    public String myContact(){
+        return "contact";
+    }
 
 }

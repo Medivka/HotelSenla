@@ -23,19 +23,25 @@
     <nav class="my-2 my-md-40 mr-md-6">
 
         <a class="p-2 text-dark" href="/web/orders">orders</a>
-        <a class="p-2 text-dark" href="/web/guest/guest-all">guests</a>
+        <a class="p-2 text-dark" href="/web/guest-all">guests</a>
         <a class="p-2 text-dark" href="/web/service/services">rooms</a>
 
 
     </nav>
 </div>
 <div>
-    <form th:method="POST" th:action="@{/web/service}" th:object="${serviceDTO}">
-        <label for="name">Enter name: </label>
-        <input type="text" th:field="*{name}" id="name"/>
+    <form th:method="POST" th:action="@{/web/room}" th:object="${roomDTO}">
+        <label for="roomStatus">Enter RoomStatus: </label>
+        <input type="text" th:field="*{roomStatus}" id="roomStatus"/>
+        <br/>
+        <label for="capacity">Enter capacity: </label>
+        <input type="number" th:field="*{capacity}" id="capacity"/>
         <br/>
         <label for="price">Enter price: </label>
         <input type="number" th:field="*{price}" id="price"/>
+        <br/>
+        <label for="stars">Enter stars: </label>
+        <input type="number" th:field="*{stars}" id="stars"/>
         <br/>
         <input type="submit" value="Create!"/>
     </form>

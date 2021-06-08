@@ -67,6 +67,7 @@ public class MappingDTOImpl implements MappingDTO {
         room.setStars(roomDTO.getStars());
         room.setRoomStatus(roomDTO.getRoomStatus());
         room.setCopacity(roomDTO.getCapacity());
+        room.setPrice(roomDTO.getPrice());
         return room;
     }
 

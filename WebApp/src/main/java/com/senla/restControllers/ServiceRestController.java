@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/services")
+@RequestMapping("/service")
 public class ServiceRestController {
 
 
@@ -49,7 +49,6 @@ public class ServiceRestController {
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<ServiceDTO>> read() {
         final List<ServiceDTO> serviceDTOList = serviceDtoServiceImpl.getAll();
-
         return serviceDTOList != null && !serviceDTOList.isEmpty()
                 ? new ResponseEntity<>(serviceDTOList, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);

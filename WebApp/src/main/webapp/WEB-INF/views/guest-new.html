@@ -14,7 +14,7 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/me">About me</a>
         <a class="p-2 text-dark" href="/web/orders">My project</a>
-        <a class="p-2 text-dark" href="/my_contact">Contact</a>
+        <a class="p-2 text-dark" href="/contact">Contact</a>
 
     </nav>
     <a class="btn btn-outline-primary" href="#">Sign up</a>
@@ -30,29 +30,47 @@
     </nav>
 </div>
 <div>
+    <table>
+        <thead>
+        <tr>
+
+            <th>name</th>
+            <th>lastName</th>
+            <th>age</th>
+            <th>phone</th>
+            <th>guestGender</th>
+            <th>email</th>
+            <th>address</th>
+            <th>save</th>
+
+        </tr>
+        </thead>
+        <tbody>
     <form th:method="POST" th:action="@{/web/guest}" th:object="${guestDTO}">
-        <label for="name">Enter name: </label>
-        <input type="text" th:field="*{name}" id="name"/>
-        <br/>
-        <label for="lastName">Enter lastName: </label>
-        <input type="text" th:field="*{lastName}" id="lastName"/>
+      <td>  <label for="name">Enter name: </label>
+        <input type="text" th:field="*{name}" id="name"/></td>
 
-        <br/> <label for="age">Enter age: </label>
-        <input type="number" th:field="*{age}" id="age"/>
+        <td>  <label for="lastName">Enter lastName: </label>
+        <input type="text" th:field="*{lastName}" id="lastName"/></td>
 
-        <br/> <label for="phone">Enter phone: </label>
-        <input type="text" th:field="*{phone}" id="phone"/>
+        <td> <label for="age">Enter age: </label>
+        <input type="number" th:field="*{age}" id="age"/></td>
 
-        <br/> <label for="guestGender">Enter guestGender: </label>
-        <input type="text" th:field="*{guestGender}" id="guestGender"/>
+        <td>  <label for="phone">Enter phone: </label>
+        <input type="number" th:field="*{phone}" id="phone"/></td>
 
-        <br/> <label for="email">Enter email: </label>
-        <input type="text" th:field="*{email}" id="email"/>
-        <br/> <label for="address">Enter address: </label>
-        <input type="text" th:field="*{address}" id="address"/>
-        <br/>
-        <input type="submit" value="Create!"/>
+        <td>  <label for="guestGender">Enter guestGender: </label>
+        <input type="text" th:field="*{guestGender}" id="guestGender"/></td>
+
+        <td>  <label for="email">Enter email: </label>
+        <input type="text" th:field="*{email}" id="email"/></td>
+        <td>  <label for="address">Enter address: </label>
+        <input type="text" th:field="*{address}" id="address"/></td>
+        <td>
+        <input type="submit" value="Create!"/></td>
     </form>
+        </tbody>
+    </table>
 </div>
 
 </body>

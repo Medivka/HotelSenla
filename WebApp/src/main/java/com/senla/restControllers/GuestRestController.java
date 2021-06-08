@@ -25,15 +25,9 @@ public class GuestRestController {
         this.guestDtoServiceIml = guestDtoServiceIml;
     }
 
-
-
-
-
     @GetMapping(value = "/get/{id}")
     public ResponseEntity<GuestDTO> read(@PathVariable(name = "id") int id) {
         final GuestDTO GuestDTO = guestDtoServiceIml.getById(id);
-        ;
-
         return GuestDTO != null
                 ? new ResponseEntity<>(GuestDTO, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -59,7 +53,6 @@ public class GuestRestController {
     @GetMapping(value = "/get/all")
     public ResponseEntity<List<GuestDTO>> read() {
         final List<GuestDTO> clients = guestDtoServiceIml.getAll();
-
         return clients != null && !clients.isEmpty()
                 ? new ResponseEntity<>(clients, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
