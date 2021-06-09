@@ -1,5 +1,6 @@
 package com.senla.dto.dtoService;
 
+import com.senla.api.enums.RoomStatus;
 import com.senla.api.fasad.IFasadRoom;
 import com.senla.dto.apiDTO.MappingDTO;
 import com.senla.dto.apiDTO.RoomDtoService;
@@ -43,5 +44,10 @@ public class RoomDtoServiceImpl implements RoomDtoService {
     @Override
     public void update(RoomDTO roomDTO) {
         fasadRoom.updateRoom(mappingDTOImpl.mapRoomDtoToRoom(roomDTO));
+    }
+
+    @Override
+    public void update(Integer id, RoomDTO roomDTO) {
+        fasadRoom.updateRoom(id, mappingDTOImpl.mapRoomDtoToRoom(roomDTO));
     }
 }

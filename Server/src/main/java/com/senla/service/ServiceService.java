@@ -21,16 +21,19 @@ import java.util.stream.Collectors;
 public class ServiceService implements IServiceService {
 
 
-    @Autowired
     IServiceDao serviceDao;
-
-
-    private static final Logger LOGGER = Logger.getLogger(ServiceService.class.getName());
-
     @Autowired
-    public ServiceService(ServiceDao serviceDao) {
+    public ServiceService(IServiceDao serviceDao) {
         this.serviceDao = serviceDao;
     }
+    private static final Logger LOGGER = Logger.getLogger(ServiceService.class.getName());
+
+   @Override
+   public void  updateService(Integer id, Service service){
+       Service service1 = serviceDao.findById(id);
+       service1=service;
+       serviceDao.updateService(service1);
+   }
 
 
     @Override

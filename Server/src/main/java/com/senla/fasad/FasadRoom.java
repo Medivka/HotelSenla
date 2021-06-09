@@ -3,6 +3,7 @@ package com.senla.fasad;
 import com.senla.api.enums.RoomStatus;
 import com.senla.api.fasad.IFasadRoom;
 import com.senla.api.service.IRoomService;
+import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.model.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -93,6 +94,11 @@ public class FasadRoom implements IFasadRoom {
     @Override
     public void updateRoom(Room room) {
         roomService.updateRoom(room);
+    }
+
+    @Override
+    public void updateRoom(Integer id, Room room) {
+        roomService.updateRoom(id,room);
     }
 
 }

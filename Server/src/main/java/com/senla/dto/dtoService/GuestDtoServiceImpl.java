@@ -48,4 +48,9 @@ public class GuestDtoServiceImpl implements GuestDtoService {
         fasadGuest.saveGuest(mappingDTOImpl.mapGuestDtoTOGuest(guestDTO));
 
     }
+
+    @Override
+    public void update(Integer guestNumber, GuestDTO guestDTO) {
+        fasadGuest.updateGuest(guestNumber,mappingDTOImpl.mapGuestDtoTOGuest(guestDTO));
+    }
 }

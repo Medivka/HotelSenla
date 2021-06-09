@@ -3,6 +3,7 @@ package com.senla.api.service;
 
 
 import com.senla.api.enums.RoomStatus;
+import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.model.Room;
 
 import java.util.List;
@@ -39,4 +40,6 @@ public interface IRoomService {
     List<Room> allFreeRoom();
 
     void save(Room room);
+
+    void updateRoom(Integer id, Room room);
 }

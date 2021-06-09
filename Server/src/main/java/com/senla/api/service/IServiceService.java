@@ -9,10 +9,12 @@ import java.util.List;
 public interface IServiceService {
 
 
+    void  updateService(Integer id, Service service);
+
     void updateService(Service service);
 
     Service findById(Integer id);
-   List showAllService();
+    List showAllService();
     Service createService(String name, Integer price);
     void changeServiceName(Integer idService, String name);
     void changeServicePrice(Integer idService, Integer price);

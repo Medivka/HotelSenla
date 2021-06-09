@@ -2,6 +2,7 @@ package com.senla.fasad;
 
 import com.senla.api.fasad.IFasadService;
 import com.senla.api.service.IServiceService;
+import com.senla.dto.modelDTO.ServiceDTO;
 import com.senla.model.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -64,6 +65,11 @@ public class FasadService implements IFasadService {
 
     @Override
     public void updateService(Service service) {
+        serviceService.updateService(service);
+    }
+
+    @Override
+    public void updateService(Integer id, Service service) {
         serviceService.updateService(service);
     }
 

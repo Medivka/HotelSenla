@@ -1,6 +1,7 @@
 package com.senla.api.fasad;
 
 import com.senla.api.enums.RoomStatus;
+import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.model.Room;
 
 import java.util.List;
@@ -35,4 +36,6 @@ public interface IFasadRoom {
     void setRoomList(List list);
 
     void updateRoom(Room room);
+
+    void updateRoom(Integer id, Room room);
 }

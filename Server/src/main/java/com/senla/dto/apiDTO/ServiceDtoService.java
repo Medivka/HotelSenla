@@ -10,4 +10,6 @@ public interface ServiceDtoService {
     public  void save(ServiceDTO serviceDTO);
     public void update(ServiceDTO serviceDTO);
     public void delete(Integer id);
+
+    void update(Integer id, ServiceDTO serviceDTO);
 }

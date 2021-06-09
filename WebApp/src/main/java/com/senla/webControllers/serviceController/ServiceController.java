@@ -30,13 +30,13 @@ public class ServiceController {
         return "/service-update";
     }
     @PostMapping("/service-update")
-    public String updatePlayer(ServiceDTO serviceDTO){
-          serviceDtoServiceImpl.update( serviceDTO);
+    public String updateServiceDTO(ServiceDTO serviceDTO){
+          serviceDtoServiceImpl.update(serviceDTO.getId(), serviceDTO);
         return "redirect:/web/service/services";
     }
 
     @GetMapping("service-delete/{id}")
-    public String deletePlayer(@PathVariable("id") Integer id){
+    public String deleteService(@PathVariable("id") Integer id){
           serviceDtoServiceImpl.delete(id);
         return "redirect:/web/service/services";
     }

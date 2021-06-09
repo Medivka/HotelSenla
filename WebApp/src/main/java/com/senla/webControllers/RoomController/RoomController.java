@@ -1,7 +1,6 @@
 package com.senla.webControllers.RoomController;
 
 import com.senla.dto.apiDTO.RoomDtoService;
-import com.senla.dto.modelDTO.GuestDTO;
 import com.senla.dto.modelDTO.RoomDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +37,18 @@ private RoomDtoService roomDtoServiceImpl;
     @PostMapping("/room-create")
     public String createService(@ModelAttribute("roomDTO") RoomDTO roomDTO){
         roomDtoServiceImpl.save(roomDTO);
+        return "redirect:/web/room/rooms";
+    }
+    @GetMapping("/room-update/{id}")
+    public String updateServiceDTO(@PathVariable("id") Integer id, Model model){
+        RoomDTO roomDTO= roomDtoServiceImpl.getById(id);
+        model.addAttribute("roomDTO",roomDTO);
+
+        return "/room-update";
+    }
+    @PostMapping("/room-update")
+    public String updateRoomDTO(RoomDTO roomDTO){
+        roomDtoServiceImpl.update(roomDTO.getId(), roomDTO);
         return "redirect:/web/room/rooms";
     }
 

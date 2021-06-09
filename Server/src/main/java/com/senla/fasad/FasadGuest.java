@@ -78,4 +78,9 @@ public class FasadGuest implements IFasadGuest {
         guestService.saveGuest(guest);
 }
 
+    @Override
+    public void updateGuest(Integer guestNumber, Guest guest) {
+        guestService.updateGuest(guestNumber,guest);
+    }
+
 }

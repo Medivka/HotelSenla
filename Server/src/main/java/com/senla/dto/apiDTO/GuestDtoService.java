@@ -12,4 +12,5 @@ public interface GuestDtoService {
     public void update (GuestDTO guestDTO);
     public void save (GuestDTO guestDTO);
 
+    void update(Integer guestNumber, GuestDTO guestDTO);
 }

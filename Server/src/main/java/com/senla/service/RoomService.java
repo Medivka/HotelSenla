@@ -4,11 +4,13 @@ import com.senla.api.dao.IRoomDao;
 import com.senla.api.enums.RoomStatus;
 import com.senla.api.service.IRoomService;
 import com.senla.dao.RoomDao;
+import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.exceptions.DaoException;
 import com.senla.exceptions.ServiceExeption;
 import com.senla.model.Room;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.hibernate.id.IntegralDataTypeHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -191,6 +193,13 @@ public class RoomService implements IRoomService {
     @Override
     public void save(Room room) {
         roomDao.save(room);
+    }
+
+    @Override
+    public void updateRoom(Integer id, Room room) {
+        Room room1=roomDao.findById(id);
+        room1=room;
+        roomDao.update(room1);
     }
 
 }

@@ -31,4 +31,6 @@ public interface IFasadGuest {
     void updateGuest(Guest guest);
 
     void saveGuest(Guest guest);
+
+    void updateGuest(Integer guestNumber, Guest guest);
 }

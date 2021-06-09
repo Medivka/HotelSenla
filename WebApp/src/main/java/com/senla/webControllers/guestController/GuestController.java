@@ -3,6 +3,7 @@ package com.senla.webControllers.guestController;
 import com.senla.dto.apiDTO.GuestDtoService;
 import com.senla.dto.modelDTO.GuestDTO;
 import com.senla.dto.modelDTO.OrderDTO;
+import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.dto.modelDTO.ServiceDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,18 @@ public class GuestController {
     @PostMapping("/guest-create")
     public String createService(@ModelAttribute("guestDTO") GuestDTO guestDTO){
        guestDtoService.save(guestDTO);
+        return "redirect:/web/guest/guest-all";
+    }
+    @GetMapping("/guest-update/{id}")
+    public String updateServiceDTO(@PathVariable("id") Integer id, Model model){
+       GuestDTO guestDTO= guestDtoService.getById(id);
+        model.addAttribute("guestDTO",guestDTO);
+
+        return "/guest-update";
+    }
+    @PostMapping("/guest-update")
+    public String updateRoomDTO(GuestDTO guestDTO){
+        guestDtoService.update(guestDTO.getGuestNumber(), guestDTO);
         return "redirect:/web/guest/guest-all";
     }
 }

@@ -1,8 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns:th="http://www.thymeleaf.org" lang="en,ru">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Services</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -23,45 +22,46 @@
     <nav class="my-2 my-md-40 mr-md-6">
 
         <a class="p-2 text-dark" href="/web/orders">orders</a>
-        <a class="p-2 text-dark" href="/web/guest-all">guests</a>
-        <a class="p-2 text-dark" href="/web/service/services">rooms</a>
+        <a class="p-2 text-dark" href="/web/guest/guest-all">guests</a>
+        <a class="p-2 text-dark" href="/web/service/services">services</a>
+
 
 
     </nav>
 </div>
-<div>
-    <table>
-        <thead>
-        <tr>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>roomStatus</th>
+        <th>capacity</th>
+        <th>price</th>
+        <th>stars</th>
+        <th>update</th>
 
-            <th>roomStatus</th>
-            <th>capacity</th>
-            <th>price</th>
-            <th>stars</th>
-            <th>Create</th>
-       
-        </tr>
-        </thead>
-        <tbody>
-    <form th:method="POST" th:action="@{/web/room}" th:object="${roomDTO}">
-        <td>  <label for="roomStatus">Enter RoomStatus: </label>
-        <input type="text" th:field="*{roomStatus}" id="roomStatus"/></td>
-
-        <td>  <label for="capacity">Enter capacity: </label>
-        <input type="number" th:field="*{capacity}" id="capacity"/></td>
-
-        <td>  <label for="price">Enter price: </label>
-        <input type="number" th:field="*{price}" id="price"/></td>
-
-        <td> <label for="stars">Enter stars: </label>
-        <input type="number" th:field="*{stars}" id="stars"/></td>
-
-        <td>  <input type="submit" value="Create!"/></td>
+    </tr>
+    </thead>
+    <tbody>
+    <form action="#" th:action="@{/web/room/room-update}" th:object="${roomDTO}" method="post">
+        <td ><label for="id">ID</label>
+            <input readonly type="number" th:field="*{id}" id="id" placeholder="id"></td>
+        <td>
+            <label for="roomStatus">roomStatus</label>
+            <input type="text" th:field="*{roomStatus}" id="roomStatus" placeholder="roomStatus"></td>
+        <td>
+            <label for="capacity">price</label>
+            <input type="number" th:field="*{capacity}" id="capacity" placeholder="capacity"></td>
+        <td>
+            <label for="price">price</label>
+            <input type="number" th:field="*{price}" id="price" placeholder="price"></td>
+        <td>
+            <label for="stars">price</label>
+            <input type="number" th:field="*{stars}" id="stars" placeholder="stars"></td>
+        <td> <br/>
+            <input type="submit" value="Update room"></td>
     </form>
-        </tbody>
-    </table>
-</div>
-
+    </tbody>
+</table>
 </body>
 </html>
 <style type="text/css">

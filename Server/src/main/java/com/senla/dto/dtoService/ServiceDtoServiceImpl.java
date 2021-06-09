@@ -26,25 +26,25 @@ public class ServiceDtoServiceImpl implements ServiceDtoService {
     @Override
     public List getAll() {
         return  fasadService.showAllService().stream().map(mappingDTOImpl::mapServiceToServiceDTO).collect(Collectors.toList());
-
-
     }
 
     @Override
     public void save(ServiceDTO serviceDTO) {
         fasadService.save(mappingDTOImpl.mapServiceDtoToService(serviceDTO));
-
     }
 
     @Override
     public void update(ServiceDTO serviceDTO) {
         fasadService.save(mappingDTOImpl.mapServiceDtoToService(serviceDTO));
-
     }
 
     @Override
     public void delete(Integer id) {
         fasadService.deleteService(id);
+    }
 
+    @Override
+    public void update(Integer id, ServiceDTO serviceDTO) {
+        fasadService.updateService(id, mappingDTOImpl.mapServiceDtoToService(serviceDTO));
     }
 }
