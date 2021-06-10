@@ -2,6 +2,7 @@ package com.senla.springWeb;
 
 
 
+import com.senla.webSecurity.SecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
@@ -10,7 +11,7 @@ public class MySpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotation
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return  new Class[] {SecurityConfig.class};
     }
 
     @Override

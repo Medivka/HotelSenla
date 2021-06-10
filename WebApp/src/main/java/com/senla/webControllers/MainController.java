@@ -47,11 +47,11 @@ public class MainController {
     public String orderUpdate() {
         return "order-update";
     }
-
-    @GetMapping("/login")
-    public String getLogin() {
-        return "login";
-    }
+//
+//    @GetMapping("/login")
+//    public String getLogin() {
+//        return "login";
+//    }
 
     @GetMapping("/registration")
     public String getRegistration() {
