@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+        "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>guests</title>
@@ -10,7 +10,7 @@
     <h5 class="my-0 mr-md-auto font-weight-normal"><a class="p-2 text-dark" href="/">Senla test project</a></h5>
 
 
-    <nav class="my-2 my-md-0 mr-md-3" >
+    <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/me">About me</a>
         <a class="p-2 text-dark" href="/web/orders">My project</a>
         <a class="p-2 text-dark" href="/contact">Contact</a>
@@ -27,7 +27,7 @@
 
     </nav>
 </div>
-<div th:switch="${guestDTOList}" >
+<div th:switch="${guestDTOList}">
     <h2 th:case="null">No guests found!</h2>
     <div th:case="*">
         <H1>Guests</H1>
@@ -53,24 +53,26 @@
                 <td th:text="${guestDTO.name}"></td>
                 <td th:text="${guestDTO.lastName}"></td>
                 <td th:text="${guestDTO.age}"></td>
-                <td th:text="${guestDTO.phone}"> </td>
+                <td th:text="${guestDTO.phone}"></td>
                 <td th:text="${guestDTO.guestGender}"></td>
                 <td th:text="${guestDTO.email}"></td>
                 <td th:text="${guestDTO.address}"></td>
-                <td><a class="btn btn-outline-primary" th:href="@{guest-update/{id}(id=${guestDTO.guestNumber})}">edit </a></td>
+                <td><a class="btn btn-outline-primary"
+                       th:href="@{guest-update/{id}(id=${guestDTO.guestNumber})}">edit </a></td>
 
 
-                <td><a class="btn btn-outline-primary" th:href="@{guest-delete/{id}(id=${guestDTO.guestNumber})}">delete </a></td>
+                <td><a class="btn btn-outline-primary"
+                       th:href="@{guest-delete/{id}(id=${guestDTO.guestNumber})}">delete </a></td>
 
             </tr>
             </tbody>
         </table>
     </div>
     <p><a href="/web/guest/guest-new">
-        <button type="submit">Create guest</button>
+        <button class="btn btn-outline-primary" type="submit">Create guest</button>
     </a>
         <a href="/">
-            <button type="submit">return main</button>
+            <button class="btn btn-outline-primary" type="submit">return main</button>
         </a>
     </p>
 
@@ -122,7 +124,7 @@
     }
 
     table tbody tr:nth-child(2n) {
-        background:#FFFFFF;
+        background: #FFFFFF;
     }
 
     table tbody tr:hover {

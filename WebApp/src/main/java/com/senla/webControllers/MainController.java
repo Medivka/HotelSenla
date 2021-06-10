@@ -36,5 +36,16 @@ public class MainController {
     public String myContact(){
         return "contact";
     }
-
+    @GetMapping("/order-new")
+    public String orderNew(){
+        return "order-new";
+    }
+    @GetMapping("/order-update")
+    public String orderUpdate(){
+        return "order-update";
+    }
+@GetMapping ("/login")
+    public String getLogin(){
+        return "login";
+}
 }

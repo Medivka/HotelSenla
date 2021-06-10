@@ -52,7 +52,7 @@
                 <td th:text="${roomDTO.price}"></td>
                 <td th:text="${roomDTO.stars}"></td>
 
-                <td><a class="btn btn-outline-primary" th:href="@{room-update/{id}(id=${roomDTO.id})}">edit </a></td>
+                <td><a  class="btn btn-outline-primary" th:href="@{room-update/{id}(id=${roomDTO.id})}">edit </a></td>
                 <td><a class="btn btn-outline-primary" th:href="@{room-delete/{id}(id=${roomDTO.id})}">delete </a>
                 </td>
             </tr>
@@ -60,10 +60,10 @@
         </table>
     </div>
     <p><a href="/web/room/room-new">
-        <button type="submit">Create room</button>
-    </a></p>
-    <p><a href="/">
-        <button type="submit">return main</button>
+        <button class="btn btn-outline-primary" type="submit">Create room</button>
+    </a>
+    <a href="/">
+        <button class="btn btn-outline-primary" type="submit">return main</button>
     </a></p>
 </div>
 

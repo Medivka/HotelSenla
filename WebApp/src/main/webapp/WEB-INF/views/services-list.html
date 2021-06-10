@@ -2,120 +2,121 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Services</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Services</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal"><a class="p-2 text-dark" href="/">Senla test project</a></h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal"><a class="p-2 text-dark" href="/">Senla test project</a></h5>
 
 
-  <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="/me">About me</a>
-    <a class="p-2 text-dark" href="/web/orders">My project</a>
-    <a class="p-2 text-dark" href="/contact">Contact</a>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/me">About me</a>
+        <a class="p-2 text-dark" href="/web/orders">My project</a>
+        <a class="p-2 text-dark" href="/contact">Contact</a>
 
-  </nav>
-  <a class="btn btn-outline-primary" href="#">Sign up</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="#">Sign up</a>
 </div>
 <div>
-  <nav class="my-2 my-md-40 mr-md-6">
+    <nav class="my-2 my-md-40 mr-md-6">
 
-    <a class="p-2 text-dark" href="/web/orders">orders</a>
-    <a class="p-2 text-dark" href="/web/guest/guest-all">guests</a>
-    <a class="p-2 text-dark" href="/web/service/services">rooms</a>
+        <a class="p-2 text-dark" href="/web/orders">orders</a>
+        <a class="p-2 text-dark" href="/web/guest/guest-all">guests</a>
+        <a class="p-2 text-dark" href="/web/service/services">rooms</a>
 
 
-  </nav>
+    </nav>
 </div>
 <div th:switch="${servicesDTO}">
-  <h2 th:case="null">No service found!</h2>
-  <div th:case="*">
-    <H1>Services</H1>
-    <table>
-      <thead>
-      <tr>
-        <th>Id</th>
-        <th>name</th>
-        <th>price</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="serviceDTO : ${servicesDTO}">
-        <td th:text="${serviceDTO.id}"></td>
-        <td th:text="${serviceDTO.name}"></td>
-        <td th:text="${serviceDTO.price}"></td>
+    <h2 th:case="null">No service found!</h2>
+    <div th:case="*">
+        <H1>Services</H1>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="serviceDTO : ${servicesDTO}">
+                <td th:text="${serviceDTO.id}"></td>
+                <td th:text="${serviceDTO.name}"></td>
+                <td th:text="${serviceDTO.price}"></td>
 
 
-        <td><a class="btn btn-outline-primary" th:href="@{service-update/{id}(id=${serviceDTO.id})}">edit</a></td>
-        <td><a class="btn btn-outline-primary" th:href="@{service-delete/{id}(id=${serviceDTO.id})}">delete</a>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <p><a href="/web/service/service-new">
-    <button type="submit">Create service</button>
-  </a></p>
-  <p><a href="/">
-    <button type="submit">return main</button>
-  </a></p>
+                <td><a class="btn btn-outline-primary" th:href="@{service-update/{id}(id=${serviceDTO.id})}">edit</a>
+                </td>
+                <td><a class="btn btn-outline-primary" th:href="@{service-delete/{id}(id=${serviceDTO.id})}">delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/web/service/service-new">
+        <button class="btn btn-outline-primary" type="submit">Create service</button>
+    </a>
+        <a href="/">
+            <button class="btn btn-outline-primary" type="submit">return main</button>
+        </a></p>
 </div>
 
 </body>
 </html>
 <style type="text/css">
-  H1 {
-    font-family: Arial, Helvetica, Verdana, sans-serif;
-    font-size: 150%;
-    font-weight: lighter;
-  }
+    H1 {
+        font-family: Arial, Helvetica, Verdana, sans-serif;
+        font-size: 150%;
+        font-weight: lighter;
+    }
 </style>
 <style>
-  body {
-    background: #E0FFFF;
-    margin-right: 5%;
-    margin-left: 5%;
-  }
+    body {
+        background: #E0FFFF;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
 </style>
 <style>
-  table {
-    width: 100%;
-    text-align: center;
-    border-bottom: 2px solid #dfdfdf;
-    border-radius: 6px;
-    border-collapse: separate;
-    border-spacing: 1px;
+    table {
+        width: 100%;
+        text-align: center;
+        border-bottom: 2px solid #dfdfdf;
+        border-radius: 6px;
+        border-collapse: separate;
+        border-spacing: 1px;
 
-  }
+    }
 
-  table thead tr {
-    color: #ffffff;
-    font-weight: bold;
-    background: #00bfff;
-  }
+    table thead tr {
+        color: #ffffff;
+        font-weight: bold;
+        background: #00bfff;
+    }
 
-  table tr td {
-    border-right: 1px solid #FFFFFF;
-  }
+    table tr td {
+        border-right: 1px solid #FFFFFF;
+    }
 
-  table tr td:last-child {
-    border-right: 2px;
-  }
+    table tr td:last-child {
+        border-right: 2px;
+    }
 
-  table tbody tr:nth-child(1n) {
-    background: #FFFFFF;
-  }
+    table tbody tr:nth-child(1n) {
+        background: #FFFFFF;
+    }
 
-  table tbody tr:nth-child(2n) {
-    background: #FFFFFF;
-  }
+    table tbody tr:nth-child(2n) {
+        background: #FFFFFF;
+    }
 
-  table tbody tr:hover {
-    background: #F8A8A8;
-    transition-duration: 0.6s;
-  }
+    table tbody tr:hover {
+        background: #F8A8A8;
+        transition-duration: 0.6s;
+    }
 </style>

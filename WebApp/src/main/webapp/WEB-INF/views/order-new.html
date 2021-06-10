@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+        "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Orders</title>
@@ -28,48 +28,11 @@
 
     </nav>
 </div>
-<div th:switch="${ordersDto}" >
-    <h2 th:case="null">No orders found!</h2>
-    <div th:case="*">
-        <H1>Orders</H1>
-
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>guest</th>
-                <th>room</th>
-                <th>services</th>
-                <th>Data</th>
-                <th>daysOfStay</th>
-                <th>allAmount</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="orderDTO : ${ordersDto}">
-                <td th:text="${orderDTO.id}"></td>
-                <td th:text="${orderDTO.guestDTO}"></td>
-                <td th:text="${orderDTO.roomDTO}"></td>
-                <td th:text="${orderDTO.servicesDTO}"></td>
-                <td th:text="${orderDTO.localDate}"> </td>
-                <td th:text="${orderDTO.daysOfStay}"></td>
-                <td th:text="${orderDTO.allAmount}"></td>
-                <td><a class="btn btn-outline-primary" th:href="@{order-update/{id}(id=${orderDTO.id})}">edit </a></td>
 
 
-                <td><a class="btn btn-outline-primary" th:href="@{order-delete/{id}(id=${orderDTO.id})}">delete </a></td>
-
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <p><a  href="/order-new">
-        <button class="btn btn-outline-primary" type="submit">Create order</button>
-    </a>
-    <a  href="/">
-        <button class="btn btn-outline-primary" type="submit">return main</button>
+    <p>Sorry, the service is under development</p>
+    <p><a href="/">
+        <button type="submit">return main</button>
     </a></p>
 </div>
 
