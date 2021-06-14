@@ -12,15 +12,18 @@
 
   <nav class="my-2 my-md-0 mr-md-3" >
     <a class="p-2 text-dark" href="/me">About me</a>
-    <a class="p-2 text-dark" href="/web/orders">My project</a>
+    <a class="p-2 text-dark" href="/web/order/orders">My project</a>
     <a class="p-2 text-dark" href="/contact">Contact</a>
 
   </nav>
-  <a class="btn btn-outline-primary" href="#">Sign up</a>
+  <a>
+    <form th:action="@{/logout}" method="post">
+      <input class="btn btn-outline-primary" type="submit" value="Log out" />
+    </form>  </a>
 </div>
 <div>
   <nav class="my-2 my-md-40 mr-md-6">
-    <a class="p-2 text-dark" href="/web/orders">orders</a>
+    <a class="p-2 text-dark" href="/web/order/orders">orders</a>
     <a class="p-2 text-dark" href="/web/guest/guest-all">guests</a>
     <a class="p-2 text-dark" href="/web/room/rooms">rooms</a>
     <a class="p-2 text-dark" href="/web/service/services">services</a>
@@ -29,12 +32,48 @@
   </nav>
 </div>
 
-
-<p>Sorry, the service is under development</p>
-<p><a href="/">
-  <button type="submit">return main</button>
-</a></p>
-</div>
+table>
+<thead>
+<thead>
+<tr>
+  <th>Id</th>
+  <th>guest</th>
+  <th>room</th>
+  <th>services</th>
+  <th>Data</th>
+  <th>daysOfStay</th>
+  <th>allAmount</th>
+  <th>Edit</th>
+  <th>Delete</th>
+</tr>
+</thead>
+<tbody>
+<form action="#" th:action="@{/web/order/order-update}" th:object="${orderDTO}" method="post">
+  <td ><label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="id"></td>
+  <td>
+    <label for="guestDTO">guestDTO</label>
+    <input type="object" th:field="*{guestDTO}" id="guestDTO" placeholder="guestDTO"></td>
+  <td>
+    <label for="roomDTO">roomDTO</label>
+    <input type="object" th:field="*{roomDTO}" id="roomDTO" roomDTO="roomDTO"></td>
+  <td>
+    <label for="servicesDTO">servicesDTO</label>
+    <input type="object" th:field="*{servicesDTO}" id="servicesDTO" roomDTO="servicesDTO">
+  </td> <td>
+    <label for="localDate">localDate</label>
+    <input type="date" th:field="*{localDate}" id="localDate" roomDTO="localDate"></td>
+  <td>
+    <label for="daysOfStay">daysOfStay</label>
+    <input type="number" th:field="*{daysOfStay}" id="daysOfStay" placeholder="daysOfStay"></td>
+  <td>
+    <label for="allAmount">allAmount</label>
+    <input type="allAmount" th:field="*{allAmount}" id="allAmount" placeholder="allAmount"></td>
+  <td> <br/>
+    <input type="submit" value="Update order"></td>
+</form>
+</tbody>
+</table>
 
 </body>
 </html>

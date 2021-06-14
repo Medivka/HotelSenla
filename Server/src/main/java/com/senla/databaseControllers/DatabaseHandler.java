@@ -20,6 +20,7 @@ public class DatabaseHandler extends ConfigDB {
     }
 
   Connection dbConnection;
+
     public Connection getDbConnection(){
         String connectionString = "jdbc:mysql://" + dbHost + ":"
                 + dbPort + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";

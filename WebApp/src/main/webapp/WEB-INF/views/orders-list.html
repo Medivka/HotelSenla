@@ -16,7 +16,10 @@
         <a class="p-2 text-dark" href="/contact">Contact</a>
 
     </nav>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
+    <a>
+        <form th:action="@{/logout}" method="post">
+            <input class="btn btn-outline-primary" type="submit" value="Log out" />
+        </form>  </a>
 </div>
 <div>
     <nav class="my-2 my-md-40 mr-md-6">
@@ -56,10 +59,10 @@
                 <td th:text="${orderDTO.localDate}"> </td>
                 <td th:text="${orderDTO.daysOfStay}"></td>
                 <td th:text="${orderDTO.allAmount}"></td>
-                <td><a class="btn btn-outline-primary" th:href="@{order-update/{id}(id=${orderDTO.id})}">edit </a></td>
+                <td><a class="btn btn-outline-primary" th:href="@{order/order-update/{id}(id=${orderDTO.id})}">edit </a></td>
 
 
-                <td><a class="btn btn-outline-primary" th:href="@{order-delete/{id}(id=${orderDTO.id})}">delete </a></td>
+                <td><a class="btn btn-outline-primary" th:href="@{order/order-delete/{id}(id=${orderDTO.id})}">delete </a></td>
 
             </tr>
             </tbody>

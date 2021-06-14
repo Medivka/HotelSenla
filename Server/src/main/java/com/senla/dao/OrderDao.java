@@ -70,6 +70,7 @@ public class OrderDao implements IOrderDao {
         order.getServices().add(service);
         entityManager.merge(order);
     }
+
 }
 
 

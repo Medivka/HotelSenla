@@ -14,4 +14,6 @@ public interface OrderDtoService {
     void update(OrderDTO orderDTO);
 
     void save(OrderDTO orderDTO);
+
+    void update(Integer id, OrderDTO orderDTO);
 }

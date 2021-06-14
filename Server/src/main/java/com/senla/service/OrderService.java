@@ -188,4 +188,11 @@ public class OrderService implements IOrderService {
         orderDao.save(order);
     }
 
+    @Override
+    public void updateOrder(Integer id, Order order) {
+        Order order1=orderDao.findById(id);
+        order1=order;
+        orderDao.updateOrder(order1);
+    }
+
 }

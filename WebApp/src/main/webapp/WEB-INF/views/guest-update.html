@@ -12,17 +12,20 @@
 
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/me">About me</a>
-        <a class="p-2 text-dark" href="/web/orders">My project</a>
+        <a class="p-2 text-dark" href="/web/order/orders">My project</a>
         <a class="p-2 text-dark" href="/contact">Contact</a>
 
     </nav>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
+    <a>
+        <form th:action="@{/logout}" method="post">
+            <input class="btn btn-outline-primary" type="submit" value="Log out" />
+        </form>  </a>
 </div>
 <div>
     <nav class="my-2 my-md-40 mr-md-6">
 
         <nav class="my-2 my-md-40 mr-md-6">
-            <a class="p-2 text-dark" href="/web/orders">orders</a>
+            <a class="p-2 text-dark" href="/web/order/orders">orders</a>
             <a class="p-2 text-dark" href="/web/room/rooms">rooms</a>
             <a class="p-2 text-dark" href="/web/service/services">services</a>
 

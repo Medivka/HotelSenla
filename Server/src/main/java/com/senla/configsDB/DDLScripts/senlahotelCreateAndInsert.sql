@@ -87,3 +87,14 @@ INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('3
 INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('3', '1');
 INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('4', '4');
 INSERT INTO `senlahotel`.`orders_services` (`id_order`, `id_service`) VALUES ('4', '1');
+
+CREATE TABLE senlahotel.`users` (
+                                    `user_id` int(11) NOT NULL AUTO_INCREMENT,
+                                    `username` varchar(45) NOT NULL,
+                                    `password` varchar(64) NOT NULL,
+                                    `role` varchar(45) NOT NULL,
+                                    `enabled` tinyint(4) DEFAULT NULL,
+                                    PRIMARY KEY (`user_id`)
+);
+INSERT INTO senlahotel.`users` (`username`,`password`,`role`,`enabled`)
+VALUES ('admin','admin','ROLE_USER', 1);

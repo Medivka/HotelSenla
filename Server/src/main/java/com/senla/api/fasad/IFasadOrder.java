@@ -34,4 +34,6 @@ public interface IFasadOrder {
     void updateOrder(Order order);
 
     void save(Order mapOrderDtoToOrder);
+
+    void updateOrder(Integer id, Order order);
 }

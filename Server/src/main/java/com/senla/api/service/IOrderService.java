@@ -38,4 +38,6 @@ public interface IOrderService {
     void updateOrder(Order order);
 
     void save(Order order);
+
+    void updateOrder(Integer id, Order order);
 }

@@ -80,4 +80,9 @@ public class FasadOrder implements IFasadOrder {
         orderService.save(order);
 
     }
+
+    @Override
+    public void updateOrder(Integer id, Order order) {
+        orderService.updateOrder(id,order);
+    }
 }
