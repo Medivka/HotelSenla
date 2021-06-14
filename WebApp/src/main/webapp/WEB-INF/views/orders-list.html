@@ -59,10 +59,10 @@
                 <td th:text="${orderDTO.localDate}"> </td>
                 <td th:text="${orderDTO.daysOfStay}"></td>
                 <td th:text="${orderDTO.allAmount}"></td>
-                <td><a class="btn btn-outline-primary" th:href="@{order/order-update/{id}(id=${orderDTO.id})}">edit </a></td>
+                <td><a class="btn btn-outline-primary" th:href="@{order-update/{id}(id=${orderDTO.id})}">edit </a></td>
 
 
-                <td><a class="btn btn-outline-primary" th:href="@{order/order-delete/{id}(id=${orderDTO.id})}">delete </a></td>
+                <td><a class="btn btn-outline-primary" th:href="@{order-delete/{id}(id=${orderDTO.id})}">delete </a></td>
 
             </tr>
             </tbody>
