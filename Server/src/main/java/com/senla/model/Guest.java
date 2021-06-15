@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Data
@@ -136,6 +137,19 @@ public class Guest implements Serializable {
                 "phone: " + phone + "  guestGender: " + guestGender + "\n" +
                 "email: " + email + "\n" +
                 "address: " + address + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Guest guest = (Guest) o;
+        return Objects.equals(guestNumber, guest.guestNumber) && Objects.equals(name, guest.name) && Objects.equals(lastName, guest.lastName) && Objects.equals(age, guest.age) && Objects.equals(phone, guest.phone) && guestGender == guest.guestGender && Objects.equals(email, guest.email) && Objects.equals(address, guest.address) && Objects.equals(orderListGuest, guest.orderListGuest);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(guestNumber, name, lastName, age, phone, guestGender, email, address, orderListGuest);
     }
 }
 

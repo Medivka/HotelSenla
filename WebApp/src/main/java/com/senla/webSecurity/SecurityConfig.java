@@ -3,7 +3,9 @@ package com.senla.webSecurity;
 
 
 
-import com.senla.users.UserDetailsServiceImpl;
+
+
+import com.senla.UserDetailsServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +23,9 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 import javax.sql.DataSource;
 
+
 @Configuration
 @EnableWebSecurity
-
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 

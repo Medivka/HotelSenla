@@ -1,4 +1,4 @@
-package com.senla.users;
+package com.senla;
 
 import java.util.*;
 
@@ -13,7 +13,6 @@ public class MyUserDetails implements UserDetails {
     public MyUserDetails(User user) {
         this.user = user;
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<Role> roles = user.getRoles();
@@ -53,7 +52,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return user.isEnabled();
+        return true;
     }
 
 }
