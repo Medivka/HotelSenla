@@ -11,7 +11,7 @@ public class MySpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotation
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return  new Class[] {};
+        return  null;
     }
 
     @Override

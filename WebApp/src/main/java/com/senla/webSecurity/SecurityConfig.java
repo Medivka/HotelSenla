@@ -5,7 +5,8 @@ package com.senla.webSecurity;
 
 
 
-import com.senla.UserDetailsServiceImpl;
+
+import com.senla.MySQLUserDetailsService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,18 +28,11 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-
-    DataSource dataSource;
-    SecurityConfig(DataSource dataSource){
-        this.dataSource=dataSource;
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/","/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -47,20 +41,52 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
-
     }
+
     @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder authBuilder) throws Exception {
-        authBuilder.jdbcAuthentication()
-                .dataSource(dataSource)
-//                .passwordEncoder(new BCryptPasswordEncoder())
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .usersByUsernameQuery("select username, password, enabled from users where username=?")
-                .authoritiesByUsernameQuery("select username, role from users where username=?")
-        ;
-    }
+    private MySQLUserDetailsService mySQLUserDetailsService;
 
+    @Autowired
+    public void registerGlobalAuthentication(AuthenticationManagerBuilder auth)
+            throws Exception {
+        auth.userDetailsService(mySQLUserDetailsService);
+    }
 }
+
+//
+//
+//    DataSource dataSource;
+//    SecurityConfig(DataSource dataSource){
+//        this.dataSource=dataSource;
+//    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/", "/home").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
+//
+//    }
+//    @Autowired
+//    public void configAuthentication(AuthenticationManagerBuilder authBuilder) throws Exception {
+//        authBuilder.jdbcAuthentication()
+//                .dataSource(dataSource)
+////                .passwordEncoder(new BCryptPasswordEncoder())
+//                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+//                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+//                .authoritiesByUsernameQuery("select username, role from users where username=?")
+//        ;
+//    }
+//
+//}
 
 
 

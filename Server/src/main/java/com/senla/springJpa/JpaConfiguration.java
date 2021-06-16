@@ -18,7 +18,6 @@ import java.util.Properties;
 
 @Configuration
 @PropertySource({"classpath:database.properties"})
-
 @EnableTransactionManagement
 public class JpaConfiguration {
     @Value("${database.driverClassName}")
@@ -55,7 +54,7 @@ public class JpaConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManager() {
         LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(dataSource());
-        entityManager.setPackagesToScan("com.senla.model");
+        entityManager.setPackagesToScan("com");
         JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         entityManager.setJpaVendorAdapter(jpaVendorAdapter);
         entityManager.setJpaProperties(getJpaProperties());

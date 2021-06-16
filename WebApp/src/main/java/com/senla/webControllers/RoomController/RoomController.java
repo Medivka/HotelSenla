@@ -23,24 +23,24 @@ private RoomDtoService roomDtoServiceImpl;
         return "rooms-list";
     }
     @GetMapping("room-delete/{id}")
-    public String deletePlayer(@PathVariable("id") Integer id){
+    public String deleteRoom(@PathVariable("id") Integer id){
         roomDtoServiceImpl.delete(id);
         return "redirect:/web/room/rooms";
     }
 
     @GetMapping("/room-new")
-    public String createServiceForm(Model model){
+    public String createRoomForm(Model model){
         model.addAttribute("roomDTO", new RoomDTO());
         return "room-new";
     }
     @RequestMapping( method = { RequestMethod.GET, RequestMethod.POST })
     @PostMapping("/room-create")
-    public String createService(@ModelAttribute("roomDTO") RoomDTO roomDTO){
+    public String createRoom(@ModelAttribute("roomDTO") RoomDTO roomDTO){
         roomDtoServiceImpl.save(roomDTO);
         return "redirect:/web/room/rooms";
     }
     @GetMapping("/room-update/{id}")
-    public String updateServiceDTO(@PathVariable("id") Integer id, Model model){
+    public String updateRoomDTO(@PathVariable("id") Integer id, Model model){
         RoomDTO roomDTO= roomDtoServiceImpl.getById(id);
         model.addAttribute("roomDTO",roomDTO);
 
