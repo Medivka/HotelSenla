@@ -53,7 +53,6 @@ public class FasadTest {
         Integer id = 1;
         String name = "Olia";
         Guest guest = fasadGuest.findById(1);
-
         guest.setName(name);
         fasadGuest.updateGuest(guest);
         Assert.assertNotNull(guest);
