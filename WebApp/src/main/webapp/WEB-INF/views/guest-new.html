@@ -63,7 +63,11 @@
         <input type="number" th:field="*{phone}" id="phone"/></td>
 
         <td>  <label for="guestGender">Enter guestGender: </label>
-        <input type="text" th:field="*{guestGender}" id="guestGender"/></td>
+        <select type="text" th:field="*{guestGender}" id="guestGender"/>
+            <option value="MALE">MALE</option>
+            <option value="FEMALE">FEMALE</option>
+            </select>
+        </td>
 
         <td>  <label for="email">Enter email: </label>
         <input type="text" th:field="*{email}" id="email"/></td>

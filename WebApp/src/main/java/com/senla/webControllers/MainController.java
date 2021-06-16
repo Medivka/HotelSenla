@@ -48,6 +48,10 @@ public class MainController {
         return "order-update";
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
 
 
 }

@@ -42,7 +42,7 @@ public class OrderController {
     public String deletePlayer(@PathVariable("id") Integer id){
         orderDtoServiceImpl.delete(id);
 
-        return "redirect:/web/orders";
+        return "redirect:/web/order/orders";
     }
 
     @GetMapping("/order-update/{id}")
