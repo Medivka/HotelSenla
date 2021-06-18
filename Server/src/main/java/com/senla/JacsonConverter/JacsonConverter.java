@@ -6,7 +6,7 @@ import lombok.SneakyThrows;
 public class JacsonConverter {
 
 
-    ObjectMapper mapper= new ObjectMapper();
+    ObjectMapper mapper = new ObjectMapper();
 //    @SneakyThrows
 //    public String objectToJson(Object object){
 //        mapper.findAndRegisterModules();

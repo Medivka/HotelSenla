@@ -12,11 +12,14 @@ import java.util.List;
 
 
 @Repository
+
 public class RoleDaoImpl implements RoleDao{
 
     @PersistenceContext(type = PersistenceContextType.TRANSACTION)
     private EntityManager entityManager;
 
+    public RoleDaoImpl() {
+    }
 
     @Override
     public List<Role> getAllRoles() {
@@ -24,6 +27,6 @@ public class RoleDaoImpl implements RoleDao{
         CriteriaQuery<Role> query=criteriaBuilder.createQuery(Role.class);
         Root<Role> roleRoot = query.from(Role.class);
         query.select(roleRoot);
-            return entityManager.createQuery(query).getResultList();
+        return entityManager.createQuery(query).getResultList();
     }
 }

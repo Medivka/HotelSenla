@@ -1,9 +1,7 @@
 package com.senla.dto.apiDTO;
 
-import com.senla.dto.modelDTO.GuestDTO;
-import com.senla.dto.modelDTO.OrderDTO;
-import com.senla.dto.modelDTO.RoomDTO;
-import com.senla.dto.modelDTO.ServiceDTO;
+import com.senla.User;
+import com.senla.dto.modelDTO.*;
 import com.senla.model.Guest;
 import com.senla.model.Order;
 import com.senla.model.Room;
@@ -25,4 +23,6 @@ public interface MappingDTO {
     OrderDTO mapOrderToOrderDTO(Order order);
 
     Order mapOrderDtoToOrder(OrderDTO orderDTO);
-}
+
+    UserDTO mapUserToUserDTO(User user);
+   }

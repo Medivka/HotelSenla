@@ -1,28 +1,12 @@
 package com.senla.webSecurity;
 
 
-
-
-
-
-
-import com.senla.MySQLUserDetailsService;
-import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
+import com.senla.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
-
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
-
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-
-import javax.sql.DataSource;
 
 
 @Configuration
@@ -32,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/registration").permitAll()
+                .antMatchers("/", "/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -44,12 +28,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    private MySQLUserDetailsService mySQLUserDetailsService;
+    private MyUserDetailsService myUserDetailsService;
 
     @Autowired
     public void registerGlobalAuthentication(AuthenticationManagerBuilder auth)
             throws Exception {
-        auth.userDetailsService(mySQLUserDetailsService);
+        auth.userDetailsService(myUserDetailsService);
     }
 }
 
@@ -87,7 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 //
 //}
-
 
 
 //

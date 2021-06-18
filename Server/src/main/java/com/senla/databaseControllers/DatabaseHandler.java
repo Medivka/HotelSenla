@@ -1,7 +1,6 @@
 package com.senla.databaseControllers;
 
 
-
 import com.senla.configsDB.ConfigDB;
 
 import java.sql.Connection;
@@ -9,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseHandler extends ConfigDB {
-   private static DatabaseHandler instance;
+    private static DatabaseHandler instance;
 
 
     public static DatabaseHandler getInstance() {
@@ -19,14 +18,14 @@ public class DatabaseHandler extends ConfigDB {
         return instance;
     }
 
-  Connection dbConnection;
+    Connection dbConnection;
 
-    public Connection getDbConnection(){
+    public Connection getDbConnection() {
         String connectionString = "jdbc:mysql://" + dbHost + ":"
                 + dbPort + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
         try {
-            dbConnection= DriverManager.getConnection(connectionString,dbUser,dbPassword);
+            dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPassword);
         } catch (SQLException e) {
             System.err.println(e);
         }

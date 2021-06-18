@@ -33,8 +33,8 @@ public class RoomDao implements IRoomDao {
 
     @Override
     public List<Room> getRoomList() {
-        CriteriaBuilder criteriaBuilder= entityManager.getCriteriaBuilder();
-        CriteriaQuery<Room> query=criteriaBuilder.createQuery(Room.class);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Room> query = criteriaBuilder.createQuery(Room.class);
         Root<Room> roomRoot = query.from(Room.class);
         query.select(roomRoot);
         return entityManager.createQuery(query).getResultList();

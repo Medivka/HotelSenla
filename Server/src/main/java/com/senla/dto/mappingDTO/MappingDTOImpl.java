@@ -1,18 +1,15 @@
 package com.senla.dto.mappingDTO;
 
 
+import com.senla.User;
 import com.senla.dto.apiDTO.MappingDTO;
-import com.senla.dto.modelDTO.GuestDTO;
-import com.senla.dto.modelDTO.OrderDTO;
-import com.senla.dto.modelDTO.RoomDTO;
-import com.senla.dto.modelDTO.ServiceDTO;
+import com.senla.dto.modelDTO.*;
 import com.senla.model.Guest;
 import com.senla.model.Order;
 import com.senla.model.Room;
 import com.senla.model.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -127,6 +124,14 @@ public class MappingDTOImpl implements MappingDTO {
         order.setDaysOfStay(orderDTO.getDaysOfStay());
         return order;
     }
+    @Override
+    public UserDTO mapUserToUserDTO(User user){
+        UserDTO userDTO= new UserDTO();
+        userDTO.setUsername(user.getUsername());
+        userDTO.setPassword(user.getPassword());
+        return userDTO;
+    }
+
 
 }
 

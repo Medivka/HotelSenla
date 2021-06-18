@@ -1,9 +1,7 @@
 package com.senla.api.service;
 
 
-
 import com.senla.api.enums.RoomStatus;
-import com.senla.dto.modelDTO.RoomDTO;
 import com.senla.model.Room;
 
 import java.util.List;
@@ -17,7 +15,7 @@ public interface IRoomService {
 
     Room findById(Integer id);
 
-   List showAllRoom();
+    List showAllRoom();
 
     void deleteRoom(Integer id);
 

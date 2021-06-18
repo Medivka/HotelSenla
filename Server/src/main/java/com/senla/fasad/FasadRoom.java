@@ -98,7 +98,7 @@ public class FasadRoom implements IFasadRoom {
 
     @Override
     public void updateRoom(Integer id, Room room) {
-        roomService.updateRoom(id,room);
+        roomService.updateRoom(id, room);
     }
 
 }

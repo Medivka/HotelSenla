@@ -133,9 +133,9 @@ public class GuestService implements IGuestService {
 
     @Override
     public void updateGuest(Integer guestNumber, Guest guest) {
-        LOGGER.log(Level.INFO, String.format("update guest "+ guestNumber));
-        Guest guest1=guestDao.findById(guestNumber);
-        guest1=guest;
+        LOGGER.log(Level.INFO, String.format("update guest " + guestNumber));
+        Guest guest1 = guestDao.findById(guestNumber);
+        guest1 = guest;
         guestDao.update(guest1);
     }
 }

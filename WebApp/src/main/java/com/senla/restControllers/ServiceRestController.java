@@ -6,6 +6,7 @@ import com.senla.dto.modelDTO.ServiceDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -19,6 +20,7 @@ public class ServiceRestController {
     public ServiceRestController(ServiceDtoService serviceDtoServiceImpl) {
         this.serviceDtoServiceImpl = serviceDtoServiceImpl;
     }
+
     @GetMapping(value = "/get/{id}")
     public ResponseEntity<ServiceDTO> read(@PathVariable(name = "id") int id) {
         final ServiceDTO serviceDTO = serviceDtoServiceImpl.getById(id);
@@ -64,7 +66,7 @@ public class ServiceRestController {
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "id") int id, @RequestBody ServiceDTO serviceDTO) {
         boolean update = false;
-        final List<ServiceDTO> serviceDTOList =serviceDtoServiceImpl.getAll();
+        final List<ServiceDTO> serviceDTOList = serviceDtoServiceImpl.getAll();
         for (ServiceDTO service : serviceDTOList) {
             if (service.getId().equals(id)) {
                 update = true;

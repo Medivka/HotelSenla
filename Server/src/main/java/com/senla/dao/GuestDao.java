@@ -1,7 +1,6 @@
 package com.senla.dao;
 
 
-
 import com.senla.api.dao.IGuestDao;
 import com.senla.model.Guest;
 import org.springframework.stereotype.Repository;
@@ -33,11 +32,11 @@ public class GuestDao implements IGuestDao {
 
     @Override
     public List<Guest> getGuestList() {
-        CriteriaBuilder criteriaBuilder= entityManager.getCriteriaBuilder();
-        CriteriaQuery<Guest> query=criteriaBuilder.createQuery(Guest.class);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Guest> query = criteriaBuilder.createQuery(Guest.class);
         Root<Guest> guestRoot = query.from(Guest.class);
         query.select(guestRoot);
-       //        List<Guest> guests = (List<Guest>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Guest").list();
+        //        List<Guest> guests = (List<Guest>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Guest").list();
         return entityManager.createQuery(query).getResultList();
     }
 

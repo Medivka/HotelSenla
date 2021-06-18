@@ -46,13 +46,14 @@ public class Role implements GrantedAuthority {
     }
 
     public Role(){}
-    public Role(String name)
-    {
-        role = name;
-    }
 
+    public Role(Integer id, String role) {
+        this.id = id;
+        this.role = role;
+    }
     @Override
     public String getAuthority() {
+
         return getRole();
     }
 

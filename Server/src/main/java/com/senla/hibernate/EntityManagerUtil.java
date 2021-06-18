@@ -10,20 +10,24 @@ public class EntityManagerUtil {
     @Getter
     private EntityManager entityManager;
 
-    public EntityManagerUtil(){
+    public EntityManagerUtil() {
         init();
     }
-    public void init(){
-        EntityManagerFactory factory= Persistence.createEntityManagerFactory("persistence");
-        this.entityManager= factory.createEntityManager();
+
+    public void init() {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistence");
+        this.entityManager = factory.createEntityManager();
     }
-    public void commit(){
+
+    public void commit() {
         entityManager.getTransaction().commit();
     }
-    public void beginTransaction(){
+
+    public void beginTransaction() {
         entityManager.getTransaction().begin();
     }
-    public void rollback(){
+
+    public void rollback() {
         entityManager.getTransaction().rollback();
     }
 }

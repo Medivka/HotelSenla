@@ -24,11 +24,11 @@ import java.util.stream.Collectors;
 public class RoomService implements IRoomService {
 
     private static final Logger LOGGER = Logger.getLogger(RoomService.class.getName());
-     @Autowired
-     IRoomDao roomDao;
+    @Autowired
+    IRoomDao roomDao;
 
 
-     @Autowired
+    @Autowired
     private RoomService(RoomDao roomDao) {
         this.roomDao = roomDao;
     }
@@ -40,9 +40,9 @@ public class RoomService implements IRoomService {
     }
 
     @Override
-    public void updateRoom(Room room){
-
-         roomDao.update(room);
+    public void updateRoom(Room room) {
+        LOGGER.log(Level.INFO, String.format("room update:  " + room.getId()));
+        roomDao.update(room);
     }
 
     @Override
@@ -66,20 +66,19 @@ public class RoomService implements IRoomService {
             ArrayList<Room> rooms = new ArrayList<>(roomDao.getRoomList());
             return rooms;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARN, "showAllRoom",e);
+            LOGGER.log(Level.WARN, "showAllRoom", e);
             throw new ServiceExeption("showAllRoom", e);
         }
     }
 
 
-
     @Override
     public void deleteRoom(Integer id) {
         try {
-            LOGGER.log(Level.INFO, String.format("room delete",id));
+            LOGGER.log(Level.INFO, String.format("room delete", id));
             roomDao.delete(roomDao.findById(id));
-        }catch (DaoException e) {
-            LOGGER.log(Level.WARN, "room delete",e);
+        } catch (DaoException e) {
+            LOGGER.log(Level.WARN, "room delete", e);
             throw new ServiceExeption("room delete", e);
         }
     }
@@ -87,12 +86,12 @@ public class RoomService implements IRoomService {
     @Override
     public Room createRoom(RoomStatus roomStatus, Integer copacity, Integer price, Integer stars) {
         try {
-            Room room = new Room( roomStatus, copacity, price, stars);
-            LOGGER.log(Level.INFO, String.format("createNewRoom   roomstatus: %s, copacity: %s,  price: %s,  stars: %s. ",  roomStatus, copacity, price, stars));
+            Room room = new Room(roomStatus, copacity, price, stars);
+            LOGGER.log(Level.INFO, String.format("createNewRoom   roomstatus: %s, copacity: %s,  price: %s,  stars: %s. ", roomStatus, copacity, price, stars));
             roomDao.save(room);
             return room;
         } catch (DaoException e) {
-            LOGGER.log(Level.WARN, "createRoom failed",e);
+            LOGGER.log(Level.WARN, "createRoom failed", e);
             throw new ServiceExeption("createRoom failed", e);
         }
     }
@@ -147,7 +146,7 @@ public class RoomService implements IRoomService {
             } else
                 room.setPrice(price);
         } catch (DaoException e) {
-            LOGGER.log(Level.WARN, "changeRoomPrice failed ",e);
+            LOGGER.log(Level.WARN, "changeRoomPrice failed ", e);
             throw new ServiceExeption("changeRoomPrice failed", e);
         }
     }
@@ -180,7 +179,7 @@ public class RoomService implements IRoomService {
     public List<Room> allFreeRoom() {
         LOGGER.log(Level.INFO, String.format("AllFreeRoom"));
         List<Room> freeRoom = new ArrayList<>();
-       List<Room> rooms = roomDao.getRoomList();
+        List<Room> rooms = roomDao.getRoomList();
         for (Room roo : rooms) {
             Room room = roo;
             if (roo.getRoomStatus().equals(RoomStatus.FREE)) {
@@ -197,8 +196,8 @@ public class RoomService implements IRoomService {
 
     @Override
     public void updateRoom(Integer id, Room room) {
-        Room room1=roomDao.findById(id);
-        room1=room;
+        Room room1 = roomDao.findById(id);
+        room1 = room;
         roomDao.update(room1);
     }
 

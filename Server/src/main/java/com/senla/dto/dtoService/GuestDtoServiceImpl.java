@@ -8,27 +8,28 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Component
 public class GuestDtoServiceImpl implements GuestDtoService {
 
-  private IFasadGuest fasadGuest;
-  private MappingDTO mappingDTOImpl;
+    private IFasadGuest fasadGuest;
+    private MappingDTO mappingDTOImpl;
+
     public GuestDtoServiceImpl(IFasadGuest fasadGuest, MappingDTO mappingDTOImpl) {
         this.fasadGuest = fasadGuest;
         this.mappingDTOImpl = mappingDTOImpl;
     }
 
 
-
     @Override
     public List getAll() {
-        return   fasadGuest.showAllGuests().stream().map(mappingDTOImpl::mapGuestToGuestDTO).collect(Collectors.toList());
+        return fasadGuest.showAllGuests().stream().map(mappingDTOImpl::mapGuestToGuestDTO).collect(Collectors.toList());
 
     }
 
     @Override
     public GuestDTO getById(Integer id) {
-              return mappingDTOImpl.mapGuestToGuestDTO(fasadGuest.findById(id));
+        return mappingDTOImpl.mapGuestToGuestDTO(fasadGuest.findById(id));
     }
 
     @Override
@@ -51,6 +52,6 @@ public class GuestDtoServiceImpl implements GuestDtoService {
 
     @Override
     public void update(Integer guestNumber, GuestDTO guestDTO) {
-        fasadGuest.updateGuest(guestNumber,mappingDTOImpl.mapGuestDtoTOGuest(guestDTO));
+        fasadGuest.updateGuest(guestNumber, mappingDTOImpl.mapGuestDtoTOGuest(guestDTO));
     }
 }

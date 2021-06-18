@@ -1,18 +1,15 @@
 package com.senla.api.service;
 
-
-
 import com.senla.api.enums.GuestGender;
 import com.senla.model.Guest;
 
 import java.util.List;
 
 public interface IGuestService {
+
     Guest findById(Integer id);
 
     List showAllGuests();
-
-
 
     Guest createGuest(String name, String lastName, Integer age, String phone, GuestGender guestGender, String email, String address);
 

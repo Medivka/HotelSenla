@@ -1,13 +1,15 @@
 package com.senla.exceptions;
 
-public class ServiceExeption extends RuntimeException{
-    public ServiceExeption(String message){
+public class ServiceExeption extends RuntimeException {
+    public ServiceExeption(String message) {
         super(message);
     }
-    public ServiceExeption(String message,Throwable cause){
-        super(message,cause);
+
+    public ServiceExeption(String message, Throwable cause) {
+        super(message, cause);
     }
-    public ServiceExeption(Throwable cause){
+
+    public ServiceExeption(Throwable cause) {
         super(cause);
     }
 }

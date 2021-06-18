@@ -27,7 +27,7 @@ public interface IFasadOrder {
 
     Integer getAllAmount(Integer orderNumber);
 
-    abstract void setOrderList(List list);
+    void setOrderList(List list);
 
     void deleteOrder(Integer id);
 

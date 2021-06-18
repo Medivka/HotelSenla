@@ -35,8 +35,8 @@ public class OrderDao implements IOrderDao {
 
     @Override
     public List<Order> getOrderList() {
-        CriteriaBuilder criteriaBuilder= entityManager.getCriteriaBuilder();
-        CriteriaQuery<Order> query=criteriaBuilder.createQuery(Order.class);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Order> query = criteriaBuilder.createQuery(Order.class);
         Root<Order> orderRoot = query.from(Order.class);
         query.select(orderRoot);
         return entityManager.createQuery(query).getResultList();

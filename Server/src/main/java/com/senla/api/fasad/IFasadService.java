@@ -1,13 +1,12 @@
 package com.senla.api.fasad;
 
 
-
-import com.senla.dto.modelDTO.ServiceDTO;
 import com.senla.model.Service;
 
 import java.util.List;
 
 public interface IFasadService {
+
     void save(Service service);
 
     Service findById(Integer idService);

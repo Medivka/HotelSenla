@@ -20,7 +20,8 @@ import java.util.stream.Collectors;
 @RequestMapping("guest")
 public class GuestRestController {
 
-  private  GuestDtoService guestDtoServiceIml;
+    private GuestDtoService guestDtoServiceIml;
+
     public GuestRestController(GuestDtoService guestDtoServiceIml) {
         this.guestDtoServiceIml = guestDtoServiceIml;
     }
@@ -37,7 +38,7 @@ public class GuestRestController {
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
         boolean delete = false;
-        final List<GuestDTO> guestDTOList =guestDtoServiceIml.getAll();
+        final List<GuestDTO> guestDTOList = guestDtoServiceIml.getAll();
         for (GuestDTO guest : guestDTOList) {
             if (guest.getGuestNumber().equals(id)) {
                 delete = true;
@@ -59,10 +60,9 @@ public class GuestRestController {
     }
 
 
-
     @PostMapping(value = "/save")
     public ResponseEntity<?> create(@RequestBody GuestDTO guestDTO) {
-      guestDtoServiceIml.save(guestDTO);
+        guestDtoServiceIml.save(guestDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

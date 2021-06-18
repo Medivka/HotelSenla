@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Component
 public class ServiceDtoServiceImpl implements ServiceDtoService {
 
@@ -18,6 +19,7 @@ public class ServiceDtoServiceImpl implements ServiceDtoService {
         this.fasadService = fasadService;
         this.mappingDTOImpl = mappingDTOImpl;
     }
+
     @Override
     public ServiceDTO getById(Integer id) {
         return mappingDTOImpl.mapServiceToServiceDTO(fasadService.findById(id));
@@ -25,7 +27,7 @@ public class ServiceDtoServiceImpl implements ServiceDtoService {
 
     @Override
     public List getAll() {
-        return  fasadService.showAllService().stream().map(mappingDTOImpl::mapServiceToServiceDTO).collect(Collectors.toList());
+        return fasadService.showAllService().stream().map(mappingDTOImpl::mapServiceToServiceDTO).collect(Collectors.toList());
     }
 
     @Override

@@ -60,7 +60,6 @@ public class FasadGuest implements IFasadGuest {
 
     @Override
     public void deleteGuest(Integer id) {
-
         guestService.deleteGuest(id);
     }
 
@@ -73,14 +72,15 @@ public class FasadGuest implements IFasadGuest {
     public void updateGuest(Guest guest) {
         guestService.updateGuest(guest);
     }
-      @Override
-    public void saveGuest(Guest guest){
+
+    @Override
+    public void saveGuest(Guest guest) {
         guestService.saveGuest(guest);
-}
+    }
 
     @Override
     public void updateGuest(Integer guestNumber, Guest guest) {
-        guestService.updateGuest(guestNumber,guest);
+        guestService.updateGuest(guestNumber, guest);
     }
 
 }

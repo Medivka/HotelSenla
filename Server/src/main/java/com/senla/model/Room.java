@@ -28,9 +28,8 @@ public class Room implements Serializable {
     @Column(name = "stars")
     private Integer stars;
 
-    @OneToMany(mappedBy = "room", orphanRemoval = true,fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
-
-    private List<Order> orderListRooms=new ArrayList<>() ;
+    @OneToMany(mappedBy = "room", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Order> orderListRooms = new ArrayList<>();
 
 
     public Room() {

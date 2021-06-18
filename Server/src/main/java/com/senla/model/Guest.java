@@ -36,8 +36,8 @@ public class Guest implements Serializable {
     @Column(name = "address")
     private String address;
     @JsonIgnore
-    @OneToMany(mappedBy = "guest", orphanRemoval = true,fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
-    private List<Order> orderListGuest=new ArrayList<>();
+    @OneToMany(mappedBy = "guest", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Order> orderListGuest = new ArrayList<>();
 
 
     public Guest() {

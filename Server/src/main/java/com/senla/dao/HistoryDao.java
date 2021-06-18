@@ -11,7 +11,8 @@ import java.util.ArrayList;
 
 @Repository
 public class HistoryDao implements IHistoryDao {
-    Order order;
+
+    private Order order;
 
     @Autowired
     IOrderDao orderDao;

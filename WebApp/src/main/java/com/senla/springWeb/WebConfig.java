@@ -28,25 +28,14 @@ public class WebConfig implements WebMvcConfigurer {
         this.applicationContext = applicationContext;
     }
 
-    //    @Bean
-//    ViewResolver viewResolver() {
-//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//        resolver.setApplicationContext(applicationContext);
-//        resolver.setPrefix("/WEB-INF/views/");
-//        resolver.setSuffix(".jsp");
-//        return resolver;
-//    }
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-//        templateResolver.setPrefix("classpath:/WEB-INF/views/");
-       templateResolver.setPrefix("/WEB-INF/views/");
+
+        templateResolver.setPrefix("/WEB-INF/views/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
-
-//        templateResolver.setSuffix(".jsp");
-
         return templateResolver;
     }
 
@@ -54,19 +43,18 @@ public class WebConfig implements WebMvcConfigurer {
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
-
         templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
     }
+
     public void addViewControllers(ViewControllerRegistry registry) {
-             registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/login").setViewName("login");
 
     }
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }

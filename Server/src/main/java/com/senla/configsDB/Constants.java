@@ -1,6 +1,7 @@
 package com.senla.configsDB;
 
 public class Constants {
+
     public static final String ORDER_TABLE = "orders";
     public static final String GUEST_TABLE = "senlahotel.guests";
     public static final String ROOM_TABLE = "rooms";

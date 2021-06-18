@@ -4,7 +4,6 @@ package com.senla.api.fasad;
 
 import com.senla.api.enums.GuestGender;
 import com.senla.model.Guest;
-
 import java.util.List;
 
 public interface IFasadGuest {

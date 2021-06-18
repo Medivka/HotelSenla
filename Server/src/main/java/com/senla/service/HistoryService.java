@@ -30,6 +30,7 @@ public class HistoryService implements IHistoryService {
     public HistoryService(HistoryDao historyDao) {
         this.historyDao = historyDao;
     }
+
     public void setHistoryList(List list) {
         historyDao.setHistoryList((ArrayList<Order>) list);
     }

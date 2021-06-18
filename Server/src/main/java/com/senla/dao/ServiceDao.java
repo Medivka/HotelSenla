@@ -22,7 +22,7 @@ public class ServiceDao implements IServiceDao {
 
     private List<Service> serviceList = new ArrayList<>();
 
-      private ServiceDao() {
+    private ServiceDao() {
     }
 
 
@@ -33,11 +33,12 @@ public class ServiceDao implements IServiceDao {
 
     @Override
     public List<Service> getServiceList() {
-        CriteriaBuilder criteriaBuilder= entityManager.getCriteriaBuilder();
-        CriteriaQuery<Service> query=criteriaBuilder.createQuery(Service.class);
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Service> query = criteriaBuilder.createQuery(Service.class);
         Root<Service> serviceRoot = query.from(Service.class);
         query.select(serviceRoot);
-        return entityManager.createQuery(query).getResultList();    }
+        return entityManager.createQuery(query).getResultList();
+    }
 
     @Override
     public void save(Service service) {
@@ -46,20 +47,20 @@ public class ServiceDao implements IServiceDao {
 
     @Override
     public void delete(Service service) {
-          entityManager.remove(service);
+        entityManager.remove(service);
     }
 
 
     @Override
     public Service findById(Integer id) {
-       return entityManager.find(Service.class,id);
+        return entityManager.find(Service.class, id);
     }
 
 
     @Override
     public void updateService(Service service) {
 
-          entityManager.merge(service);
+        entityManager.merge(service);
     }
 }
 /**

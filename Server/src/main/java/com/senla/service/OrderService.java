@@ -45,6 +45,7 @@ public class OrderService implements IOrderService {
     }
 
     public void orderUpdateAllAmount(Integer orderNumber) {
+        LOGGER.log(Level.INFO, String.format("Order update:  "+orderNumber));
         Order order = orderDao.findById(orderNumber);
         order.setAllAmount(getAllAmount(orderNumber));
 
@@ -54,16 +55,17 @@ public class OrderService implements IOrderService {
     public Order createNewOrder(Guest guest, Room room, Service service, LocalDate localDate, Integer daysOfStay) {
         Integer priceService = 0;
         ArrayList<Service> services = new ArrayList<>();
-        Integer allAmount=0;
+        Integer allAmount = 0;
 
-        if(service.getPrice()!=null){
-        services.add(service);
-        for (int i = 0; i < services.size(); i++) {
-            Service service1 = services.get(i);
-            priceService = priceService + service1.getPrice();
+        if (service.getPrice() != null) {
+            services.add(service);
+            for (int i = 0; i < services.size(); i++) {
+                Service service1 = services.get(i);
+                priceService = priceService + service1.getPrice();
+            }
+            Integer priceRoom = room.getPrice();
+            allAmount = (priceRoom + priceService) * daysOfStay;
         }
-        Integer priceRoom = room.getPrice();
-        allAmount = (priceRoom + priceService) * daysOfStay;}
         Order order = new Order(guest, room, services, localDate, daysOfStay, allAmount);
         LOGGER.log(Level.INFO, String.format("createNewOrder id: %s, guest: %s, room: %s, com.service: %s, Date: %s, DayOfStay: %s ,AllAmount: %s ", order.getId(), guest, room, service, localDate, daysOfStay, order.getAllAmount()));
         orderDao.save(order);
@@ -192,8 +194,9 @@ public class OrderService implements IOrderService {
 
     @Override
     public void updateOrder(Integer id, Order order) {
-        Order order1=orderDao.findById(id);
-        order1=order;
+        LOGGER.log(Level.INFO, String.format("Order update:  "+id));
+        Order order1 = orderDao.findById(id);
+        order1 = order;
         orderDao.updateOrder(order1);
     }
 

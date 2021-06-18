@@ -1,24 +1,21 @@
 package com.senla.restControllers;
 
 
-import com.senla.api.fasad.IFasadRoom;
-import com.senla.dto.apiDTO.MappingDTO;
+
 import com.senla.dto.apiDTO.RoomDtoService;
-import com.senla.dto.mappingDTO.MappingDTOImpl;
 import com.senla.dto.modelDTO.RoomDTO;
-import com.senla.fasad.FasadRoom;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/room")
 public class RoomRestController {
 
-    private RoomDtoService roomDtoServiceImpl;
+    private final RoomDtoService roomDtoServiceImpl;
 
     public RoomRestController(RoomDtoService roomDtoServiceImpl) {
         this.roomDtoServiceImpl = roomDtoServiceImpl;

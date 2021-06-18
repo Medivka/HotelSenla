@@ -6,6 +6,7 @@ import com.senla.dto.modelDTO.RoomDTO;
 import java.util.List;
 
 public interface RoomDtoService {
+
     public List getAll();
 
     public RoomDTO getById(Integer id);

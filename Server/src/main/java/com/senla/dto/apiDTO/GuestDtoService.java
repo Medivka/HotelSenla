@@ -7,10 +7,14 @@ import java.util.List;
 
 public interface GuestDtoService {
     public List getAll();
+
     public GuestDTO getById(Integer id);
-    public void delete (Integer id);
-    public void update (GuestDTO guestDTO);
-    public void save (GuestDTO guestDTO);
+
+    public void delete(Integer id);
+
+    public void update(GuestDTO guestDTO);
+
+    public void save(GuestDTO guestDTO);
 
     void update(Integer guestNumber, GuestDTO guestDTO);
 }

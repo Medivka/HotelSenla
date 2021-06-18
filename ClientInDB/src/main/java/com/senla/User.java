@@ -1,15 +1,12 @@
 package com.senla;
 
-import lombok.Data;
-
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
+
+
 @Entity
 @Table(name="users")
 public class User {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,6 +51,7 @@ public class User {
     }
 
     public User(){}
+
     public User(String name, String pass) {
         username = name;
         password = pass;

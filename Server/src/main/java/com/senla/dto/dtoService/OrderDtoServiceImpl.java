@@ -56,7 +56,7 @@ public class OrderDtoServiceImpl implements OrderDtoService {
 
     @Override
     public void update(Integer id, OrderDTO orderDTO) {
-        fasadOrder.updateOrder(id,mappingDTO.mapOrderDtoToOrder(orderDTO));
+        fasadOrder.updateOrder(id, mappingDTO.mapOrderDtoToOrder(orderDTO));
     }
 
 }

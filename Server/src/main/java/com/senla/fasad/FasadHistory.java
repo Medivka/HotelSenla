@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class FasadHistory implements IFasadHistory {
     @Autowired
-    IHistoryService historyService ;
+    IHistoryService historyService;
 
 
     @Override

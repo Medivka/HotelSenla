@@ -1,7 +1,6 @@
 package com.senla.api.service;
 
 
-
 import com.senla.model.Guest;
 import com.senla.model.Order;
 import com.senla.model.Room;
@@ -20,8 +19,6 @@ public interface IOrderService {
     void addGuestInRoom(Integer orderNumber, Guest guest);
 
     void addServiceInOrder(Order order, Service service);
-
-
 
     void changeRoomInOrder(Integer orderNumber, Room room);
 
